@@ -23,6 +23,7 @@ body, html {
     height: 100%;
     width: 100%;
     font-family: Rosario;
+    font-size: large;
     margin: 0;
 }
 
@@ -72,15 +73,61 @@ li {
     font-weight: 600;
 }
 
+li:hover {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
+}
+
+#menu-btn {
+    padding: 1rem;
+}
+
+#menu-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#menu-dropdown-content {
+    display: none;
+    position: absolute;
+    left: -2rem;
+    top: 3rem;
+    background-color: var(--light);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+#menu-dropdown:hover #menu-dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-link {
+    text-align: center;
+    text-decoration: none;
+    color: var(--grayish-brown);
+    padding: 0.7rem;
+    cursor: pointer;
+}
+
+.menu-link:hover {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
+    background-color: #e5ddda;
+}
+
 #user-img {
     width: 100px;
     height: 100px;
     margin: auto 1rem auto auto;
+    cursor: pointer;
 }
 
 .hero-image {
     min-height: 100%;
-    background-color: cyan;
+    background-image: url(../images/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 #homepage-content {
@@ -167,11 +214,17 @@ li {
 }
 
 .content-tab {
-    height: 25rem;
+    height: 15rem;
     width: auto;
     background-color: var(--light);
     text-align: center;
     padding: 3rem;
+    display: block;
+}
+
+#phone-icon {
+    width: 5rem;
+    margin-top: 3rem;
 }
 
 footer {
@@ -183,6 +236,11 @@ footer {
     background-color: var(--grayish-brown);
 }
 
+#contact-info {
+    text-align: center;
+    margin-left: 2rem;
+}
+
 #social-media-icons {
     width: 30%;
     display: flex;
@@ -192,10 +250,12 @@ footer {
 }
 
 .fa {
-    padding: 30px;
+    padding: 20px;
     font-size: x-large;
     text-align: center;
     text-decoration: none;
+    color: var(--grayish-brown);
     border-radius: 50%;
     background-color: var(--light);
+    margin: auto;
 }

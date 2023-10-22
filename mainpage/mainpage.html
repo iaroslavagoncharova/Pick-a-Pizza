@@ -16,7 +16,17 @@
                 <h1 class="page-title">Pick-a-Pizza</h1>
             </div>
             <ul id="navigation-items">
-                <li>Menu</li>
+                <div class="dropdown" id="menu-dropdown">
+                    <li id="menu-btn">Menu</li>
+                    <div id="menu-dropdown-content">
+                        <a href="#" class="menu-link">Gluten-free</a>
+                        <a href="#" class="menu-link">Keto</a>
+                        <a href="#" class="menu-link">Pizza for One</a>
+                        <a href="#" class="menu-link">Vegan</a>
+                        <a href="#" class="menu-link">Party-size</a>
+                        <a href="#" class="menu-link">Low Calorie</a>
+                    </div>
+                </div>
                 <li>Make a Pizza</li>
             </ul>
             <img src="../images/user.png" alt="Login/Register Button" id="user-img">
@@ -28,8 +38,8 @@
                 <h2 class="page-title" id="hero-title">Pick-a-Pizza</h2>
                 <p id="pizza-selection-text">Choose one or build from scratch:</p>
                 <div id="pizza-templates">
-                    <button class="pizza-selector" id="button-1">Lactose-free</button>
-                    <button class="pizza-selector" id="button-2">Gluten-free</button>
+                    <button class="pizza-selector" id="button-1">Gluten-free</button>
+                    <button class="pizza-selector" id="button-2">Keto</button>
                     <button class="pizza-selector" id="button-3">Pizza for One</button>
                     <button class="pizza-selector" id="button-4">Vegan</button>
                     <button class="pizza-selector" id="button-5">Party-size</button>
@@ -43,6 +53,7 @@
                 </div>
                 <div class="content-tab" id="contacts">
                     <h3>Contacts</h3>
+                    <img src="../images/phone-icon.png" alt="Image of a ringing phone" id="phone-icon">
                 </div>
                 <div class="content-tab" id="offers">
                     <h3>2 + 1 = 2</h3>
