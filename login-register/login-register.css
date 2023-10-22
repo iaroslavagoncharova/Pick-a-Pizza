@@ -126,91 +126,92 @@ li:hover {
     min-height: 100%;
     background-image: url(../images/background.png);
     background-repeat: no-repeat;
-    background-size: cover;
     background-attachment: fixed;
 }
 
-#homepage-content {
+#login-register-container {
     display: block;
     width: 100%;
-    margin: auto;
+    margin: 0;
     padding: 5rem 0;
 }
 
-#quick-select-container {
-    width: 60%;
+#login-register-screen {
+    width: 40%;
     text-align: center;
-    background-color: #faf4f1ac;
-    padding: 10rem 8rem;
+    background-color: var(--light);
+    padding: 0;
     margin: auto;
-    border-radius: 20px;
+    display: block;
 }
 
-#hero-title {
-    padding: 1rem 5rem;
-    font-size: 50px;
+#login-register-tabs {
+    margin: 0;
+    width: 100%;
+    display: flex;
 }
 
-#pizza-templates {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
-    padding: 2rem;
+.user-form {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
 }
 
-#pizza-selection-text {
-    font-size: x-large;
+.form-tab {
+    width: 50%;
+    border: none;
+    padding: 1rem 0;
+    font-size: larger;
+    font-family: Rosario;
 }
 
-.pizza-selector {
-    padding: 1rem;
-    border-radius: 50px;
+.active-tab {
+    background-color: var(--light);
+    color: var(--grayish-brown);
+}
+
+.inactive-tab {
+    background-color: var(--grayish-brown);
+    color: var(--light);
     cursor: pointer;
+}
+
+.inactive-tab:hover {
+    text-shadow: rgba(0, 0, 0, 0.56) 0px 3px 8px;
+    background-color: #5c4b34;
+}
+
+.form-input {
+    padding: 0.5rem;
+}
+
+.form-btn {
+    border: none;
+    background-color: var(--grayish-brown);
+    color: var(--light);
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-top: 1rem;
     font-family: Rosario;
     font-size: larger;
-    border: hidden;
+}
+
+.form-btn:hover {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #5c4b34;
 }
 
-.pizza-selector:hover {
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 3px 8px;
+.input-space {
+    background-color: var(--grayish-brown);
+    width: 70%;
+    border: none;
+    font-size: large;
+    font-family: Rosario;
+    color: var(--light);
 }
 
-#button-1 {
-    background-color: var(--light-peach);
-}
-
-#button-2 {
-    background-color: var(--light);
-}
-
-#button-3 {
-    background-color: var(--dandelion);
-}
-
-#button-4 {
-    background-color: var(--grass);
-}
-
-#button-5 {
-    background-color: var(--butterscotch);
-}
-
-#button-6 {
-    background-color: var(--parchment);
-}
-
-#button-7 {
-    background-color: var(--tomato);
-}
-
-#content-tabs {
-    width: 85%;
-    margin: auto;
-    padding-top: 10rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5rem;
+.form-container {
+    padding: 1rem;
 }
 
 .content-tab {
