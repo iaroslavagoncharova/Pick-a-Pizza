@@ -126,111 +126,77 @@ li:hover {
 }
 
 .hero-image {
-    min-height: 100%;
+    min-height: 60%;
     background-image: url(../images/background.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    padding: 1rem;
 }
 
 #homepage-content {
-    display: block;
     width: 90%;
     margin: auto;
     padding: 5rem 0;
+    color: var(--grayish-brown);
 }
 
-#quick-select-container {
-    width: 60%;
-    text-align: center;
-    background-color: #faf4f1ac;
-    padding: 2rem;
-    margin: auto;
-    border-radius: 20px;
-}
-
-#hero-title {
-    padding: 1rem 5rem;
-    font-size: 50px;
-}
-
-#pizza-templates {
+#user-info {
     display: grid;
-    grid-template-columns: 0.5fr 0.5fr 0.5fr;
-    gap: 2rem;
-    padding: 1rem;
+    grid-template-columns: repeat(3, minmax(100px, 500px));
+    grid-gap: 2rem;
+    margin: 0 1rem;
 }
 
-#pizza-selection-text {
-    font-size: x-large;
+#user-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-.pizza-selector {
+#user-info h3 {
+    background-color: #68563d;
     padding: 1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    font-family: Rosario;
+    margin-top: 0;
+    color: var(--light);
+}
+
+#user-info a {
+    text-decoration: none;
+    color: var(--grayish-brown);
+}
+
+#personal-info, #recent-orders {
+    grid-row: 1 / 3;
+}
+
+#favorite-pizza {
+    grid-row: 1 / 2;
+}
+
+#personal-info, #recent-orders, #favorite-pizza {
+    margin-top: 0;
+    background-color: var(--light);
+    padding: 0;
+    text-align: center;
+}
+
+#change-profile, #all-orders, #newsletter {
+    background-color: var(--grayish-brown);
+    color: var(--light);
+    padding: 0.5rem;
+    margin: 1rem;
     font-size: larger;
-    border: hidden;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.pizza-selector:hover {
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 3px 8px;
-    transition: ease-in-out 0.3s;
+#newsletter {
+    padding: 1rem 3rem;
+    margin: 0 4rem;
 }
-
-#button-1 {
-    background-color: var(--light-peach);
-}
-
-#button-2 {
-    background-color: var(--light);
-}
-
-#button-3 {
-    background-color: var(--dandelion);
-}
-
-#button-4 {
-    background-color: var(--grass);
-}
-
-#button-5 {
-    background-color: var(--butterscotch);
-}
-
-#button-6 {
-    background-color: var(--parchment);
-}
-
-#button-7 {
-    background-color: var(--tomato);
-    width: 1.5fr;
-    margin-top: 1rem;
-}
-
-#content-tabs {
-    width: 85%;
-    margin: auto;
-    padding-top: 6rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5rem;
-}
-
-.content-tab {
-    height: 15rem;
-    width: auto;
-    background-color: var(--light);
-    text-align: center;
-    padding: 3rem;
-    display: block;
-}
-
-#phone-icon {
-    width: 5rem;
-    margin-top: 3rem;
+#user-info button:hover {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
+    transition: ease-out 0.3s;
+    cursor: pointer;
 }
 
 footer {
