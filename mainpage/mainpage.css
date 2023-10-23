@@ -235,17 +235,76 @@ li:hover {
     display: block;
 }
 
+#about-us {
+    order: 1;
+}
+
 #about-us:hover {
-    width: 60rem;
+    width: 64rem;
     background-color: #e2dad7;
-    box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 8px;
-    
+    box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 8px; 
+    order: -1;
+}
+
+#about-us:hover > .about-us-text {
+    display: flex;
+}
+
+#contacts {
+    order: 2;
+}
+
+#contacts:hover {
+    width: 64rem;
+    background-color: #e2dad7;
+    box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 8px; 
+    order: -1;
+}
+
+#contacts:hover > #phone-icon {
+    display: none;
+}
+
+#contacts:hover > .contacts-text {
+    display: flex;
 }
 
 #phone-icon {
     width: 4rem;
     margin-top: 3rem;
 }
+
+#offers {
+    order: 3;
+}
+
+#offers:hover {
+    width: 64rem;
+    background-color: #e2dad7;
+    box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 8px; 
+    order: -1;
+}
+
+#offers:hover > .offers-text {
+    display: flex;
+}
+
+
+#promo-code {
+    order: 4;
+}
+
+#promo-code:hover {
+    width: 64rem;
+    background-color: #e2dad7;
+    box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 8px; 
+    order: -1;
+}
+
+#promo-code:hover > .promocode-text {
+    display: flex;
+}
+
 
 footer {
     padding: 1rem;
