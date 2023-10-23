@@ -79,6 +79,12 @@ li:hover {
     transition: ease-in-out 0.3s;
 }
 
+#navigation-items a {
+    color: var(--grayish-brown);
+    text-decoration: none;
+    padding: 1rem;
+}
+
 #menu-btn {
     padding: 1rem;
 }
