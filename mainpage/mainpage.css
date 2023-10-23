@@ -47,12 +47,13 @@ nav {
 
 #pizza-logo {
     height: 100px;
-    padding-bottom: 1rem;
+    padding: 0.8rem 0;
 }
 
 .page-title {
     font-family: 'Blanka', sans-serif;
     margin: auto;
+    padding-bottom: 10px;
     font-size: xx-large;
 }
 
@@ -75,6 +76,7 @@ li {
 
 li:hover {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
+    transition: ease-in-out 0.3s;
 }
 
 #menu-btn {
@@ -116,8 +118,8 @@ li:hover {
 }
 
 #user-img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin: auto 1rem auto auto;
     cursor: pointer;
 }
@@ -132,7 +134,7 @@ li:hover {
 
 #homepage-content {
     display: block;
-    width: 100%;
+    width: 90%;
     margin: auto;
     padding: 5rem 0;
 }
@@ -141,7 +143,7 @@ li:hover {
     width: 60%;
     text-align: center;
     background-color: #faf4f1ac;
-    padding: 10rem 8rem;
+    padding: 2rem;
     margin: auto;
     border-radius: 20px;
 }
@@ -153,9 +155,9 @@ li:hover {
 
 #pizza-templates {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
     gap: 2rem;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 #pizza-selection-text {
@@ -174,6 +176,7 @@ li:hover {
 
 .pizza-selector:hover {
     box-shadow: rgba(0, 0, 0, 0.56) 0px 3px 8px;
+    transition: ease-in-out 0.3s;
 }
 
 #button-1 {
@@ -202,12 +205,14 @@ li:hover {
 
 #button-7 {
     background-color: var(--tomato);
+    width: 1.5fr;
+    margin-top: 1rem;
 }
 
 #content-tabs {
     width: 85%;
     margin: auto;
-    padding-top: 10rem;
+    padding-top: 6rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 5rem;
@@ -228,7 +233,7 @@ li:hover {
 }
 
 footer {
-    padding: 2rem;
+    padding: 1rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -239,6 +244,7 @@ footer {
 #contact-info {
     text-align: center;
     margin-left: 2rem;
+    margin-top: 1rem;
 }
 
 #social-media-icons {
@@ -251,11 +257,13 @@ footer {
 
 .fa {
     padding: 20px;
-    font-size: x-large;
+    font-size: xx-large;
     text-align: center;
     text-decoration: none;
     color: var(--grayish-brown);
     border-radius: 50%;
     background-color: var(--light);
     margin: auto;
+    height: 30px;
+    width: 30px;
 }
