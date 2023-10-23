@@ -40,7 +40,7 @@
                     <button class="form-tab inactive-tab" id="register-tab">Register</button>
                 </div>
                 <div class="form-container">
-                    <form method="get" class="user-form" id="login-form">
+                    <form method="get" class="user-form active-form" id="login-form">
                         <div class="form-input">
                             <input type="email" name="email" id="login-email" class="input-space" placeholder="e-mail" required>
                         </div>
@@ -49,6 +49,24 @@
                         </div>
                         <div class="form-submit">
                             <input type="submit" value="Sign in" id="signin-btn" class="form-btn">
+                        </div>
+                    </form>
+                    <form method="get" class="user-form inactive-form" id="register-form">
+                        <div class="form-input">
+                            <input type="email" name="email" id="regist-email" class="input-space" placeholder="e-mail" required>
+                        </div>
+                        <div class="form-input">
+                            <input type="password" name="password" id="regist-password" class="input-space" placeholder="password" required>
+                        </div>
+                        <div class="form-input">
+                            <input type="password" name="password" id="regist-password2" class="input-space" placeholder="repeat password" required>
+                        </div>
+                        <div id="notarobot-box">
+                            <input type="checkbox" id="not-robot" name="not-robot" value="I am not a robot">
+                            <label for="not-robot"> I am not a robot</label>
+                        </div>
+                        <div class="form-submit">
+                            <input type="submit" value="Sign up" id="signup-btn" class="form-btn">
                         </div>
                     </form>
                 </div>
