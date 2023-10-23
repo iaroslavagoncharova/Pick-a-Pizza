@@ -216,20 +216,27 @@ li:hover {
     padding-top: 6rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 5rem;
+    gap: 4rem;
 }
 
 .content-tab {
     height: 15rem;
-    width: auto;
+    width: 10rem;
     background-color: var(--light);
     text-align: center;
-    padding: 3rem;
+    padding: 2rem;
     display: block;
 }
 
+#about-us:hover {
+    width: 60rem;
+    background-color: #e2dad7;
+    box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 8px;
+    
+}
+
 #phone-icon {
-    width: 5rem;
+    width: 4rem;
     margin-top: 3rem;
 }
 
