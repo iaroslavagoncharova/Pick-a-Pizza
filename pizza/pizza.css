@@ -133,7 +133,7 @@ li:hover {
 }
 
 .hero-image {
-    min-height: 100%;
+    min-height: 70%;
     background-image: url(../images/background.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -141,10 +141,138 @@ li:hover {
 }
 
 #homepage-content {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 800px));
+    grid-template-rows: 100px 400px 100px 200px 100px;
     width: 90%;
     margin: auto;
-    padding: 5rem 0;
+    padding: 2rem 0;
+    color: var(--grayish-brown);
+}
+
+.pizza-name {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    text-align: center;
+    margin: 1rem;
+}
+
+.pizza-name h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.pizza-image {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    text-align: center;
+}
+
+.dough {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+    text-align: center;
+    margin: 1rem;
+}
+
+#glut {background-color: #FDBC67;}
+
+#keto {background-color: #7DCD52;}
+
+#usual {background-color: #FDD8A9;}
+
+.dough button {
+    border: none;
+    font-size: 20px;
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 6rem;
+    border-radius: 50px;
+    color: var(--grayish-brown);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.comments {
+    grid-row: 4 / 5;
+    grid-column: 1 / 2;
+    text-align: center;
+    color: var(--grayish-brown);
+    font-size: 20px;
+}
+
+#message {
+    border: none;
+    border-radius: 50px;
+    margin: 0.5rem;
+    padding: 2rem;
+    font-size: 20px;
+}
+
+.size {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    text-align: center;
+}
+
+.size button:hover, .dough button:hover, #confirm-order:hover {
+    cursor: pointer;
+}
+
+#s, #m, #l {
+    background-color: #E9451C;
+    color: #faf4f1;
+    width: 5rem;
+    padding: 0.3rem;
+    font-size: 20px;
+    border-radius: 12px;
+    border: none;
+    margin: 0.5rem;
+}
+
+.fillings {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+#search {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    width: 70%;
+    border-radius: 36px;
+    font-size: 15px;
+}
+
+.nutritions {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    justify-self: center;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.calories {
+    background-color: var(--grass);
+    height: 9rem;
+    width: 20rem;
+    border-radius: 36px;
+    padding: 1rem;
+}
+
+#confirm-order {
+    width: 6rem;
+    border-radius: 50px;
+    border: none;
+    padding: 1rem;
+    background-color: var(--tomato);
+    color: var(--light);
+    font-size: 20px;
+    grid-row: 5 / 6;
+    grid-column: 2 / 3;
+    justify-self: end;
+    align-self: end;
 }
 
 footer {
@@ -181,4 +309,31 @@ footer {
     margin: auto;
     height: 30px;
     width: 30px;
+}
+
+.category-title {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.category {
+    background-color: var(--parchment);
+    padding: 1rem;
+    margin: 0.5rem auto;
+    width: 70%;
+    border-radius: 12px;
+}
+
+.arrow {
+    transition: transform 0.3s;
+}
+
+.category-content {
+    display: none;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+    padding: 1rem;
+    margin: 0.5rem;
 }
