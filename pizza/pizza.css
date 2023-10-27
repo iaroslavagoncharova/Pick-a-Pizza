@@ -154,6 +154,7 @@ footer {
     flex-wrap: wrap;
     justify-content: space-between;
     background-color: var(--grayish-brown);
+    color: var(--light);
 }
 
 #contact-info {
