@@ -313,6 +313,7 @@ footer {
     flex-wrap: wrap;
     justify-content: space-between;
     background-color: var(--grayish-brown);
+    color: var(--light);
 }
 
 #contact-info {
@@ -340,4 +341,5 @@ footer {
     margin: auto;
     height: 30px;
     width: 30px;
+    cursor: pointer;
 }

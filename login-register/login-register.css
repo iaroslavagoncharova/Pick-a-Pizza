@@ -133,7 +133,7 @@ li:hover {
     display: block;
     width: 100%;
     margin: 0;
-    padding: 4rem 0;
+    padding: 6rem 0;
 }
 
 #login-register-screen {
@@ -183,6 +183,10 @@ li:hover {
 
 .inactive-form {
     display: none;
+}
+
+#login-form {
+    margin: 2rem 0;
 }
 
 
@@ -246,6 +250,7 @@ footer {
     flex-wrap: wrap;
     justify-content: space-between;
     background-color: var(--grayish-brown);
+    color: var(--light);
 }
 
 #contact-info {
@@ -273,4 +278,5 @@ footer {
     margin: auto;
     height: 30px;
     width: 30px;
+    cursor: pointer;
 }
