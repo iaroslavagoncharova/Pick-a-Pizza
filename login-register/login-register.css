@@ -40,6 +40,11 @@ nav {
     justify-content: space-between;
 }
 
+#mainpage-link {
+    text-decoration: none;
+    color: var(--grayish-brown);
+}
+
 .logo-container {
     display: flex;
     flex-direction: row;

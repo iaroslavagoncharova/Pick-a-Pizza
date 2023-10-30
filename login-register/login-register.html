@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etusivu</title>
-    <script src="login-register.js" defer></script>
-    <link rel="stylesheet" href="login-register.css">
+    <script src="./login-register.js" defer></script>
+    <link rel="stylesheet" href="./login-register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo-container" id="header-logo">
-                <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
-                <h1 class="page-title">Pick-a-Pizza</h1>
-            </div>
+            <a id="mainpage-link" href="../mainpage/mainpage.html">
+                <div class="logo-container" id="header-logo">
+                    <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
+                    <h1 class="page-title">Pick-a-Pizza</h1>
+                </div>
+            </a>
             <ul id="navigation-items">
                 <div class="dropdown" id="menu-dropdown">
                     <li id="menu-btn">Menu</li>
@@ -29,7 +31,7 @@
                 </div>
                 <li>Make a Pizza</li>
             </ul>
-            <a href="/profile/profile.html"><img src="../images/user.png" alt="Login/Register Button" id="user-img"></a>
+            <img src="../images/user.png" alt="Login/Register Button" id="user-img">
         </nav>
     </header>
     <div class="hero-image" id="homepage-background">
@@ -48,7 +50,9 @@
                             <input type="password" name="password" id="login-password" class="input-space" placeholder="password" required>
                         </div>
                         <div class="form-submit">
-                            <input type="submit" value="Sign in" id="signin-btn" class="form-btn">
+                            <a href="../profile/profile.html">
+                                <input type="submit" value="Sign in" id="signin-btn" class="form-btn">
+                            </a>
                         </div>
                     </form>
                     <form method="get" class="user-form inactive-form" id="register-form">
@@ -65,9 +69,11 @@
                             <input type="checkbox" id="not-robot" name="not-robot" value="I am not a robot">
                             <label for="not-robot"> I am not a robot</label>
                         </div>
-                        <div class="form-submit">
-                            <input type="submit" value="Sign up" id="signup-btn" class="form-btn">
-                        </div>
+                        <a href="../profile/profile.html">
+                            <div class="form-submit">
+                                <input type="submit" value="Sign up" id="signup-btn" class="form-btn">
+                            </div>
+                        </a>
                     </form>
                 </div>
             </div>

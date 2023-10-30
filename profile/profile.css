@@ -40,6 +40,11 @@ nav {
     justify-content: space-between;
 }
 
+#mainpage-link {
+    text-decoration: none;
+    color: var(--grayish-brown);
+}
+
 .logo-container {
     display: flex;
     flex-direction: row;
@@ -145,13 +150,14 @@ li:hover {
     margin: auto;
     padding: 5rem 0;
     color: var(--grayish-brown);
+    margin-bottom: 5rem;
 }
 
 #user-info {
     display: grid;
     grid-template-columns: repeat(3, minmax(100px, 500px));
     grid-gap: 2rem;
-    margin: 0 1rem;
+    margin: 2rem 1rem;
 }
 
 #user-info ul {
@@ -187,7 +193,7 @@ li:hover {
     text-align: center;
 }
 
-#change-profile, #all-orders, #newsletter {
+.profile-button {
     background-color: var(--grayish-brown);
     color: var(--light);
     padding: 0.5rem;
@@ -200,7 +206,8 @@ li:hover {
     margin: 0 4rem;
 }
 
-#user-info button:hover {
+.profile-button:hover {
+    background-color: #584932;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
     transition: ease-out 0.3s;
     cursor: pointer;

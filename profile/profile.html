@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profiili</title>
-    <script src="profile.js" defer></script>
-    <link rel="stylesheet" href="profile.css">
+    <script src="./profile.js" defer></script>
+    <link rel="stylesheet" href="./profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo-container" id="header-logo">
-                <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
-                <h1 class="page-title">Pick-a-Pizza</h1>
-            </div>
+            <a id="mainpage-link" href="../mainpage/mainpage.html">
+                <div class="logo-container" id="header-logo">
+                    <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
+                    <h1 class="page-title">Pick-a-Pizza</h1>
+                </div>
+            </a>
             <ul id="navigation-items">
                 <div class="dropdown" id="menu-dropdown">
                     <li id="menu-btn">Menu</li>
@@ -27,9 +29,9 @@
                         <a href="#" class="menu-link">Low Calorie</a>
                     </div>
                 </div>
-                <a href="/pizza/pizza.html"><li>Make a Pizza</li></a>
+                <a href="../pizza/pizza.html"><li>Make a Pizza</li></a>
             </ul>
-            <a href="/profile/profile.html"><img src="../images/user.png" alt="Login/Register Button" id="user-img"></a>
+            <a href="../profile/profile.html"><img src="../images/user.png" alt="Login/Register Button" id="user-img"></a>
         </nav>
     </header>
     <div class="hero-image" id="homepage-background">
@@ -43,7 +45,7 @@
                         <li>Phone number: +35800000000</li>
                         <li>Address: Esimerkkikatu 1, Helsinki</li>
                     </ul>
-                    <a href="#"><button id="change-profile">Edit profile</button></a>
+                    <a href="#"><button class="profile-button" id="change-profile">Edit profile</button></a>
                 </div>
                 <div id="recent-orders"><h3>Your recent orders</h3>
                 <ul>
@@ -51,10 +53,10 @@
                     <a href="#"><li>3.10.2023 Order №65865230</li></a>
                     <a href="#"><li>26.9.2023 Order  №12048524</li></a>
                     <a href="#"><li>15.9.2023 Order  №40359163</li></a></ul>
-                <a href="#"><button id="all-orders">All orders</button></a></div>
+                <a href="#"><button class="profile-button" id="all-orders">All orders</button></a></div>
                 <div id="favorite-pizza"><h3>Your favorite pizza is</h3>
                 <p>Gluten-free + tuna</p></div>
-                <a href="#"><button id="newsletter">Get our newsletter!</button></a>
+                <a href="#"><button class="profile-button" id="newsletter">Get our newsletter!</button></a>
             </div>
     </div>
     </div>
