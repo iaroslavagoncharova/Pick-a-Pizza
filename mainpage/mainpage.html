@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etusivu</title>
-    <script src="./main.js" defer></script>
-    <link rel="stylesheet" href="./mainpage.css">
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="mainpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -27,9 +27,9 @@
                         <a href="#" class="menu-link">Low Calorie</a>
                     </div>
                 </div>
-                <a href="../pizza/pizza.html"><li>Make a Pizza</li></a>
+                <a href="/pizza/pizza.html"><li>Make a Pizza</li></a>
             </ul>
-            <a href="../login-register/login-register.html"><img src="../images/user.png" alt="Login/Register Button" id="user-img"></a>
+            <a href="/profile/profile.html"><img src="../images/user.png" alt="Login/Register Button" id="user-img"></a>
         </nav>
     </header>
     <div class="hero-image" id="homepage-background">
@@ -38,37 +38,36 @@
                 <h2 class="page-title" id="hero-title">Pick-a-Pizza</h2>
                 <p id="pizza-selection-text">Choose one or build from scratch:</p>
                 <div id="pizza-templates">
-                    <button class="pizza-selector" id="button-1">Gluten-free</button>
-                    <button class="pizza-selector" id="button-2">Keto</button>
-                    <button class="pizza-selector" id="button-3">Pizza for One</button>
+                    <button class="pizza-selector" id="button-1">Top-Choice Pizza</button>
+                    <button class="pizza-selector" id="button-2">November Pizza</button>
+                    <button class="pizza-selector" id="button-3">Low Calorie</button>
                     <button class="pizza-selector" id="button-4">Vegan</button>
-                    <button class="pizza-selector" id="button-5">Party-size</button>
-                    <button class="pizza-selector" id="button-6">Low Calorie</button>
+                    <button class="pizza-selector" id="button-5">Gluten-free</button>
+                    <button class="pizza-selector" id="button-6">Keto</button>
                 </div>
-                <button class="pizza-selector" id="button-7">Your Own Pizza!</button>
+                <button class="pizza-selector" id="button-7">Craft Your Own Pizza!</button>
             </div>
             <div id="content-tabs">
                 <div class="content-tab" id="about-us">
                     <h3>About Us</h3>
-                    <p class="about-us-text" hidden>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, aspernatur amet repellat voluptate quos a magnam cupiditate. Molestiae unde corrupti quidem labore consequuntur esse? Architecto placeat sapiente possimus optio nulla.</p>
-                    <p class="about-us-text" hidden>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum totam ratione quae id soluta error cum beatae, amet vero distinctio repellat maiores modi deserunt, velit placeat laborum nisi fugit! Eligendi.</p>
+                    <p class="text" hidden>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, aspernatur amet repellat voluptate quos a magnam cupiditate. Molestiae unde corrupti quidem labore consequuntur esse? Architecto placeat sapiente possimus optio nulla.</p>
+                    <p class="text" hidden>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum totam ratione quae id soluta error cum beatae, amet vero distinctio repellat maiores modi deserunt, velit placeat laborum nisi fugit! Eligendi.</p>
                 </div>
                 <div class="content-tab" id="contacts">
                     <h3>Contacts</h3>
                     <img src="../images/phone-icon.png" alt="Image of a ringing phone" id="phone-icon">
-                    <p class="contacts-text" hidden>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium nulla aliquam illo nesciunt, quod veniam delectus consectetur ratione exercitationem laborum neque repellendus, iusto fugiat odio earum facere asperiores ullam dolorum!</p>
-                    <p class="contacts-text" hidden>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam quae, sed laboriosam repudiandae ex ullam at maxime vitae necessitatibus fugit sequi iste doloribus deserunt error dolor esse velit a quod.</p>
+                    <p class="text" hidden>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium nulla aliquam illo nesciunt, quod veniam delectus consectetur ratione exercitationem laborum neque repellendus, iusto fugiat odio earum facere asperiores ullam dolorum!</p>
+                    <p class="text" hidden>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam quae, sed laboriosam repudiandae ex ullam at maxime vitae necessitatibus fugit sequi iste doloribus deserunt error dolor esse velit a quod.</p>
                 </div>
-                <div class="content-tab" id="offers">
+                <div class="content-tab-no-expand" id="offers">
                     <h3>2 + 1 = 2</h3>
-                    <p class="offers-text" hidden>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus quas provident sapiente repudiandae voluptate, beatae perspiciatis dolores, eum saepe quod dicta voluptatum. Facere enim amet, obcaecati labore sapiente repellendus ad!</p>
-                    <p class="offers-text" hidden>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, eius. Voluptate sapiente odio in a labore illum enim aliquam iste deleniti corrupti reprehenderit cum numquam, non praesentium alias officiis. At.</p>
+                    <p class="offers-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit</p>
+                    <img src="/images/pizza-ad.png" alt="pizza" id="pizza-ad">
                 </div>
-                <div class="content-tab" id="promo-code">
+                <div class="content-tab-no-expand" id="promo-code">
                     <h3>All vegan pizzas for 10 €. Promo code VEGAN10</h3>
-                    <p class="promocode-text" hidden>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo laudantium distinctio nihil nulla officiis voluptate eum, expedita est facilis quibusdam, magni illum tenetur deserunt exercitationem praesentium ab aliquam ullam dolor?</p>
-                    <p class="promocode-text" hidden>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum nam repellendus fugiat, consectetur distinctio dignissimos a incidunt doloribus officiis quasi reiciendis voluptas animi aut nesciunt, eum qui quaerat delectus. Autem.</p>
-                </div>
+                    <p class="promo-text">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                    <img src="/images/pizza-promo.png" alt="pizza" id="pizza-promo">
             </div>
         </div>
     </div>

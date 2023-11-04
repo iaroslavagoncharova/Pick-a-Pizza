@@ -188,15 +188,15 @@ li:hover {
 }
 
 #button-1 {
-    background-color: var(--light-peach);
+    background-color: var(--butterscotch);
 }
 
 #button-2 {
-    background-color: var(--light);
+    background-color: var(--dandelion);
 }
 
 #button-3 {
-    background-color: var(--dandelion);
+    background-color: var(--parchment);
 }
 
 #button-4 {
@@ -204,11 +204,11 @@ li:hover {
 }
 
 #button-5 {
-    background-color: var(--butterscotch);
+    background-color: var(--light-peach);
 }
 
 #button-6 {
-    background-color: var(--parchment);
+    background-color: var(--light);
 }
 
 #button-7 {
@@ -218,55 +218,48 @@ li:hover {
 }
 
 #content-tabs {
-    width: 85%;
+    width: 90%;
     margin: auto;
     padding-top: 6rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 4rem;
+    overflow: hidden;
 }
 
-.content-tab {
+
+.content-tab, #offers, #promo-code {
     height: 15rem;
     width: 10rem;
     background-color: var(--light);
     text-align: center;
     padding: 2rem;
     display: block;
+    position: relative;
+    cursor: pointer;
+    transition: width 0.5s ease, order 0.5s ease;
+}
+
+#offers, #promo-code {
+    cursor: default;
+}
+
+.expanded {
+    width: 45rem;
+    background-color: #e2dad7;
+    box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 8px;
+    order: -1;
 }
 
 #about-us {
     order: 1;
-}
-
-#about-us:hover {
-    width: 64rem;
-    background-color: #e2dad7;
-    box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 8px; 
-    order: -1;
-}
-
-#about-us:hover > .about-us-text {
-    display: flex;
+    background-image: url('/images/pizza-about-us.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #contacts {
     order: 2;
-}
-
-#contacts:hover {
-    width: 64rem;
-    background-color: #e2dad7;
-    box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 8px; 
-    order: -1;
-}
-
-#contacts:hover > #phone-icon {
-    display: none;
-}
-
-#contacts:hover > .contacts-text {
-    display: flex;
 }
 
 #phone-icon {
@@ -278,33 +271,25 @@ li:hover {
     order: 3;
 }
 
-#offers:hover {
-    width: 64rem;
-    background-color: #e2dad7;
-    box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 8px; 
-    order: -1;
+#pizza-ad {
+    height: 100px;
 }
-
-#offers:hover > .offers-text {
-    display: flex;
-}
-
 
 #promo-code {
     order: 4;
 }
 
-#promo-code:hover {
-    width: 64rem;
-    background-color: #e2dad7;
-    box-shadow: rgba(0, 0, 0, 0.23) 0px 3px 8px; 
-    order: -1;
+#pizza-promo {
+    height: 5rem;
 }
 
-#promo-code:hover > .promocode-text {
+.active {
     display: flex;
 }
 
+.expanded #phone-icon {
+    display: none;
+}
 
 footer {
     padding: 1rem;

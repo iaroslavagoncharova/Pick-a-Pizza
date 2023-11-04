@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const categoryTitles = document.querySelectorAll('.category-title');
+const categoryTitles = document.querySelectorAll('.category-title');
 
     categoryTitles.forEach(function (title) {
         title.addEventListener('click', function () {
@@ -23,4 +22,26 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-});
+
+    const doughButtons = document.querySelectorAll('.dough button');
+    const sizeButtons = document.querySelectorAll('.size button');
+
+    // Add event listeners to dough buttons
+    doughButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            this.style.border = 'solid 3px green';
+            this.style.fontWeight = 'bold';
+            this.style.boxShadow = '1px 1px 1px #68563d';
+        });
+    });
+
+    // Add event listeners to size buttons
+    sizeButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            this.style.fontWeight = '750';
+            this.style.boxShadow = '1px 1px 1px #68563d';
+            this.style.border = 'solid 3px #ffe200'
+        });
+    });
+
+

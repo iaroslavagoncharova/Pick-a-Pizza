@@ -196,6 +196,7 @@ li:hover {
     color: var(--grayish-brown);
     text-transform: uppercase;
     font-weight: bold;
+    box-shadow: 3px 3px 3px #68563d;
 }
 
 .comments {
@@ -233,6 +234,7 @@ li:hover {
     border-radius: 12px;
     border: none;
     margin: 0.5rem;
+    box-shadow: 3px 3px 3px #68563d;
 }
 
 .fillings {
