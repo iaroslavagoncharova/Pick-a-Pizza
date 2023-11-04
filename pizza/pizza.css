@@ -148,7 +148,7 @@ li:hover {
 #homepage-content {
     display: grid;
     grid-template-columns: repeat(2, minmax(300px, 800px));
-    grid-template-rows: 100px 400px 100px 200px 100px;
+    grid-template-rows: 100px minmax(450px, 500px) 400px 100px;
     width: 90%;
     margin: auto;
     padding: 2rem 0;
@@ -167,14 +167,8 @@ li:hover {
     padding: 0;
 }
 
-.pizza-image {
+.dough-image{
     grid-row: 2 / 3;
-    grid-column: 1 / 2;
-    text-align: center;
-}
-
-.dough {
-    grid-row: 3 / 4;
     grid-column: 1 / 2;
     text-align: center;
     margin: 1rem;
@@ -186,11 +180,11 @@ li:hover {
 
 #usual {background-color: #FDD8A9;}
 
-.dough button {
+.dough-image button {
     border: none;
     font-size: 20px;
     padding: 1rem;
-    margin: 0.5rem;
+    margin: 2rem 0.5rem;
     width: 6rem;
     border-radius: 50px;
     color: var(--grayish-brown);
@@ -200,7 +194,7 @@ li:hover {
 }
 
 .comments {
-    grid-row: 4 / 5;
+    grid-row: 3 / 4;
     grid-column: 1 / 2;
     text-align: center;
     color: var(--grayish-brown);
@@ -219,6 +213,10 @@ li:hover {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     text-align: center;
+    margin: 0;
+}
+.size h2 {
+    margin: 0;
 }
 
 .size button:hover, .dough button:hover, #confirm-order:hover {
@@ -239,11 +237,46 @@ li:hover {
 
 .fillings {
     grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    grid-row: 2 / 4;
     text-align: center;
-    margin-top: 2rem;
+    margin: 0;
 }
-
+.category-content li {
+    list-style-type: none;
+    padding: 0.3rem;
+    margin: 0.3rem;
+    border-radius: 12px;
+}
+#cheese li {
+    background-color: var(--dandelion);
+}
+#meat li {
+    background-color: var(--butterscotch);
+}
+#vegetables li {
+    background-color: var(--grass);
+}
+#seafood li {
+    background-color: var(--light-peach);
+}
+#sauces li {
+    background-color: #fc896c;
+}
+.category-content ul {
+    padding: 0;
+    text-align: left;
+    margin: 0;
+}
+.category-content {
+    padding: 0;
+    margin: 0;
+    transition: max-height 0.3s ease-in-out;
+    max-height: 0;
+}
+.category-content.expanded {
+    /* Additional styles for expanded content */
+    max-height: 800px; /* Change as needed */
+}
 #search {
     padding: 1rem;
     margin-bottom: 0.5rem;
@@ -254,7 +287,7 @@ li:hover {
 
 .nutritions {
     grid-column: 2 / 3;
-    grid-row: 4 / 5;
+    grid-row: 3 / 4;
     justify-self: center;
     margin-top: 2rem;
     text-align: center;
@@ -276,7 +309,7 @@ li:hover {
     background-color: var(--tomato);
     color: var(--light);
     font-size: 20px;
-    grid-row: 5 / 6;
+    grid-row: 4/ 5;
     grid-column: 2 / 3;
     justify-self: end;
     align-self: end;
