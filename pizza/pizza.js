@@ -1,4 +1,4 @@
-    const doughButtons = document.querySelectorAll('.dough button');
+    const doughButtons = document.querySelectorAll('.dough-image button');
     const sizeButtons = document.querySelectorAll('.size button');
 
     doughButtons.forEach(button => {
