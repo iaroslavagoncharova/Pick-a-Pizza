@@ -242,42 +242,69 @@ li:hover {
     text-align: center;
     margin: 0;
 }
+
 .category-content li {
     list-style-type: none;
     padding: 0.3rem;
     margin: 0.3rem;
     border-radius: 12px;
 }
+
 #cheese li {
     background-color: var(--dandelion);
 }
+
 #meat li {
     background-color: var(--butterscotch);
 }
+
 #vegetables li {
     background-color: var(--grass);
 }
+
 #seafood li {
     background-color: var(--light-peach);
 }
+
 #sauces li {
     background-color: #fc896c;
 }
+
 .category-content ul {
     padding: 0;
     text-align: left;
     margin: 0;
 }
+
 .category-content {
-    padding: 0;
-    margin: 0;
-    transition: max-height 0.3s ease-in-out;
+    display: none;
+    overflow: hidden;
     max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+    padding: 1rem;
+    margin: 0.5rem;
 }
-.category-content.expanded {
-    /* Additional styles for expanded content */
-    max-height: 800px; /* Change as needed */
+
+.category-title {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+.category {
+    background-color: var(--parchment);
+    padding: 1rem;
+    margin: 0.5rem auto;
+    width: 70%;
+    border-radius: 12px;
+}
+
+.arrow {
+    transition: transform 0.3s;
+}
+
+
+
 #search {
     padding: 1rem;
     margin-bottom: 0.5rem;
@@ -353,29 +380,4 @@ footer {
     width: 30px;
 }
 
-.category-title {
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.category {
-    background-color: var(--parchment);
-    padding: 1rem;
-    margin: 0.5rem auto;
-    width: 70%;
-    border-radius: 12px;
-}
 
-.arrow {
-    transition: transform 0.3s;
-}
-
-.category-content {
-    display: none;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s ease-in-out;
-    padding: 1rem;
-    margin: 0.5rem;
-}

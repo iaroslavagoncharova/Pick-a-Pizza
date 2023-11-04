@@ -18,32 +18,33 @@
     });
 
 
-const categoryTitles = document.querySelectorAll('.category-title');
+    const categoryTitles = document.querySelectorAll('.category-title');
 
-categoryTitles.forEach(function (title) {
-    title.addEventListener('click', function () {
-        const content = title.nextElementSibling;
-        const arrow = title.querySelector('.arrow');
+    categoryTitles.forEach(function (title) {
+        title.addEventListener('click', function () {
+            const content = title.nextElementSibling;
+            const arrow = title.querySelector('.arrow');
+    
+            if (content.style.display === 'block' || content.style.display === '') {
+                content.style.display = 'none';
+                content.style.maxHeight = '0';
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                const openCategories = document.querySelectorAll('.category-content');
+                openCategories.forEach(function (openCategory) {
+                    openCategory.style.display = 'none';
+                    openCategory.style.maxHeight = '0';
 
-        if (content.style.display === 'block' || content.style.display === '') {
-            content.style.display = 'none';
-            content.style.maxHeight = '0';
-            arrow.style.transform = 'rotate(0deg)';
-        } else {
-            const openCategories = document.querySelectorAll('.category-content');
-            openCategories.forEach(function (openCategory) {
-                openCategory.style.display = 'none';
-                openCategory.style.maxHeight = '0';
-
-                const arrowToReset = openCategory.previousElementSibling.querySelector('.arrow');
-                arrowToReset.style.transform = 'rotate(0deg)';
-            });
-
-            content.style.display = 'block';
-            content.style.maxHeight = content.scrollHeight + 'px'; 
-            arrow.style.transform = 'rotate(180deg)';
-        }
+                    const arrowToReset = openCategory.previousElementSibling.querySelector('.arrow');
+                    arrowToReset.style.transform = 'rotate(0deg)';
+                });
+    
+                content.style.display = 'block';
+                content.style.maxHeight = content.scrollHeight + 'px';
+                arrow.style.transform = 'rotate(180deg)';
+            }
+        });
     });
-});
+    
 
     

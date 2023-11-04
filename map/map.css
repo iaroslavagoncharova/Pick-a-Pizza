@@ -1,0 +1,183 @@
+@font-face {
+    font-family: 'Blanka';
+    src: url(../font/Blanka-Regular.otf);
+}
+
+@font-face {
+    font-family: Rosario;
+    src: url(../font/Rosario.ttf);
+}
+
+:root {
+    --light: #faf4f1;
+    --grayish-brown: #68563d;
+    --light-peach: #fdd8a9;
+    --dandelion: #ffe200;
+    --grass: #7bca51;
+    --butterscotch: #f3af40;
+    --parchment: #faf5a3;
+    --tomato: #e9451c;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: Rosario;
+    font-size: large;
+    margin: 0;
+}
+
+header {
+    background-color: var(--light);
+    width: 100%;
+    color: var(--grayish-brown);
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: space-between;
+}
+
+#mainpage-link {
+    text-decoration: none;
+    color: var(--grayish-brown);
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#pizza-logo {
+    height: 100px;
+    padding: 0.8rem 0;
+}
+
+.page-title {
+    font-family: 'Blanka', sans-serif;
+    margin: auto;
+    padding-bottom: 10px;
+    font-size: xx-large;
+}
+
+#navigation-items {
+    display: flex;
+    flex-direction: row;
+    font-family: Rosario;
+    justify-content: space-between;
+    margin: auto;
+    width: 40%;
+}
+
+li {
+    list-style-type: none;
+    margin: auto;
+    cursor: pointer;
+    font-size: larger;
+    font-weight: 600;
+}
+
+li:hover {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
+    transition: ease-in-out 0.3s;
+}
+
+#navigation-items a {
+    color: var(--grayish-brown);
+    text-decoration: none;
+    padding: 1rem;
+}
+
+#menu-btn {
+    padding: 1rem;
+}
+
+#menu-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#menu-dropdown-content {
+    display: none;
+    position: absolute;
+    left: -2rem;
+    top: 3rem;
+    background-color: var(--light);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+#menu-dropdown:hover #menu-dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-link {
+    text-align: center;
+    text-decoration: none;
+    color: var(--grayish-brown);
+    padding: 0.7rem;
+    cursor: pointer;
+}
+
+.menu-link:hover {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
+    background-color: #e5ddda;
+    transition: ease-out 0.3s;
+}
+
+#user-img {
+    width: 80px;
+    height: 80px;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.hero-image {
+    min-height: 70%;
+    background-image: url(../images/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+footer {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: var(--grayish-brown);
+    color: var(--light);
+}
+
+#contact-info {
+    text-align: center;
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+#social-media-icons {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.fa {
+    padding: 20px;
+    font-size: xx-large;
+    text-align: center;
+    text-decoration: none;
+    color: var(--grayish-brown);
+    border-radius: 50%;
+    background-color: var(--light);
+    margin: auto;
+    height: 30px;
+    width: 30px;
+}
+
