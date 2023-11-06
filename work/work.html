@@ -10,29 +10,66 @@
 </head>
 <body>
     <header>
-        <nav>
-            <a id="mainpage-link" href="../mainpage/mainpage.html">
-                <div class="logo-container" id="header-logo">
-                    <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
-                    <h1 class="page-title">Pick-a-Pizza</h1>
+        <div class="header-part logo-container" id="header-logo">
+            <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>  	
+        <div class="wrapper">
+            <div class="top_nav">
+                <div class="right">
+                    <ul>
+                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a></li>
+                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a></li>
+                        <li>
+                            <div id="lang-container">
+                                <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
+                                <span>EN</span>
+                                <div class="dropdown">
+                                    <img class="top-nav-icon" id="lang-dropdown-arrow" src="../images/icons/arrow-icon.png" alt="Arrow Icon">
+                                    <div class="dropdown-content" id="lang-dropdown-content">
+                                        <a href="#" class="dropdown-link">FI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-            </a>
-            <ul id="navigation-items">
-                <div class="dropdown" id="menu-dropdown">
-                    <li id="menu-btn">Menu</li>
-                    <div id="menu-dropdown-content">
-                        <a href="#" class="menu-link">Gluten-free</a>
-                        <a href="#" class="menu-link">Keto</a>
-                        <a href="#" class="menu-link">Pizza for One</a>
-                        <a href="#" class="menu-link">Vegan</a>
-                        <a href="#" class="menu-link">Party-size</a>
-                        <a href="#" class="menu-link">Low Calorie</a>
-                    </div>
+            </div>
+            <div class="bottom_nav">
+                <div class="right">
+                    <ul>
+                        <div class="dropdown">
+                            <li><a href="#">Menu</a></li>
+                            <div class="dropdown-content" id="menu-dropdown">
+                                <a href="#" class="dropdown-link">Pick-a-Pizza Club</a>
+                                <a href="#" class="dropdown-link">Open Positions</a>
+                                <a href="#" class="dropdown-link">Directions</a>
+                                <a href="#" class="dropdown-link">Pizza Ratings</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <li><a href="#">Pizza Prompts</a></li>
+                            <div class="dropdown-content" id="pizza-dropdown">
+                                <a href="#" class="dropdown-link">Gluten Free</a>
+                                <a href="#" class="dropdown-link">Keto</a>
+                                <a href="#" class="dropdown-link">Low Calorie</a>
+                                <a href="#" class="dropdown-link">Classic</a>
+                                <a href="#" class="dropdown-link">Vegan Classic</a>
+                                <a href="#" class="dropdown-link">Gluten Free Classic</a>
+                                <a href="#" class="dropdown-link">Season Deal</a>
+                            </div>
+                        </div>
+                        <li><a href="../pizza/pizza.html">Make a Pizza</a></li>
+                        <li><a href="#">
+                            <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
+                        </a></li>
+                        <li><a href="../login-register/login-register.html">
+                            <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
+                        </a></li>
+                    </ul>
                 </div>
-                <a href="../pizza/pizza.html"><li>Make a Pizza</li></a>
-            </ul>
-            <a href="../profile/profile.html"><img src="../images/user.png" alt="Login/Register Button" id="user-img"></a>
-        </nav>
+            </div>
+        </div>
     </header>
     <div class="hero-image" id="homepage-background">
      <div id="homepage-content">
