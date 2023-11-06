@@ -31,23 +31,19 @@ header {
     background-color: var(--light);
     width: 100%;
     color: var(--grayish-brown);
-}
-
-nav {
     display: flex;
     flex-direction: row;
-    margin: auto;
-    justify-content: space-between;
-}
-
-#mainpage-link {
-    text-decoration: none;
-    color: var(--grayish-brown);
+    height: 150px;
 }
 
 .logo-container {
     display: flex;
     flex-direction: row;
+}
+
+#header-logo {
+    width: 25%;
+    height: 100%;
 }
 
 #pizza-logo {
@@ -62,60 +58,73 @@ nav {
     font-size: xx-large;
 }
 
-#navigation-items {
+.wrapper {
+    width: 75%;
+}
+
+.wrapper .top_nav{
+    margin-top: 0;
+    width: 100%;
+    height: 60px;
     display: flex;
     flex-direction: row;
-    font-family: Rosario;
-    justify-content: space-between;
-    margin: auto;
-    width: 40%;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-li {
-    list-style-type: none;
+.top-nav-icon {
+    height: 30px;
+}
+
+.bottom-nav-icon {
+    height: 50px;
+}
+
+#lang-container {
+    border: 2px var(--grayish-brown) solid;
+    border-radius: 5px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+}
+
+#lang-container > * {
+    padding: 0 5px;
     margin: auto;
+}
+
+
+#lang-dropdown-arrow {
     cursor: pointer;
-    font-size: larger;
-    font-weight: 600;
 }
 
-li:hover {
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
-    transition: ease-in-out 0.3s;
-}
 
-#navigation-items a {
-    color: var(--grayish-brown);
-    text-decoration: none;
-    padding: 1rem;
-}
-
-#menu-btn {
-    padding: 1rem;
-}
-
-#menu-dropdown {
+.dropdown {
     position: relative;
     display: inline-block;
 }
 
-#menu-dropdown-content {
+.dropdown-content {
     display: none;
     position: absolute;
-    left: -2rem;
-    top: 3rem;
+    top: 2rem;
     background-color: var(--light);
-    min-width: 160px;
+    width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
-#menu-dropdown:hover #menu-dropdown-content {
-    display: flex;
-    flex-direction: column;
+#lang-dropdown-content {
+    left: -4rem;
+    width: 110px;
+    top: 2.3rem;
 }
 
-.menu-link {
+#pizza-dropdown {
+    left: 2rem;
+}
+
+.dropdown-link {
     text-align: center;
     text-decoration: none;
     color: var(--grayish-brown);
@@ -123,26 +132,65 @@ li:hover {
     cursor: pointer;
 }
 
-.menu-link:hover {
+.dropdown-link:hover {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
     background-color: #e5ddda;
     transition: ease-out 0.3s;
 }
 
-#user-img {
-    width: 80px;
-    height: 80px;
-    margin: 1rem;
-    cursor: pointer;
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+
+}
+
+.wrapper .top_nav .right ul li {
+    margin: 0 1rem;
+}
+
+.wrapper .top_nav .right ul li a{
+    display: block;
+    padding: 8px 10px;
+}
+
+.wrapper .bottom_nav{
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.wrapper .bottom_nav ul li {
+    margin: auto 2rem;
+    white-space: nowrap;
+}
+
+.wrapper .bottom_nav ul .dropdown {
+    margin: auto 2rem;
+}
+
+.wrapper .bottom_nav ul li a{
+    font-family: Rosario;
+    color: var(--grayish-brown);
+    padding: 1rem;
+}
+
+a {
+    text-decoration: none;
 }
 
 .hero-image {
-    min-height: 60%;
+    min-height: 100%;
     background-image: url(../images/background.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    padding: 1rem;
 }
 
 #homepage-content {
