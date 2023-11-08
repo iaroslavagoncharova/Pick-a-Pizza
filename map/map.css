@@ -187,7 +187,7 @@ a {
 
 .hero-image {
     min-height: 70%;
-    background-image: url(../images/background.png);
+    background-image: url(../images/bckgrndlight.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

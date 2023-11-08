@@ -143,10 +143,9 @@ header {
     flex-direction: column;
 }
 
-ul {
+.wrapper ul {
     display: flex;
     list-style-type: none;
-
 }
 
 .wrapper .top_nav .right ul li {
@@ -186,16 +185,8 @@ a {
 }
 
 .hero-image {
-    min-height: 100%;
-    background-image: url(../images/background.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-.hero-image {
     min-height: 60%;
-    background-image: url(../images/background.png);
+    background-image: url(../images/bckgrndlight.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

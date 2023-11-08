@@ -10,7 +10,7 @@
 
 :root {
     --light: #faf4f1;
-    --light-transparece: #faf4f1cb;
+    --light-transparece: #faf4f1dc;
     --grayish-brown: #68563d;
     --light-peach: #fdd8a9;
     --dandelion: #ffe200;
@@ -203,7 +203,7 @@ a {
 
 .hero-image {
     min-height: 60%;
-    background-image: url(../images/background.jpg);
+    background-image: url(../images/bckgrndlight.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

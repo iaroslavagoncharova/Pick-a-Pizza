@@ -228,6 +228,7 @@ a {
 .pizza-name h2 {
     margin: 0;
     padding: 0;
+    color: var(--grayish-brown);
 }
 
 .dough-image{
@@ -236,7 +237,6 @@ a {
     text-align: center;
     margin: 1rem;
 }
-
 #glut {background-color: #FDBC67;}
 
 #keto {background-color: #7DCD52;}
