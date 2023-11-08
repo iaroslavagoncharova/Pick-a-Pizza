@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <script src="./shopping-cart.js" defer></script>
+    <link rel="stylesheet" href="./shopping-cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-part logo-container" id="header-logo">
+            <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>  	
+        <div class="wrapper">
+            <div class="top_nav">
+                <div class="right">
+                    <ul>
+                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a></li>
+                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a></li>
+                        <li>
+                            <div id="lang-container">
+                                <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
+                                <span>EN</span>
+                                <div class="dropdown">
+                                    <img class="top-nav-icon" id="lang-dropdown-arrow" src="../images/icons/arrow-icon.png" alt="Arrow Icon">
+                                    <div class="dropdown-content" id="lang-dropdown-content">
+                                        <a href="#" class="dropdown-link">FI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom_nav">
+                <div class="right">
+                    <ul>
+                        <div class="dropdown">
+                            <li><a href="#">Menu</a></li>
+                            <div class="dropdown-content" id="menu-dropdown">
+                                <a href="#" class="dropdown-link">Pick-a-Pizza Club</a>
+                                <a href="../work/work.html" class="dropdown-link">Open Positions</a>
+                                <a href="#" class="dropdown-link">Directions</a>
+                                <a href="#" class="dropdown-link">Pizza Ratings</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <li><a href="#">Pizza Prompts</a></li>
+                            <div class="dropdown-content" id="pizza-dropdown">
+                                <a href="#" class="dropdown-link">Gluten Free</a>
+                                <a href="#" class="dropdown-link">Keto</a>
+                                <a href="#" class="dropdown-link">Low Calorie</a>
+                                <a href="#" class="dropdown-link">Classic</a>
+                                <a href="#" class="dropdown-link">Vegan Classic</a>
+                                <a href="#" class="dropdown-link">Gluten Free Classic</a>
+                                <a href="#" class="dropdown-link">Season Deal</a>
+                            </div>
+                        </div>
+                        <li><a href="../pizza/pizza.html">Make a Pizza</a></li>
+                        <li><a href="#">
+                            <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
+                        </a></li>
+                        <li><a href="../login-register/login-register.html">
+                            <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="hero-image" id="homepage-background">
+        <div id="cart-container">
+            <div id="cart-screen">
+                <h2>Shopping Cart</h2>
+                <div id="products-screen">
+                    <button class="cart-btn" id="gift-card-btn">Add voucher or gift card</button>
+                    <table id="selected-products">
+                        <thead>
+                            <tr>
+                                <th class="product">Product</th>
+                                <th class="quantity">Quantity</th>
+                                <th class="total">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="product">
+                                    <div id="product-details">
+                                        <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
+                                        <div>
+                                            <h4>Own Pizza</h4>
+                                            <p>Gluten Free</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="quantity">
+                                    <div id="quantity-selection">
+                                        <button>-</button>
+                                        <p>1</p>
+                                        <button>+</button>
+                                    </div>
+                                </td>
+                                <td class="total">
+                                    <p>15.50€</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="product">
+                                    <div id="product-details">
+                                        <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
+                                        <div>
+                                            <h4>Vegan Classic</h4>
+                                            <p>Low Calorie</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="quantity">
+                                    <div id="quantity-selection">
+                                        <button>-</button>
+                                        <p>1</p>
+                                        <button>+</button>
+                                    </div>
+                                </td>
+                                <td class="total">
+                                    <p>14.50€</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="receipt">
+                        <div class="receipt-right">
+                            <table id="receipt-table">
+                                <tr>
+                                    <td class="align-left">Shipping fee</td>
+                                    <td class="align-right">0€</td>
+                                </tr>
+                                <tr>
+                                    <td class="align-left">Payment fee</td>
+                                    <td class="align-right">0.50€</td>
+                                </tr>
+                                <tr>
+                                    <td class="align-left">Total (inc. VAT)</td>
+                                    <td class="align-right">30.50€</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="proceed">
+                        <div id="membership-screen">
+                            <h2 id="join-header"><i>Join Pick-a-Pizza Club</i></h2>
+                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">Get 10% off your first order</p>
+                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">Earn points for every order you make</p>
+                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">Get access to pizza ratings & more!</p>
+                            <div id="join-box">
+                                <input type="checkbox" id="join-club" name="join-club" value="Join">
+                                <label for="join-club"> Become a Member</label><br>
+                            </div>
+                            <p class="small-text">By joining, you agree to our <a href="#">Club terms</a> and <a href="#">Privacy Policy</a></p>
+                        </div>
+                        <button class="cart-btn" id="checkout-btn">Proceed to Payment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="contact-info">
+            <p>Contacts:<br>
+                <span id="phone-number">+35800000000</span><br>
+                <span id="address">Karaportti 2, 02610 Espoo</span></p>
+        </div>
+        <div class="logo-container" id="footer-logo">
+            <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>
+        <div id="social-media-icons">
+            <i class="fa fa-facebook fa-2x"></i>
+            <i class="fa fa-instagram fa-2x"></i>
+            <i class="fa fa-whatsapp fa-2x"></i>
+        </div>
+
+    </footer>
+    
+</body>
+</html>
