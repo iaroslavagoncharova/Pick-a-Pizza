@@ -72,4 +72,4 @@ CREATE TABLE Ingredients (
     carbs INT NOT NULL,
     protein INT NOT NULL,
     fats INT NOT NULL
-)
+);
