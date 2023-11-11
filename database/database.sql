@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS pick-a-pizza;
-CREATE DATABASE pick-a-pizza;
-USE pick-a-pizza;
+DROP DATABASE IF EXISTS pickapizza;
+CREATE DATABASE pickapizza;
+USE pickapizza;
 
 CREATE TABLE Users (
   user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -15,11 +15,11 @@ CREATE TABLE Users (
 
 CREATE TABLE Orders (
     order_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    shopping_carts_list 
+    shopping_carts_list VARCHAR(255) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(255) NOT NULL,
+    order_status VARCHAR(255) NOT NULL,
     user_id INT NOT NULL,
-    FOREIGN KEY user_id REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
 CREATE TABLE Reviews (
@@ -29,15 +29,15 @@ CREATE TABLE Reviews (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     edited_at TIMESTAMP,
     user_id INT NOT NULL,
-    FOREIGN KEY user_id REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
 CREATE TABLE ShoppingCart (
     cart_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    pizzas_list VARCHAR(255),  --json.toString
-    price FLOAT NOT NULL,
+    pizzas_list VARCHAR(255),  
+    price FLOAT(4,2) NOT NULL,
     user_id INT NOT NULL,
-    FOREIGN KEY user_id REFERENCES Users(user_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
 CREATE TABLE Prompts (
@@ -45,8 +45,8 @@ CREATE TABLE Prompts (
     prompt_name VARCHAR(255) NOT NULL,
     dough VARCHAR(255) NOT NULL,
     size CHAR(1) NOT NULL,
-    price FLOAT NOT NULL,
-    ingredients_list VARCHAR(255) NOT NULL --json.toString
+    price FLOAT(4,2) NOT NULL,
+    ingredients_list VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Pizza (
@@ -58,16 +58,16 @@ CREATE TABLE Pizza (
     carbs INT NOT NULL,
     protein INT NOT NULL,
     fats INT NOT NULL,
-    price FLOAT NOT NULL,
+    price FLOAT(4,2) NOT NULL,
     prompt_id INT,
-    FOREIGN KEY prompt_id REFERENCES Prompts(prompt_id)
+    FOREIGN KEY (prompt_id) REFERENCES Prompts(prompt_id)
 );
 
 CREATE TABLE Ingredients (
     ingredient_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     portion_size INT NOT NULL,
-    price FLOAT NOT NULL,
+    price FLOAT(4,2) NOT NULL,
     calories INT NOT NULL,
     carbs INT NOT NULL,
     protein INT NOT NULL,
