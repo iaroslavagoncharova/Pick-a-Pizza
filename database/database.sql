@@ -9,7 +9,7 @@ CREATE TABLE Users (
   email VARCHAR(255) NOT NULL UNIQUE,
   address VARCHAR(255) NOT NULL,
   favorite_pizza VARCHAR(255),
-  phone_number INT NOT NULL,
+  phone_number VARCHAR(15) NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -35,7 +35,7 @@ CREATE TABLE Reviews (
     review_text VARCHAR(255) NOT NULL,
     stars INT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    edited_at TIMESTAMP,
+    edited_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     user_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
@@ -45,7 +45,7 @@ CREATE TABLE Prompts (
     prompt_name VARCHAR(255) NOT NULL,
     dough VARCHAR(255) NOT NULL,
     size CHAR(1) NOT NULL,
-    price FLOAT(4,2) NOT NULL,
+    price DECIMAL(4,2) NOT NULL,
     calories INT NOT NULL,
     carbs INT NOT NULL,
     protein INT NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE Ingredients (
     ingredient_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     portion_size INT NOT NULL,
-    price FLOAT(4,2) NOT NULL,
+    price DECIMAL(4,2) NOT NULL,
     calories INT NOT NULL,
     carbs INT NOT NULL,
     protein INT NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE Pizza (
     carbs INT NOT NULL,
     protein INT NOT NULL,
     fats INT NOT NULL,
-    price FLOAT(4,2) NOT NULL,
+    price DECIMAL(4,2) NOT NULL,
     prompt_id INT,
     FOREIGN KEY (prompt_id) REFERENCES Prompts(prompt_id)
 );
