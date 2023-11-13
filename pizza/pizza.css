@@ -158,10 +158,9 @@ nav {
     flex-direction: column;
 }
 
-ul {
+.right ul {
     display: flex;
     list-style-type: none;
-
 }
 
 .wrapper .top_nav .right ul li {

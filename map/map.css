@@ -35,7 +35,7 @@ header {
     flex-direction: row;
     height: 150px;
 }
-
+#map { height: 400px; }
 .logo-container {
     display: flex;
     flex-direction: row;
