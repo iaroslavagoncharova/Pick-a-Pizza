@@ -15,7 +15,7 @@ CREATE TABLE Users (
 
 CREATE TABLE ShoppingCart (
     cart_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,  
-    price FLOAT(4,2) NOT NULL,
+    price DECIMAL(4,2) NOT NULL,
     user_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
