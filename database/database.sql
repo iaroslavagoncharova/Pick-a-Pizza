@@ -149,27 +149,27 @@ VALUES
 -- Example: 'Gluten Free' prompt
 INSERT INTO PromptIngredient (prompt_id, ingredient_id) 
 VALUES
-(8, 5), -- tomatoes
-(8, 6), -- onions
-(8, 7); -- eggplants
+(1, 5), -- tomatoes
+(1, 6), -- onions
+(1, 7); -- eggplants
 
 -- Example: 'Keto' prompt
 INSERT INTO PromptIngredient (prompt_id, ingredient_id) 
 VALUES
-(9, 1), -- chicken
-(9, 2), -- beef
-(9, 3), -- bacon
+(2, 1), -- chicken
+(2, 2), -- beef
+(2, 3), -- bacon
 
 
 
 -- Example: 'Vegan Classic' prompt
 INSERT INTO PromptIngredient (prompt_id, ingredient_id) 
 VALUES
-(12, 5), -- tomatoes
-(12, 6), -- onions
-(12, 7), -- eggplants
-(12, 10), -- mozzarella
-(12, 12); -- gouda
+(5, 5), -- tomatoes
+(5, 6), -- onions
+(5, 7), -- eggplants
+(5, 10), -- mozzarella
+(5, 12); -- gouda
 
 
 
