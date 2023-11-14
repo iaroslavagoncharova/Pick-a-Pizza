@@ -92,10 +92,50 @@ CREATE TABLE CartPizza (
     FOREIGN KEY (pizza_id) REFERENCES Pizza(pizza_id)
 );
 
-
 CREATE TABLE PizzaIngredient (
     pizza_id INT NOT NULL,
     ingredient_id INT NOT NULL,
     FOREIGN KEY (pizza_id) REFERENCES Pizza(pizza_id),
     FOREIGN KEY (ingredient_id) REFERENCES Ingredients(ingredient_id)
 );
+
+-- Update order status when it's ready:
+
+UPDATE Orders SET order_status = 'complete' WHERE order_id = 12;
+
+-- Update ingredients in stock if there was 1 kg in the beginning and 100 g were used for a pizza:
+
+UPDATE Ingredients SET in_stock = 900 WHERE ingredient_name = 'tomato';
+
+-- Update prompt price if there's a sale:
+
+UPDATE Prompts SET price = 12.00 WHERE prompt_name = 'Gluten-free';
+
+-- Delete a pizza form the cart if a user decides not to buy it:
+
+DELETE FROM CartPizza WHERE pizza_id = 4;
+
+-- Delete an order if it was created by mistake:
+
+DELETE FROM Orders WHERE order_id = 10;
+
+-- Delete a review if it violates company's policy:
+
+DELETE FROM Reviews WHERE review_id = 3;
+
+-- Query to get 5 last orders for a specific user to display on user's profile page:
+
+SELECT * FROM Orders WHERE user_id = 8 ORDER BY created_at DESC LIMIT 5;
+
+-- Query to get all pizzas in the cart to display in the order details:
+
+SELECT * FROM CartPizza WHERE cart_id = 3;
+
+-- Query to get all ingredients to display on admin's page:
+
+SELECT * FROM Ingredients;
+
+
+
+
+
