@@ -56,16 +56,18 @@ const success = async (position) => {
       }`;
 
 
-const subscriptionKey = '';
+const subscriptionKey = '111c975432224cbd9c5dd1c49a9c62a9';
 
 const source = 'hsl-map';
 const zoom = 15;
-const x = 25;
-const y = 62;
 const size = '';
-/*
+const latitude = crd.latitude;
+const longitude = crd.longitude;
+const x = Math.floor((longitude + 180) / 360 * (2 ** zoom));
+const y = Math.floor((1 - Math.log(Math.tan(latitude * Math.PI / 180) + 1 / Math.cos(latitude * Math.PI / 180)) / Math.PI) / 2 * (2 ** zoom));
+
 const mapTileUrl = `https://cdn.digitransit.fi/map/v2/${source}/${zoom}/${x}/${y}${size}.png?digitransit-subscription-key=${subscriptionKey}`;
-const style = generateStyle({
+/*const style = generateStyle({
     sourcesUrl:  "https://cdn.digitransit.fi", // <-- You can override the default sources URL. The default is https://api.digitransit.fi/
     glyphsUrl: "", // Possibility to overwrite fonts url, an empty string does nothing
     spriteUrl: "", // Possibility to overwrite sprite url
@@ -116,7 +118,7 @@ const style = generateStyle({
     style: style,
   });
 
-
+*/
 fetch(mapTileUrl)
     .then(response => {
         console.log('Response status:', response.status);
@@ -130,7 +132,7 @@ fetch(mapTileUrl)
     .catch(error => {
         console.error('Error fetching map tile:', error);
     });
-*/
+
 fetch(apiUrl, {
     method: 'POST',
     headers: {
