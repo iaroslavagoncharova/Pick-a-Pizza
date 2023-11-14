@@ -99,13 +99,75 @@ CREATE TABLE PizzaIngredient (
     FOREIGN KEY (ingredient_id) REFERENCES Ingredients(ingredient_id)
 );
 
+-- INSERT INTO Users (username, password, email, address, favorite_pizza, phone_number, created_at) 
+-- VALUES ('test1', '12345', 'test1@gmail.com', 'Esimerkkikatu 1, Helsinki', 'gluten-free tuna', '123456789', '2023-11-14 12:48:00');
+
+-- INSERT INTO ShoppingCart (price, user_id) 
+-- VALUES (10.00, 1), (15.00, 1), (20.00, 1);
+
+
+-- INSERT INTO Orders (cart_id, order_status, user_id) 
+-- VALUES (2, 'in_progress', 1), (3, 'in_progress', 1), (4, 'in_progress', 1), (5, 'in_progress', 1);
+
+
+-- INSERT INTO Orders (cart_id, order_status, user_id) 
+-- VALUES ()
+
+-- INSERT INTO Reviews (review_text, stars, user_id) 
+-- VALUES (
+--     'I love this place! I order pizza here every week and it always arrives hot and delicious. I recommend it to everyone!', 
+--     5, 
+--     1
+-- );
+
+-- INSERT INTO Reviews (review_text, stars, user_id) 
+-- VALUES (
+--     'I ordered a pizza and it was cold and soggy. I will never order from here again.', 
+--     1, 
+--     1
+-- );
+
+-- INSERT INTO Prompts (prompt_name, dough, size, price, calories, carbs, protein, fats) 
+-- VALUES (
+--     'gluten-free', 'gluten-free', 'M', 10.00, 500, 50, 50, 50
+-- ), (
+--     'vegan', 'usual', 'L', 15.00, 600, 60, 60, 60
+-- );
+
+-- INSERT INTO Ingredients (name, portion_size, price, calories, carbs, protein, fats, in_stock) 
+-- VALUES (
+--     'tomato', 100, 1.00, 100, 10, 10, 10, 1000
+-- ),
+-- ('tuna', 100, 3.00, 200, 20, 20, 20, 1000);
+
+
+-- INSERT INTO PromptIngredient (prompt_id, ingredient_id) 
+-- VALUES 
+-- (1, 1),
+-- (1, 2);
+
+-- INSERT INTO Pizza (dough, size, message, calories, carbs, protein, fats, price, prompt_id) 
+-- VALUES (
+--     'gluten-free', 'M', 'I would like it to be extra hot if possible', 500, 50, 50, 50, 10.00, 1
+-- ), (
+--     'usual', 'L', '', 600, 60, 60, 60, 15.00, 2
+-- );
+
+-- INSERT INTO CartPizza (cart_id, pizza_id) 
+-- VALUES (
+--     2, 1
+-- ), (
+--     2, 2
+-- );
+
+
 -- Update order status when it's ready:
 
 UPDATE Orders SET order_status = 'complete' WHERE order_id = 12;
 
 -- Update ingredients in stock if there was 1 kg in the beginning and 100 g were used for a pizza:
 
-UPDATE Ingredients SET in_stock = 900 WHERE ingredient_name = 'tomato';
+UPDATE Ingredients SET in_stock = 900 WHERE name = 'tomato';
 
 -- Update prompt price if there's a sale:
 
