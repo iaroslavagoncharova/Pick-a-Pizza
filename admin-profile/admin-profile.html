@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admiinin profiili</title>
+    <script src="./profile.js" defer></script>
+    <link rel="stylesheet" href="./admin-profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-part logo-container" id="header-logo">
+            <a href="../mainpage/mainpage.html"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo"></a>
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>  	
+        <div class="wrapper">
+            <div class="top_nav">
+                <div class="right">
+                    <ul>
+                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a></li>
+                        <li><a href="../map/map.html"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a></li>
+                        <li>
+                            <div id="lang-container">
+                                <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
+                                <span>EN</span>
+                                <div class="dropdown">
+                                    <img class="top-nav-icon" id="lang-dropdown-arrow" src="../images/icons/arrow-icon.png" alt="Arrow Icon">
+                                    <div class="dropdown-content" id="lang-dropdown-content">
+                                        <a href="#" class="dropdown-link">FI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom_nav">
+                <div class="right">
+                    <ul>
+                        <div class="dropdown">
+                            <li><a href="#">Menu</a></li>
+                            <div class="dropdown-content" id="menu-dropdown">
+                                <a href="../membership-page/" class="dropdown-link">Pick-a-Pizza Club</a>
+                                <a href="../work/work.html" class="dropdown-link">Open Positions</a>
+                                <a href="../map/map.html" class="dropdown-link">Directions</a>
+                                <a href="#" class="dropdown-link">Pizza Ratings</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <li><a href="#">Pizza Prompts</a></li>
+                            <div class="dropdown-content" id="pizza-dropdown">
+                                <a href="#" class="dropdown-link">Gluten Free</a>
+                                <a href="#" class="dropdown-link">Keto</a>
+                                <a href="#" class="dropdown-link">Low Calorie</a>
+                                <a href="#" class="dropdown-link">Classic</a>
+                                <a href="#" class="dropdown-link">Vegan Classic</a>
+                                <a href="#" class="dropdown-link">Gluten Free Classic</a>
+                                <a href="#" class="dropdown-link">Season Deal</a>
+                            </div>
+                        </div>
+                        <li><a href="../pizza/pizza.html">Make a Pizza</a></li>
+                        <li><a href="../shopping-cart/shopping-cart.html">
+                            <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
+                        </a></li>
+                        <li><a href="../login-register/login-register.html">
+                            <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="hero-image" id="homepage-background">
+        <div id="homepage-content">
+            <div id="admin-info">
+                <div id="orders-progress">
+                    <h3>Orders in progress</h3>
+                    <ul>
+                        <a href="#"><li>15.11.2023 20.16 Order #890421652</li></a>
+                        <a href="#"><li>15.11.2023 20.10 Order #325432789</li></a>
+                        <a href="#"><li>15.11.2023 20.09 Order #948792685</li></a>
+                        <a href="#"><li>15.11.2023 20.06 Order #120387189</li></a>
+                        <a href="#"><li>15.11.2023 20.02 Order #527658364</li></a>
+                    </ul>
+                    <a href="#"><button class="admin-button" id="all-orders">Show all orders</button></a>
+                </div>
+                <div id="users"><h3>Users</h3>
+                <ul>
+                    <a href="#"><li>Slava slava@example.com 0100000000</li></a>
+                    <a href="#"><li>Juan juan@example.com 0200000000</li></a>
+                    <a href="#"><li>Anna anna@example.com 0300000000</li></a>
+                    <a href="#"><li>User1 user1@example.com 0400000000</li></a>
+                    <a href="#"><li>User2 user2@example.com 0500000000</li></a>
+                </ul>
+                <a href="#"><button class="admin-button" id="all-users">Show all users</button></a>
+                </div>
+                <div id="ingredients"><h3>Ingredients</h3>
+                    <ul>
+                        <a href="#"><li>tomato</li></a>
+                        <a href="#"><li>mushrooms</li></a>
+                        <a href="#"><li>chicken</li></a>
+                        <a href="#"><li>tuna</li></a>
+                        <a href="#"><li>tofu</li></a>
+                    </ul>
+                    <a href="#"><button class="admin-button" id="all-ingredients">Show all ingredients</button></a>
+            </div>
+    </div>
+    </div>
+    <footer>
+        <div id="contact-info">
+            <p>Contacts:<br>
+                <span id="phone-number">+35800000000</span><br>
+                <span id="address">Karaportti 2, 02610 Espoo</span></p>
+        </div>
+        <div class="logo-container" id="footer-logo">
+            <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>
+        <div id="social-media-icons">
+            <i class="fa fa-facebook fa-2x"></i>
+            <i class="fa fa-instagram fa-2x"></i>
+            <i class="fa fa-whatsapp fa-2x"></i>
+        </div>
+
+    </footer>
+    
+</body>
+</html>
