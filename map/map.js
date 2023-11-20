@@ -23,6 +23,7 @@ const success = async (position) => {
             duration,
             legs {
               mode
+              duration
               route {
                 shortName
                 longName
@@ -55,83 +56,13 @@ const success = async (position) => {
         }
       }`;
 
-
-const subscriptionKey = '111c975432224cbd9c5dd1c49a9c62a9';
-
-const source = 'hsl-map';
-const zoom = 15;
-const size = '';
 const latitude = crd.latitude;
 const longitude = crd.longitude;
-const x = Math.floor((longitude + 180) / 360 * (2 ** zoom));
-const y = Math.floor((1 - Math.log(Math.tan(latitude * Math.PI / 180) + 1 / Math.cos(latitude * Math.PI / 180)) / Math.PI) / 2 * (2 ** zoom));
-
-const mapTileUrl = `https://cdn.digitransit.fi/map/v2/${source}/${zoom}/${x}/${y}${size}.png?digitransit-subscription-key=${subscriptionKey}`;
-/*const style = generateStyle({
-    sourcesUrl:  "https://cdn.digitransit.fi", // <-- You can override the default sources URL. The default is https://api.digitransit.fi/
-    glyphsUrl: "", // Possibility to overwrite fonts url, an empty string does nothing
-    spriteUrl: "", // Possibility to overwrite sprite url
-    queryParams: [ // It's possible to add query parameters to urls, for example apikeys.
-      {
-        url: `/map/v2/${source}/${zoom}/${x}/${y}${size}.png?`, // Url pattern where the parameter should be added
-        name: "digitransit-subscription-key",
-        value: subscriptionKey,
-        // --> &digitransit-subscription-key=my-secret-key
-      },
-    ],
-  
-    components: {
-      // Set each layer you want to include to true
-  
-      // Styles
-      base: { enabled: true }, // Enabled by default
-      municipal_borders: { enabled: false },
-      routes: { enabled: false },
-      text: { enabled: true }, // Enabled by default
-      subway_entrance: { enabled: false },
-      poi: { enabled: false },
-      park_and_ride: { enabled: false },
-      ticket_sales: { enabled: false },
-      stops: { enabled: false },
-      citybikes: { enabled: false },
-      ticket_zones: { enabled: false },
-      ticket_zone_labels: { enabled: false },
-  
-      // Themes
-      text_sv: { enabled: false },
-      text_fisv: { enabled: false },
-      text_en: { enabled: false },
-      regular_routes: { enabled: false },
-      near_bus_routes: { enabled: false },
-      routes_with_departures_only: { enabled: true }, // Enabled by default. Doesn't do anything until routes is enabled.
-      regular_stops: { enabled: false },
-      near_bus_stops: { enabled: false },
-      print: { enabled: false },
-      greyscale: { enabled: false },
-      simplified: { enabled: false },
-      "3d": { enabled: false },
-      driver_info: { enabled: false },
-    },
-  });
-  
-  const map = new mapboxgl.Map({
-    style: style,
-  });
-
-*/
-fetch(mapTileUrl)
-    .then(response => {
-        console.log('Response status:', response.status);
-        return response.blob();
-    })
-    .then( blob => {
-        const imageElement = document.createElement('img');
-        imageElement.src = URL.createObjectURL(blob);
-        document.body.appendChild(imageElement);
-    })
-    .catch(error => {
-        console.error('Error fetching map tile:', error);
-    });
+var map = L.map('map').setView([latitude, longitude], 15);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
 
 fetch(apiUrl, {
     method: 'POST',
@@ -143,7 +74,55 @@ fetch(apiUrl, {
 })
     .then(response => response.json())
     .then(data => {
-       console.log(data);
+      console.log(data);
+      data.data.plan.itineraries.forEach((itinerary, itineraryIndex) => {
+        itinerary.legs.forEach((leg) => {
+          const startPoint = [leg.from.lat, leg.from.lon];
+          const endPoint = [leg.to.lat, leg.to.lon];
+          let popupContent;
+          const time = Math.round(leg.duration / 60);
+          if (leg.mode) {
+          if (leg.mode != 'WALK') {
+            popupContent = `
+            <strong>Take</strong> ${leg.mode}<br>
+            <strong>From stop:</strong> ${leg.from.stop.name} (${leg.from.stop.code})<br>
+            <strong>To stop:</strong> ${leg.to.stop.name} (${leg.to.stop.code})<br>
+            <strong>${leg.mode === 'TRANSIT' ? 'Vehicle' : 'Direction'}:</strong> ${`Route ${leg.route.shortName} towards ${leg.route.longName}`} <br>
+            <strong>Approximate time:</strong> ${time} min <br>
+          `;
+          } else {
+            const roundDistance = Math.round(leg.distance);
+            popupContent = `
+            <strong>Walk</strong><br>
+            <strong>From stop:</strong> ${leg.from.stop ? `${leg.from.stop.name} (${leg.from.stop.code})` : `${leg.from.name}`}<br>
+            <strong>To stop:</strong> ${leg.to.stop ? `${leg.to.stop.name} (${leg.to.stop.code})` : `${leg.to.name}`}<br>
+            <strong>Distance:</strong> ${roundDistance} m <br>
+            <strong>Approximate time:</strong> ${time} min <br>
+          `;
+          }
+
+        const polyline = L.polyline([startPoint, endPoint], {
+          color: getColor(itineraryIndex),
+        }).addTo(map);
+  
+        const circle = L.circle(startPoint, {
+          color: getColor(itineraryIndex),
+          radius: 30,
+        });
+        circle.bindPopup(popupContent);
+
+        circle.addTo(map).on('click', function () {
+          this.openPopup();
+        });
+      }
+
+    });
+});
+
+function getColor(index) {
+  const colors = ['orange', 'green', 'darkred'];
+  return colors[index % colors.length];
+}
     })
     .catch(error => {
         console.error('Error:', error);
