@@ -21,5 +21,9 @@
   "homepage": "https://github.com/iaroslavagoncharova/pick-a-pizza#readme",
   "devDependencies": {
     "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pug": "^3.0.2"
   }
 }
