@@ -1,0 +1,25 @@
+{
+  "name": "pick-a-pizza",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iaroslavagoncharova/pick-a-pizza.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iaroslavagoncharova/pick-a-pizza/issues"
+  },
+  "homepage": "https://github.com/iaroslavagoncharova/pick-a-pizza#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
