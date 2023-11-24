@@ -35,7 +35,6 @@ header {
     flex-direction: row;
     height: 150px;
 }
-#map { height: 400px; }
 
 .logo-container {
     display: flex;
@@ -147,7 +146,6 @@ header {
 ul {
     display: flex;
     list-style-type: none;
-
 }
 
 .wrapper .top_nav .right ul li {
@@ -192,6 +190,33 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    padding: 3rem;
+}
+#homepage-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+}
+#map {
+    height: 600px;
+    width: 600px;
+    order: 2;
+    border-radius: 32px;
+    margin: 1rem;
+    filter: saturate(0.5);
+}
+#contacts {
+    margin: 1rem 2rem;
+    order: 1;
+    width: 600px;
+    background-color: var(--light);
+    padding: 1.5rem;
+    border-radius: 32px;
+}
+#contacts ul {
+    list-style-type: square;
+    display: inline-block;
 }
 footer {
     padding: 1rem;
