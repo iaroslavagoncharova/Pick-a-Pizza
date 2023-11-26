@@ -20,26 +20,3 @@ contentTabs.addEventListener('click', (evt) => {
     }
   }
 })
-
-document.addEventListener('DOMContentLoaded', function () {
-  const logo = document.getElementById('pizza-logo');
-  const location = document.getElementById('location-icon');
-  const shoppingCart = document.getElementById('shopping-cart-icon');
-  const userIcon = document.getElementById('user-icon');
-  logo.addEventListener('click', function (event) {
-      event.preventDefault();
-      window.location.href = '/';
-  });
-  location.addEventListener('click', function (event) {
-      event.preventDefault();
-      window.location.href = '/directions';
-  });
-  shoppingCart.addEventListener('click', function (event) {
-      event.preventDefault();
-      window.location.href = '/shopping-cart';
-  });
-  userIcon.addEventListener('click', function (event) {
-      event.preventDefault();
-      window.location.href = '/auth/sign-in';
-  });
-});
