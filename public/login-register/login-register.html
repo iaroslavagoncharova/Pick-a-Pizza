@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
-    <script src="/login-register/login-register.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="/login-register/login-register.css">
+    <script src="login-register/login-register.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="login-register/login-register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -63,7 +63,7 @@
                         <li><a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
                         </a></li>
-                        <li><a href="/auth/sign-in">
+                        <li><a href="/sign-in">
                             <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
                         </a></li>
                     </ul>
@@ -79,7 +79,7 @@
                     <button class="form-tab inactive-tab" id="register-tab">Register</button>
                 </div>
                 <div class="form-container">
-                    <form method="get" class="user-form active-form" id="login-form">
+                    <form method="get" action="/login" class="user-form active-form" id="login-form">
                         <div class="form-input">
                             <input type="email" name="email" id="login-email" class="input-space" placeholder="e-mail" required>
                         </div>
@@ -93,7 +93,7 @@
                             </a>
                         </div>
                     </form>
-                    <form method="get" class="user-form inactive-form" id="register-form">
+                    <form method="get" action="/register" class="user-form inactive-form" id="register-form">
                         <div class="form-input">
                             <input type="email" name="email" id="regist-email" class="input-space" placeholder="e-mail" required>
                         </div>

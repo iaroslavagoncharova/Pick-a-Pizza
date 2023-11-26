@@ -10,6 +10,7 @@ CREATE TABLE Users (
   address VARCHAR(255) NOT NULL,
   favorite_pizza VARCHAR(255),
   phone_number VARCHAR(15) NOT NULL,
+  user_level_id INT NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -103,9 +104,9 @@ CREATE TABLE PizzaIngredient (
 -- User data
 INSERT INTO Users (username, password, email, address, favorite_pizza, phone_number, created_at) 
 VALUES
-('Anna', 'password123', 'anna@example.com', 'Karaportti 2, Espoo', 'Classic', '123456789', '2023-11-14 12:48:00'),
-('Slava', 'securepass', 'slava@example.com', 'Karaportti 2, Espoo', 'Low Calorie', '987654321', '2023-11-14 13:30:00'),
-('Juan', 'pass123', 'juan@example.com', 'Karaportti 2, Espoo' , 'Keto', '555666777', '2023-11-14 14:15:00');
+('Anna', 'password123', 'anna@example.com', 'Karaportti 2, Espoo', 'Classic', '123456789', 1, '2023-11-14 12:48:00'),
+('Slava', 'securepass', 'slava@example.com', 'Karaportti 2, Espoo', 'Low Calorie', '987654321', 1, '2023-11-14 13:30:00'),
+('Juan', 'pass123', 'juan@example.com', 'Karaportti 2, Espoo' , 'Keto', '555666777', 2, '2023-11-14 14:15:00');
 
 
 -- Add data for prompts
@@ -158,7 +159,7 @@ INSERT INTO PromptIngredient (prompt_id, ingredient_id)
 VALUES
 (2, 1), -- chicken
 (2, 2), -- beef
-(2, 3), -- bacon
+(2, 3); -- bacon
 
 
 

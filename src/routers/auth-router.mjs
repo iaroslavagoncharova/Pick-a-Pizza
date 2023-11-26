@@ -7,12 +7,6 @@ const __dirname = path.dirname(__filename);
 
 const authRouter = express.Router();
 
-// TODO: post request with appropriate function
-// Q: should this be here or in a separate file?
-authRouter.get('/sign-in', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../public/login-register/login-register.html'));
-});
-
 authRouter.get('/my-account/:id', (req, res) => {
   const userId = req.params.id;
   res.sendFile(path.join(__dirname, '../../public/profile/profile.html'));
