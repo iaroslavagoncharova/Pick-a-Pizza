@@ -7,6 +7,7 @@ import joinPageRouter from './routers/join-router.mjs';
 import pizzaRouter from './routers/make-pizza-router.mjs';
 import cartRouter from './routers/shopping-cart-router.mjs';
 import jobApplicationRouter from './routers/jobs-router.mjs';
+import signinPageRouter from './routers/login-register-router.mjs';
 import { fileURLToPath } from 'url';
 
 const hostname = '127.0.0.1';
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 // routers, WIP
 // thus far for navigation only
 app.use('/', mainRouter);
+app.use('/sign-in', signinPageRouter);
 app.use('/auth', authRouter);
 app.use('/directions', mapPageRouter);
 app.use('/pick-a-pizza-club', joinPageRouter);
