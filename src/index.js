@@ -25,6 +25,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 // thus far for navigation only
 app.use('/', mainRouter);
 app.use('/sign-in', signinPageRouter);
+app.use('/login')
 app.use('/auth', authRouter);
 app.use('/directions', mapPageRouter);
 app.use('/pick-a-pizza-club', joinPageRouter);
