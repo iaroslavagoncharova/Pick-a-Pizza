@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kirjautuminen</title>
-    <script src="../login-register/login-register.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="../login-register/login-register.css">
+    <title>Sign In</title>
+    <script src="/login-register/login-register.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/login-register/login-register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -87,7 +87,8 @@
                             <input type="password" name="password" id="login-password" class="input-space" placeholder="password" required>
                         </div>
                         <div class="form-submit">
-                            <a href="../profile/profile.html">
+                            <a href="/auth/my-account">
+                                <!-- TODO: authentication -->
                                 <input type="submit" value="Sign in" id="signin-btn" class="form-btn">
                             </a>
                         </div>
@@ -106,7 +107,8 @@
                             <input type="checkbox" id="not-robot" name="not-robot" value="I am not a robot">
                             <label for="not-robot"> I am not a robot</label>
                         </div>
-                        <a href="../profile/profile.html">
+                        <a href="/auth/my-account">
+                            <!-- TODO: authentication -->
                             <div class="form-submit">
                                 <input type="submit" value="Sign up" id="signup-btn" class="form-btn">
                             </div>

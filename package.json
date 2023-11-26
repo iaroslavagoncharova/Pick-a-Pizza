@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/iaroslavagoncharova/pick-a-pizza#readme",
   "devDependencies": {
+    "dotenv": "^16.3.1",
+    "mysql2": "^3.6.5",
     "nodemon": "^3.0.1"
   },
   "dependencies": {
