@@ -23,11 +23,11 @@
                         <li>
                             <div id="lang-container">
                                 <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                                <span>EN</span>
+                                <span>FI</span>
                                 <div class="dropdown">
                                     <img class="top-nav-icon" id="lang-dropdown-arrow" src="../images/icons/arrow-icon.png" alt="Arrow Icon">
                                     <div class="dropdown-content" id="lang-dropdown-content">
-                                        <a href="#" class="dropdown-link">FI</a>
+                                        <a href="#" class="dropdown-link">EN</a>
                                     </div>
                                 </div>
                             </div>
@@ -39,27 +39,27 @@
                 <div class="right">
                     <ul>
                         <div class="dropdown">
-                            <li><a href="#">Menu</a></li>
+                            <li><a href="#">Valikko</a></li>
                             <div class="dropdown-content" id="menu-dropdown">
                                 <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
-                                <a href="/join-us" class="dropdown-link">Open Positions</a>
-                                <a href="/directions" class="dropdown-link">Directions</a>
-                                <a href="#" class="dropdown-link">Pizza Ratings</a>
+                                <a href="/join-us" class="dropdown-link">Avoimet_työpaikat</a>
+                                <a href="/directions" class="dropdown-link">Reittiohjeet</a>
+                                <a href="#" class="dropdown-link">Arvostelut</a>
                             </div>
                         </div>
                         <div class="dropdown">
-                            <li><a href="#">Pizza Prompts</a></li>
+                            <li><a href="#">Valmiit pizza pohjat</a></li>
                             <div class="dropdown-content" id="pizza-dropdown">
-                                <a href="#" class="dropdown-link">Gluten Free</a>
+                                <a href="#" class="dropdown-link">Gluteeniton</a>
                                 <a href="#" class="dropdown-link">Keto</a>
-                                <a href="#" class="dropdown-link">Low Calorie</a>
+                                <a href="#" class="dropdown-link">Vähänkalorinen</a>
                                 <a href="#" class="dropdown-link">Classic</a>
-                                <a href="#" class="dropdown-link">Vegan Classic</a>
-                                <a href="#" class="dropdown-link">Gluten Free Classic</a>
-                                <a href="#" class="dropdown-link">Season Deal</a>
+                                <a href="#" class="dropdown-link">Vegaani Classic</a>
+                                <a href="#" class="dropdown-link">Gluteeniton Classic</a>
+                                <a href="#" class="dropdown-link">Kausitarjous</a>
                             </div>
                         </div>
-                        <li><a href="/make-your-pizza">Make a Pizza</a></li>
+                        <li><a href="/make-your-pizza">Kokoa oma pizza!</a></li>
                         <li><a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
                         </a></li>
@@ -74,33 +74,34 @@
     <div class="hero-image" id="homepage-background">
      <div id="homepage-content">
         <div id="job-search">
-            <h1>Join Our Team!</h1>
-            <h2>We're always looking for passionate individuals to join our pizza-loving family. If you're enthusiastic, dedicated, and share our love for making delicious pizzas, we'd love to hear from you!</h2>
+            <h1>Tule meille Töihin!</h1>
+            <h2>Etsimme jatkuvasti intohimoisia ihmisiä pizzaa rakastavaan työyhteisöömme. Jos olet innostunut, omistautunut ja intohimoinen herkullisten pizzojen valmistamiseen, kuulisimme mielellämme sinusta!</h2>
             
-            <h3>Current Job Openings:</h3>
+            <h3>Saatavilla olevat työpaikat:</h3>
             <ul>
-                <li><strong>Pizza Chef:</strong> Do you have a what it takes, for crafting the perfect pizza? Join our kitchen team and put your culinary skills to work.</li>
+                <li><strong>Kokki:</strong> Onko sinusta täydellisen pizzan tekemiseen? Liity keittiötiimiimme ja ota kulinaariset taitosi käyttöön.</li>
                 <img src="../images/chef.png" alt="chef" id="chef">
-                <li><strong>Delivery Driver:</strong> Hit the road and deliver piping-hot pizzas to our customers. A valid driver's license and a reliable vehicle are required.</li>
+                <li><strong>Toimittaja:</strong>Lähde tien päälle ja toimita kuumia pizzoja asiakkaillemme. Voimassa oleva ajokortti ja luotettava ajoneuvo ovat pakollisia..</li>
                 <img src="../images/driver.png" alt="deliver" id="deliver">
             </ul>
-            <p>If you're interested in any of these positions or want to inquire about potential openings, please fill out the form below:</p>
+            <p>
+                Jos olet kiinnostunut jostain näistä tehtävistä tai haluat tiedustella mahdollisista avoimista paikoista, täytä alla oleva lomake:</p>
     
             <form id="job-application-form">
-                <label for="name">Name:</label>
+                <label for="name">Nimi:</label>
                 <input type="text" id="name" name="name" required><br>
     
-                <label for="email">Email:</label>
+                <label for="email">Sähköpostiosoite:</label>
                 <input type="email" id="email" name="email" required><br>
     
-                <label for="position">Desired Position:</label>
+                <label for="position">Kiinnostunut paikasta:</label>
                 <select id="position" name="position">
-                    <option value="Pizza Chef">Pizza Chef</option>
-                    <option value="Delivery Driver">Delivery Driver</option>
+                    <option value="Pizza Chef">Kokki</option>
+                    <option value="Delivery Driver">Toimittaja</option>
                 </select><br>
 
     
-                <button type="submit">Submit Application</button>
+                <button type="submit">Lähetä hakemus</button>
             </form>
             <p id="confirmation-message"></p>
         </div>
@@ -109,7 +110,7 @@
     </div>
     <footer>
         <div id="contact-info">
-            <p>Contacts:<br>
+            <p>Yhteystiedot:<br>
                 <span id="phone-number">+35800000000</span><br>
                 <span id="address">Karaportti 2, 02610 Espoo</span></p>
         </div>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oma pizza</title>
+    <script src="pizza/pizza.js" defer></script>
+    <link rel="stylesheet" href="pizza/pizza.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-part logo-container" id="header-logo">
+            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo"></a>
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>  	
+        <div class="wrapper">
+            <div class="top_nav">
+                <div class="right">
+                    <ul>
+                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a></li>
+                        <li><a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a></li>
+                        <li>
+                            <div id="lang-container">
+                                <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
+                                <span>FI</span>
+                                <div class="dropdown">
+                                    <img class="top-nav-icon" id="lang-dropdown-arrow" src="../images/icons/arrow-icon.png" alt="Arrow Icon">
+                                    <div class="dropdown-content" id="lang-dropdown-content">
+                                        <a href="#" class="dropdown-link">EN</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom_nav">
+                <div class="right">
+                    <ul>
+                        <div class="dropdown">
+                            <li><a href="#">Valikko</a></li>
+                            <div class="dropdown-content" id="menu-dropdown">
+                                <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
+                                <a href="/join-us" class="dropdown-link">Avoimet_työpaikat</a>
+                                <a href="/directions" class="dropdown-link">Reittiohjeet</a>
+                                <a href="#" class="dropdown-link">Arvostelut</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <li><a href="#">Valmiit pizza pohjat</a></li>
+                            <div class="dropdown-content" id="pizza-dropdown">
+                                <a href="#" class="dropdown-link">Gluteeniton</a>
+                                <a href="#" class="dropdown-link">Keto</a>
+                                <a href="#" class="dropdown-link">Vähänkalorinen</a>
+                                <a href="#" class="dropdown-link">Classic</a>
+                                <a href="#" class="dropdown-link">Vegaani Classic</a>
+                                <a href="#" class="dropdown-link">Gluteeniton Classic</a>
+                                <a href="#" class="dropdown-link">Kausitarjous</a>
+                            </div>
+                        </div>
+                        <li><a href="/make-your-pizza">Kokoa oma pizza!</a></li>
+                        <li><a href="/shopping-cart">
+                            <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
+                        </a></li>
+                        <li><a href="/sign-in">
+                            <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="hero-image" id="homepage-background">
+        <div id="homepage-content">
+            <div class="pizza-name">
+                <h1>Oma Pizza</h1>
+            </div>
+            <div class="dough-image">
+                <img src="../images/pizza-img.png" alt="pizza" id="pizza-photo">
+                <button id="glut">Glut</button>
+                <button id="keto">Keto</button>
+                <button id="usual">Tavallinen</button>
+            </div>
+            <div class="comments">
+                <p>Onko sinulla kysyttävää?</p>
+                <p>Laita meille viestiä!</p>
+                <div class="message">
+                    <textarea name="message" id="message" cols="30" rows="5" placeholder="Hei, olen allerginen..."></textarea>
+                </div>
+            </div>
+            <div class="size">
+                <h2>Koko</h2>
+                <button id="s">S</button>
+                <button id="m">M</button>
+                <button id="l">L</button>
+            </div>
+            <div class="fillings">
+                <h2>Täytteet</h2>
+                <div class="search-container">
+                    <form>
+                        <input type="text" placeholder="tomaatti..." id="search" name="search">
+                    </form>
+                  </div>
+                <div class="category">
+                    <div class="category-title">Lihat <span class="arrow">▼</span></div>
+                    <div class="category-content" id="meat">
+                        <ul>
+                        <li><input type="checkbox" id="chicken"><label for="chicken">Kana</label></li>
+                        <li><input type="checkbox" id="beef"><label for="beef">Naudanliha</label></li>
+                        <li><input type="checkbox" id="bacon"><label for="bacon">Pekoni</label></li>
+                        <li><input type="checkbox" id="ham"><label for="ham">Kinkku</label></li> 
+                    </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="category-title">Kasvikset <span class="arrow">▼</span></div>
+                    <div class="category-content" id="vegetables">
+                        <ul>
+                        <li><input type="checkbox" id="tomatoes"><label for="tomatoes">Tomaatti</label></li>
+                        <li><input type="checkbox" id="onions"><label for="onions">Sipuli</label></li>
+                        <li><input type="checkbox" id="eggplants"><label for="eggplants">Munakoiso</label></li>
+                        <li><input type="checkbox" id="mushrooms"><label for="mushrooms">Herkkusieni</label></li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="category-title">Juustot <span class="arrow">▼</span></div>
+                    <div class="category-content" id="cheese">
+                        <ul>
+                        <li><input type="checkbox" id="mozzarella"><label for="mozzarella">Mozzarella</label></li>
+                        <li><input type="checkbox" id="parmezan"><label for="parmezan">Parmesaani</label></li>
+                        <li><input type="checkbox" id="gouda"><label for="gouda">Gouda</label></li>
+                        <li><input type="checkbox" id="goat-cheese"><label for="goat-cheese">Vuohenjuusto</label></li>
+                        <li><input type="checkbox" id="tofu"><label for="tofu">Tofu</label></li>
+                       <li><input type="checkbox" id="vege-gouda"><label for="vege-gouda">Vegaani gouda</label></li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="category-title">Merenelävät <span class="arrow">▼</span></div>
+                    <div class="category-content" id="seafood">
+                        <ul>
+                        <li><input type="checkbox" id="anchovies"><label for="anchovies">Anjovis</label></li>
+                        <li><input type="checkbox" id="shrimps"><label for="shrimps">Katkarapu</label></li>
+                        <li><input type="checkbox" id="mussels"><label for="mussels">Simpukat</label></li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="category-title">Kastikkeet <span class="arrow">▼</span></div>
+                    <div class="category-content" id="sauces">
+                        <ul>
+                        <li><input type="checkbox" id="tomato-sauce"><label for="tomato-sauce">Tomaattikastike</label></li>
+                        <li><input type="checkbox" id="pesto-sauce"><label for="pesto-sauce">Pestokastike</label></li>
+                        <li><input type="checkbox" id="bbq-sauce"><label for="bbq-sauce">BBQ-kastike</label></li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="nutritions">
+                <h2>Ravintoarvot</h2>
+                <div class="calories">
+                    <p>Tässä on kalorit</p>
+                </div>
+            </div>
+            <button id="confirm-order">Osta</button>
+    </div>
+    </div>
+    <footer>
+        <div id="contact-info">
+            <p>Yhteystiedot:<br>
+                <span id="phone-number">+35800000000</span><br>
+                <span id="address">Karaportti 2, 02610 Espoo</span></p>
+        </div>
+        <div class="logo-container" id="footer-logo">
+            <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>
+        <div id="social-media-icons">
+            <i class="fa fa-facebook fa-2x"></i>
+            <i class="fa fa-instagram fa-2x"></i>
+            <i class="fa fa-whatsapp fa-2x"></i>
+        </div>
+
+    </footer>
+    
+</body>
+</html>

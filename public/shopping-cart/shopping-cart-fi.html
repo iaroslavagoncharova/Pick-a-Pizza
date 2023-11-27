@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" type="text/css" href="shopping-cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-part logo-container" id="header-logo">
+            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo"></a>
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>  	
+        <div class="wrapper">
+            <div class="top_nav">
+                <div class="right">
+                    <ul>
+                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a></li>
+                        <li><a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a></li>
+                        <li>
+                            <div id="lang-container">
+                                <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
+                                <span>FI</span>
+                                <div class="dropdown">
+                                    <img class="top-nav-icon" id="lang-dropdown-arrow" src="../images/icons/arrow-icon.png" alt="Arrow Icon">
+                                    <div class="dropdown-content" id="lang-dropdown-content">
+                                        <a href="#" class="dropdown-link">EN</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom_nav">
+                <div class="right">
+                    <ul>
+                        <div class="dropdown">
+                            <li><a href="#">Valikko</a></li>
+                            <div class="dropdown-content" id="menu-dropdown">
+                                <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
+                                <a href="/join-us" class="dropdown-link">Avoimet_työpaikat</a>
+                                <a href="/directions" class="dropdown-link">Reittiohjeet</a>
+                                <a href="#" class="dropdown-link">Arvostelut</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <li><a href="#">Valmiit pizza pohjat</a></li>
+                            <div class="dropdown-content" id="pizza-dropdown">
+                                <a href="#" class="dropdown-link">Gluteeniton</a>
+                                <a href="#" class="dropdown-link">Keto</a>
+                                <a href="#" class="dropdown-link">Vähänkalorinen</a>
+                                <a href="#" class="dropdown-link">Classic</a>
+                                <a href="#" class="dropdown-link">Vegaani Classic</a>
+                                <a href="#" class="dropdown-link">Gluteeniton Classic</a>
+                                <a href="#" class="dropdown-link">Kausitarjous</a>
+                            </div>
+                        </div>
+                        <li><a href="/make-your-pizza">Kokoa oma pizza!</a></li>
+                        <li><a href="/shopping-cart">
+                            <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
+                        </a></li>
+                        <li><a href="/sign-in">
+                            <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="hero-image" id="homepage-background">
+        <div id="cart-container">
+            <div id="cart-screen">
+                <h2>Ostoskärry</h2>
+                <div id="products-screen">
+                    <button class="cart-btn" id="gift-card-btn">Lisää etukoodi tai lahjakortti</button>
+                    <table id="selected-products">
+                        <thead>
+                            <tr>
+                                <th class="product">Tuotteet</th>
+                                <th class="quantity">Määrä</th>
+                                <th class="total">Yhteensä</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="product">
+                                    <div id="product-details">
+                                        <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
+                                        <div>
+                                            <h4>Oma Pizza</h4>
+                                            <p>Gluteeniton</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="quantity">
+                                    <div id="quantity-selection">
+                                        <button>-</button>
+                                        <p>1</p>
+                                        <button>+</button>
+                                    </div>
+                                </td>
+                                <td class="total">
+                                    <p>15.50€</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="product">
+                                    <div id="product-details">
+                                        <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
+                                        <div>
+                                            <h4>Vegan Classic</h4>
+                                            <p>Vähankalorinen</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="quantity">
+                                    <div id="quantity-selection">
+                                        <button>-</button>
+                                        <p>1</p>
+                                        <button>+</button>
+                                    </div>
+                                </td>
+                                <td class="total">
+                                    <p>14.50€</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="receipt">
+                        <div class="receipt-right">
+                            <table id="receipt-table">
+                                <tr>
+                                    <td class="align-left">Toimitusmaksu</td>
+                                    <td class="align-right">0€</td>
+                                </tr>
+                                <tr>
+                                    <td class="align-left">Käsittelykulut</td>
+                                    <td class="align-right">0.50€</td>
+                                </tr>
+                                <tr>
+                                    <td class="align-left">Yhteensä (sis. ALV)</td>
+                                    <td class="align-right">30.50€</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="proceed">
+                        <div id="membership-screen">
+                            <h2 id="join-header"><i>Liity Pick-a-Pizza klubiin</i></h2>
+                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">-10% pois your ensimmäisestä tilauksestasi</p>
+                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">Kerää pisteitä jokaisesta tilauksesi</p>
+                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">Pääsy arvostelemaan ja muuhun!</p>
+                            <div id="join-box">
+                                <input type="checkbox" id="join-club" name="join-club" value="Join">
+                                <label for="join-club"> Liity jäseneksi</label><br>
+                            </div>
+                            <p class="small-text">Liittymällä, hyväksyt meidän <a href="#">käyttöehdot</a> ja <a href="#">Tietosuojakäytännön</a></p>
+                        </div>
+                        <button class="cart-btn" id="checkout-btn">Maksamaan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="contact-info">
+            <p>Yhteystiedot:<br>
+                <span id="phone-number">+35800000000</span><br>
+                <span id="address">Karaportti 2, 02610 Espoo</span></p>
+        </div>
+        <div class="logo-container" id="footer-logo">
+            <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>
+        <div id="social-media-icons">
+            <i class="fa fa-facebook fa-2x"></i>
+            <i class="fa fa-instagram fa-2x"></i>
+            <i class="fa fa-whatsapp fa-2x"></i>
+        </div>
+
+    </footer>
+    
+</body>
+</html>

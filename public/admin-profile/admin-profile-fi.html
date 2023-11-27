@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Töihin Meille</title>
-    <script src="work/work.js" defer></script>
-    <link rel="stylesheet" href="work/work.css">
+    <title>Admiinin profiili</title>
+    <script src="../admin-profile/admin-profile.js" defer></script>
+    <script src="admin-profile/profile.js" defer></script>
+    <link rel="stylesheet" href="../admin-profile/admin-profile.css">
+    <link rel="stylesheet" href="admin-profile/admin-profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -23,11 +25,11 @@
                         <li>
                             <div id="lang-container">
                                 <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                                <span>EN</span>
+                                <span>FI</span>
                                 <div class="dropdown">
                                     <img class="top-nav-icon" id="lang-dropdown-arrow" src="../images/icons/arrow-icon.png" alt="Arrow Icon">
                                     <div class="dropdown-content" id="lang-dropdown-content">
-                                        <a href="#" class="dropdown-link">FI</a>
+                                        <a href="#" class="dropdown-link">EN</a>
                                     </div>
                                 </div>
                             </div>
@@ -39,27 +41,27 @@
                 <div class="right">
                     <ul>
                         <div class="dropdown">
-                            <li><a href="#">Menu</a></li>
+                            <li><a href="#">Valikko</a></li>
                             <div class="dropdown-content" id="menu-dropdown">
                                 <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
-                                <a href="/join-us" class="dropdown-link">Open Positions</a>
-                                <a href="/directions" class="dropdown-link">Directions</a>
-                                <a href="#" class="dropdown-link">Pizza Ratings</a>
+                                <a href="/join-us" class="dropdown-link">Avoimet_työpaikat</a>
+                                <a href="/directions" class="dropdown-link">Reittiohjeet</a>
+                                <a href="#" class="dropdown-link">Arvostelut</a>
                             </div>
                         </div>
                         <div class="dropdown">
-                            <li><a href="#">Pizza Prompts</a></li>
+                            <li><a href="#">Valmiit pizza pohjat</a></li>
                             <div class="dropdown-content" id="pizza-dropdown">
-                                <a href="#" class="dropdown-link">Gluten Free</a>
+                                <a href="#" class="dropdown-link">Gluteeniton</a>
                                 <a href="#" class="dropdown-link">Keto</a>
-                                <a href="#" class="dropdown-link">Low Calorie</a>
+                                <a href="#" class="dropdown-link">Vähänkalorinen</a>
                                 <a href="#" class="dropdown-link">Classic</a>
-                                <a href="#" class="dropdown-link">Vegan Classic</a>
-                                <a href="#" class="dropdown-link">Gluten Free Classic</a>
-                                <a href="#" class="dropdown-link">Season Deal</a>
+                                <a href="#" class="dropdown-link">Vegaani Classic</a>
+                                <a href="#" class="dropdown-link">Gluteeniton Classic</a>
+                                <a href="#" class="dropdown-link">Kausitarjous</a>
                             </div>
                         </div>
-                        <li><a href="/make-your-pizza">Make a Pizza</a></li>
+                        <li><a href="/make-your-pizza">Kokoa oma pizza!</a></li>
                         <li><a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
                         </a></li>
@@ -72,44 +74,44 @@
         </div>
     </header>
     <div class="hero-image" id="homepage-background">
-     <div id="homepage-content">
-        <div id="job-search">
-            <h1>Join Our Team!</h1>
-            <h2>We're always looking for passionate individuals to join our pizza-loving family. If you're enthusiastic, dedicated, and share our love for making delicious pizzas, we'd love to hear from you!</h2>
-            
-            <h3>Current Job Openings:</h3>
-            <ul>
-                <li><strong>Pizza Chef:</strong> Do you have a what it takes, for crafting the perfect pizza? Join our kitchen team and put your culinary skills to work.</li>
-                <img src="../images/chef.png" alt="chef" id="chef">
-                <li><strong>Delivery Driver:</strong> Hit the road and deliver piping-hot pizzas to our customers. A valid driver's license and a reliable vehicle are required.</li>
-                <img src="../images/driver.png" alt="deliver" id="deliver">
-            </ul>
-            <p>If you're interested in any of these positions or want to inquire about potential openings, please fill out the form below:</p>
-    
-            <form id="job-application-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br>
-    
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br>
-    
-                <label for="position">Desired Position:</label>
-                <select id="position" name="position">
-                    <option value="Pizza Chef">Pizza Chef</option>
-                    <option value="Delivery Driver">Delivery Driver</option>
-                </select><br>
-
-    
-                <button type="submit">Submit Application</button>
-            </form>
-            <p id="confirmation-message"></p>
-        </div>
-           
+        <div id="homepage-content">
+            <div id="admin-info">
+                <div id="orders-progress">
+                    <h3>Käynnissä olevat tilaukset</h3>
+                    <ul>
+                        <a href="#"><li>15.11.2023 20.16 Order #890421652</li></a>
+                        <a href="#"><li>15.11.2023 20.10 Order #325432789</li></a>
+                        <a href="#"><li>15.11.2023 20.09 Order #948792685</li></a>
+                        <a href="#"><li>15.11.2023 20.06 Order #120387189</li></a>
+                        <a href="#"><li>15.11.2023 20.02 Order #527658364</li></a>
+                    </ul>
+                    <a href="#"><button class="admin-button" id="all-orders">Kaikki tilaukset</button></a>
+                </div>
+                <div id="users"><h3>Käyttäjät</h3>
+                <ul>
+                    <a href="#"><li>Slava slava@example.com 0100000000</li></a>
+                    <a href="#"><li>Juan juan@example.com 0200000000</li></a>
+                    <a href="#"><li>Anna anna@example.com 0300000000</li></a>
+                    <a href="#"><li>User1 user1@example.com 0400000000</li></a>
+                    <a href="#"><li>User2 user2@example.com 0500000000</li></a>
+                </ul>
+                <a href="#"><button class="admin-button" id="all-users">Kaikki käyttäjät</button></a>
+                </div>
+                <div id="ingredients"><h3>Ainekset</h3>
+                    <ul>
+                        <a href="#"><li>Tomaatti</li></a>
+                        <a href="#"><li>Herkkusieni</li></a>
+                        <a href="#"><li>Kana</li></a>
+                        <a href="#"><li>Tonnikala</li></a>
+                        <a href="#"><li>Tofu</li></a>
+                    </ul>
+                    <a href="#"><button class="admin-button" id="all-ingredients">Näytä varastosaldo</button></a>
+            </div>
     </div>
     </div>
     <footer>
         <div id="contact-info">
-            <p>Contacts:<br>
+            <p>Yhteystiedot:<br>
                 <span id="phone-number">+35800000000</span><br>
                 <span id="address">Karaportti 2, 02610 Espoo</span></p>
         </div>

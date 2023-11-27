@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Töihin Meille</title>
-    <script src="work/work.js" defer></script>
-    <link rel="stylesheet" href="work/work.css">
+    <title>Profiili</title>
+    <script src="profile/profile.js" defer></script>
+    <link rel="stylesheet" href="profile/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -23,11 +23,11 @@
                         <li>
                             <div id="lang-container">
                                 <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                                <span>EN</span>
+                                <span>FI</span>
                                 <div class="dropdown">
                                     <img class="top-nav-icon" id="lang-dropdown-arrow" src="../images/icons/arrow-icon.png" alt="Arrow Icon">
                                     <div class="dropdown-content" id="lang-dropdown-content">
-                                        <a href="#" class="dropdown-link">FI</a>
+                                        <a href="#" class="dropdown-link">EN</a>
                                     </div>
                                 </div>
                             </div>
@@ -39,27 +39,27 @@
                 <div class="right">
                     <ul>
                         <div class="dropdown">
-                            <li><a href="#">Menu</a></li>
+                            <li><a href="#">Valikko</a></li>
                             <div class="dropdown-content" id="menu-dropdown">
                                 <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
-                                <a href="/join-us" class="dropdown-link">Open Positions</a>
-                                <a href="/directions" class="dropdown-link">Directions</a>
-                                <a href="#" class="dropdown-link">Pizza Ratings</a>
+                                <a href="/join-us" class="dropdown-link">Avoimet_työpaikat</a>
+                                <a href="/directions" class="dropdown-link">Reittiohjeet</a>
+                                <a href="#" class="dropdown-link">Arvostelut</a>
                             </div>
                         </div>
                         <div class="dropdown">
-                            <li><a href="#">Pizza Prompts</a></li>
+                            <li><a href="#">Valmiit pizza pohjat</a></li>
                             <div class="dropdown-content" id="pizza-dropdown">
-                                <a href="#" class="dropdown-link">Gluten Free</a>
+                                <a href="#" class="dropdown-link">Gluteeniton</a>
                                 <a href="#" class="dropdown-link">Keto</a>
-                                <a href="#" class="dropdown-link">Low Calorie</a>
+                                <a href="#" class="dropdown-link">Vähänkalorinen</a>
                                 <a href="#" class="dropdown-link">Classic</a>
-                                <a href="#" class="dropdown-link">Vegan Classic</a>
-                                <a href="#" class="dropdown-link">Gluten Free Classic</a>
-                                <a href="#" class="dropdown-link">Season Deal</a>
+                                <a href="#" class="dropdown-link">Vegaani Classic</a>
+                                <a href="#" class="dropdown-link">Gluteeniton Classic</a>
+                                <a href="#" class="dropdown-link">Kausitarjous</a>
                             </div>
                         </div>
-                        <li><a href="/make-your-pizza">Make a Pizza</a></li>
+                        <li><a href="/make-your-pizza">Kokoa oma pizza!</a></li>
                         <li><a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
                         </a></li>
@@ -72,44 +72,34 @@
         </div>
     </header>
     <div class="hero-image" id="homepage-background">
-     <div id="homepage-content">
-        <div id="job-search">
-            <h1>Join Our Team!</h1>
-            <h2>We're always looking for passionate individuals to join our pizza-loving family. If you're enthusiastic, dedicated, and share our love for making delicious pizzas, we'd love to hear from you!</h2>
-            
-            <h3>Current Job Openings:</h3>
-            <ul>
-                <li><strong>Pizza Chef:</strong> Do you have a what it takes, for crafting the perfect pizza? Join our kitchen team and put your culinary skills to work.</li>
-                <img src="../images/chef.png" alt="chef" id="chef">
-                <li><strong>Delivery Driver:</strong> Hit the road and deliver piping-hot pizzas to our customers. A valid driver's license and a reliable vehicle are required.</li>
-                <img src="../images/driver.png" alt="deliver" id="deliver">
-            </ul>
-            <p>If you're interested in any of these positions or want to inquire about potential openings, please fill out the form below:</p>
-    
-            <form id="job-application-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br>
-    
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br>
-    
-                <label for="position">Desired Position:</label>
-                <select id="position" name="position">
-                    <option value="Pizza Chef">Pizza Chef</option>
-                    <option value="Delivery Driver">Delivery Driver</option>
-                </select><br>
-
-    
-                <button type="submit">Submit Application</button>
-            </form>
-            <p id="confirmation-message"></p>
-        </div>
-           
+        <div id="homepage-content">
+            <div id="user-info">
+                <div id="personal-info">
+                    <h3>Käyttäjätietosi:</h3>
+                    <ul>
+                        <li>Nimi: Test User</li>
+                        <li>Sähköpostiosoite: testuser@gmail.com</li>
+                        <li>Puhelinumero: +35800000000</li>
+                        <li>Osoite: Esimerkkikatu 1, Helsinki</li>
+                    </ul>
+                    <a href="#"><button class="profile-button" id="change-profile">Muokkaa profiilia</button></a>
+                </div>
+                <div id="recent-orders"><h3>Hiljattain tehdyt tilauksesi</h3>
+                <ul>
+                    <a href="#"><li>10.10.2023 Order №19014356</li></a>
+                    <a href="#"><li>3.10.2023 Order №65865230</li></a>
+                    <a href="#"><li>26.9.2023 Order  №12048524</li></a>
+                    <a href="#"><li>15.9.2023 Order  №40359163</li></a></ul>
+                <a href="#"><button class="profile-button" id="all-orders">Kaikki tilaukset</button></a></div>
+                <div id="favorite-pizza"><h3>Lempi pizzasi on:</h3>
+                <p>Gluteeniton + tonnikala</p></div>
+                <a href="#"><button class="profile-button" id="newsletter">Tilaa meidän uutiskirje!</button></a>
+            </div>
     </div>
     </div>
     <footer>
         <div id="contact-info">
-            <p>Contacts:<br>
+            <p>Yhteystiedot:<br>
                 <span id="phone-number">+35800000000</span><br>
                 <span id="address">Karaportti 2, 02610 Espoo</span></p>
         </div>

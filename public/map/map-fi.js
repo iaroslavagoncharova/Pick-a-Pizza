@@ -84,20 +84,20 @@ fetch(apiUrl, {
           if (leg.mode) {
           if (leg.mode != 'WALK') {
             popupContent = `
-            <strong>Take</strong> ${leg.mode}<br>
-            <strong>From stop:</strong> ${leg.from.stop.name} (${leg.from.stop.code})<br>
-            <strong>To stop:</strong> ${leg.to.stop.name} (${leg.to.stop.code})<br>
-            <strong>${leg.mode === 'TRANSIT' ? 'Vehicle' : 'Direction'}:</strong> ${`Route ${leg.route.shortName} towards ${leg.route.longName}`} <br>
-            <strong>Approximate time:</strong> ${time} min <br>
+            <strong>Ota</strong> ${leg.mode}<br>
+            <strong>Pysäkiltä:</strong> ${leg.from.stop.name} (${leg.from.stop.code})<br>
+            <strong>Pysäkkiin:</strong> ${leg.to.stop.name} (${leg.to.stop.code})<br>
+            <strong>${leg.mode === 'TRANSIT' ? 'Vehicle' : 'Reitti'}:</strong> ${` ${leg.route.shortName} suuntaan ${leg.route.longName}`} <br>
+            <strong>${time} min </strong> <br>
           `;
           } else {
             const roundDistance = Math.round(leg.distance);
             popupContent = `
-            <strong>Walk</strong><br>
-            <strong>From stop:</strong> ${leg.from.stop ? `${leg.from.stop.name} (${leg.from.stop.code})` : `${leg.from.name}`}<br>
-            <strong>To stop:</strong> ${leg.to.stop ? `${leg.to.stop.name} (${leg.to.stop.code})` : `${leg.to.name}`}<br>
-            <strong>Distance:</strong> ${roundDistance} m <br>
-            <strong>Approximate time:</strong> ${time} min <br>
+            <strong>Kävele</strong><br>
+            <strong>Pysäkiltä:</strong> ${leg.from.stop ? `${leg.from.stop.name} (${leg.from.stop.code})` : `${leg.from.name}`}<br>
+            <strong>Pysäkkiin:</strong> ${leg.to.stop ? `${leg.to.stop.name} (${leg.to.stop.code})` : `${leg.to.name}`}<br>
+            <strong>Etäisyys:</strong> ${roundDistance} m <br>
+            <strong> ${time} min</strong> <br>
           `;
           }
 
