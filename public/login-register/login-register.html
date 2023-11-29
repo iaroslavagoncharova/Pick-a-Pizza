@@ -85,21 +85,19 @@
                     <button class="form-tab inactive-tab" id="register-tab">Register</button>
                 </div>
                 <div class="form-container">
-                    <form method="get" action="/login" class="user-form active-form" id="login-form">
+                    <form method="post" action="/login" class="user-form active-form" id="login-form">
                         <div class="form-input">
-                            <input type="email" name="email" id="login-email" class="input-space" placeholder="e-mail" required>
+                            <input type="email" name="login-email" id="login-email" class="input-space" placeholder="e-mail" required>
                         </div>
                         <div class="form-input">
-                            <input type="password" name="password" id="login-password" class="input-space" placeholder="password" required>
+                            <input type="password" name="login-password" id="login-password" class="input-space" placeholder="password" required>
                         </div>
                         <div class="form-submit">
-                            <a href="/auth/my-account">
-                                <!-- TODO: authentication -->
                                 <input type="submit" value="Sign in" id="signin-btn" class="form-btn">
                             </a>
                         </div>
                     </form>
-                    <form method="get" action="/register" class="user-form inactive-form" id="register-form">
+                    <form method="post" action="/register" class="user-form inactive-form" id="register-form">
                         <div class="form-input">
                             <input type="email" name="email" id="regist-email" class="input-space" placeholder="e-mail" required>
                         </div>
@@ -113,8 +111,6 @@
                             <input type="checkbox" id="not-robot" name="not-robot" value="I am not a robot">
                             <label for="not-robot"> I am not a robot</label>
                         </div>
-                        <a href="/auth/my-account">
-                            <!-- TODO: authentication -->
                             <div class="form-submit">
                                 <input type="submit" value="Sign up" id="signup-btn" class="form-btn">
                             </div>

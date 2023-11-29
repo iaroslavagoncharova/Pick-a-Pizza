@@ -9,6 +9,7 @@ import cartRouter from './routers/shopping-cart-router.mjs';
 import jobApplicationRouter from './routers/jobs-router.mjs';
 import signinPageRouter from './routers/login-register-router.mjs';
 import { fileURLToPath } from 'url';
+import loginRouter from './routers/login-router.mjs';
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -20,12 +21,13 @@ const __dirname = path.dirname(__filename);
 
 // Serve static files (like HTML, CSS, and JavaScript)
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.json());
 
 // routers, WIP
 // thus far for navigation only
 app.use('/', mainRouter);
 app.use('/sign-in', signinPageRouter);
-app.use('/login')
+app.use('/login', loginRouter)
 app.use('/auth', authRouter);
 app.use('/directions', mapPageRouter);
 app.use('/pick-a-pizza-club', joinPageRouter);
