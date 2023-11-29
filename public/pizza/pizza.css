@@ -217,6 +217,10 @@ a {
     color: var(--grayish-brown);
 }
 
+.left-side-content {
+    grid-row: 1/2;
+}
+
 .pizza-name {
     grid-row: 1 / 2;
     grid-column: 1 / 2;
@@ -236,7 +240,7 @@ a {
     text-align: center;
     margin: 1rem;
 }
-#glut {background-color: #FDBC67;}
+#gluten-free {background-color: #FDBC67;}
 
 #keto {background-color: #7DCD52;}
 

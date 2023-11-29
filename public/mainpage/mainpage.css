@@ -385,3 +385,17 @@ footer {
     width: 30px;
     cursor: pointer;
 }
+
+@media only screen and (min-width: 370px) and (max-width: 400px) {
+    #quick-select-container {
+        width: 100%;
+        padding: 0;
+    }
+    #pizza-templates {
+        grid-template-columns: auto;
+    }
+    #button-7 {
+        margin: 1rem;
+    }
+    
+}
