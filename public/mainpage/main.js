@@ -1,3 +1,19 @@
+import {addUserDataToDom} from "../dom.js";
+
+window.onload = () => {
+  const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user'));
+  console.log(user, token);
+
+  if (token) {
+    addUserDataToDom(user);
+    const userButton = document.getElementById('user-account');
+    if (user.user_level_id === 1) {
+      userButton.href = '/my-account/admin';
+    }
+  }
+};
+
 const contentTabs = document.getElementById('content-tabs');
 contentTabs.addEventListener('click', (evt) => {
   const clickedTab = evt.target.closest('.content-tab');
@@ -19,4 +35,5 @@ contentTabs.addEventListener('click', (evt) => {
       })
     }
   }
-})
+});
+
