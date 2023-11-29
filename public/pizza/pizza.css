@@ -235,7 +235,7 @@ a {
 #homepage-content {
     display: grid;
     grid-template-columns: repeat(2, minmax(300px, 800px));
-    grid-template-rows: 100px minmax(450px, 500px) 400px 100px;
+    grid-template-rows: minmax(30px, 200px) minmax(300px, 500px) 400px 150px;
     width: 90%;
     margin: auto;
     padding: 2rem 0;
@@ -265,24 +265,45 @@ a {
     text-align: center;
     margin: 1rem;
 }
-#gluten-free {background-color: #FDBC67;}
 
-#keto {background-color: #7DCD52;}
+.dough-buttons {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
 
-#usual {background-color: #FDD8A9;}
+.dough-buttons input[type="radio"] {
+    display: none;
+}
 
-.dough-image button {
-    border: none;
+.dough-buttons label {
     font-size: 20px;
     padding: 1rem;
     margin: 2rem 0.5rem;
-    width: 6rem;
     border-radius: 50px;
     color: var(--grayish-brown);
     text-transform: uppercase;
     font-weight: bold;
     box-shadow: 3px 3px 3px #68563d;
+    width: 6rem;
     cursor: pointer;
+    border: none;
+}
+
+.dough-buttons input[type="radio"]:checked + label {
+    border: 5px solid var(--tomato);
+}
+
+.dough-buttons input[id="gluten-free"] + label {
+    background-color: #FDBC67;
+}
+
+.dough-buttons input[id="keto"] + label {
+        background-color: #7DCD52;
+}
+
+.dough-buttons input[id="usual"] + label {
+        background-color: #FDD8A9;
 }
 
 .comments {
@@ -301,21 +322,33 @@ a {
     font-size: 20px;
 }
 
-.size {
+.size-buttons {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     text-align: center;
     margin: 0;
 }
-.size h2 {
+.size-buttons h2 {
     margin: 0;
 }
 
+.left-side-content {
+    grid-row: 1/4;
+}
 .size button:hover, .dough button:hover, #confirm-order:hover {
     cursor: pointer;
 }
 
-#s, #m, #l {
+.size {
+    display: flex;
+    justify-content: center;
+  }
+
+.size input[type="radio"] {
+    display: none;
+}
+
+.size label {
     background-color: #E9451C;
     color: #faf4f1;
     width: 5rem;
@@ -327,11 +360,18 @@ a {
     box-shadow: 3px 3px 3px #68563d;
 }
 
+.size input[type="radio"]:checked + label {
+    border: 5px solid var(--grayish-brown);
+}
+
 .fillings {
     grid-column: 2 / 3;
-    grid-row: 2 / 4;
     text-align: center;
     margin: 0;
+}
+
+.right-side-content {
+    grid-row: span 5;
 }
 
 .category-content li {
@@ -394,8 +434,6 @@ a {
     transition: transform 0.3s;
 }
 
-
-
 #search {
     padding: 1rem;
     margin-bottom: 0.5rem;
@@ -406,7 +444,7 @@ a {
 
 .nutritions {
     grid-column: 2 / 3;
-    grid-row: 3 / 4;
+    grid-row: 3 / auto;
     justify-self: center;
     margin-top: 2rem;
     text-align: center;
@@ -418,20 +456,20 @@ a {
     width: 20rem;
     border-radius: 36px;
     padding: 1rem;
+    margin: auto;
 }
 
 #confirm-order {
-    width: 6rem;
+    width: 12rem;
     border-radius: 50px;
     border: none;
     padding: 1rem;
     background-color: var(--tomato);
     color: var(--light);
     font-size: 20px;
-    grid-row: 4/ 5;
-    grid-column: 2 / 3;
-    justify-self: end;
-    align-self: end;
+    margin-top: 4rem;
+    position: relative;
+    left: 25rem;
 }
 
 footer {

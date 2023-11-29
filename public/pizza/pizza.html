@@ -80,15 +80,15 @@
             </div>
             <div class="dough-image">
                 <img src="../images/pizza-img.png" alt="pizza" id="pizza-photo">
-                <div class="dough-buttons">
-                    <input type="radio" id="gluten-free" name="dough" value="gluten-free">
-                    <label for="gluten-free">Gluten-Free</label>
-                    <input type="radio" id="keto" name="dough" value="keto">
-                    <label for="keto">Keto</label>
-                    <input type="radio" id="usual" name="dough" value="usual">
-                    <label for="usual">Usual</label>
             </div>
-            </div>
+            <div class="dough-buttons">
+                <input type="radio" id="gluten-free" name="dough" value="gluten-free">
+                <label for="gluten-free">G</label>
+                <input type="radio" id="keto" name="dough" value="keto">
+                <label for="keto">Keto</label>
+                <input type="radio" id="usual" name="dough" value="usual">
+                <label for="usual">Usual</label>
+        </div>
             <div class="comments">
                 <p>Do you have any questions?</p>
                 <p>Send us a message!</p>
@@ -97,14 +97,17 @@
                 </div>
             </div>
         </span>
+        <span>
+            <div class="size-buttons">
+            <h2>Size</h2>
             <div class="size">
-                <h2>Size</h2>
                 <input type="radio" id="s" name="size" value="s">
                 <label for="s">S</label>
                 <input type="radio" id="m" name="size" value="m">
                 <label for="m">M</label>
                 <input type="radio" id="l" name="size" value="l">
-                <label for="usual">L</label>
+                <label for="l">L</label>
+            </div>
             </div>
             <div class="fillings">
                 <h2>Fillings</h2>
@@ -174,9 +177,11 @@
                 <div class="calories">
                     <p>Here are some calories</p>
                 </div>
-            </div>
+            </div> 
             <button id="confirm-order">Add to cart</button>
-        </div>
+        </span>
+    </div>
+   
         <klarna-placement data-key="top-strip-promotion-badge"data-locale="en-FI"></klarna-placement>
     </div>
     <footer>
