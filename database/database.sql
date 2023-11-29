@@ -102,7 +102,7 @@ CREATE TABLE PizzaIngredient (
  
 
 -- User data
-INSERT INTO Users (username, password, email, address, favorite_pizza, phone_number, created_at) 
+INSERT INTO Users (username, password, email, address, favorite_pizza, phone_number, user_level_id, created_at) 
 VALUES
 ('Anna', 'password123', 'anna@example.com', 'Karaportti 2, Espoo', 'Classic', '123456789', 1, '2023-11-14 12:48:00'),
 ('Slava', 'securepass', 'slava@example.com', 'Karaportti 2, Espoo', 'Low Calorie', '987654321', 1, '2023-11-14 13:30:00'),
