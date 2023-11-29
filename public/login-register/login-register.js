@@ -31,7 +31,7 @@ loginTab.addEventListener("click", () => {
 
 // Login and Register Forms
 
-
+// Login form
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -53,6 +53,8 @@ loginForm.addEventListener('submit', async (e) => {
     const data = await response.json();
 
     if (data.message === 'logged in') {
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
       window.location.href = '/';
     } else {
       alert('Invalid username/password');

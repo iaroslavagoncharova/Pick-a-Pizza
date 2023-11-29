@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import mainRouter from './routers/mainpage-router.mjs';
-import authRouter from './routers/auth-router.mjs';
+import accRouter from './routers/account-router.mjs';
 import mapPageRouter from './routers/map-page-router.mjs';
 import joinPageRouter from './routers/join-router.mjs';
 import pizzaRouter from './routers/make-pizza-router.mjs';
@@ -28,7 +28,7 @@ app.use(express.json());
 app.use('/', mainRouter);
 app.use('/sign-in', signinPageRouter);
 app.use('/login', loginRouter)
-app.use('/auth', authRouter);
+app.use('/my-account', accRouter);
 app.use('/directions', mapPageRouter);
 app.use('/pick-a-pizza-club', joinPageRouter);
 app.use('/make-your-pizza', pizzaRouter);

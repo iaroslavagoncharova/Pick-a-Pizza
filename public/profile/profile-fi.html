@@ -29,13 +29,8 @@
                         <li>
                             <div id="lang-container">
                                 <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                                <span>FI</span>
-                                <div class="dropdown">
-                                    <img class="top-nav-icon" id="lang-dropdown-arrow" src="../images/icons/arrow-icon.png" alt="Arrow Icon">
-                                    <div class="dropdown-content" id="lang-dropdown-content">
-                                        <a href="#" class="dropdown-link">EN</a>
-                                    </div>
-                                </div>
+                                <span class="lang-option inactive-lang" id="english">EN</span>
+                                <span class="lang-option active-lang" id="finnish">FI</span>
                             </div>
                         </li>
                     </ul>
@@ -83,10 +78,10 @@
                 <div id="personal-info">
                     <h3>Käyttäjätietosi:</h3>
                     <ul>
-                        <li>Nimi: Test User</li>
-                        <li>Sähköpostiosoite: testuser@gmail.com</li>
-                        <li>Puhelinumero: +35800000000</li>
-                        <li>Osoite: Esimerkkikatu 1, Helsinki</li>
+                        <li>Nimi: <p id="user-name"></p></li>
+                        <li>Sähköpostiosoite: <p id="user-email"></p></li>
+                        <li>Puhelinnumero: <p id="user-number"></p></li>
+                        <li>Osoite: <p id="user-address"></p></li>
                     </ul>
                     <a href="#"><button class="profile-button" id="change-profile">Muokkaa profiilia</button></a>
                 </div>
