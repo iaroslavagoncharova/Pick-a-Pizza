@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
+    <title>Shopping cart</title>
     <link rel="stylesheet" type="text/css" href="shopping-cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <script
+    async
+    data-environment="playground"
+    src="https://js.klarna.com/web-sdk/v1/klarna.js"
+    data-client-id="4c0f601c-0ee9-58e3-9ccc-83cd942c4fae"
+    ></script>
     <header>
         <div class="header-part logo-container" id="header-logo">
             <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo"></a>
@@ -160,6 +166,7 @@
                             <p class="small-text">By joining, you agree to our <a href="#">Club terms</a> and <a href="#">Privacy Policy</a></p>
                         </div>
                         <button class="cart-btn" id="checkout-btn">Proceed to Payment</button>
+                        <klarna-placement data-key="top-strip-promotion-badge"data-locale="en-FI"></klarna-placement>
                     </div>
                 </div>
             </div>

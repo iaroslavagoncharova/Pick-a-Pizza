@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="container.js" defer></script>
+</head>
+<body>
+    <script
+    async
+    data-environment="playground"
+    src="https://js.klarna.com/web-sdk/v1/klarna.js"
+    data-client-id="4c0f601c-0ee9-58e3-9ccc-83cd942c4fae"
+    ></script>
+    <header>
+        <div class="header-part logo-container" id="header-logo">
+            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo"></a>
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>  	
+        <div class="wrapper">
+            <div class="top_nav">
+                <div class="right">
+                    <ul>
+                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a></li>
+                        <li><a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a></li>
+                        <li>
+                            <div id="lang-container">
+                                <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
+                                <span>EN</span>
+                                <div class="dropdown">
+                                    <img class="top-nav-icon" id="lang-dropdown-arrow" src="../images/icons/arrow-icon.png" alt="Arrow Icon">
+                                    <div class="dropdown-content" id="lang-dropdown-content">
+                                        <a href="#" class="dropdown-link">FI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom_nav">
+                <div class="right">
+                    <ul>
+                        <div class="dropdown">
+                            <li><a href="#">Menu</a></li>
+                            <div class="dropdown-content" id="menu-dropdown">
+                                <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
+                                <a href="/join-us" class="dropdown-link">Open Positions</a>
+                                <a href="/directions" class="dropdown-link">Directions</a>
+                                <a href="#" class="dropdown-link">Pizza Ratings</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <li><a href="#">Pizza Prompts</a></li>
+                            <div class="dropdown-content" id="pizza-dropdown">
+                                <a href="#" class="dropdown-link">Gluten Free</a>
+                                <a href="#" class="dropdown-link">Keto</a>
+                                <a href="#" class="dropdown-link">Low Calorie</a>
+                                <a href="#" class="dropdown-link">Classic</a>
+                                <a href="#" class="dropdown-link">Vegan Classic</a>
+                                <a href="#" class="dropdown-link">Gluten Free Classic</a>
+                                <a href="#" class="dropdown-link">Season Deal</a>
+                            </div>
+                        </div>
+                        <li><a href="/make-your-pizza">Make a Pizza</a></li>
+                        <li><a href="/shopping-cart">
+                            <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
+                        </a></li>
+                        <li><a href="/sign-in">
+                            <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-image" id="homepage-background">
+        <div id="cart-container">
+            <textarea style="display: none" id="KCO">
+                <div id="klarna-checkout-container" style="overflow: hidden;">
+                    <div id="klarna-unsupported-page">
+                      <style type="text/css">
+                        @-webkit-keyframes klarnaFadeIn{from{opacity:0}to{opacity:1}}@-moz-keyframes klarnaFadeIn{from{opacity:0}to{opacity:1}}@keyframes klarnaFadeIn{from{opacity:0}to{opacity:1}}#klarna-unsupported-page{opacity:0;opacity:1\9;-webkit-animation:klarnaFadeIn ease-in 1;-moz-animation:klarnaFadeIn ease-in 1;animation:klarnaFadeIn ease-in 1;-webkit-animation-fill-mode:forwards;-moz-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-duration:.1s;-moz-animation-duration:.1s;animation-duration:.1s;-webkit-animation-delay:5s;-moz-animation-delay:5s;animation-delay:5s;text-align:center;padding-top:64px}#klarna-unsupported-page .heading{font-family:"Klarna Headline", Helvetica, Arial, sans-serif;color:rgb(23, 23, 23);font-size:36px;letter-spacing:-0.2px;-webkit-font-smoothing:antialiased;}#klarna-unsupported-page .subheading{font-family:"Klarna Text", "Klarna Sans", Helvetica, Arial, sans-serif;color:rgb(23, 23, 23);-webkit-font-smoothing:antialiased;line-height:28px;font-weight:400;font-size:19px;max-width:640px;margin:20px auto;}#klarna-unsupported-page .reload{cursor:pointer;outline:none;-webkit-tap-highlight-color:rgba(255, 255, 255, 0);border-width:1px;background-color:rgb(38, 37, 37);border-color:rgb(38, 37, 37);padding:15px 24px;margin-top:15px;color:rgb(255, 255, 255);font-family:"Klarna Text", "Klarna Sans", Helvetica, Arial, sans-serif;font-weight:500;text-rendering:geometricprecision;font-size:100%;}
+                      </style>
+                      <h1 class="heading">Something went wrong</h1>
+                      <p class="subheading">Sorry for any inconvenience, please try reloading the checkout page or try again later.</p>
+                      <p class="subheading">If the problem persists it may be because you are using an old version of the web browser which is not safe nor compatible with modern websites. For a smoother checkout experience, please install a newer browser.</p>
+                      <button class="reload" onclick="reloadCheckoutHandler && reloadCheckoutHandler()">Reload checkout</button>
+                    </div>
+                    <script id="klarna-checkout-context" type="text/javascript">
+                      /* <![CDATA[ */
+                      var reloadCheckoutHandler;
+                      (function(w, k, i, d, n, c, l){
+                        w[k] = w[k] || function(){(w[k].q = w[k].q || []).push(arguments)};
+                        l = w[k].config = {
+                          container: w.document.getElementById(i),
+                          ORDER_URL: 'https://js.playground.klarna.com/eu/kco/checkout/orders/2fddfb0b-95ea-499c-b981-6d2177453207',
+                          AUTH_HEADER: 'KlarnaCheckout dcfzbbbup15qvxxucx94',
+                          IS_CANARY: false,
+                          IS_IN_CLIENT_ROLLOUT: false,
+                          LOCALE: 'fi-FI',
+                          ORDER_STATUS: 'checkout_incomplete',
+                          MERCHANT_NAME: 'Pick-a-pizza',
+                          GUI_OPTIONS: [],
+                          ALLOW_SEPARATE_SHIPPING_ADDRESS: false,
+                          PURCHASE_COUNTRY: 'fin',
+                          PURCHASE_CURRENCY: 'EUR',
+                          TESTDRIVE: true,
+                          BOOTSTRAP_SRC: 'https://js.playground.klarna.com/kcoc/231128-83d91ca/checkout.bootstrap.js',
+                          FE_EVENTS_DISABLED: 'false',
+                          CLIENT_EVENT_HOST: 'https://eu.playground.klarnaevt.com'
+                        };
+                        n = d.createElement('script');
+                        c = d.getElementById(i);
+                        n.async = !0;
+                        n.src = l.BOOTSTRAP_SRC;
+                        c.appendChild(n);
+                        try {
+                          ((w.Image && (new w.Image)) || (d.createElement && d.createElement('img')) || {}).src =
+                            l.CLIENT_EVENT_HOST + '/v1/checkout/snippet/load' +
+                            '?sid=' + l.ORDER_URL.split('/').slice(-1) +
+                            '&order_status=' + w.encodeURIComponent(l.ORDER_STATUS) +
+                            '&timestamp=' + (new Date).getTime();
+                        } catch(e){}
+                        reloadCheckoutHandler = function () {
+                          try {
+                            ((w.Image && (new w.Image)) || (d.createElement && d.createElement('img')) || {}).src =
+                              l.CLIENT_EVENT_HOST + '/v1/checkout/snippet/reload?sid=' + l.ORDER_URL.split('/').slice(-1) +
+                              '&order_status=' + w.encodeURIComponent(l.ORDER_STATUS) +
+                              '&timestamp=' + (new Date()).getTime();
+                            window.location.reload();
+                          } catch(e){}
+                        }
+                      })(this, '_klarnaCheckout', 'klarna-checkout-container', document);
+                      /* ]]> */
+                    </script>
+                    <noscript>
+                      Please <a href="http://enable-javascript.com">enable JavaScript</a>.
+                    </noscript>
+                  </div>
+                  
+            </textarea>
+            <div id="cart-screen">
+                <div id="my-checkout-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div id="contact-info">
+            <p>Contacts:<br>
+                <span id="phone-number">+35800000000</span><br>
+                <span id="address">Karaportti 2, 02610 Espoo</span></p>
+        </div>
+        <div class="logo-container" id="footer-logo">
+            <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>
+        <div id="social-media-icons">
+            <i class="fa fa-facebook fa-2x"></i>
+            <i class="fa fa-instagram fa-2x"></i>
+            <i class="fa fa-whatsapp fa-2x"></i>
+        </div>
+    </footer>
+</body>
+</html>
