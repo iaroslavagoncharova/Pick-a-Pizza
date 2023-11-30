@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
-    <script src="login-register/login-register.js" defer></script>
+    <script type="module" src="login-register/login-register.js" defer></script>
     <link rel="stylesheet" type="text/css" href="login-register/login-register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -88,8 +88,7 @@
                             <input type="password" name="login-password" id="login-password" class="input-space" placeholder="password" required>
                         </div>
                         <div class="form-submit">
-                                <input type="submit" value="Sign in" id="signin-btn" class="form-btn">
-                            </a>
+                            <input type="submit" value="Sign in" id="signin-btn" class="form-btn">
                         </div>
                     </form>
                     <form method="post" action="/register" class="user-form inactive-form" id="register-form">
@@ -106,10 +105,9 @@
                             <input type="checkbox" id="not-robot" name="not-robot" value="I am not a robot">
                             <label for="not-robot"> I am not a robot</label>
                         </div>
-                            <div class="form-submit">
-                                <input type="submit" value="Sign up" id="signup-btn" class="form-btn">
-                            </div>
-                        </a>
+                        <div class="form-submit">
+                            <input type="submit" value="Sign up" id="signup-btn" class="form-btn">
+                        </div>
                     </form>
                 </div>
             </div>

@@ -31,7 +31,7 @@ loginTab.addEventListener("click", () => {
 
 // Login and Register Forms
 
-// Login form
+// Login form 
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
