@@ -63,4 +63,42 @@ categoryTitles.forEach(function (title) {
     });
 });
 
+const addToCartButton = document.getElementById('confirm-order');
+    addToCartButton.addEventListener('click', sendToDatabase);
+    function addToCart() {
+        const selectedDough = document.querySelector('input[name="dough"]:checked').value;
+        const selectedSize = document.querySelector('input[name="size"]:checked').value;
+        const selectedIngredients = [];
+        document.querySelectorAll('.category-content input:checked').forEach((checkbox) => {
+          selectedIngredients.push(checkbox.id);
+        });
+        return {
+          dough: selectedDough,
+          size: selectedSize,
+          ingredients: selectedIngredients,
+          calories: 0,
+          carbs: 0,
+          fats: 0,
+          protein: 0,
+          price: 0
+        };
+      }
+
+
+    async function sendToDatabase() {
+        const pizzaData = addToCart();
+        try {
+            const response = await fetch('/make-your-pizza', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(pizzaData),
+            });
+            const result = await response.json();
+            console.log(result);
+          } catch (error) {
+            console.error('Error sending data to the server:', error);
+          }
+    } 
 
