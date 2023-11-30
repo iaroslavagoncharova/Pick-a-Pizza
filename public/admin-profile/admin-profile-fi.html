@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin-profiili</title>
-    <script type="module" src="admin-profile/profile.js" defer></script>
+    <script type="module" src="admin-profile/profile.js"></script>
     <link rel="stylesheet" href="admin-profile/admin-profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -17,7 +17,7 @@
     ></script>
     <header>
         <div class="header-part logo-container" id="header-logo">
-            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo"></a>
+            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" class="pizza-logo"></a>
             <h1 class="page-title">Pick-a-Pizza</h1>
         </div>  	
         <div class="wrapper">
@@ -78,34 +78,35 @@
                 <div id="orders-progress">
                     <h3>Käynnissä olevat tilaukset</h3>
                     <ul>
-                        <a href="#"><li>15.11.2023 20.16 Order #890421652</li></a>
-                        <a href="#"><li>15.11.2023 20.10 Order #325432789</li></a>
-                        <a href="#"><li>15.11.2023 20.09 Order #948792685</li></a>
-                        <a href="#"><li>15.11.2023 20.06 Order #120387189</li></a>
-                        <a href="#"><li>15.11.2023 20.02 Order #527658364</li></a>
+                        <li><a href="#">15.11.2023 20.16 Order #890421652</a></li>
+                        <li><a href="#">15.11.2023 20.10 Order #325432789</a></li>
+                        <li><a href="#">15.11.2023 20.09 Order #948792685</a></li>
+                        <li><a href="#">15.11.2023 20.06 Order #120387189</a></li>
+                        <li><a href="#">15.11.2023 20.02 Order #527658364</a></li>
                     </ul>
                     <a href="#"><button class="admin-button" id="all-orders">Kaikki tilaukset</button></a>
                 </div>
                 <div id="users"><h3>Käyttäjät</h3>
                 <ul>
-                    <a href="#"><li>Slava slava@example.com 0100000000</li></a>
-                    <a href="#"><li>Juan juan@example.com 0200000000</li></a>
-                    <a href="#"><li>Anna anna@example.com 0300000000</li></a>
-                    <a href="#"><li>User1 user1@example.com 0400000000</li></a>
-                    <a href="#"><li>User2 user2@example.com 0500000000</li></a>
+                    <li><a href="#">Slava slava@example.com 0100000000</a></li>
+                    <li><a href="#">Juan juan@example.com 0200000000</a></li>
+                    <li><a href="#">Anna anna@example.com 0300000000</a></li>
+                    <li><a href="#">User1 user1@example.com 0400000000</a></li>
+                    <li><a href="#">User2 user2@example.com 0500000000</a></li>
                 </ul>
                 <a href="#"><button class="admin-button" id="all-users">Kaikki käyttäjät</button></a>
                 </div>
                 <div id="ingredients"><h3>Ainekset</h3>
                     <ul>
-                        <a href="#"><li>Tomaatti</li></a>
-                        <a href="#"><li>Herkkusieni</li></a>
-                        <a href="#"><li>Kana</li></a>
-                        <a href="#"><li>Tonnikala</li></a>
-                        <a href="#"><li>Tofu</li></a>
+                        <li><a href="#">Tomaatti</a></li>
+                        <li><a href="#">Herkkusieni</a></li>
+                        <li><a href="#">Kana</a></li>
+                        <li><a href="#">Tonnikala</a></li>
+                        <li><a href="#">Tofu</a></li>
                     </ul>
                     <a href="#"><button class="admin-button" id="all-ingredients">Näytä varastosaldo</button></a>
             </div>
+    </div>
     </div>
     </div>
     <footer>
@@ -115,7 +116,7 @@
                 <span id="address">Karaportti 2, 02610 Espoo</span></p>
         </div>
         <div class="logo-container" id="footer-logo">
-            <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo">
+            <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" class="pizza-logo">
             <h1 class="page-title">Pick-a-Pizza</h1>
         </div>
         <div id="social-media-icons">
