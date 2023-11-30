@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
-    <script src="login-register/login-register.js" defer></script>
+    <title>Kirjaudu / rekisteröidy</title>
+    <script type="module" src="login-register/login-register.js" defer></script>
     <link rel="stylesheet" href="login-register/login-register.css">
     <link rel="stylesheet" href="login-register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
             </div>
             <div class="bottom_nav">
                 <div class="right">
-                    <ul>
+                    <ul id="bottom-nav-items">
                         <div class="dropdown">
                             <li><a href="#">Valikko</a></li>
                             <div class="dropdown-content" id="menu-dropdown">
@@ -59,7 +59,7 @@
                         <li><a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
                         </a></li>
-                        <li><a href="/sign-in">
+                        <li id="login-icon"><a href="/sign-in">
                             <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
                         </a></li>
                     </ul>
@@ -83,10 +83,7 @@
                             <input type="password" name="password" id="login-password" class="input-space" placeholder="Salasana" required>
                         </div>
                         <div class="form-submit">
-                            <a href="/auth/my-account">
-                                <!-- TODO: authentication -->
                                 <input type="submit" value="Kirjaudu sisään" id="signin-btn" class="form-btn">
-                            </a>
                         </div>
                     </form>
                     <form method="get" action="/register" class="user-form inactive-form" id="register-form">
@@ -103,12 +100,9 @@
                             <input type="checkbox" id="not-robot" name="not-robot" value="I am not a robot">
                             <label for="not-robot"> En ole robotti</label>
                         </div>
-                        <a href="/auth/my-account">
-                            <!-- TODO: authentication -->
-                            <div class="form-submit">
-                                <input type="submit" value="Luo tili" id="signup-btn" class="form-btn">
-                            </div>
-                        </a>
+                        <div class="form-submit">
+                            <input type="submit" value="Luo tili" id="signup-btn" class="form-btn">
+                        </div>
                     </form>
                 </div>
             </div>

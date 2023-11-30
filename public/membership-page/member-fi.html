@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klubijäsenyys</title>
+    <script type="module" src="membership-page/member.js" defer></script>
     <link rel="stylesheet" href="membership-page/member.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -31,22 +32,22 @@
             </div>
             <div class="bottom_nav">
                 <div class="right">
-                    <ul>
+                    <ul id="bottom-nav-items">
                         <div class="dropdown">
                             <li><a href="#">Valikko</a></li>
                             <div class="dropdown-content" id="menu-dropdown">
                                 <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
-                                <a href="/join-us" class="dropdown-link">Avoimet_työpaikat</a>
+                                <a href="/join-us" class="dropdown-link">Avoimet työpaikat</a>
                                 <a href="/directions" class="dropdown-link">Reittiohjeet</a>
                                 <a href="#" class="dropdown-link">Arvostelut</a>
                             </div>
                         </div>
                         <div class="dropdown">
-                            <li><a href="#">Valmiit pizza pohjat</a></li>
+                            <li><a href="#">Valmiit pizzapohjat</a></li>
                             <div class="dropdown-content" id="pizza-dropdown">
                                 <a href="#" class="dropdown-link">Gluteeniton</a>
                                 <a href="#" class="dropdown-link">Keto</a>
-                                <a href="#" class="dropdown-link">Vähänkalorinen</a>
+                                <a href="#" class="dropdown-link">Vähäkalorinen</a>
                                 <a href="#" class="dropdown-link">Classic</a>
                                 <a href="#" class="dropdown-link">Vegaani Classic</a>
                                 <a href="#" class="dropdown-link">Gluteeniton Classic</a>
@@ -57,7 +58,7 @@
                         <li><a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
                         </a></li>
-                        <li><a href="/sign-in">
+                        <li id="login-icon"><a href="/sign-in">
                             <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
                         </a></li>
                     </ul>
@@ -72,15 +73,15 @@
             <h2>Liity jäsenklubiimme saadaksesi erikoisetuja, alennuksia ja paljon muuta! Liity osaksi pizzaa rakastavaa yhteisöämme ja nauti seuraavista eduista:</h2>
     
             <ul>
-                <li>-10% Ensimmäisestä tilauksestasi liittymisen jälkeen</li>
-                <li>Sujuvampi tilaus kun edelliset tilaukset ovat muistissa.</li>
+                <li>-10% alennus ensimmäisestä tilauksestasi liittymisen jälkeen</li>
+                <li>Sujuvampi tilaus: edelliset tilauksesi ovat muistissa.</li>
                 <li>Varhainen pääsy kausitarjouksiimme ja rajoitetun ajan tarjouksiin.</li>
                 <li>Ilmainen kuljetus kaikkiin yli 20€ tilauksiin.</li>
             </ul>
             
     
             <h3>Älä missaa näitä herkullisia etuja! Rekisteröidy nyt ja liity jäseneksi!</h3>
-          <a href="/auth/sign-in"> Liity nyt!</a>
+          <a href="/sign-in"> Liity nyt!</a>
            
         </div>
            

@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admiinin profiili</title>
-    <script src="../admin-profile/admin-profile.js" defer></script>
-    <link rel="stylesheet" href="../admin-profile/admin-profile.css">
-    <script src="admin-profile/profile.js" defer></script>
+    <title>Admin account</title>
+    <script type="module" src="admin-profile/profile.js" defer></script>
     <link rel="stylesheet" href="admin-profile/admin-profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -34,7 +32,7 @@
             </div>
             <div class="bottom_nav">
                 <div class="right">
-                    <ul>
+                    <ul id="bottom-nav-items">
                         <div class="dropdown">
                             <li><a href="#">Menu</a></li>
                             <div class="dropdown-content" id="menu-dropdown">
@@ -60,7 +58,7 @@
                         <li><a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
                         </a></li>
-                        <li><a href="/sign-in">
+                        <li id="login-icon"><a href="/sign-in">
                             <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
                         </a></li>
                     </ul>
