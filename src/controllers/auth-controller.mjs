@@ -37,4 +37,17 @@ const getMe = async (req, res) => {
     }
 };
 
-export {postLogin, getMe};
+const logOut = async (req, res) => {
+    console.log('logOut');
+
+    if (localStorage.token && localStorage.user) {
+        try {
+            localStorage.clear();
+            res.json({message: 'log out successful'});
+        } catch (e) {
+            res.status(400);
+        }
+    }
+};
+
+export {postLogin, getMe, logOut};

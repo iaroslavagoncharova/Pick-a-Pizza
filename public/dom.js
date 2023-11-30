@@ -28,11 +28,16 @@ const addUserDataToDom = (user) => {
     userAccount.innerText = 'My Account';
 
     const logout = document.createElement('a');
-    logout.href = '/logout';
     logout.classList.add('dropdown-link');
-    logout.innerText = 'Log out';
+    logout.id = 'logout-link';
+
+    const logoutBtn = document.createElement('button');
+    logoutBtn.id = 'logout-btn';
+    logoutBtn.innerText = 'Log out';
 
     dropdownContent.appendChild(userAccount);
+
+    logout.appendChild(logoutBtn);
     dropdownContent.appendChild(logout);
 
     textCont.appendChild(userEmail);
@@ -44,4 +49,29 @@ const addUserDataToDom = (user) => {
     container.appendChild(userOptions);
 };
 
-export {addUserDataToDom};
+const removeUserDataFromDom = () => {
+    const container = document.getElementById('bottom-nav-items');
+    const userOptions = document.getElementById('user-options');
+
+    if (userOptions) {
+        userOptions.remove();
+
+        const listItem = document.createElement('li');
+        listItem.id = 'login-icon';
+    
+        const redirect = document.createElement('a');
+        redirect.href = '/sign-in';
+    
+        const userIcon = document.createElement('img');
+        userIcon.classList.add('bottom-nav-icon');
+        userIcon.id = 'user-icon';
+        userIcon.src = '../images/icons/user-icon.png';
+        userIcon.alt = 'User Icon';
+    
+        redirect.appendChild(userIcon);
+        listItem.appendChild(redirect);
+        container.appendChild(listItem);
+    }
+};
+
+export {addUserDataToDom, removeUserDataFromDom};

@@ -1,7 +1,7 @@
 {
   "name": "pick-a-pizza",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web-kehitysprojekti syksy 2023 Iaroslava Goncharova, Anna Malassu, Juan Rosales-Mäkinen",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "express": "^4.18.2",
-    "g": "^2.0.1",
     "url": "^0.11.3"
   }
 }

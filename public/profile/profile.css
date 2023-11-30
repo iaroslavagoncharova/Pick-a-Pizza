@@ -205,6 +205,25 @@ header {
     border: 1px var(--grayish-brown) solid;
 }
 
+#logout-link {
+    cursor: unset;
+}
+
+#logout-btn {
+    border: none;
+    background-color: var(--light-peach);
+    font-family: Rosario;
+    font-size: large;
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+}
+
+#logout-btn:hover {
+    cursor: pointer;
+    background-color: #dec5a5;
+}
+
 a {
     text-decoration: none;
 }

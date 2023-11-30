@@ -1,4 +1,5 @@
-import { addUserDataToDom } from "../dom";
+import { addUserDataToDom, removeUserDataFromDom } from "../dom.js";
+import { logUserOut } from "../logout.js";
 
 window.onload = () => {
     const token = localStorage.getItem('token');
@@ -7,5 +8,8 @@ window.onload = () => {
     
     if (token) {
         addUserDataToDom(user);
+        logUserOut();
+    } else {
+        removeUserDataFromDom();
     }
 };

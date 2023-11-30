@@ -1,4 +1,5 @@
-import {addUserDataToDom} from "../dom.js";
+import {addUserDataToDom, removeUserDataFromDom} from "../dom.js";
+import { logUserOut } from "../logout.js";
 
 const userName = document.getElementById('user-name');
 const userEmail = document.getElementById('user-email');
@@ -13,11 +14,13 @@ window.onload = () => {
     
     if (token) {
         addUserDataToDom(user);
-        
+        logUserOut();
         userName.innerHTML = user.username;
         userEmail.innerHTML = user.email;
         userNumber.innerHTML = user.phone_number;
         userAddress.innerHTML = user.address;
 
+    } else {
+        removeUserDataFromDom();
     }
 };
