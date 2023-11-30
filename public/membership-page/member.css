@@ -302,6 +302,7 @@ a {
     text-shadow: 3px 2px 2px var(--grayish-brown);
     border-radius: 20px;
     padding: 20px;
+    flex-direction: column;
 }
 
 #club-page li {
@@ -373,4 +374,43 @@ footer {
     margin: auto;
     height: 30px;
     width: 30px;
+}
+/* Tablet view */
+@media only screen and (max-width: 768px) {
+    #club-page h1{
+        font-size: 2.5rem;
+        padding-bottom: 5%;
+    }
+    #club-page h2 {
+        font-size: 1em;
+    }
+
+ 
+    #club-page ul{
+        font-size: 1rem;
+        margin: 0%;
+    }
+
+}
+
+/* Mobile view */
+@media only screen and (max-width: 480px) {
+    #club-page h1{
+        font-size: 1.5rem;
+    }
+    #club-page h2 {
+        display: none;
+    }
+    #club-page h3{
+        display: none;
+    }
+    #club-page ul{
+        font-size: 1rem;
+        margin: 0%;
+    }
+    #club-page a{
+        margin-top: 20px;
+        width: 100%;
+    }
+
 }

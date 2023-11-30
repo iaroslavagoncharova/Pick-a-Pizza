@@ -339,6 +339,16 @@ a {
     cursor: pointer;
     transition: width 0.5s ease, order 0.5s ease;
 }
+.content-tab p{
+    font-size: x-large;
+    font-family: Rosario;
+    font-weight: bold;
+    text-align: center;
+    justify-content: center;
+}
+#about-us p {
+    background-color: var(--light);
+}
 
 #offers, #promo-code {
     cursor: default;

@@ -399,3 +399,58 @@ footer {
     height: 30px;
     width: 30px;
 }
+
+/* Tablet view */
+@media only screen and (max-width: 768px) {
+    #job-search {
+        grid-template-columns: 1fr; 
+    }
+
+    #job-search h1 {
+        font-size: 60px;
+        height: auto;
+    }
+
+    #job-search h2,
+    #job-search h3 {
+        font-size: large;
+        grid-column: 1/6;
+    }
+
+    #job-search img {
+        max-width: 50%;
+    }
+    #job-search li{
+       margin-top: 20px;
+    
+    }
+
+
+
+}
+
+/* Mobile view */
+@media only screen and (max-width: 480px) {
+    #job-search {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    #job-search h1 {
+        font-size: 40px;
+        height: auto;
+    }
+
+    #job-search h2,
+    #job-search h3 {
+        font-size: medium;
+        grid-column: 1/6;
+    }
+
+    #job-search img {
+        display: none;
+    }
+    #job-search li{
+        grid-column: 1/3;
+    }
+}
