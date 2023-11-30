@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etusivu</title>
-    <script src="/mainpage/main.js" defer></script>
+    <script type="module" src="/mainpage/main.js" defer></script>
     <link rel="stylesheet" type="text/css" href="/mainpage/mainpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -38,22 +38,22 @@
             </div>
             <div class="bottom_nav">
                 <div class="right">
-                    <ul>
+                    <ul id="bottom-nav-items">
                         <div class="dropdown">
                             <li><a href="#">Valikko</a></li>
                             <div class="dropdown-content" id="menu-dropdown">
                                 <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
-                                <a href="/join-us" class="dropdown-link">Avoimet_työpaikat</a>
+                                <a href="/join-us" class="dropdown-link">Avoimet työpaikat</a>
                                 <a href="/directions" class="dropdown-link">Reittiohjeet</a>
                                 <a href="#" class="dropdown-link">Arvostelut</a>
                             </div>
                         </div>
                         <div class="dropdown">
-                            <li><a href="#">Valmiit pizza pohjat</a></li>
+                            <li><a href="#">Valmiit pizzapohjat</a></li>
                             <div class="dropdown-content" id="pizza-dropdown">
                                 <a href="#" class="dropdown-link">Gluteeniton</a>
                                 <a href="#" class="dropdown-link">Keto</a>
-                                <a href="#" class="dropdown-link">Vähänkalorinen</a>
+                                <a href="#" class="dropdown-link">Vähäkalorinen</a>
                                 <a href="#" class="dropdown-link">Classic</a>
                                 <a href="#" class="dropdown-link">Vegaani Classic</a>
                                 <a href="#" class="dropdown-link">Gluteeniton Classic</a>
@@ -64,7 +64,7 @@
                         <li><a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
                         </a></li>
-                        <li><a href="/sign-in">
+                        <li id="login-icon"><a href="/sign-in">
                             <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
                         </a></li>
                     </ul>
@@ -76,11 +76,11 @@
         <div id="homepage-content">
             <div id="quick-select-container">
                 <h2 class="page-title" id="hero-title">Pick-a-Pizza</h2>
-                <p id="pizza-selection-text">Valitse yksi tai kokoa oma!:</p>
+                <p id="pizza-selection-text">Valitse yksi tai kokoa omasi!</p>
                 <div id="pizza-templates">
                     <button class="pizza-selector" id="button-1">Top-Choice Pizza</button>
                     <button class="pizza-selector" id="button-2">November Pizza</button>
-                    <button class="pizza-selector" id="button-3">Vähänkalorinen</button>
+                    <button class="pizza-selector" id="button-3">Vähäkalorinen</button>
                     <button class="pizza-selector" id="button-4">Vegaani</button>
                     <button class="pizza-selector" id="button-5">Gluteeniton</button>
                     <button class="pizza-selector" id="button-6">Keto</button>
@@ -105,7 +105,7 @@
                     <img src="../images/pizza-ad.png" alt="pizza" id="pizza-ad">
                 </div>
                 <div class="content-tab-no-expand" id="promo-code">
-                    <h3>Kaikki vegaani pizzat vain 10 €. Koodilla VEGAN10</h3>
+                    <h3>Kaikki vegaaniset pizzat vain 10 € koodilla VEGAN10</h3>
                     <p class="promo-text">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
                     <img src="../images/pizza-promo.png" alt="pizza" id="pizza-promo">
             </div>

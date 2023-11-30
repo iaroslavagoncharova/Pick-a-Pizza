@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ostoskärry</title>
-    <link rel="stylesheet" type="text/css" href="shopping-cart.css">
+    <title>Ostoskori</title>
+    <script type="module" src="shopping-cart/shopping-cart.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="shopping-cart/shopping-cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -37,33 +38,33 @@
             </div>
             <div class="bottom_nav">
                 <div class="right">
-                    <ul>
+                    <ul id="bottom-nav-items">
                         <div class="dropdown">
                             <li><a href="#">Valikko</a></li>
                             <div class="dropdown-content" id="menu-dropdown">
                                 <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
-                                <a href="/join-us" class="dropdown-link">Avoimet_työpaikat</a>
+                                <a href="/join-us" class="dropdown-link">Avoimet työpaikat</a>
                                 <a href="/directions" class="dropdown-link">Reittiohjeet</a>
                                 <a href="#" class="dropdown-link">Arvostelut</a>
                             </div>
                         </div>
                         <div class="dropdown">
-                            <li><a href="#">Valmiit pizza pohjat</a></li>
+                            <li><a href="#">Valmiit pizzapohjat</a></li>
                             <div class="dropdown-content" id="pizza-dropdown">
                                 <a href="#" class="dropdown-link">Gluteeniton</a>
                                 <a href="#" class="dropdown-link">Keto</a>
-                                <a href="#" class="dropdown-link">Vähänkalorinen</a>
+                                <a href="#" class="dropdown-link">Vähäkalorinen</a>
                                 <a href="#" class="dropdown-link">Classic</a>
                                 <a href="#" class="dropdown-link">Vegaani Classic</a>
                                 <a href="#" class="dropdown-link">Gluteeniton Classic</a>
                                 <a href="#" class="dropdown-link">Kausitarjous</a>
                             </div>
                         </div>
-                        <li><a href="/make-your-pizza">Kokoa oma pizza!</a></li>
+                        <li><a href="/make-your-pizza">Kokoa oma pizzasi!</a></li>
                         <li><a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
                         </a></li>
-                        <li><a href="/sign-in">
+                        <li id="login-icon"><a href="/sign-in">
                             <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
                         </a></li>
                     </ul>
@@ -113,7 +114,7 @@
                                         <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
                                         <div>
                                             <h4>Vegan Classic</h4>
-                                            <p>Vähankalorinen</p>
+                                            <p>Vähäkalorinen</p>
                                         </div>
                                     </div>
                                 </td>
@@ -150,15 +151,15 @@
                     </div>
                     <div id="proceed">
                         <div id="membership-screen">
-                            <h2 id="join-header"><i>Liity Pick-a-Pizza klubiin</i></h2>
-                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">-10% pois your ensimmäisestä tilauksestasi</p>
-                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">Kerää pisteitä jokaisesta tilauksesi</p>
+                            <h2 id="join-header"><i>Liity Pick-a-Pizza -klubiin!</i></h2>
+                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">-10% alennus ensimmäisestä tilauksestasi</p>
+                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">Kerrytä pisteitäsi joka kerta kun tilaat</p>
                             <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">Pääsy arvostelemaan ja muuhun!</p>
                             <div id="join-box">
                                 <input type="checkbox" id="join-club" name="join-club" value="Join">
                                 <label for="join-club"> Liity jäseneksi</label><br>
                             </div>
-                            <p class="small-text">Liittymällä, hyväksyt meidän <a href="#">käyttöehdot</a> ja <a href="#">Tietosuojakäytännön</a></p>
+                            <p class="small-text">Liittymällä hyväksyt meidän <a href="#">käyttöehtomme</a> ja <a href="#">Tietosuojakäytäntömme</a></p>
                         </div>
                         <button class="cart-btn" id="checkout-btn" ><a href="checkout.html"></a> Maksamaan</button>
                         <klarna-placement data-key="top-strip-promotion-badge"data-locale="en-FI"></klarna-placement>
