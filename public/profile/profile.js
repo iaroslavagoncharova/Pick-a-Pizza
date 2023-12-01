@@ -28,3 +28,16 @@ window.onload = () => {
         removeUserDataFromDom();
     }
 };
+
+const changeProfile = document.getElementById('change-profile');
+const allOrders = document.getElementById('all-orders');
+const newsletter = document.getElementById('newsletter');
+changeProfile.addEventListener('click', () => {
+    window.location.href = '#';
+});
+allOrders.addEventListener('click', () => {
+    window.location.href = '#';
+});
+newsletter.addEventListener('click', () => {
+    window.location.href = '#';
+});

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oma pizza</title>
-    <script type="module" src="pizza/pizza.js" defer></script>
+    <script type="module" src="pizza/pizza.js"></script>
     <link rel="stylesheet" href="pizza/pizza.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -17,30 +17,26 @@
     ></script>
     <header>
         <div class="header-part logo-container" id="header-logo">
-            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo"></a>
+            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" class="pizza-logo"></a>
             <h1 class="page-title">Pick-a-Pizza</h1>
         </div>  	
         <div class="wrapper">
             <div class="top_nav">
                 <div class="right">
-                    <ul>
-                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a></li>
-                        <li><a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a></li>
-                        <li>
+                        <a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a>
+                        <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
                             <div id="lang-container">
                                 <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                                <span class="lang-option inactive-lang" id="english">EN</span>
-                                <span class="lang-option active-lang" id="finnish">FI</span>
+                                <span class="lang-option active-lang" id="english">EN</span>
+                                <span class="lang-option inactive-lang" id="finnish">FI</span>
                             </div>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="bottom_nav">
                 <div class="right">
-                    <ul id="bottom-nav-items">
+                    <div id="bottom-nav-items">
                         <div class="dropdown">
-                            <li><a href="#">Valikko</a></li>
+                            <a href="#" id="menu">Valikko</a>
                             <div class="dropdown-content" id="menu-dropdown">
                                 <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
                                 <a href="/join-us" class="dropdown-link">Avoimet työpaikat</a>
@@ -49,7 +45,7 @@
                             </div>
                         </div>
                         <div class="dropdown">
-                            <li><a href="#">Valmiit pizzapohjat</a></li>
+                            <a href="#" id="prompts">Valmiit pizzapohjat</a>
                             <div class="dropdown-content" id="pizza-dropdown">
                                 <a href="#" class="dropdown-link">Gluteeniton</a>
                                 <a href="#" class="dropdown-link">Keto</a>
@@ -60,28 +56,35 @@
                                 <a href="#" class="dropdown-link">Kausitarjous</a>
                             </div>
                         </div>
-                        <li><a href="/make-your-pizza">Kokoa oma pizza!</a></li>
-                        <li><a href="/shopping-cart">
+                        <a href="/make-your-pizza" id="make-a-pizza">Kokoa oma pizza</a>
+                        <a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
-                        </a></li>
-                        <li id="login-icon"><a href="/sign-in">
+                        </a>
+                        <div id="login-icon"><a href="/sign-in">
                             <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
-                        </a></li>
-                    </ul>
+                        </a> 
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     </header>
     <div class="hero-image" id="homepage-background">
         <div id="homepage-content">
+            <span class="left-side-content">
             <div class="pizza-name">
                 <h1>Oma Pizza</h1>
             </div>
             <div class="dough-image">
                 <img src="../images/pizza-img.png" alt="pizza" id="pizza-photo">
-                <button id="glut">Glut</button>
-                <button id="keto">Keto</button>
-                <button id="usual">Tavallinen</button>
+            </div> 
+            <div class="dough-buttons">
+                <input type="radio" id="gluten-free" name="dough" value="gluten-free">
+                <label for="gluten-free">Glut</label>
+                <input type="radio" id="keto" name="dough" value="keto">
+                <label for="keto">Keto</label>
+                <input type="radio" id="usual" name="dough" value="usual">
+                <label for="usual">Tavallinen</label>
             </div>
             <div class="comments">
                 <p>Onko sinulla kysyttävää?</p>
@@ -90,12 +93,19 @@
                     <textarea name="message" id="message" cols="30" rows="5" placeholder="Hei, olen allerginen..."></textarea>
                 </div>
             </div>
+        </span>
+        <span>
+        <div class="size-buttons">
+            <h2>Koko</h2>
             <div class="size">
-                <h2>Koko</h2>
-                <button id="s">S</button>
-                <button id="m">M</button>
-                <button id="l">L</button>
+                <input type="radio" id="s" name="size" value="s">
+                <label for="s">S</label>
+                <input type="radio" id="m" name="size" value="m">
+                <label for="m">M</label>
+                <input type="radio" id="l" name="size" value="l">
+                <label for="l">L</label>
             </div>
+        </div>
             <div class="fillings">
                 <h2>Täytteet</h2>
                 <div class="search-container">
@@ -166,8 +176,9 @@
                 </div>
             </div>
             <button id="confirm-order">Osta</button>
+        </span>
         </div>
-        <klarna-placement data-key="top-strip-promotion-badge"data-locale="en-FI"></klarna-placement>
+        <klarna-placement data-key="top-strip-promotion-badge" data-locale="en-FI"></klarna-placement>
     </div>
     <footer>
         <div id="contact-info">
