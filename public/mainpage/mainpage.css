@@ -34,6 +34,8 @@ header {
     display: flex;
     flex-direction: row;
     height: 150px;
+    margin: 0;
+    padding: 0;
 }
 
 .logo-container {
@@ -42,11 +44,11 @@ header {
 }
 
 #header-logo {
-    width: 25%;
+    width: 30%;
     height: 100%;
 }
 
-#pizza-logo {
+.pizza-logo {
     height: 100px;
     padding: 0.8rem 0;
 }
@@ -62,16 +64,15 @@ header {
     width: 80%;
     display: flex;
     flex-direction: column;
+    margin: 0 2rem 0 0;
 }
 
 .wrapper .top_nav{
     margin-top: 0;
-    width: 100%;
     height: 60px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    align-items: center;
 }
 
 .top-nav-icon {
@@ -97,7 +98,7 @@ header {
 
 .active-lang {
     background-color: var(--grayish-brown);
-    border-radius: 3px solid var(--grayish-brown);
+    border: 3px solid var(--grayish-brown);
     color: var(--light);
 }
 
@@ -116,21 +117,18 @@ header {
     display: inline-block;
 }
 
+
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 2rem;
+    top: 3rem;
     background-color: var(--light);
-    width: 160px;
+    width: 180px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
-#pizza-dropdown {
-    left: 2rem;
-}
-
-.dropdown-link {
+.dropdown-content a {
     text-align: center;
     text-decoration: none;
     color: var(--grayish-brown);
@@ -147,24 +145,45 @@ header {
 .dropdown:hover .dropdown-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-ul {
+#bottom-nav-items {
     display: flex;
+    justify-content: space-evenly;
+}
+
+.right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 80%;
+    gap: 1.5rem;
+}
+
+#user-options {
     list-style-type: none;
 }
 
-.wrapper .top_nav .right ul li {
+#user-options li {
+    padding: 0 1rem;
     margin: 0 1rem;
 }
 
-.wrapper .top_nav .right ul li a {
-    display: block;
-    padding: 8px 10px;
+#bottom-nav-items a{
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    color: var(--grayish-brown);
+    margin: auto 2rem;
+}
+#pizza-dropdown {
+    left: 2rem;
 }
 
-.wrapper .bottom_nav {
-    width: 100%;
+.wrapper .bottom_nav{
     height: 90px;
     display: flex;
     flex-direction: row;
@@ -172,21 +191,8 @@ ul {
     align-items: center;
 }
 
-.wrapper .bottom_nav ul li {
-    margin: auto 2rem;
-    white-space: nowrap;
-    display: flex;
-    justify-content: space-between;
-}
-
-.wrapper .bottom_nav ul .dropdown {
-    margin: auto 2rem;
-}
-
-.wrapper .bottom_nav ul li a{
-    font-family: Rosario;
-    color: var(--grayish-brown);
-    padding: 1rem;
+#bottom-nav-items .dropdown {
+    margin: auto 0 auto 2rem;
 }
 
 #user-options {
@@ -195,8 +201,6 @@ ul {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-content: center;
-
 }
 
 #user-dropdown {
@@ -309,7 +313,6 @@ a {
 
 #button-7 {
     background-color: var(--tomato);
-    width: 1.5fr;
     margin-top: 1rem;
 }
 
@@ -340,14 +343,16 @@ a {
     transition: width 0.5s ease, order 0.5s ease;
 }
 .content-tab p{
-    font-size: x-large;
+    font-size: 20px;
     font-family: Rosario;
     font-weight: bold;
     text-align: center;
     justify-content: center;
 }
+
 #about-us p {
     background-color: var(--light);
+    font-size: 20px;
 }
 
 #offers, #promo-code {

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etusivu</title>
-    <script type="module" src="/mainpage/main.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="/mainpage/mainpage.css">
+    <script type="module" src="../mainpage/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="../mainpage/mainpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -17,30 +17,26 @@
     ></script>
     <header>
         <div class="header-part logo-container" id="header-logo">
-            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo"></a>
+            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" class="pizza-logo"></a>
             <h1 class="page-title">Pick-a-Pizza</h1>
         </div>  	
         <div class="wrapper">
             <div class="top_nav">
                 <div class="right">
-                    <ul>
-                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a></li>
-                        <li><a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a></li>
-                        <li>
+                        <a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a>
+                        <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
                             <div id="lang-container">
                                 <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                                <span class="lang-option inactive-lang" id="english">EN</span>
-                                <span class="lang-option active-lang" id="finnish">FI</span>
+                                <span class="lang-option active-lang" id="english">EN</span>
+                                <span class="lang-option inactive-lang" id="finnish">FI</span>
                             </div>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="bottom_nav">
                 <div class="right">
-                    <ul id="bottom-nav-items">
+                    <div id="bottom-nav-items">
                         <div class="dropdown">
-                            <li><a href="#">Valikko</a></li>
+                            <a href="#" id="menu">Valikko</a>
                             <div class="dropdown-content" id="menu-dropdown">
                                 <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
                                 <a href="/join-us" class="dropdown-link">Avoimet työpaikat</a>
@@ -49,7 +45,7 @@
                             </div>
                         </div>
                         <div class="dropdown">
-                            <li><a href="#">Valmiit pizzapohjat</a></li>
+                            <a href="#" id="prompts">Valmiit pizzapohjat</a>
                             <div class="dropdown-content" id="pizza-dropdown">
                                 <a href="#" class="dropdown-link">Gluteeniton</a>
                                 <a href="#" class="dropdown-link">Keto</a>
@@ -60,16 +56,17 @@
                                 <a href="#" class="dropdown-link">Kausitarjous</a>
                             </div>
                         </div>
-                        <li><a href="/make-your-pizza">Kokoa oma pizza!</a></li>
-                        <li><a href="/shopping-cart">
+                        <a href="/make-your-pizza" id="make-a-pizza">Kokoa oma pizza</a>
+                        <a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
-                        </a></li>
-                        <li id="login-icon"><a href="/sign-in">
+                        </a>
+                        <div id="login-icon"><a href="/sign-in">
                             <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
-                        </a></li>
-                    </ul>
+                        </a> 
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     </header>
     <div class="hero-image" id="homepage-background">
@@ -85,15 +82,14 @@
                     <button class="pizza-selector" id="button-5">Gluteeniton</button>
                     <button class="pizza-selector" id="button-6">Keto</button>
                 </div>
-                <button class="pizza-selector" id="button-7"><a href="/make-your-pizza">Kokoa oma pizza!</a></button>
+                <button class="pizza-selector" id="button-7">Kokoa oma pizza!</button>
             </div>
             <div id="content-tabs">
                 <div class="content-tab" id="about-us">
                     <h3>Tietoa meistä</h3>
                     <p class="text" hidden>Olemme opiskelijatiimi, jolla oli ajatus pizzeriasta, jossa voit rakentaa pizzan, joka sopii täydellisesti ruokavaliosi ja makusi kanssa.</p>
-                    <p class="text" hidden>Joten olit sitten ertyisellä ruokavaliolla, tai himoitset erikoisia makuja, tai ehkä haluat vain herkullista pizzaa. Me uskomme, että meillä on vaihtoehto, joka sopii parhaiten sinulle!</p>
+                    <p class="text" hidden>Joten olit sitten erityisellä ruokavaliolla, tai himoitset erikoisia makuja, tai ehkä haluat vain herkullista pizzaa. Me uskomme, että meillä on vaihtoehto, joka sopii parhaiten sinulle!</p>
                     <p class="text" hidden>Tunne olosi vapaaksi tutkimaan sivustoamme ja löydä itsellesi täydellinen pizza! Taikinasta täytteisiin, valinnat ovat sinun.</p>
-
                 </div>
                 <div class="content-tab" id="contacts">
                     <h3>Yhteystiedot</h3>
@@ -115,6 +111,7 @@
                     <img src="../images/pizza-promo.png" alt="pizza" id="pizza-promo">
             </div>
         </div>
+    </div>
     </div>
     <footer>
         <div id="contact-info">

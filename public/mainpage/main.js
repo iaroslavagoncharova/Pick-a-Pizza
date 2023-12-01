@@ -43,3 +43,7 @@ contentTabs.addEventListener('click', (evt) => {
   }
 });
 
+const craftPizza = document.getElementById('button-7');
+craftPizza.addEventListener('click', () => {
+  window.location.href = '/make-your-pizza';
+});

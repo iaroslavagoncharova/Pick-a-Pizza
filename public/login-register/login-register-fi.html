@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kirjaudu / rekisteröidy</title>
-    <script type="module" src="login-register/login-register.js" defer></script>
+    <script type="module" src="login-register/login-register.js"></script>
     <link rel="stylesheet" href="login-register/login-register.css">
     <link rel="stylesheet" href="login-register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,63 +16,60 @@
     src="https://js.klarna.com/web-sdk/v1/klarna.js"
     data-client-id="4c0f601c-0ee9-58e3-9ccc-83cd942c4fae"
     ></script>
-    <header>
-        <div class="header-part logo-container" id="header-logo">
-            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo"></a>
-            <h1 class="page-title">Pick-a-Pizza</h1>
-        </div>  	
-        <div class="wrapper">
-            <div class="top_nav">
-                <div class="right">
-                    <ul>
-                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a></li>
-                        <li><a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a></li>
-                        <li>
-                            <div id="lang-container">
-                                <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                                <span class="lang-option inactive-lang" id="english">EN</span>
-                                <span class="lang-option active-lang" id="finnish">FI</span>
+        <header>
+            <div class="header-part logo-container" id="header-logo">
+                <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" class="pizza-logo"></a>
+                <h1 class="page-title">Pick-a-Pizza</h1>
+            </div>  	
+            <div class="wrapper">
+                <div class="top_nav">
+                    <div class="right">
+                            <a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a>
+                            <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
+                                <div id="lang-container">
+                                    <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
+                                    <span class="lang-option active-lang" id="english">EN</span>
+                                    <span class="lang-option inactive-lang" id="finnish">FI</span>
+                                </div>
+                    </div>
+                </div>
+                <div class="bottom_nav">
+                    <div class="right">
+                        <div id="bottom-nav-items">
+                            <div class="dropdown">
+                                <a href="#" id="menu">Valikko</a>
+                                <div class="dropdown-content" id="menu-dropdown">
+                                    <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
+                                    <a href="/join-us" class="dropdown-link">Avoimet työpaikat</a>
+                                    <a href="/directions" class="dropdown-link">Reittiohjeet</a>
+                                    <a href="#" class="dropdown-link">Arvostelut</a>
+                                </div>
                             </div>
-                        </li>
-                    </ul>
+                            <div class="dropdown">
+                                <a href="#" id="prompts">Valmiit pizzapohjat</a>
+                                <div class="dropdown-content" id="pizza-dropdown">
+                                    <a href="#" class="dropdown-link">Gluteeniton</a>
+                                    <a href="#" class="dropdown-link">Keto</a>
+                                    <a href="#" class="dropdown-link">Vähäkalorinen</a>
+                                    <a href="#" class="dropdown-link">Classic</a>
+                                    <a href="#" class="dropdown-link">Vegaani Classic</a>
+                                    <a href="#" class="dropdown-link">Gluteeniton Classic</a>
+                                    <a href="#" class="dropdown-link">Kausitarjous</a>
+                                </div>
+                            </div>
+                            <a href="/make-your-pizza" id="make-a-pizza">Kokoa oma pizza</a>
+                            <a href="/shopping-cart">
+                                <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
+                            </a>
+                            <div id="login-icon"><a href="/sign-in">
+                                <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
+                            </a> 
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="bottom_nav">
-                <div class="right">
-                    <ul id="bottom-nav-items">
-                        <div class="dropdown">
-                            <li><a href="#">Valikko</a></li>
-                            <div class="dropdown-content" id="menu-dropdown">
-                                <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
-                                <a href="/join-us" class="dropdown-link">Avoimet työpaikat</a>
-                                <a href="/directions" class="dropdown-link">Reittiohjeet</a>
-                                <a href="#" class="dropdown-link">Arvostelut</a>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <li><a href="#">Valmiit pizzapohjat</a></li>
-                            <div class="dropdown-content" id="pizza-dropdown">
-                                <a href="#" class="dropdown-link">Gluteeniton</a>
-                                <a href="#" class="dropdown-link">Keto</a>
-                                <a href="#" class="dropdown-link">Vähäkalorinen</a>
-                                <a href="#" class="dropdown-link">Classic</a>
-                                <a href="#" class="dropdown-link">Vegaani Classic</a>
-                                <a href="#" class="dropdown-link">Gluteeniton Classic</a>
-                                <a href="#" class="dropdown-link">Kausitarjous</a>
-                            </div>
-                        </div>
-                        <li><a href="/make-your-pizza">Kokoa oma pizza!</a></li>
-                        <li><a href="/shopping-cart">
-                            <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
-                        </a></li>
-                        <li id="login-icon"><a href="/sign-in">
-                            <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
-                        </a></li>
-                    </ul>
-                </div>
             </div>
-        </div>
-    </header>
+        </header>
     <div class="hero-image" id="homepage-background">
         <div id="login-register-container">
             <div id="login-register-screen">
