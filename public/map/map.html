@@ -6,8 +6,8 @@
     <title>Directions</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
-    <script src="map/map.js" type="module" defer></script>
+    crossorigin="">
+    <script src="map/map.js" type="module"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
@@ -23,30 +23,26 @@
     ></script>
     <header>
         <div class="header-part logo-container" id="header-logo">
-            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo"></a>
+            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" class="pizza-logo"></a>
             <h1 class="page-title">Pick-a-Pizza</h1>
         </div>  	
         <div class="wrapper">
             <div class="top_nav">
                 <div class="right">
-                    <ul>
-                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a></li>
-                        <li><a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a></li>
-                        <li>
+                        <a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a>
+                        <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
                             <div id="lang-container">
                                 <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
                                 <span class="lang-option active-lang" id="english">EN</span>
                                 <span class="lang-option inactive-lang" id="finnish">FI</span>
                             </div>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="bottom_nav">
                 <div class="right">
-                    <ul id="bottom-nav-items">
+                    <div id="bottom-nav-items">
                         <div class="dropdown">
-                            <li><a href="#">Menu</a></li>
+                            <a href="#" id="menu">Menu</a>
                             <div class="dropdown-content" id="menu-dropdown">
                                 <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
                                 <a href="/join-us" class="dropdown-link">Open Positions</a>
@@ -55,7 +51,7 @@
                             </div>
                         </div>
                         <div class="dropdown">
-                            <li><a href="#">Pizza Prompts</a></li>
+                            <a href="#" id="prompts">Pizza Prompts</a>
                             <div class="dropdown-content" id="pizza-dropdown">
                                 <a href="#" class="dropdown-link">Gluten Free</a>
                                 <a href="#" class="dropdown-link">Keto</a>
@@ -66,16 +62,17 @@
                                 <a href="#" class="dropdown-link">Season Deal</a>
                             </div>
                         </div>
-                        <li><a href="/make-your-pizza">Make a Pizza</a></li>
-                        <li><a href="/shopping-cart">
+                        <a href="/make-your-pizza" id="make-a-pizza">Make a Pizza</a>
+                        <a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
-                        </a></li>
-                        <li id="login-icon"><a href="/sign-in">
+                        </a>
+                        <div id="login-icon"><a href="/sign-in">
                             <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
-                        </a></li>
-                    </ul>
+                        </a> 
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     </header>
     <div class="hero-image" id="homepage-background">
@@ -92,7 +89,7 @@
                     <li>the approximate time it takes to get there</li> 
                     <li>the mode (either walking or by public transportation)</li>
                     <li>number and name of the next stop and current stop (if available)</li>
-                    <li>the name and the number of the line (bus, train, tram, metro) you need to take.</li></ul></p>
+                    <li>the name and the number of the line (bus, train, tram, metro) you need to take.</li></ul>
                     <p>Pick a route that suits you best and we'll be waiting for you!</p>
                     <p>If you have any problems with your route planning or cannot find our pizzeria, give us a call +35800000000</p>
 </div>
@@ -113,8 +110,6 @@
             <i class="fa fa-instagram fa-2x"></i>
             <i class="fa fa-whatsapp fa-2x"></i>
         </div>
-
     </footer>
-    
 </body>
 </html>
