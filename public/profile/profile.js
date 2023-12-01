@@ -15,6 +15,10 @@ window.onload = () => {
     if (token) {
         addUserDataToDom(user);
         logUserOut();
+        const userButton = document.getElementById('user-account');
+        // me ollaan tällä sivulla, linkin ei tarvii viedä tänne
+        userButton.href = '#';
+
         userName.innerHTML = user.username;
         userEmail.innerHTML = user.email;
         userNumber.innerHTML = user.phone_number;

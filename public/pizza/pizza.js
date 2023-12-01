@@ -12,6 +12,8 @@ window.onload = () => {
     const userButton = document.getElementById('user-account');
     if (user.user_level_id === 1) {
       userButton.href = '/my-account/admin';
+    } else if (user.user_level_id === 2) {
+      userButton.href = '/my-account';
     }
   } else {
     removeUserDataFromDom();
