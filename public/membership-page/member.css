@@ -10,6 +10,7 @@
 
 :root {
     --light: #faf4f1;
+    --light-transparece: #faf4f1dc;
     --grayish-brown: #68563d;
     --light-peach: #fdd8a9;
     --dandelion: #ffe200;
@@ -282,6 +283,8 @@ a {
 
 
 #club-page ul {
+    display: flex;
+    list-style-type: none;
     margin-left: 20px;
     font-size: xx-large;
     margin-bottom: 20px;
@@ -324,6 +327,9 @@ a {
 #club-page a:hover {
    background-color: var(--grass);
 }
+
+
+
 
 footer {
     padding: 1rem;
