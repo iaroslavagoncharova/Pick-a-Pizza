@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin-profiili</title>
     <script type="module" src="admin-profile/profile.js"></script>
-    <link rel="stylesheet" href="admin-profile/admin-profile.css">
+    <link rel="stylesheet" href="../admin-profile/admin-profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -23,24 +23,20 @@
         <div class="wrapper">
             <div class="top_nav">
                 <div class="right">
-                    <ul>
-                        <li><a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a></li>
-                        <li><a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a></li>
-                        <li>
+                        <a href="#"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon"></a>
+                        <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
                             <div id="lang-container">
                                 <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                                <span class="lang-option inactive-lang" id="english">EN</span>
-                                <span class="lang-option active-lang" id="finnish">FI</span>
+                                <span class="lang-option active-lang" id="english">EN</span>
+                                <span class="lang-option inactive-lang" id="finnish">FI</span>
                             </div>
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="bottom_nav">
                 <div class="right">
-                    <ul id="bottom-nav-items">
+                    <div id="bottom-nav-items">
                         <div class="dropdown">
-                            <li><a href="#">Valikko</a></li>
+                            <a href="#" id="menu">Valikko</a>
                             <div class="dropdown-content" id="menu-dropdown">
                                 <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
                                 <a href="/join-us" class="dropdown-link">Avoimet työpaikat</a>
@@ -49,7 +45,7 @@
                             </div>
                         </div>
                         <div class="dropdown">
-                            <li><a href="#">Valmiit pizzapohjat</a></li>
+                            <a href="#" id="prompts">Valmiit pizzapohjat</a>
                             <div class="dropdown-content" id="pizza-dropdown">
                                 <a href="#" class="dropdown-link">Gluteeniton</a>
                                 <a href="#" class="dropdown-link">Keto</a>
@@ -60,16 +56,17 @@
                                 <a href="#" class="dropdown-link">Kausitarjous</a>
                             </div>
                         </div>
-                        <li><a href="/make-your-pizza">Kokoa oma pizza!</a></li>
-                        <li><a href="/shopping-cart">
+                        <a href="/make-your-pizza" id="make-a-pizza">Make a Pizza</a>
+                        <a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
-                        </a></li>
-                        <li id="login-icon"><a href="/sign-in">
+                        </a>
+                        <div id="login-icon"><a href="/sign-in">
                             <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
-                        </a></li>
-                    </ul>
+                        </a> 
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     </header>
     <div class="hero-image" id="homepage-background">
@@ -84,7 +81,7 @@
                         <li><a href="#">15.11.2023 20.06 Order #120387189</a></li>
                         <li><a href="#">15.11.2023 20.02 Order #527658364</a></li>
                     </ul>
-                    <a href="#"><button class="admin-button" id="all-orders">Kaikki tilaukset</button></a>
+                    <button class="admin-button" id="all-orders">Kaikki tilaukset</button>
                 </div>
                 <div id="users"><h3>Käyttäjät</h3>
                 <ul>
@@ -94,7 +91,7 @@
                     <li><a href="#">User1 user1@example.com 0400000000</a></li>
                     <li><a href="#">User2 user2@example.com 0500000000</a></li>
                 </ul>
-                <a href="#"><button class="admin-button" id="all-users">Kaikki käyttäjät</button></a>
+                <button class="admin-button" id="all-users">Kaikki käyttäjät</button>
                 </div>
                 <div id="ingredients"><h3>Ainekset</h3>
                     <ul>
@@ -104,7 +101,7 @@
                         <li><a href="#">Tonnikala</a></li>
                         <li><a href="#">Tofu</a></li>
                     </ul>
-                    <a href="#"><button class="admin-button" id="all-ingredients">Näytä varastosaldo</button></a>
+                    <button class="admin-button" id="all-ingredients">Näytä varastosaldo</button>
             </div>
     </div>
     </div>
