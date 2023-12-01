@@ -9,6 +9,9 @@ window.onload = () => {
     if (token) {
         addUserDataToDom(user);
         logUserOut();
+        const userButton = document.getElementById('user-account');
+        // me ollaan tällä sivulla, joten account-näppäimen ei tarvii toimia
+        userButton.href = '#';
     } else {
         removeUserDataFromDom();
     }
