@@ -145,6 +145,7 @@ header {
 .dropdown:hover .dropdown-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #bottom-nav-items {
@@ -158,7 +159,7 @@ header {
     justify-content: flex-end;
     align-items: center;
     width: 80%;
-    gap: 3rem;
+    gap: 1.5rem;
 }
 
 #user-options {
@@ -176,14 +177,12 @@ header {
     justify-content: space-between;
     padding: 1rem;
     color: var(--grayish-brown);
+    margin: auto 2rem;
 }
 #pizza-dropdown {
     left: 2rem;
 }
 
-#menu, #make-a-pizza, #prompts {
-    margin: auto 2rem;
-}
 .wrapper .bottom_nav{
     height: 90px;
     display: flex;
@@ -193,7 +192,7 @@ header {
 }
 
 #bottom-nav-items .dropdown {
-    margin: auto 2rem;
+    margin: auto 0 auto 2rem;
 }
 
 #user-options {
