@@ -371,7 +371,11 @@ a {
     font-size: 20px;
 }
 
-#offers, #promo-code {
+#offers {
+    cursor: pointer;
+}
+
+#promo-code {
     cursor: default;
 }
 

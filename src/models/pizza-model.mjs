@@ -5,9 +5,8 @@ const sendInfo = async (pizzaData) => {
         const sql = `INSERT into Pizza (dough, size, calories, carbs, protein, fats, price) VALUES (?, ?, ?, ?, ?, ?, ?)`;
         const params = [pizzaData.dough, pizzaData.size, pizzaData.calories, pizzaData.carbs, pizzaData.protein, pizzaData.fats, pizzaData.price];
         const result = await promisePool.query(sql, params);
-        const [rows] = result;
-        console.log(result);
-        return rows[0];
+        console.log('Inserted pizza', pizzaData);
+        return result;
     } catch (e) {
         console.error('error', e.message);
         return {error: e.message};

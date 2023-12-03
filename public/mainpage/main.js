@@ -47,3 +47,15 @@ const craftPizza = document.getElementById('button-7');
 craftPizza.addEventListener('click', () => {
   window.location.href = '/make-your-pizza';
 });
+
+const offers = document.getElementById('offers');
+offers.addEventListener('click', () => {
+  window.location.href = '/pick-a-pizza-club';
+});
+
+const prompts = document.querySelectorAll('.pizza-selector');
+prompts.forEach(prompt => {
+  prompt.addEventListener('click', () => {
+    console.log('clicked');
+  });
+});
