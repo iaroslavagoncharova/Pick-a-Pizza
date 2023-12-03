@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
-    <script type="module" src="login-register/login-register.js"></script>
+    <script type="module" src="login-register/tabs.js" defer></script>
+    <script type="module" src="login-register/forms.js" defer></script>
     <link rel="stylesheet" type="text/css" href="login-register/login-register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -90,22 +91,30 @@
                     </form>
                     <form method="post" action="/register" class="user-form inactive-form" id="register-form">
                         <div class="form-input">
+                            <input type="text" name="username" id="regist-username" class="input-space" placeholder="username" required>
+                        </div>
+                        <div class="form-input">
                             <input type="email" name="email" id="regist-email" class="input-space" placeholder="e-mail" required>
                         </div>
                         <div class="form-input">
-                            <input type="password" name="password" id="regist-password" class="input-space" placeholder="password" required>
+                            <input type="text" name="address" id="regist-address" class="input-space" placeholder="address" required>
                         </div>
                         <div class="form-input">
-                            <input type="password" name="password" id="regist-password2" class="input-space" placeholder="repeat password" required>
+                            <input type="tel" pattern="\+?[0-9]{7,13}" name="phone-number" id="regist-number" class="input-space" placeholder="phone number" required>
+                        </div>
+                        <div class="form-input">
+                            <input type="password" name="password" id="regist-password" class="input-space" placeholder="password (min. 6 characters)" minlength="6" required>
+                        </div>
+                        <div class="form-input">
+                            <input type="password" name="password" id="regist-password2" class="input-space" placeholder="repeat password" minlength="6" required>
                         </div>
                         <div id="notarobot-box">
                             <input type="checkbox" id="not-robot" name="not-robot" value="I am not a robot">
                             <label for="not-robot"> I am not a robot</label>
                         </div>
                         <div class="form-submit">
-                            <input type="submit" value="Sign up" id="signup-btn" class="form-btn">
+                            <input type="submit" value="Register" id="register-btn" class="form-btn">
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

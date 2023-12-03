@@ -1,4 +1,3 @@
-
 // Login and Register Tabs
 const loginTab = document.querySelector("#login-tab");
 const registerTab = document.querySelector("#register-tab");
@@ -28,40 +27,3 @@ loginTab.addEventListener("click", () => {
     registerForm.classList.replace("active-form", "inactive-form");
   }
 });
-
-// Login and Register Forms
-
-// Login form 
-loginForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  let loginEmail = document.getElementById('login-email').value;
-  let loginPassword = document.getElementById('login-password').value;
-
-  if (loginEmail === '' || loginPassword === '') {
-    alert('Please fill out all fields');
-    return;
-  } else {
-    const response = await fetch('/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email: loginEmail, password: loginPassword }),
-    });
-
-    const data = await response.json();
-
-    if (data.message === 'logged in') {
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
-      window.location.href = '/';
-    } else {
-      alert('Invalid username/password');
-    }
-  };
-});
-
-const registerEmail = document.getElementById('regist-email');
-const registerPassword = document.getElementById('regist-password');
-const registerPasswordConfirm = document.getElementById('regist-password2');

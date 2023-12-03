@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kirjaudu / rekisteröidy</title>
-    <script type="module" src="login-register/login-register.js"></script>
+    <script type="module" src="login-register/tabs.js" defer></script>
+    <script type="module" src="login-register/forms.js" defer></script>
     <link rel="stylesheet" href="login-register/login-register.css">
-    <link rel="stylesheet" href="login-register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -78,35 +78,43 @@
                     <button class="form-tab inactive-tab" id="register-tab">Luo tili</button>
                 </div>
                 <div class="form-container">
-                    <form method="get" action="/login" class="user-form active-form" id="login-form">
+                    <form method="post" action="/login" class="user-form active-form" id="login-form">
                         <div class="form-input">
-                            <input type="email" name="email" id="login-email" class="input-space" placeholder="Sähköpostiosoite" required>
+                            <input type="email" name="login-email" id="login-email" class="input-space" placeholder="sähköpostiosoite" required>
                         </div>
                         <div class="form-input">
-                            <input type="password" name="password" id="login-password" class="input-space" placeholder="Salasana" required>
+                            <input type="password" name="login-password" id="login-password" class="input-space" placeholder="salasana" required>
                         </div>
                         <div class="form-submit">
-                                <input type="submit" value="Kirjaudu sisään" id="signin-btn" class="form-btn">
+                            <input type="submit" value="Kirjaudu" id="signin-btn" class="form-btn">
                         </div>
                     </form>
-                    <form method="get" action="/register" class="user-form inactive-form" id="register-form">
+                    <form method="post" action="/register" class="user-form inactive-form" id="register-form">
                         <div class="form-input">
-                            <input type="email" name="email" id="regist-email" class="input-space" placeholder="e-mail" required>
+                            <input type="text" name="username" id="regist-username" class="input-space" placeholder="käyttäjänimi" required>
                         </div>
                         <div class="form-input">
-                            <input type="password" name="password" id="regist-password" class="input-space" placeholder="Salasana" required>
+                            <input type="email" name="email" id="regist-email" class="input-space" placeholder="sähköpostiosoite" required>
                         </div>
                         <div class="form-input">
-                            <input type="password" name="password" id="regist-password2" class="input-space" placeholder="Kirjoita salasana uudelleen" required>
+                            <input type="text" name="address" id="regist-address" class="input-space" placeholder="osoite" required>
+                        </div>
+                        <div class="form-input">
+                            <input type="tel" pattern="\+?[0-9]{7,13}" name="phone-number" id="regist-number" class="input-space" placeholder="puhelinnumero" required>
+                        </div>
+                        <div class="form-input">
+                            <input type="password" name="password" id="regist-password" class="input-space" placeholder="salasana (väh. 6 merkkiä)" minlength="6" required>
+                        </div>
+                        <div class="form-input">
+                            <input type="password" name="password" id="regist-password2" class="input-space" placeholder="salasana uudelleen" minlength="6" required>
                         </div>
                         <div id="notarobot-box">
                             <input type="checkbox" id="not-robot" name="not-robot" value="I am not a robot">
                             <label for="not-robot"> En ole robotti</label>
                         </div>
                         <div class="form-submit">
-                            <input type="submit" value="Luo tili" id="signup-btn" class="form-btn">
+                            <input type="submit" value="Rekisteröidy" id="register-btn" class="form-btn">
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

@@ -18,4 +18,25 @@ const loginUser = async (userCreds) => {
     }
 };
 
-export default loginUser;
+/**
+ * 
+ * @param {object} userCreds 
+ * @returns success or error message in JSON form
+ */
+const registerUser = async (userCreds) => {
+    try {
+        const sql = `INSERT INTO Users (username, password, email, address, phone_number) 
+        VALUES
+        (?, ?, ?, ?, ?)`;
+        const params = [userCreds.username, userCreds.password, userCreds.email, userCreds.address, userCreds.phone_number];
+        const result = await promisePool.query(sql, params);
+        const [rows] = result;
+        console.log(rows);
+        return {message: 'POST request successful'};
+    } catch (e) {
+        console.error('error', e.message);
+        return {error: e.message};
+    }
+}
+
+export {loginUser, registerUser};

@@ -10,7 +10,7 @@ CREATE TABLE Users (
   address VARCHAR(255) NOT NULL,
   favorite_pizza VARCHAR(255),
   phone_number VARCHAR(15) NOT NULL,
-  user_level_id INT NOT NULL,
+  user_level_id INT NOT NULL DEFAULT 2,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

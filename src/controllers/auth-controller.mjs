@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
-import loginUser from "../models/user-model.mjs";
+import {loginUser, registerUser} from "../models/user-model.mjs";
 
 const postLogin = async (req, res, next) => {
     console.log('postLogin', req.body);
@@ -28,6 +28,23 @@ const postLogin = async (req, res, next) => {
     }
 };
 
+const postRegister = async (req, res, next) => {
+    console.log('postRegister', req.body);
+    const user = await registerUser(req.body);
+
+    if (user.error) {
+        const error = new Error(user.error);
+        error.status = 401;
+        return next(error);
+    }
+
+    try {
+        res.json({message: 'registration successful', user: user})
+    } catch (e) {
+        res.status(401).json({message: 'an error occurred'});
+    }
+};
+
 const getMe = async (req, res) => {
     console.log('getMe', req.user);
     if (req.user) {
@@ -37,17 +54,4 @@ const getMe = async (req, res) => {
     }
 };
 
-const logOut = async (req, res) => {
-    console.log('logOut');
-
-    if (localStorage.token && localStorage.user) {
-        try {
-            localStorage.clear();
-            res.json({message: 'log out successful'});
-        } catch (e) {
-            res.status(400);
-        }
-    }
-};
-
-export {postLogin, getMe, logOut};
+export {postLogin, postRegister, getMe};
