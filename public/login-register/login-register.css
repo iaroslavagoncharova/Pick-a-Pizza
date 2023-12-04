@@ -347,6 +347,10 @@ a {
     padding: 0.5rem;
 }
 
+.input-space:focus-within {
+    border: 2px var(--grass) solid;
+}
+
 #notarobot-box {
     display: flex;
     margin: auto;
