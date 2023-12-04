@@ -1,0 +1,352 @@
+@font-face {
+    font-family: 'Blanka';
+    src: url(../font/Blanka-Regular.otf);
+}
+
+@font-face {
+    font-family: Rosario;
+    src: url(../font/Rosario.ttf);
+}
+
+:root {
+    --light: #faf4f1;
+    --translucent-light: #faf4f1c9;
+    --grayish-brown: #68563d;
+    --light-peach: #fdd8a9;
+    --dandelion: #ffe200;
+    --grass: #7bca51;
+    --butterscotch: #f3af40;
+    --parchment: #faf5a3;
+    --tomato: #e9451c;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: Rosario;
+    font-size: large;
+    margin: 0;
+}
+
+header {
+    background-color: var(--light);
+    width: 100%;
+    color: var(--grayish-brown);
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+    margin: 0;
+    padding: 0;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#header-logo {
+    width: 30%;
+    height: 100%;
+}
+
+.pizza-logo {
+    height: 100px;
+    padding: 0.8rem 0;
+}
+
+.page-title {
+    font-family: 'Blanka', sans-serif;
+    margin: auto;
+    padding-bottom: 10px;
+    font-size: xx-large;
+}
+
+.wrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 2rem 0 0;
+}
+
+.wrapper .top_nav{
+    margin-top: 0;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.top-nav-icon {
+    height: 30px;
+}
+
+.bottom-nav-icon {
+    height: 50px;
+}
+
+#lang-container {
+    border: 2px var(--grayish-brown) solid;
+    border-radius: 5px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+}
+
+#lang-container > * {
+    padding: 0 5px;
+    margin: auto;
+}
+
+.active-lang {
+    background-color: var(--grayish-brown);
+    border: 3px solid var(--grayish-brown);
+    color: var(--light);
+}
+
+.inactive-lang {
+    cursor: pointer;
+    background-color: var(--light);
+    color: var(--grayish-brown);
+}
+
+#finnish {
+    padding-right: 10px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 3rem;
+    background-color: var(--light);
+    width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    text-align: center;
+    text-decoration: none;
+    color: var(--grayish-brown);
+    padding: 0.7rem;
+    cursor: pointer;
+}
+
+.dropdown-link:hover {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
+    background-color: #e5ddda;
+    transition: ease-out 0.3s;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#bottom-nav-items {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 80%;
+    gap: 1.5rem;
+}
+
+#user-options {
+    list-style-type: none;
+}
+
+#user-options li {
+    padding: 0 1rem;
+    margin: 0 1rem;
+}
+
+#bottom-nav-items a{
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    color: var(--grayish-brown);
+    margin: auto 2rem;
+}
+#pizza-dropdown {
+    left: 2rem;
+}
+
+.wrapper .bottom_nav{
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#bottom-nav-items .dropdown {
+    margin: auto 0 auto 2rem;
+}
+
+#user-options {
+    border: 2px var(--grayish-brown) solid;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#user-dropdown {
+    width: 100%;
+    top: 3.3rem;
+    border: 1px var(--grayish-brown) solid;
+}
+
+#logout-link {
+    cursor: unset;
+}
+
+#logout-btn {
+    border: none;
+    background-color: var(--light-peach);
+    font-family: Rosario;
+    font-size: large;
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+}
+
+#logout-btn:hover {
+    cursor: pointer;
+    background-color: #dec5a5;
+}
+
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.3);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  #phone-button {
+    animation: pulse 2s infinite;
+  }
+
+a {
+    text-decoration: none;
+}
+
+.hero-image {
+    min-height: 60%;
+    background-image: url(../images/bckgrndlight.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 1rem;
+}
+
+#homepage-content {
+    width: 90%;
+    margin: auto;
+    padding: 5rem 0;
+    color: var(--grayish-brown);
+    margin-bottom: 5rem;
+}
+
+#ratings-container {
+    background-color: var(--translucent-light);
+    padding: 20px;
+    border-radius: 20px;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+#ratings-header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: x-large;
+}
+#ratings{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-gap: 20px;
+
+}
+
+.rating {
+    display: grid;
+    border: 2px solid var(--grayish-brown);
+    border-radius: 10px;
+    padding: 10px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    background-color: var(--light);
+}
+
+.rating-header {
+    font-size: x-large;
+    font-weight: bold;
+    color: var(--grayish-brown);
+    text-align: center;
+    margin: auto;
+}
+
+.rating-text {
+    color: var(--grayish-brown);
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+footer {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: var(--grayish-brown);
+    color: var(--light);
+}
+
+#contact-info {
+    text-align: center;
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+#social-media-icons {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.fa {
+    padding: 20px;
+    font-size: xx-large;
+    text-align: center;
+    text-decoration: none;
+    color: var(--grayish-brown);
+    border-radius: 50%;
+    background-color: var(--light);
+    margin: auto;
+    height: 30px;
+    width: 30px;
+}
