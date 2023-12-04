@@ -19,6 +19,64 @@ window.onload = () => {
     removeUserDataFromDom();
   }
 };
+
+let totalCalories = 0;
+    let totalCarbs = 0;
+    let totalProtein = 0;
+    let totalFats = 0;
+    let totalPrice = 0;
+
+    const caloriesDisplay = document.getElementById('totalCalories');
+    const carbsDisplay = document.getElementById('totalCarbs');
+    const proteinDisplay = document.getElementById('totalProteins');
+    const fatsDisplay = document.getElementById('totalFats');
+    const priceDisplay = document.getElementById('totalPrice');
+
+    const ingredients = document.querySelectorAll('.category-content input');
+    ingredients.forEach(ingredient => {
+        ingredient.addEventListener('click', async function () {
+            console.log(ingredient.id);
+            try {
+                const response = await fetch(`/ingredients?id=${ingredient.id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const result = await response.json();
+                const calories = result[0].calories;
+                const carbs = result[0].carbs;
+                const protein = result[0].protein;
+                const fats = result[0].fats;
+                const price = +result[0].price;
+                console.log(calories, carbs, protein, fats);
+
+                if (ingredient.checked) {
+                  totalCalories += calories;
+                  totalCarbs += carbs;
+                  totalProtein += protein;
+                  totalFats += fats;
+                  totalPrice += price;
+              } else {
+                  totalCalories -= calories;
+                  totalCarbs -= carbs;
+                  totalProtein -= protein;
+                  totalFats -= fats;
+                  totalPrice -= price;
+              }
+  
+              console.log('Total Calories:', totalCalories, 'Total Carbs:', totalCarbs, 'Total Protein:', totalProtein, 'Total Fats:', totalFats, 'Total Price:', totalPrice);
+
+              caloriesDisplay.textContent = totalCalories;
+              carbsDisplay.textContent = totalCarbs;
+              proteinDisplay.textContent = totalProtein;
+              fatsDisplay.textContent = totalFats;
+              priceDisplay.textContent = totalPrice + '€';
+            } catch (error) {
+                console.error('Error getting data to the server:', error);
+            }
+        });
+    });
     
 const doughButtons = document.querySelectorAll('.dough-image button');
 const sizeButtons = document.querySelectorAll('.size button');
@@ -134,7 +192,7 @@ function addToCart() {
     carbs: 0,
     fats: 0,
     protein: 0,
-    price: 0
+    price: totalPrice
   };
 }
 
@@ -155,63 +213,3 @@ const addToCartButton = document.getElementById('confirm-order');
           console.error('Error sending data to the server:', error);
         }
     });
-
-    let totalCalories = 0;
-    let totalCarbs = 0;
-    let totalProtein = 0;
-    let totalFats = 0;
-    let totalPrice = 0;
-
-    const caloriesDisplay = document.getElementById('totalCalories');
-    const carbsDisplay = document.getElementById('totalCarbs');
-    const proteinDisplay = document.getElementById('totalProteins');
-    const fatsDisplay = document.getElementById('totalFats');
-    const priceDisplay = document.getElementById('totalPrice');
-
-    const ingredients = document.querySelectorAll('.category-content input');
-    ingredients.forEach(ingredient => {
-        ingredient.addEventListener('click', async function () {
-            console.log(ingredient.id);
-            try {
-                const response = await fetch(`/ingredients?id=${ingredient.id}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-                const result = await response.json();
-                const calories = result[0].calories;
-                const carbs = result[0].carbs;
-                const protein = result[0].protein;
-                const fats = result[0].fats;
-                const price = +result[0].price;
-                console.log(calories, carbs, protein, fats);
-
-                if (ingredient.checked) {
-                  totalCalories += calories;
-                  totalCarbs += carbs;
-                  totalProtein += protein;
-                  totalFats += fats;
-                  totalPrice += price;
-              } else {
-                  totalCalories -= calories;
-                  totalCarbs -= carbs;
-                  totalProtein -= protein;
-                  totalFats -= fats;
-                  totalPrice -= price;
-              }
-  
-              console.log('Total Calories:', totalCalories, 'Total Carbs:', totalCarbs, 'Total Protein:', totalProtein, 'Total Fats:', totalFats, 'Total Price:', totalPrice);
-
-              caloriesDisplay.textContent = totalCalories;
-              carbsDisplay.textContent = totalCarbs;
-              proteinDisplay.textContent = totalProtein;
-              fatsDisplay.textContent = totalFats;
-              priceDisplay.textContent = totalPrice + '€';
-            } catch (error) {
-                console.error('Error getting data to the server:', error);
-            }
-        });
-    });
-
-
