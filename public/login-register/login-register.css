@@ -405,3 +405,27 @@ footer {
     width: 30px;
     cursor: pointer;
 }
+
+/* Tablet view */
+@media only screen and (max-width: 768px) {
+
+    #login-register-screen{
+        width: 80%;
+    }
+    .form-container{
+        padding: 0.5rem;
+    }
+
+}
+
+/* Mobile view */
+@media only screen and (max-width: 480px) {
+
+    #login-register-screen{
+        width: 90%;
+    }
+
+    .form-container{
+        padding: 0;
+    }
+}
