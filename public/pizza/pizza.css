@@ -491,6 +491,13 @@ a {
     margin: auto;
 }
 
+.price-add {
+    text-align: center;
+    margin: 1rem;
+    position: relative;
+    left: 20rem;
+}
+
 #confirm-order {
     width: 12rem;
     border-radius: 50px;
@@ -499,9 +506,6 @@ a {
     background-color: var(--tomato);
     color: var(--light);
     font-size: 20px;
-    margin-top: 4rem;
-    position: relative;
-    left: 25rem;
 }
 
 footer {

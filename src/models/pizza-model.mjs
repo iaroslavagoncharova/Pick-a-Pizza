@@ -28,7 +28,7 @@ const getInfo = async () => {
 
 const getCalories = async (name) => {
     try {
-        const sql = `SELECT calories, carbs, protein, fats FROM Ingredients WHERE name = ?`;
+        const sql = `SELECT calories, carbs, protein, fats, price FROM Ingredients WHERE name = ?`;
         const params = [name];
         const result = await promisePool.query(sql, params);
         const [rows] = result;
