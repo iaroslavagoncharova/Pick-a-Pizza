@@ -26,4 +26,18 @@ const getInfo = async () => {
     }
 };
 
-export default sendInfo;
+const getCalories = async (name) => {
+    try {
+        const sql = `SELECT calories, carbs, protein, fats, price FROM Ingredients WHERE name = ?`;
+        const params = [name];
+        const result = await promisePool.query(sql, params);
+        const [rows] = result;
+        console.log(result);
+        return rows;
+    } catch (e) {
+        console.error('error', e.message);
+        return {error: e.message};
+    }
+}
+
+export {sendInfo, getInfo, getCalories};

@@ -222,6 +222,7 @@ header {
     background-color: #dec5a5;
 }
 
+
 @keyframes pulse {
     0% {
       transform: scale(1);
@@ -399,6 +400,13 @@ a {
     border-radius: 12px;
 }
 
+#searchButton {
+    cursor: pointer;
+    padding: 10px;
+    height: unset;
+    width: unset;
+}
+
 #cheese li {
     background-color: var(--dandelion);
 }
@@ -477,6 +485,13 @@ a {
     margin: auto;
 }
 
+.price-add {
+    text-align: center;
+    margin: 1rem;
+    position: relative;
+    left: 20rem;
+}
+
 #confirm-order {
     width: 12rem;
     border-radius: 50px;
@@ -485,9 +500,6 @@ a {
     background-color: var(--tomato);
     color: var(--light);
     font-size: 20px;
-    margin-top: 4rem;
-    position: relative;
-    left: 25rem;
 }
 
 footer {
