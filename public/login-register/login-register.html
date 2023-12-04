@@ -6,6 +6,7 @@
     <title>Sign In</title>
     <script type="module" src="login-register/tabs.js" defer></script>
     <script type="module" src="login-register/forms.js" defer></script>
+    <script src="../language.js" defer></script>
     <link rel="stylesheet" type="text/css" href="login-register/login-register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -26,11 +27,11 @@
                 <div class="right">
                     <a href="https://wa.me/358000000000?text=Hello%20from%20Pick-a-Pizza!" target="_blank"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon" id="phone-button"></a>
                         <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
-                            <div id="lang-container">
-                                <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                                <span class="lang-option active-lang" id="english">EN</span>
-                                <span class="lang-option inactive-lang" id="finnish">FI</span>
-                            </div>
+                        <div id="lang-container">
+                            <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
+                            <span class="lang-option active-lang" id="english" onclick="changeLanguage('english')">EN</span>
+                            <span class="lang-option" id="finnish" onclick="changeLanguage('finnish')">FI</span>
+                        </div>
                 </div>
             </div>
             <div class="bottom_nav">

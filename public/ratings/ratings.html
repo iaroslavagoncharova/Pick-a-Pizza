@@ -3,19 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin account</title>
-    <script type="module" src="/admin-profile/admin-profile.js"></script>
-    <script src="../language.js" defer></script>
-    <link rel="stylesheet" href="/admin-profile/admin-profile.css">
+    <title>Ratings</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="ratings.css">
+    <script src="../language.js" defer></script>
 </head>
 <body>
-    <script
-    async
-    data-environment="playground"
-    src="https://js.klarna.com/web-sdk/v1/klarna.js"
-    data-client-id="4c0f601c-0ee9-58e3-9ccc-83cd942c4fae"
-    ></script>
     <header>
         <div class="header-part logo-container" id="header-logo">
             <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" class="pizza-logo"></a>
@@ -25,12 +18,12 @@
             <div class="top_nav">
                 <div class="right">
                     <a href="https://wa.me/358000000000?text=Hello%20from%20Pick-a-Pizza!" target="_blank"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon" id="phone-button"></a>
-                    <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
-                    <div id="lang-container">
-                        <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                        <span class="lang-option active-lang" id="english" onclick="changeLanguage('english')">EN</span>
-                        <span class="lang-option" id="finnish" onclick="changeLanguage('finnish')">FI</span>
-                    </div>
+                        <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
+                        <div id="lang-container">
+                            <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
+                            <span class="lang-option active-lang" id="english" onclick="changeLanguage('english')">EN</span>
+                            <span class="lang-option" id="finnish" onclick="changeLanguage('finnish')">FI</span>
+                        </div>
                 </div>
             </div>
             <div class="bottom_nav">
@@ -72,39 +65,40 @@
     </header>
     <div class="hero-image" id="homepage-background">
         <div id="homepage-content">
-            <div id="admin-info">
-                <div id="orders-progress">
-                    <h3>Orders in progress</h3>
-                    <ul>
-                        <li><a href="#">15.11.2023 20.16 Order #890421652</a></li>
-                        <li><a href="#">15.11.2023 20.10 Order #325432789</a></li>
-                        <li><a href="#">15.11.2023 20.09 Order #948792685</a></li>
-                        <li><a href="#">15.11.2023 20.06 Order #120387189</a></li>
-                        <li><a href="#">15.11.2023 20.02 Order #527658364</a></li>
-                    </ul>
-                    <button class="admin-button" id="all-orders">Show all orders</button>
+            <div id="ratings-container">
+                <div id="ratings-header">
+                    <h1>Our Ratings</h1>
+                    <p>Your feedback is very important for us. Here you can see the ratings of our restaurant and service.</p>
                 </div>
-                <div id="users"><h3>Users</h3>
-                <ul>
-                    <li><a href="#">Slava slava@example.com 0100000000</a></li>
-                    <li><a href="#">Juan juan@example.com 0200000000</a></li>
-                    <li><a href="#">Anna anna@example.com 0300000000</a></li>
-                    <li><a href="#">User1 user1@example.com 0400000000</a></li>
-                    <li><a href="#">User2 user2@example.com 0500000000</a></li>
-                </ul>
-                <button class="admin-button" id="all-users">Show all users</button>
+                <div id="ratings">
+                    <div class="rating">
+                        <div id="username">username</div>
+                        <div class="rating-header">Customer Service</div>
+                        <div class="rating-body">
+                            <div class="rating-text">Excellent service! The staff was friendly and attentive.</div>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <div class="rating-header">Ambiance</div>
+                        <div class="rating-body">
+                            <div class="rating-text">The restaurant has a cozy atmosphere and great decor.</div>
+                            <div id="username">username</div>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <div class="rating-header">Food Quality</div>
+                        <div class="rating-body">
+                            <div class="rating-text">Delicious and fresh ingredients used in the dishes.</div>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <div class="rating-header">Cleanliness</div>
+                        <div class="rating-body">
+                            <div class="rating-text">The restaurant is well-maintained and clean.</div>
+                        </div>
                 </div>
-                <div id="ingredients"><h3>Ingredients</h3>
-                    <ul>
-                        <li><a href="#">tomato</a></li>
-                        <li><a href="#">mushrooms</a></li>
-                        <li><a href="#">chicken</a></li>
-                        <li><a href="#">tuna</a></li>
-                        <li><a href="#">tofu</a></li>
-                    </ul>
-                    <button class="admin-button" id="all-ingredients">Show all ingredients</button>
             </div>
-    </div>
+         </div>
     </div>
     </div>
     <footer>
@@ -124,6 +118,5 @@
         </div>
 
     </footer>
-    
 </body>
 </html>

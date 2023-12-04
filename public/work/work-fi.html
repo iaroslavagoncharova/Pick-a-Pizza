@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Töihin Meille</title>
     <script type="module" src="work/work.js" defer></script>
+    <script src="../language.js" defer></script>
     <link rel="stylesheet" href="work/work.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -30,8 +31,8 @@
                         <li>
                             <div id="lang-container">
                                 <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                                <span class="lang-option inactive-lang" id="english">EN</span>
-                                <span class="lang-option active-lang" id="finnish">FI</span>
+                                <span class="lang-option" id="english" onclick="changeLanguage('english')">EN</span>
+                                <span class="lang-option active-lang" id="finnish" onclick="changeLanguage('finnish')">FI</span>
                             </div>
                         </li>
                     </ul>
