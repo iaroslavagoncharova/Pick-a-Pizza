@@ -7,6 +7,7 @@
     <script type="module" src="pizza/pizza.js"></script>
     <link rel="stylesheet" href="pizza/pizza.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/438aeadf51.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <script
@@ -109,8 +110,9 @@
             <div class="fillings">
                 <h2>Fillings</h2>
                 <div class="search-container">
-                    <form>
-                        <input type="text" placeholder="tomato..." id="search" name="search">
+                    <form id="searchForm">
+                        <input type="search" placeholder="Search..." id="search" name="search">
+                        <i class="fa fa-magnifying-glass" id="searchButton"></i>
                     </form>
                   </div>
                 <div class="category">
@@ -172,7 +174,10 @@
             <div class="nutritions">
                 <h2>Nutritional value</h2>
                 <div class="calories">
-                    <p>Here are some calories</p>
+                    <p>Total Calories: <span id="totalCalories">0</span></p>
+                    <p>Total Carbs: <span id="totalCarbs">0</span></p>
+                    <p>Total Proteins: <span id="totalProteins">0</span></p>
+                    <p>Total Fats: <span id="totalFats">0</span></p>
                 </div>
             </div> 
             <button id="confirm-order">Add to cart</button>

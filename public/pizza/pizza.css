@@ -228,6 +228,7 @@ header {
     background-color: #dec5a5;
 }
 
+
 @keyframes pulse {
     0% {
       transform: scale(1);
@@ -403,6 +404,13 @@ a {
     padding: 0.3rem;
     margin: 0.3rem;
     border-radius: 12px;
+}
+
+#searchButton {
+    cursor: pointer;
+    padding: 10px;
+    height: unset;
+    width: unset;
 }
 
 #cheese li {

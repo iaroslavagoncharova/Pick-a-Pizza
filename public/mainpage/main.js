@@ -1,4 +1,3 @@
-import { response } from "express";
 import {addUserDataToDom, removeUserDataFromDom} from "../dom.js";
 import { logUserOut } from "../logout.js";
 
@@ -54,13 +53,37 @@ offers.addEventListener('click', () => {
   window.location.href = '/pick-a-pizza-club';
 });
 
+const getPrompts = async () => {
+  try {
+      const response = await fetch('/', {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+          }
+      });
+
+      if (response.ok) {
+          const result = await response.json();
+          console.log('Response:', result);
+      } else {
+          console.error('Error getting data from the server:', response.status, response.statusText);
+      }
+  } catch (error) {
+      console.error('Error getting data from the server:', error.message);
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  getPrompts();
+});
+
+
 // const prompts = document.querySelectorAll('.pizza-selector');
 // prompts.forEach(prompt => {
 //   prompt.addEventListener('click', async function () {
 //     console.log('clicked', prompt.id[7]);
-//     const id = prompt.id[7];
 //     try {
-//       const response = await fetch('/mainpage', {
+//       const response = await fetch('/', {
 //         method: 'GET',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -73,14 +96,3 @@ offers.addEventListener('click', () => {
 //     }
 //   });
 // });
-
-fetch('/')
-    .then(response => response.text())
-    .then(html => {
-        // Insert the fetched HTML into the DOM
-        document.body.innerHTML = html;
-
-        // You can now manipulate the DOM or perform other actions as needed
-        console.log('Page loaded with pizza names', response);
-    })
-    .catch(error => console.error('Error loading main page:', error));

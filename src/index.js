@@ -11,6 +11,7 @@ import signinPageRouter from './routers/login-register-router.mjs';
 import { fileURLToPath } from 'url';
 import loginRouter from './routers/login-router.mjs';
 import registRouter from './routers/register-router.mjs';
+import ingredientsRouter from './routers/ingredients-router.mjs';
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -38,6 +39,7 @@ app.use('/join-us', jobApplicationRouter);
 app.use('/login', loginRouter);
 app.use('/register', registRouter);
 
+app.use('/ingredients', ingredientsRouter);
 
 
 app.listen(port, hostname, () => {
