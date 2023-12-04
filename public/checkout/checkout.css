@@ -88,6 +88,7 @@ header {
     height: 45px;
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 #lang-container > * {
@@ -95,20 +96,13 @@ header {
     margin: auto;
 }
 
-.active-lang {
+.lang-option.active-lang {
     background-color: var(--grayish-brown);
-    border-radius: 3px solid var(--grayish-brown);
+    border: 3px solid var(--grayish-brown);
     color: var(--light);
 }
-
 .inactive-lang {
-    cursor: pointer;
-    background-color: var(--light);
-    color: var(--grayish-brown);
-}
-
-#finnish {
-    padding-right: 10px;
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
 }
 
 .dropdown {
