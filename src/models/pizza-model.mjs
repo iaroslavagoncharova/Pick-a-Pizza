@@ -13,19 +13,6 @@ const sendInfo = async (pizzaData) => {
     }
 };
 
-const getInfo = async () => {
-    try {
-        const sql = `SELECT * FROM Pizza`;
-        const result = await promisePool.query(sql);
-        const [rows] = result;
-        console.log(result);
-        return rows;
-    } catch (e) {
-        console.error('error', e.message);
-        return {error: e.message};
-    }
-};
-
 const getCalories = async (name) => {
     try {
         const sql = `SELECT calories, carbs, protein, fats, price FROM Ingredients WHERE name = ?`;
@@ -40,4 +27,4 @@ const getCalories = async (name) => {
     }
 }
 
-export {sendInfo, getInfo, getCalories};
+export {sendInfo, getCalories};

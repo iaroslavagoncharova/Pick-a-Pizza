@@ -74,6 +74,7 @@ CREATE TABLE PromptIngredient (
 
 CREATE TABLE Pizza (
     pizza_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
     dough VARCHAR(255) NOT NULL,
     size CHAR(1) NOT NULL,
     message VARCHAR(255),
@@ -84,7 +85,8 @@ CREATE TABLE Pizza (
     price DECIMAL(4,2) NOT NULL,
     prompt_id INT,
     quantity INT NOT NULL,
-    FOREIGN KEY (prompt_id) REFERENCES Prompts(prompt_id)
+    FOREIGN KEY (prompt_id) REFERENCES Prompts(prompt_id),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
 CREATE TABLE CartPizza (
@@ -176,11 +178,11 @@ VALUES
 
 
 -- Add data to Pizza 
-INSERT INTO Pizza (dough, size, message, calories, carbs, protein, fats, price, prompt_id) 
+INSERT INTO Pizza (user_id, dough, size, message, calories, carbs, protein, fats, price, prompt_id, quantity) 
 VALUES
-('usual', 'L', 'Extra cheese, please!', 700, 70, 70, 70, 14.00, 11), -- Classic pizza for Anna
+(1, 'usual', 'L', 'Extra cheese, please!', 700, 70, 70, 70, 14.00, 11, 2), -- Classic pizza for Anna
 ('usual', 'M', 'No onions, extra mushrooms.', 400, 40, 40, 40, 12.00, 10), -- Low Calorie pizza for Slava
-('keto', 'L', 'Keto supreme pizza!', 800, 80, 80, 80, 18.00, 9); -- Keto pizza for Juan
+(3, 'keto', 'L', 'Keto supreme pizza!', 800, 80, 80, 80, 18.00, 1, 1); -- Keto pizza for Juan
 
 
 -- Add data to ShoppingCart 
