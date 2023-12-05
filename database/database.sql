@@ -83,6 +83,7 @@ CREATE TABLE Pizza (
     fats INT NOT NULL,
     price DECIMAL(4,2) NOT NULL,
     prompt_id INT,
+    quantity INT NOT NULL,
     FOREIGN KEY (prompt_id) REFERENCES Prompts(prompt_id)
 );
 

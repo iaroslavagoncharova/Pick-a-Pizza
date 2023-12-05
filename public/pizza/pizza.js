@@ -20,7 +20,7 @@ window.onload = () => {
   }
 };
 
-let totalCalories = 0;
+    let totalCalories = 0;
     let totalCarbs = 0;
     let totalProtein = 0;
     let totalFats = 0;
@@ -72,6 +72,14 @@ let totalCalories = 0;
               proteinDisplay.textContent = totalProtein;
               fatsDisplay.textContent = totalFats;
               priceDisplay.textContent = totalPrice + '€';
+              
+              const quantityInput = document.getElementById('quantity');
+              quantityInput.addEventListener('click', function () {
+                const newQuantity = +quantityInput.value;
+                const newPrice = totalPrice * newQuantity;
+                const parsedPrice = newPrice.toFixed(2);
+                priceDisplay.textContent = parsedPrice + '€';
+              });
             } catch (error) {
                 console.error('Error getting data to the server:', error);
             }
@@ -180,19 +188,24 @@ searchButton.addEventListener('click', function () {
 function addToCart() {
   const selectedDough = document.querySelector('input[name="dough"]:checked').value;
   const selectedSize = document.querySelector('input[name="size"]:checked').value;
+  const message = document.getElementById('message').value;
+  const quantity = document.getElementById('quantity').value;
   const selectedIngredients = [];
   document.querySelectorAll('.category-content input:checked').forEach((checkbox) => {
     selectedIngredients.push(checkbox.id);
   });
+
   return {
     dough: selectedDough,
     size: selectedSize,
+    message: message,
     ingredients: selectedIngredients,
-    calories: 0,
-    carbs: 0,
-    fats: 0,
-    protein: 0,
-    price: totalPrice
+    calories: totalCalories,
+    carbs: totalCarbs,
+    fats: totalFats,
+    protein: totalProtein,
+    price: totalPrice, 
+    quantity: quantity
   };
 }
 

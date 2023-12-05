@@ -2,8 +2,8 @@ import promisePool from "../utils/database.mjs";
 
 const sendInfo = async (pizzaData) => {
     try {
-        const sql = `INSERT into Pizza (dough, size, calories, carbs, protein, fats, price) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-        const params = [pizzaData.dough, pizzaData.size, pizzaData.calories, pizzaData.carbs, pizzaData.protein, pizzaData.fats, pizzaData.price];
+        const sql = `INSERT into Pizza (dough, size, message, calories, carbs, protein, fats, price, quantity) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+        const params = [pizzaData.dough, pizzaData.size, pizzaData.message, pizzaData.calories, pizzaData.carbs, pizzaData.protein, pizzaData.fats, pizzaData.price, pizzaData.quantity];
         const result = await promisePool.query(sql, params);
         console.log('Inserted pizza', pizzaData);
         return result;
