@@ -13,10 +13,11 @@ const fetchPizza = async (id) => {
             const result2 = await promisePool.query(sql2, params2);
             const [rows2] = result2;
             const name = rows2[0].prompt_name;
+            console.log(name);
             return {rows, name};
-        }
-        
+        } else {
         return rows;
+    }
     } catch (e) {
         console.error('error', e.message);
         return {error: e.message};

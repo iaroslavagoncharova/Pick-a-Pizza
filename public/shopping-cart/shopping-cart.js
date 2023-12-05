@@ -20,36 +20,12 @@ window.onload = () => {
   }
 };
 
-const smallNames = [
-  'Petite Pleasure',
-  'Tiny Temptation',
-  'Mini Muncher',
-  'Diminutive Delight',
-  'Pocket Pizza'
-];
-
-const mediumNames = [
-  'Middling Marvel',
-  'Moderate Munch',
-  'Central Sizzler',
-  'Balanced Bliss',
-  'Middleweight Crave'
-];
-
-const bigNames = [
-  'Grand Gobbler',
-  'Jumbo Joy',
-  'Mega Munchzilla',
-  'King-Size Crave',
-  'Whopper Whiz'
-];
-
-const veganNames = [
-  'Plant-Based Paradise',
-  'Vegan Victory',
-  'Green Goodness',
-  'Compassionate Crust',
-  'Leafy Delight'
+const usualNames = [
+  'Tasty Tornado',
+  'Sizzling Symphony',
+  'Funky Fusion',
+  'Blissful Bites',
+  'Gourmet Galaxy'
 ];
 
 const glutenfreeNames = [
@@ -80,15 +56,26 @@ document.addEventListener('DOMContentLoaded', async function () {
     console.log(user.user_id);
     const result = await response.json();
     console.log(result);
-    let name = '';
-    if (result.name) {
-      name = result.name;
+
+  const generatePizzaName = (pizza) => {
+    if (pizza.name && pizza.prompt_id !== null) {
+      return pizza.name;
     } else {
+      if (pizza.dough === 'usual') {
+        return usualNames[Math.floor(Math.random() * usualNames.length)];
+      } else if (pizza.dough === 'gluten-free') {
+        return glutenfreeNames[Math.floor(Math.random() * glutenfreeNames.length)];
+      } else if (pizza.dough === 'keto') {
+        return ketoNames[Math.floor(Math.random() * ketoNames.length)];
+      }
     }
+  };
 
     const tableBody = document.querySelector('#selected-products tbody');
 
     result.rows.forEach(pizza => {
+      const pizzaName = generatePizzaName(pizza);
+      console.log(pizza);
       const newRow = document.createElement('tr');
       const productCell = document.createElement('td');
       productCell.classList.add('product');
@@ -97,36 +84,65 @@ document.addEventListener('DOMContentLoaded', async function () {
       productDetails.innerHTML = `
         <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
         <div>
-          <h4>${name}</h4>
+          <h4>${pizzaName}</h4>
           <p>${pizza.size}-sized pizza with ${pizza.dough} dough</p>
         </div>`;
       productCell.appendChild(productDetails);
 
-      // Quantity column
       const quantityCell = document.createElement('td');
       quantityCell.classList.add('quantity');
       const quantitySelection = document.createElement('div');
       quantitySelection.classList.add('quantity-selection');
       quantitySelection.innerHTML = `
-        <button>-</button>
+        <button id="minus">-</button>
         <p>${pizza.quantity}</p>
-        <button>+</button>`;
+        <button id="plus">+</button>`;
       quantityCell.appendChild(quantitySelection);
 
-      // Total column
       const totalCell = document.createElement('td');
       totalCell.classList.add('total');
       totalCell.innerHTML = `<p>${parseFloat(pizza.price) * parseInt(pizza.quantity)}€</p>`;
 
-      // Append cells to the new row
       newRow.appendChild(productCell);
       newRow.appendChild(quantityCell);
       newRow.appendChild(totalCell);
 
-      // Append the new row to the table body
       tableBody.appendChild(newRow);
     });
-  } catch (error) {
+    const receiptTable = document.getElementById('receipt-table');
+    const shippingFeeCell = receiptTable.querySelector('.shipping-fee.align-right');
+    const paymentFeeCell = receiptTable.querySelector('.payment-fee.align-right');
+    const totalCell = receiptTable.querySelector('.total.align-right');
+
+    let totalPizzasPrice = 0;
+    result.rows.forEach(pizza => {
+      totalPizzasPrice += parseFloat(pizza.price) * parseInt(pizza.quantity);
+    });
+    const shippingFee = 0;
+    const paymentFee = 0.5;
+
+    const totalPrice = totalPizzasPrice + shippingFee + paymentFee;
+    shippingFeeCell.textContent = `${shippingFee}€`;
+    paymentFeeCell.textContent = `${paymentFee}€`;
+    totalCell.textContent = `${totalPrice}€`;
+
+    const minusButtons = document.querySelectorAll('#minus');
+    const plusButtons = document.querySelectorAll('#plus');
+    minusButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        console.log('clicked minus button')
+      })
+    });
+    plusButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        console.log('clicked plus button');
+      })
+    });
+
+    } catch (error) {
     console.error('Error fetching pizzas:', error.message);
   }
 });
+
+
+
