@@ -277,14 +277,14 @@ a {
 }
 #ratings{
     display: grid;
-    grid-template-columns: 1fr 1fr ;
-    grid-gap: 20% 10%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 15% 10%;
     align-content: center;
     justify-content: center;
     padding: 5%;
 }
 #username{
-    margin-right: 80%;
     text-align:start; 
     font-size: large;
     font-weight: bold;
