@@ -51,18 +51,22 @@ window.onload = () => {
                 const price = +result[0].price;
                 console.log(calories, carbs, protein, fats);
 
+                const adjustedPrice = price * +document.getElementById('quantity').value;
+
                 if (ingredient.checked) {
                   totalCalories += calories;
                   totalCarbs += carbs;
                   totalProtein += protein;
                   totalFats += fats;
-                  totalPrice += price;
+                  totalPrice += adjustedPrice;
+                  console.log('price', totalPrice, 'quantity', +quantity.value);
               } else {
                   totalCalories -= calories;
                   totalCarbs -= carbs;
                   totalProtein -= protein;
                   totalFats -= fats;
-                  totalPrice -= price;
+                  totalPrice -= adjustedPrice;
+                  console.log('price', totalPrice, 'quantity', +quantity.value);
               }
   
               console.log('Total Calories:', totalCalories, 'Total Carbs:', totalCarbs, 'Total Protein:', totalProtein, 'Total Fats:', totalFats, 'Total Price:', totalPrice);
@@ -71,10 +75,10 @@ window.onload = () => {
               carbsDisplay.textContent = totalCarbs;
               proteinDisplay.textContent = totalProtein;
               fatsDisplay.textContent = totalFats;
-              priceDisplay.textContent = totalPrice + '€';
+              priceDisplay.textContent = totalPrice.toFixed(2) + '€';
               
               const quantityInput = document.getElementById('quantity');
-              quantityInput.addEventListener('click', function () {
+              quantityInput.addEventListener('input', function () {
                 const newQuantity = +quantityInput.value;
                 const newPrice = totalPrice * newQuantity;
                 const parsedPrice = newPrice.toFixed(2);
@@ -190,12 +194,15 @@ function addToCart() {
   const selectedSize = document.querySelector('input[name="size"]:checked').value;
   const message = document.getElementById('message').value;
   const quantity = document.getElementById('quantity').value;
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userId = user.user_id;
   const selectedIngredients = [];
   document.querySelectorAll('.category-content input:checked').forEach((checkbox) => {
     selectedIngredients.push(checkbox.id);
   });
 
   return {
+    user_id: userId,
     dough: selectedDough,
     size: selectedSize,
     message: message,
@@ -225,4 +232,5 @@ const addToCartButton = document.getElementById('confirm-order');
         } catch (error) {
           console.error('Error sending data to the server:', error);
         }
+      window.location.href = '/shopping-cart';
     });

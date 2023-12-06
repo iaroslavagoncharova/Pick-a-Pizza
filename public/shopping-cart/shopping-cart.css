@@ -330,11 +330,11 @@ td {
 .product-details {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .pizza-img {
-    width: 200px;
-    height: auto;
+    height: 150px;
 }
 
 .quantity-selection {

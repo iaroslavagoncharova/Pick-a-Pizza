@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
     console.log(user.user_id);
     const result = await response.json();
-    console.log(result);
 
   const generatePizzaName = (pizza) => {
     if (pizza.name && pizza.prompt_id !== null) {
@@ -73,6 +72,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     const tableBody = document.querySelector('#selected-products tbody');
 
+    console.log(result);
+
     result.rows.forEach(pizza => {
       const pizzaName = generatePizzaName(pizza);
       console.log(pizza);
@@ -86,6 +87,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         <div>
           <h4>${pizzaName}</h4>
           <p>${pizza.size}-sized pizza with ${pizza.dough} dough</p>
+          <p>${result.result4.map(ingredient => ingredient.name).join(', ')}</p>
         </div>`;
       productCell.appendChild(productDetails);
 
@@ -109,6 +111,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
       tableBody.appendChild(newRow);
     });
+
     const receiptTable = document.getElementById('receipt-table');
     const shippingFeeCell = receiptTable.querySelector('.shipping-fee.align-right');
     const paymentFeeCell = receiptTable.querySelector('.payment-fee.align-right');
@@ -128,9 +131,10 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     const minusButtons = document.querySelectorAll('#minus');
     const plusButtons = document.querySelectorAll('#plus');
+
     minusButtons.forEach(button => {
       button.addEventListener('click', function () {
-        console.log('clicked minus button')
+        console.log('clicked minus button');
       })
     });
     plusButtons.forEach(button => {
