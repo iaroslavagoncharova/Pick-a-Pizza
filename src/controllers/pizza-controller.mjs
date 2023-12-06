@@ -1,4 +1,4 @@
-import {sendInfo, getCalories} from "../models/pizza-model.mjs";
+import {sendInfo, getCalories, getSet} from "../models/pizza-model.mjs";
 
 
 const sendData = async (req, res) => {
@@ -20,7 +20,18 @@ const fetchCalories = async (req, res) => {
     } else {
         res.status(404).json({error: 'not found'});
     }
+};
+
+const getSets = async (req, res) => {
+    console.log('getSets', req.params);
+    const {id} = req.params;
+    const result = await getSet(id);
+    if (result) {
+        res.status(200).json(result);
+    } else {
+        res.status(404).json({error: 'not found'});
+    }
 }
 
 
-export {sendData, fetchCalories};
+export {sendData, fetchCalories, getSets};

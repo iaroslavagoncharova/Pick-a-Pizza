@@ -55,6 +55,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
     console.log(user.user_id);
     const result = await response.json();
+    if (!result) {
+      console.log('No pizzas in cart');
+    }
 
   const generatePizzaName = (pizza) => {
     if (pizza.name && pizza.prompt_id !== null) {
@@ -73,6 +76,19 @@ document.addEventListener('DOMContentLoaded', async function () {
     const tableBody = document.querySelector('#selected-products tbody');
 
     console.log(result);
+    if (result.error) {
+      console.log('no pizzas in cart');
+      const emptyCart = document.createElement('p');
+      emptyCart.textContent = "You haven't added any pizzas to your cart yet. Explore our menu!";
+      const menuButton = document.getElementById('mainpage-button');
+      menuButton.textContent = 'To the mainpage';
+      menuButton.addEventListener('click', function () {
+        window.location.href = '/';
+      });
+      emptyCart.appendChild(menuButton);
+      tableBody.appendChild(emptyCart);
+      return;
+    }
 
     result.rows.forEach(pizza => {
       const pizzaName = generatePizzaName(pizza);
@@ -103,7 +119,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
       const totalCell = document.createElement('td');
       totalCell.classList.add('total');
-      totalCell.innerHTML = `<p>${parseFloat(pizza.price) * parseInt(pizza.quantity)}€</p>`;
+      const totalPrice = parseFloat(pizza.price).toFixed(2) * parseInt(pizza.quantity); 
+      totalCell.innerHTML = `<p>${totalPrice}€</p>`;
 
       const removeCell = document.createElement('td');
       removeCell.classList.add('remove');
@@ -154,6 +171,15 @@ document.addEventListener('DOMContentLoaded', async function () {
       button.addEventListener('click', async function () {
         try {
           const quantity = button.nextElementSibling.textContent;
+          if (parseInt(quantity) === 1) {
+            const response = await fetch(`/shopping-cart/${result.rows[0].pizza_id}`, {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            });
+            window.location.reload();
+          }
           const newQuantity = parseInt(quantity) - 1;
           const response = await fetch(`/shopping-cart/${result.rows[0].pizza_id}`, {
             method: 'PUT',
