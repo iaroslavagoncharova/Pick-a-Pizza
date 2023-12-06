@@ -12,6 +12,8 @@ import { fileURLToPath } from 'url';
 import loginRouter from './routers/login-router.mjs';
 import registRouter from './routers/register-router.mjs';
 import ingredientsRouter from './routers/ingredients-router.mjs';
+import pizzasRouter from './routers/pizzas-router.mjs';
+import promptRouter from './routers/prompts-router.mjs';
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -40,6 +42,8 @@ app.use('/login', loginRouter);
 app.use('/register', registRouter);
 
 app.use('/ingredients', ingredientsRouter);
+app.use('/pizzas', pizzasRouter);
+app.use('/prompts', promptRouter);
 
 
 app.listen(port, hostname, () => {

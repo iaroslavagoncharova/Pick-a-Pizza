@@ -6,7 +6,7 @@ const getPromptNames = async (req, res) => {
         res.status(200).json(names);
         console.log(names);
     } catch (error) {
-        console.error(error.status, 'Error:', error.message);
+        console.error(error, 'Error:', error.message);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
