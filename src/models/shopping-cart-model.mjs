@@ -36,4 +36,35 @@ const fetchPizza = async (id) => {
     }
 };
 
-export {fetchPizza}
+const deletePizza = async (id) => {
+    try {
+        const sqlI = `DELETE FROM PizzaIngredient WHERE pizza_id = ?`;
+        const params = [id];
+        const resultI = await promisePool.query(sqlI, params);
+        const [rowsI] = resultI;
+        const sqlP = `DELETE FROM Pizza WHERE pizza_id = ?`;
+        const resultP = await promisePool.query(sqlP, params);
+        const [rowsP] = resultP;
+        console.log(rowsI, rowsP);
+        return true;
+    } catch (e) {
+        console.error('error', e.message);
+        return {error: e.message};
+    }
+};
+
+const putQuantity = async (quantity, id) => {
+    try {
+        const sql = `UPDATE Pizza SET quantity = ? WHERE pizza_id = ?`;
+        const params = [quantity, id];
+        const result = await promisePool.query(sql, params);
+        const [rows] = result;
+        console.log(rows);
+        return rows;
+    } catch (e) {
+        console.error('error', e.message);
+        return {error: e.message};
+    }
+};
+
+export {fetchPizza, deletePizza, putQuantity}

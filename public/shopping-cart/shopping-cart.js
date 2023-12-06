@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     result.rows.forEach(pizza => {
       const pizzaName = generatePizzaName(pizza);
-      console.log(pizza);
+      console.log(pizza);;
       const newRow = document.createElement('tr');
       const productCell = document.createElement('td');
       productCell.classList.add('product');
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
         <div>
           <h4>${pizzaName}</h4>
-          <p>${pizza.size}-sized pizza with ${pizza.dough} dough</p>
+          <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
           <p>${result.result4.map(ingredient => ingredient.name).join(', ')}</p>
         </div>`;
       productCell.appendChild(productDetails);
@@ -105,9 +105,27 @@ document.addEventListener('DOMContentLoaded', async function () {
       totalCell.classList.add('total');
       totalCell.innerHTML = `<p>${parseFloat(pizza.price) * parseInt(pizza.quantity)}€</p>`;
 
+      const removeCell = document.createElement('td');
+      removeCell.classList.add('remove');
+      removeCell.innerHTML = `<i class="fa-solid fa-trash remove"></i>`;
+      removeCell.addEventListener('click', async function () {
+        try {
+          const response = await fetch(`/shopping-cart/${pizza.pizza_id}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+          window.location.reload();
+        } catch (error) {
+          console.error('Error deleting pizza:', error.message);
+        }
+      });
+      
       newRow.appendChild(productCell);
       newRow.appendChild(quantityCell);
       newRow.appendChild(totalCell);
+      newRow.appendChild(removeCell);
 
       tableBody.appendChild(newRow);
     });
@@ -133,16 +151,41 @@ document.addEventListener('DOMContentLoaded', async function () {
     const plusButtons = document.querySelectorAll('#plus');
 
     minusButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        console.log('clicked minus button');
+      button.addEventListener('click', async function () {
+        try {
+          const quantity = button.nextElementSibling.textContent;
+          const newQuantity = parseInt(quantity) - 1;
+          const response = await fetch(`/shopping-cart/${result.rows[0].pizza_id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({quantity: newQuantity}),
+          });
+          window.location.reload();
+        } catch {
+          console.error('Error changing quantity:', error.message);
+        }
       })
     });
     plusButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        console.log('clicked plus button');
+      button.addEventListener('click', async function () {
+        try {
+          const quantity = button.previousElementSibling.textContent;
+          const newQuantity = parseInt(quantity) + 1;
+          const response = await fetch(`/shopping-cart/${result.rows[0].pizza_id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({quantity: newQuantity}),
+          });
+          window.location.reload();
+        } catch {
+          console.error('Error changing quantity:', error.message);
+        }
       })
     });
-
     } catch (error) {
     console.error('Error fetching pizzas:', error.message);
   }

@@ -33,7 +33,8 @@ window.onload = () => {
     const priceDisplay = document.getElementById('totalPrice');
 
     const ingredients = document.querySelectorAll('.category-content input');
-    ingredients.forEach(ingredient => {
+
+    ingredients.forEach(async ingredient => {
         ingredient.addEventListener('click', async function () {
             console.log(ingredient.id);
             try {
@@ -43,6 +44,7 @@ window.onload = () => {
                         'Content-Type': 'application/json',
                     },
                 });
+    
                 const result = await response.json();
                 const calories = result[0].calories;
                 const carbs = result[0].carbs;
@@ -50,45 +52,47 @@ window.onload = () => {
                 const fats = result[0].fats;
                 const price = +result[0].price;
                 console.log(calories, carbs, protein, fats);
-
+    
                 const adjustedPrice = price * +document.getElementById('quantity').value;
-
+                console.log('adjusted price', adjustedPrice);
+    
                 if (ingredient.checked) {
-                  totalCalories += calories;
-                  totalCarbs += carbs;
-                  totalProtein += protein;
-                  totalFats += fats;
-                  totalPrice += adjustedPrice;
-                  console.log('price', totalPrice, 'quantity', +quantity.value);
-              } else {
-                  totalCalories -= calories;
-                  totalCarbs -= carbs;
-                  totalProtein -= protein;
-                  totalFats -= fats;
-                  totalPrice -= adjustedPrice;
-                  console.log('price', totalPrice, 'quantity', +quantity.value);
-              }
-  
-              console.log('Total Calories:', totalCalories, 'Total Carbs:', totalCarbs, 'Total Protein:', totalProtein, 'Total Fats:', totalFats, 'Total Price:', totalPrice);
-
-              caloriesDisplay.textContent = totalCalories;
-              carbsDisplay.textContent = totalCarbs;
-              proteinDisplay.textContent = totalProtein;
-              fatsDisplay.textContent = totalFats;
-              priceDisplay.textContent = totalPrice.toFixed(2) + '€';
-              
-              const quantityInput = document.getElementById('quantity');
-              quantityInput.addEventListener('input', function () {
-                const newQuantity = +quantityInput.value;
-                const newPrice = totalPrice * newQuantity;
-                const parsedPrice = newPrice.toFixed(2);
-                priceDisplay.textContent = parsedPrice + '€';
-              });
+                    totalCalories += calories;
+                    totalCarbs += carbs;
+                    totalProtein += protein;
+                    totalFats += fats;
+                    totalPrice += adjustedPrice;
+                    console.log('price', totalPrice, 'quantity', +quantity.value);
+                } else {
+                    totalCalories -= calories;
+                    totalCarbs -= carbs;
+                    totalProtein -= protein;
+                    totalFats -= fats;
+                    totalPrice -= adjustedPrice;
+                    console.log('price', totalPrice, 'quantity', +quantity.value);
+                }
+    
+                console.log('Total Calories:', totalCalories, 'Total Carbs:', totalCarbs, 'Total Protein:', totalProtein, 'Total Fats:', totalFats, 'Total Price:', totalPrice);
+    
+                caloriesDisplay.textContent = totalCalories;
+                carbsDisplay.textContent = totalCarbs;
+                proteinDisplay.textContent = totalProtein;
+                fatsDisplay.textContent = totalFats;
+                priceDisplay.textContent = totalPrice.toFixed(2) + '€';
+    
+                const quantityInput = document.getElementById('quantity');
+                quantityInput.addEventListener('input', function () {
+                    const newQuantity = +quantityInput.value;
+                    const newPrice = totalPrice * newQuantity;
+                    const parsedPrice = newPrice.toFixed(2);
+                    priceDisplay.textContent = parsedPrice + '€';
+                });
             } catch (error) {
                 console.error('Error getting data to the server:', error);
             }
         });
     });
+    
     
 const doughButtons = document.querySelectorAll('.dough-image button');
 const sizeButtons = document.querySelectorAll('.size button');

@@ -324,7 +324,7 @@ a {
 }
 
 td {
-    padding: 10px;
+    padding: 20px;
 }
 
 .product-details {
@@ -335,6 +335,10 @@ td {
 
 .pizza-img {
     height: 150px;
+}
+
+.remove {
+    cursor: pointer;
 }
 
 .quantity-selection {
@@ -362,6 +366,7 @@ td {
     flex-direction: column;
     justify-content: center;
 }
+
 
 .align-left {
     text-align: left;
