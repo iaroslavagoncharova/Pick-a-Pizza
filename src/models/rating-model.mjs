@@ -27,4 +27,18 @@ const getUsernames = async(id) => {
     }
 };
 
-export {getRating, getUsernames}
+const postRating = async (stars, review_header, review_text, user_id) => {
+    try {
+        const sql = `INSERT INTO Reviews (stars, review_header, review_text, user_id) VALUES (?, ?, ?, ?)`;
+        const params = [stars, review_header, review_text, user_id];
+        const result = await promisePool.query(sql, params);
+        const [rows] = result;
+        console.log(result);
+        return rows;
+    } catch (e) {
+        console.error('error', e.message);
+        return {error: e.message};
+    }
+};
+
+export {getRating, getUsernames, postRating}

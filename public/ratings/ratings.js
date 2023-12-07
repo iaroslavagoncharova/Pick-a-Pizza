@@ -52,22 +52,76 @@ document.addEventListener('DOMContentLoaded', async function () {
                 ratingStars.appendChild(star);
             }
             ratingContainer.appendChild(ratingStars);
-            const ratingName = document.createElement('div');
-            ratingName.classList.add('username');
-            ratingName.innerText = row.user_id;
-            ratingContainer.appendChild(ratingName);
+            let totalStars = 0;
+            result.forEach((row) => {
+                totalStars += row.stars;
+            })
+            const averageStars = totalStars / result.length;
+            const averageStarsContainer = document.getElementById('average-rating');
+            averageStarsContainer.innerText = `Average Rating: ${averageStars.toFixed(1)}★`
+
 
             if (!row.review_header) {
-                row.review_header = 'No review header';
+                row.review_header = '-----';
                 ratingHeader.innerText = row.review_header;
             }
             ratingHeader.innerText = row.review_header;
             ratingText.innerText = row.review_text;
             ratingContainer.appendChild(ratingHeader);
             ratingContainer.appendChild(ratingText);
+
+            const ratingName = document.createElement('div');
+            ratingName.classList.add('username');
+            const getNames = async () => {
+                const response = await fetch(`/ratings/${row.user_id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const result = await response.json();
+                console.log(result);
+                ratingName.innerText = result[0].username;
+            }
+            getNames();
+            ratingContainer.appendChild(ratingName);
+
             document.getElementById('ratings').appendChild(ratingContainer);
         })
+    } catch (e) {
+        console.log(e.message);
+    }
+}
+)
 
+const submitReview = document.getElementById('submit-review');
+submitReview.addEventListener('click', async () => {
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user'));
+    const stars = document.querySelector('input[name="rating"]:checked').value;
+    console.log(stars);
+    const reviewHeader = document.getElementById('header').value;
+    const reviewText = document.getElementById('review').value;
+    const rating = {
+        stars: stars,
+        review_header: reviewHeader,
+        review_text: reviewText,
+        user_id: user.user_id,
+    }
+    console.log(rating);
+    try {
+        const response = await fetch(`/ratings/ratings`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(rating),
+        });
+        const result = await response.json();
+        console.log(result);
+        if (result) {
+            window.location.href = '/ratings';
+        }
     } catch (e) {
         console.log(e.message);
     }

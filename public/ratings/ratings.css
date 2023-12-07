@@ -244,7 +244,7 @@ a {
 }
 
 .hero-image {
-    min-height: 60%;
+    min-height: 70%;
     background-image: url(../images/bckgrndlight.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -262,7 +262,7 @@ a {
 
 #ratings-container {
     background-color: var(--translucent-light);
-    padding: 20px;
+    padding: 30px;
     padding-bottom: 30px;
     border-radius: 20px;
     display: grid;
@@ -270,11 +270,62 @@ a {
     justify-content: center;
 }
 
-#ratings-header {
+.review {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 10px;
+    align-content: center;
+    justify-content: center;
+    padding: 5%;
+    border: 2px solid var(--grayish-brown);
+    border-radius: 10px;
+    background-color: var(--light);
+}
+
+#rating-stars {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    font-size: 0;
+}
+
+#rating-stars input {
+    display: none;
+}
+
+#rating-stars label {
+    font-size: 30px; 
+    color: #e5ddda; 
+    cursor: pointer;
+    display: inline-block;
+}
+
+#rating-stars label:hover,
+#rating-stars input:checked + label {
+    color: gold;
+}
+
+#rating-stars label:before {
+    content: '★';
+}
+
+#header {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: x-large;
+    padding: 10px;
+}
+
+#review {
     text-align: center;
     margin-bottom: 20px;
-    font-size: x-large;
+    font-size: large;
+    padding: 10px;
 }
+
 #ratings{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -283,7 +334,23 @@ a {
     align-content: center;
     justify-content: center;
     padding: 5%;
+    margin: 4rem 0;
 }
+
+#submit-review {
+    background-color: var(--grayish-brown);
+    color: var(--light);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .username{
     text-align:start; 
     font-size: large;

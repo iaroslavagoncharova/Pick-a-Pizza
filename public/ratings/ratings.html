@@ -71,9 +71,27 @@
                 <div id="ratings-header">
                     <h1>Our Ratings</h1>
                     <p>Your feedback is very important for us. Here you can see the ratings of our restaurant and service.</p>
+                    <p id="average-rating"></p>
                 </div>
-                <div id="ratings">
-            </div>
+                <div id="ratings"></div>
+                <div class="review">
+                    <h2>Leave a review</h2>
+                    <textarea name="header" id="header" cols="10" rows="1" placeholder="Review header, e.g. Nice pizzeria!"></textarea>
+                    <textarea name="review" id="review" cols="10" rows="5" placeholder="Your text, e.g. I loved kero pizza here"></textarea>
+                    <div id="rating-stars">
+                        <input type="radio" name="rating" id="rating-1" value="1">
+                        <label for="rating-1">1</label>
+                        <input type="radio" name="rating" id="rating-2" value="2">
+                        <label for="rating-2">2</label>
+                        <input type="radio" name="rating" id="rating-3" value="3">
+                        <label for="rating-3">3</label>
+                        <input type="radio" name="rating" id="rating-4" value="4">
+                        <label for="rating-4">4</label>
+                        <input type="radio" name="rating" id="rating-5" value="5">
+                        <label for="rating-5">5</label>
+                    </div>
+                    <button id="submit-review">Submit</button>
+                </div>
          </div>
     </div>
     </div>
