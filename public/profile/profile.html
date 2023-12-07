@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Account</title>
-    <script type="module" src="profile/profile.js"></script>
+    <script type="module" src="profile/profile.js" defer></script>
+    <script type="module" src="profile/forms.js" defer></script>
     <script src="../language.js" defer></script>
     <link rel="stylesheet" href="profile/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -90,7 +91,6 @@
                     <li><a href="#">26.9.2023 Order  №12048524</a></li>
                     <li><a href="#">15.9.2023 Order  №40359163</a></li>
                 </ul>
-                <button class="profile-button" id="all-orders">All orders</button>
             </div>
                 <div id="favorite-pizza"><h3>Your favorite pizza is</h3>
                 <p>Gluten-free + tuna</p></div>
@@ -115,6 +115,65 @@
         </div>
 
     </footer>
-    
+    <dialog id="edit-profile-dialog" class="hidden">
+        <div id="dialog-top">
+            <h3 id="dialog-header">Edit your profile</h3>
+            <span id="close-dialog">&#x2715</span>
+        </div>
+        <div id="dialog-content">
+            <h4>Update personal information:</h4>
+            <form action="/update" id="update-user-data">
+                <div class="form-input">
+                    <label for="username">Name:</label>
+                    <input type="text" name="username" id="change-username" class="input-space">
+                </div>
+                <div class="form-input">
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email" id="change-email" class="input-space">
+                </div>
+                <div class="form-input">
+                    <label for="address">Address:</label>
+                    <input type="text" name="address" id="change-address" class="input-space">
+                </div>
+                <div class="form-input">
+                    <label for="phone-number">Phone number:</label>
+                    <input type="tel" pattern="\+?[0-9]{7,13}" name="phone-number" id="change-number" class="input-space">
+                </div>
+                <div class="form-submit">
+                    <input type="submit" value="Update" id="update-btn" class="form-btn">
+                </div>
+            </form>
+            <h4>Change your password:</h4>
+            <form action="/update/password" id="change-password">
+                <div class="form-input">
+                    <label for="current-password">Current password:</label>
+                    <input type="password" name="current-password" id="current-password" class="input-space" minlength="6" required>
+                </div>
+                <div class="form-input">
+                    <label for="new-password">New password:</label>
+                    <input type="password" name="new-password" id="new-password" class="input-space" minlength="6" required>
+                </div>
+                <div class="form-input">
+                    <label for="new-password2">Re-enter new password:</label>
+                    <input type="password" name="new-password2" id="new-password2" class="input-space" minlength="6" required>
+                </div>
+                <div class="form-submit">
+                    <input type="submit" value="Change Password" id="pswd-btn" class="form-btn">
+                </div>
+            </form>
+            <div id="delete-user">
+                <button id="delete-btn" class="form-btn">Delete Account</button>
+            </div>
+        </div>
+    </dialog>
+    <div class="alert-popup hidden" id="confirm-deletion">
+        <img src="../images/icons/warning-icon.png" alt="Warning Icon" id="warning-icon" class="bottom-nav-icon">
+        <p>Are you sure you want to delete your account?<br>
+        This action <b>can not be undone</b>.</p>
+        <div class="confirm-options">
+            <button class="form-btn" id="cancel">Cancel</button>
+            <button class="form-btn" id="confirm">OK</button>
+        </div>
+    </div>
 </body>
 </html>
