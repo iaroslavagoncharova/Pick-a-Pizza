@@ -15,6 +15,9 @@ import ingredientsRouter from './routers/ingredients-router.mjs';
 import pizzasRouter from './routers/pizzas-router.mjs';
 import promptRouter from './routers/prompts-router.mjs';
 import setRouter from './routers/set-router.mjs';
+import updateRouter from './routers/update-profile-router.mjs';
+import deleteRouter from './routers/delete-account-router.mjs';
+import { errorHandler, notFoundHandler } from './middlewares/handlers.mjs';
 import reviewRouter from './routers/reviews-router.mjs';
 import ratingRouter from './routers/reviews-router.mjs';
 
@@ -43,12 +46,17 @@ app.use('/join-us', jobApplicationRouter);
 // routers for database interaction
 app.use('/login', loginRouter);
 app.use('/register', registRouter);
+app.use('/update', updateRouter);
+app.use('/delete', deleteRouter);
 
 app.use('/ingredients', ingredientsRouter);
 app.use('/pizzas', pizzasRouter);
 app.use('/prompts', promptRouter);
 app.use('/sets', setRouter);
 app.use('/ratings', ratingRouter)
+
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 
 app.listen(port, hostname, () => {

@@ -55,11 +55,11 @@ updatePassword.addEventListener('submit', async (e) => {
         const data = await response.json();
 
         if (data.message === 'password updated successfully') {
-            alert('Password update successful. Logging out...')
+            alert('Password update successful. Logging out...');
             localStorage.clear();
             window.location.href = '/';
         } else {
-            alert(data.error)
+            alert(data.error);
             window.location.reload();
         }
     }
