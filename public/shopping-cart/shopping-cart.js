@@ -4,11 +4,13 @@ import { logUserOut } from "../logout.js";
 window.onload = () => {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
+  const joinUs = document.getElementById('membership-screen');
   console.log(user, token);
 
   if (token) {
     addUserDataToDom(user);
     logUserOut();
+    joinUs.style.display = 'none';
     const userButton = document.getElementById('user-account');
     if (user.user_level_id === 1) {
       userButton.href = '/my-account/admin';
@@ -17,6 +19,7 @@ window.onload = () => {
     }
   } else {
     removeUserDataFromDom();
+    joinUs.style.display = 'block';
   }
 };
 
