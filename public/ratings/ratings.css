@@ -284,7 +284,7 @@ a {
     justify-content: center;
     padding: 5%;
 }
-#username{
+.username{
     text-align:start; 
     font-size: large;
     font-weight: bold;
@@ -318,7 +318,6 @@ a {
     text-align: center;
     margin-top: 10px;
 }
-
 
 footer {
     padding: 1rem;

@@ -15,6 +15,8 @@ import ingredientsRouter from './routers/ingredients-router.mjs';
 import pizzasRouter from './routers/pizzas-router.mjs';
 import promptRouter from './routers/prompts-router.mjs';
 import setRouter from './routers/set-router.mjs';
+import reviewRouter from './routers/reviews-router.mjs';
+import ratingRouter from './routers/reviews-router.mjs';
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -46,6 +48,7 @@ app.use('/ingredients', ingredientsRouter);
 app.use('/pizzas', pizzasRouter);
 app.use('/prompts', promptRouter);
 app.use('/sets', setRouter);
+app.use('/ratings', ratingRouter)
 
 
 app.listen(port, hostname, () => {
