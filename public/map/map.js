@@ -155,3 +155,8 @@ function getColor(index) {
 }
 
 navigator.geolocation.getCurrentPosition(success, error, positionOptions);
+
+setTimeout(function () {
+  document.getElementById('map-placeholder').style.display = 'none';
+  document.getElementById('map').style.display = 'block';
+}, 3000);

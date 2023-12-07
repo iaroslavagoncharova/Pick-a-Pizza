@@ -5,6 +5,7 @@ window.onload = () => {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
   const joinUs = document.getElementById('membership-screen');
+  const mainpageButton = document.getElementById('mainpage-button');
   console.log(user, token);
 
   if (token) {
@@ -20,6 +21,16 @@ window.onload = () => {
   } else {
     removeUserDataFromDom();
     joinUs.style.display = 'block';
+      const emptyCart = document.createElement('p');
+      emptyCart.textContent = "You haven't added any pizzas to your cart yet. Explore our menu!";
+      const menuButton = document.getElementById('mainpage-button');
+      menuButton.textContent = 'To the mainpage';
+      menuButton.addEventListener('click', function () {
+        window.location.href = '/';
+      });
+      emptyCart.appendChild(menuButton);
+      const tableBody = document.querySelector('#selected-products tbody');
+      tableBody.appendChild(emptyCart);
   }
 };
 
