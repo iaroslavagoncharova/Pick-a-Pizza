@@ -92,10 +92,16 @@ document.addEventListener('DOMContentLoaded', async function () {
       tableBody.appendChild(emptyCart);
       return;
     }
+    if (result) {
+      const menuButton = document.getElementById('mainpage-button');
+      menuButton.style.display = 'none';
+    }
+
+    let index = 1;
 
     result.rows.forEach(pizza => {
       const pizzaName = generatePizzaName(pizza);
-      console.log(pizza);;
+      console.log(pizza);
       const newRow = document.createElement('tr');
       const productCell = document.createElement('td');
       productCell.classList.add('product');
@@ -115,9 +121,9 @@ document.addEventListener('DOMContentLoaded', async function () {
       const quantitySelection = document.createElement('div');
       quantitySelection.classList.add('quantity-selection');
       quantitySelection.innerHTML = `
-        <button id="minus">-</button>
+        <button class="minus" id="minus${index}">-</button>
         <p>${pizza.quantity}</p>
-        <button id="plus">+</button>`;
+        <button class="plus" id="plus${index}">+</button>`;
       quantityCell.appendChild(quantitySelection);
 
       const totalCell = document.createElement('td');
@@ -148,6 +154,8 @@ document.addEventListener('DOMContentLoaded', async function () {
       newRow.appendChild(removeCell);
 
       tableBody.appendChild(newRow);
+
+      index++;
     });
 
     const receiptTable = document.getElementById('receipt-table');
@@ -167,13 +175,13 @@ document.addEventListener('DOMContentLoaded', async function () {
     paymentFeeCell.textContent = `${paymentFee}€`;
     totalCell.textContent = `${totalPrice}€`;
 
-    const minusButtons = document.querySelectorAll('#minus');
-    const plusButtons = document.querySelectorAll('#plus');
+    const minusButtons = document.querySelectorAll('.minus');
+    const plusButtons = document.querySelectorAll('.plus');
 
     minusButtons.forEach(button => {
       button.addEventListener('click', async function () {
         try {
-          const quantity = button.nextElementSibling.textContent;
+          const quantity = button.nextSibling.textContent;
           if (parseInt(quantity) === 1) {
             const response = await fetch(`/shopping-cart/${result.rows[0].pizza_id}`, {
               method: 'DELETE',

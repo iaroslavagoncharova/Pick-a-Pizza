@@ -43,10 +43,12 @@ contentTabs.addEventListener('click', (evt) => {
   }
 });
 
-const craftPizza = document.getElementById('button-7');
-craftPizza.addEventListener('click', () => {
+const craftPizza = document.querySelectorAll('.make-a-pizza');
+craftPizza.forEach(pizza => {
+  pizza.addEventListener('click', () => {
   localStorage.removeItem('selectedPizzaIngredients');
   window.location.href = '/make-your-pizza';
+});
 });
 
 const offers = document.getElementById('offers');

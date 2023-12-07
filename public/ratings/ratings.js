@@ -45,22 +45,22 @@ document.addEventListener('DOMContentLoaded', async function () {
             const ratingStars = document.createElement('div');
             ratingStars.classList.add('rating-stars');
             const stars = row.stars;
-            [...Array(5)].forEach((_, star) => {
-                const ratingStar = document.createElement('i');
-                ratingStar.classList.add('fas');
-                ratingStar.classList.add('fa-star');
-                ratingStar.classList.add('rating-star');
-                if (star === 0) {
-                    ratingStar.classList.add('empty');
-                }
-                ratingStars.appendChild(ratingStar);
-            })
+            for (let i = 0; i < stars; i++) {
+                const star = document.createElement('i');
+                star.classList.add('fas');
+                star.classList.add('fa-star');
+                ratingStars.appendChild(star);
+            }
             ratingContainer.appendChild(ratingStars);
             const ratingName = document.createElement('div');
             ratingName.classList.add('username');
             ratingName.innerText = row.user_id;
             ratingContainer.appendChild(ratingName);
 
+            if (!row.review_header) {
+                row.review_header = 'No review header';
+                ratingHeader.innerText = row.review_header;
+            }
             ratingHeader.innerText = row.review_header;
             ratingText.innerText = row.review_text;
             ratingContainer.appendChild(ratingHeader);
