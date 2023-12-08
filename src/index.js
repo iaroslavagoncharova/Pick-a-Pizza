@@ -21,6 +21,7 @@ import deleteRouter from './routers/delete-account-router.mjs';
 import { errorHandler, notFoundHandler } from './middlewares/handlers.mjs';
 import reviewRouter from './routers/reviews-router.mjs';
 import ratingRouter from './routers/reviews-router.mjs';
+import orderRouter from './routers/order-router.mjs';
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -56,6 +57,7 @@ app.use('/pizzas', pizzasRouter);
 app.use('/prompts', promptRouter);
 app.use('/sets', setRouter);
 app.use('/ratings', ratingRouter)
+app.use('/order-data', orderRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);

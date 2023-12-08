@@ -6,6 +6,7 @@
     <title>Profiili</title>
     <script type="module" src="profile/profile.js"></script>
     <script type="module" src="profile/forms.js" defer></script>
+    <script type="module" src="profile/order-data.js" defer></script>
     <script src="../language.js" defer></script>
     <link rel="stylesheet" href="profile/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -79,11 +80,7 @@
                     <button class="profile-button" id="change-profile">Muokkaa</button>
                 </div>
                 <div id="recent-orders"><h3>Hiljattain tehdyt tilauksesi</h3>
-                <ul>
-                    <li><a href="#">10.10.2023 Order №19014356</a></li>
-                    <li><a href="#">3.10.2023 Order №65865230</a></li>
-                    <li><a href="#">26.9.2023 Order  №12048524</a></li>
-                    <li><a href="#">15.9.2023 Order  №40359163</a></li>
+                <ul id="order-list">
                 </ul>
                 <div id="favorite-pizza"><h3>Lempipizzasi on:</h3>
                 <p>Gluteeniton + tonnikala</p></div>
