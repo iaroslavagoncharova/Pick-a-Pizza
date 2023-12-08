@@ -4,11 +4,14 @@ import { logUserOut } from "../logout.js";
 window.onload = () => {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
+  const joinUs = document.getElementById('membership-screen');
+  const mainpageButton = document.getElementById('mainpage-button');
   console.log(user, token);
 
   if (token) {
     addUserDataToDom(user);
     logUserOut();
+    joinUs.style.display = 'none';
     const userButton = document.getElementById('user-account');
     if (user.user_level_id === 1) {
       userButton.href = '/my-account/admin';
@@ -17,6 +20,17 @@ window.onload = () => {
     }
   } else {
     removeUserDataFromDom();
+    joinUs.style.display = 'block';
+      const emptyCart = document.createElement('p');
+      emptyCart.textContent = "You haven't added any pizzas to your cart yet. Explore our menu!";
+      const menuButton = document.getElementById('mainpage-button');
+      menuButton.textContent = 'To the mainpage';
+      menuButton.addEventListener('click', function () {
+        window.location.href = '/';
+      });
+      emptyCart.appendChild(menuButton);
+      const tableBody = document.querySelector('#selected-products tbody');
+      tableBody.appendChild(emptyCart);
   }
 };
 
@@ -55,6 +69,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
     console.log(user.user_id);
     const result = await response.json();
+    if (!result) {
+      console.log('No pizzas in cart');
+    }
 
   const generatePizzaName = (pizza) => {
     if (pizza.name && pizza.prompt_id !== null) {
@@ -73,6 +90,25 @@ document.addEventListener('DOMContentLoaded', async function () {
     const tableBody = document.querySelector('#selected-products tbody');
 
     console.log(result);
+    if (result.error) {
+      console.log('no pizzas in cart');
+      const emptyCart = document.createElement('p');
+      emptyCart.textContent = "You haven't added any pizzas to your cart yet. Explore our menu!";
+      const menuButton = document.getElementById('mainpage-button');
+      menuButton.textContent = 'To the mainpage';
+      menuButton.addEventListener('click', function () {
+        window.location.href = '/';
+      });
+      emptyCart.appendChild(menuButton);
+      tableBody.appendChild(emptyCart);
+      return;
+    }
+    if (result) {
+      const menuButton = document.getElementById('mainpage-button');
+      menuButton.style.display = 'none';
+    }
+
+    let index = 1;
 
     result.rows.forEach(pizza => {
       const pizzaName = generatePizzaName(pizza);
@@ -97,14 +133,15 @@ document.addEventListener('DOMContentLoaded', async function () {
       const quantitySelection = document.createElement('div');
       quantitySelection.classList.add('quantity-selection');
       quantitySelection.innerHTML = `
-        <button id="minus">-</button>
+        <button class="minus" id="minus${index}">-</button>
         <p>${pizza.quantity}</p>
-        <button id="plus">+</button>`;
+        <button class="plus" id="plus${index}">+</button>`;
       quantityCell.appendChild(quantitySelection);
 
       const totalCell = document.createElement('td');
       totalCell.classList.add('total');
-      totalCell.innerHTML = `<p>${parseFloat(pizza.price) * parseInt(pizza.quantity)}€</p>`;
+      const totalPrice = parseFloat(pizza.price).toFixed(2) * parseInt(pizza.quantity); 
+      totalCell.innerHTML = `<p>${totalPrice}€</p>`;
 
       const removeCell = document.createElement('td');
       removeCell.classList.add('remove');
@@ -129,6 +166,8 @@ document.addEventListener('DOMContentLoaded', async function () {
       newRow.appendChild(removeCell);
 
       tableBody.appendChild(newRow);
+
+      index++;
     });
 
     const receiptTable = document.getElementById('receipt-table');
@@ -200,13 +239,22 @@ document.addEventListener('DOMContentLoaded', async function () {
     
 
 
-    const minusButtons = document.querySelectorAll('#minus');
-    const plusButtons = document.querySelectorAll('#plus');
+    const minusButtons = document.querySelectorAll('.minus');
+    const plusButtons = document.querySelectorAll('.plus');
 
     minusButtons.forEach(button => {
       button.addEventListener('click', async function () {
         try {
-          const quantity = button.nextElementSibling.textContent;
+          const quantity = button.nextSibling.textContent;
+          if (parseInt(quantity) === 1) {
+            const response = await fetch(`/shopping-cart/${result.rows[0].pizza_id}`, {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            });
+            window.location.reload();
+          }
           const newQuantity = parseInt(quantity) - 1;
           const response = await fetch(`/shopping-cart/${result.rows[0].pizza_id}`, {
             method: 'PUT',

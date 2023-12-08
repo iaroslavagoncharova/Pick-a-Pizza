@@ -266,6 +266,21 @@ a {
     background-color: #faf4f1d4;
     border-radius: 32px;
 }
+ #map-container {
+        position: relative;
+        width: 100%;
+        height: 300px; 
+    }
+
+    #map-placeholder {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+        color: #555;
+    }
+
 #map {
     height: 600px;
     width: 660px;

@@ -43,9 +43,12 @@ contentTabs.addEventListener('click', (evt) => {
   }
 });
 
-const craftPizza = document.getElementById('button-7');
-craftPizza.addEventListener('click', () => {
+const craftPizza = document.querySelectorAll('.make-a-pizza');
+craftPizza.forEach(pizza => {
+  pizza.addEventListener('click', () => {
+  localStorage.removeItem('selectedPizzaIngredients');
   window.location.href = '/make-your-pizza';
+});
 });
 
 const offers = document.getElementById('offers');
@@ -53,64 +56,78 @@ offers.addEventListener('click', () => {
   window.location.href = '/pick-a-pizza-club';
 });
 
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async function () {
   try {
-      const response = await fetch('/prompts', {
-          method: 'GET',
-          headers: {
-              'Content-Type': 'application/json',
-          }
+    const response = await fetch('/prompts', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log('Response:', result);
+
+      for (let i = 1; i <= 6; i++) {
+        const button = document.getElementById(`button-${i}`);
+        const dropdown = document.getElementById(`pizza-${i}`);
+        button.innerHTML = result[i - 1].prompt_name;
+        dropdown.innerHTML = result[i - 1].prompt_name;
+
+        button.addEventListener('click', (function (pizzaId) {
+          return function () {
+            selectPizza(pizzaId);
+          };
+        })(i));
+      }
+
+      const pizzaSelector = document.querySelector('.pizza-selector');
+      pizzaSelector.addEventListener('click', (evt) => {
+        const clickedPizza = evt.target.closest('.pizza-selector');
+        if (clickedPizza && clickedPizza.classList.contains('pizza-selector')) {
+          const pizzaId = clickedPizza.id[clickedPizza.id.length - 1];
+          selectPizza(pizzaId);
+          console.log(pizzaId);
+        }
       });
 
-      if (response.ok) {
-          const result = await response.json();
-          console.log('Response:', result);
-          const button1 = document.getElementById('button-1');
-          const button2 = document.getElementById('button-2');
-          const button3 = document.getElementById('button-3');
-          const button4 = document.getElementById('button-4');
-          const button5 = document.getElementById('button-5');
-          const button6 = document.getElementById('button-6');
-          button1.innerHTML = result[0].prompt_name;
-          button2.innerHTML = result[1].prompt_name;
-          button3.innerHTML = result[2].prompt_name;
-          button4.innerHTML = result[3].prompt_name;
-          button5.innerHTML = result[4].prompt_name;
-          button6.innerHTML = result[5].prompt_name;
-          const dropdown1 = document.getElementById('pizza-1');
-          const dropdown2 = document.getElementById('pizza-2');
-          const dropdown4 = document.getElementById('pizza-4');
-          const dropdown5 = document.getElementById('pizza-5');
-          const dropdown7= document.getElementById('pizza-7');
-          dropdown1.innerHTML = result[0].prompt_name;
-          dropdown2.innerHTML = result[1].prompt_name;
-          dropdown4.innerHTML = result[2].prompt_name;
-          dropdown5.innerHTML = result[3].prompt_name;
-          dropdown7.innerHTML = result[5].prompt_name;
-      } else {
-          console.error('Error getting data from the server:', response.status, response.statusText);
+      let selectedPizzaIngredients = [];
+
+      async function selectPizza(pizzaId) {
+        try {
+          const response = await fetch(`/sets/${pizzaId}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+
+          if (response.ok) {
+            const result = await response.json();
+            console.log('Selected Pizza Ingredients:', result);
+            selectedPizzaIngredients = result;
+
+            // Clear previous selection
+            if (localStorage.getItem('selectedPizzaIngredients')) {
+              localStorage.removeItem('selectedPizzaIngredients');
+            }
+
+            // Store new selection
+            localStorage.setItem('selectedPizzaIngredients', JSON.stringify(selectedPizzaIngredients));
+
+            window.location.href = '/make-your-pizza';
+          } else {
+            console.error('Error getting data from the server:', response.status, response.statusText);
+          }
+        } catch (error) {
+          console.error('Error getting data from the server:', error.message);
+        }
       }
+    } else {
+      console.error('Error getting data from the server:', response.status, response.statusText);
+    }
   } catch (error) {
-      console.error('Error getting data from the server:', error.message);
+    console.error('Error getting data from the server:', error.message);
   }
 });
-
-
-// const prompts = document.querySelectorAll('.pizza-selector');
-// prompts.forEach(prompt => {
-//   prompt.addEventListener('click', async function () {
-//     console.log('clicked', prompt.id[7]);
-//     try {
-//       const response = await fetch('/', {
-//         method: 'GET',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         }
-//       });
-//       const result = await response.json();
-//       console.log(result);
-//     } catch (error) {
-//       console.error('Error sending data to the server:', error);
-//     }
-//   });
-// });

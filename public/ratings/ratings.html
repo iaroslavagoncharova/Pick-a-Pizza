@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="ratings.css">
     <script src="../language.js" defer></script>
+    <script type="module" src="ratings.js"></script>
+    <script src="https://kit.fontawesome.com/438aeadf51.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -17,7 +19,7 @@
         <div class="wrapper">
             <div class="top_nav">
                 <div class="right">
-                    <a href="https://wa.me/358000000000?text=Hello%20from%20Pick-a-Pizza!" target="_blank"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon" id="phone-button"></a>
+                        <a href="https://wa.me/358000000000?text=Hello%20from%20Pick-a-Pizza!" target="_blank"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon" id="phone-button"></a>
                         <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
                         <div id="lang-container">
                             <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
@@ -35,19 +37,19 @@
                                 <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
                                 <a href="/join-us" class="dropdown-link">Open Positions</a>
                                 <a href="/directions" class="dropdown-link">Directions</a>
-                                <a href="#" class="dropdown-link">Pizza Ratings</a>
+                                <a href="/ratings" class="dropdown-link">Pizza Ratings</a>
                             </div>
                         </div>
                         <div class="dropdown">
                             <a href="#" id="prompts">Pizza Prompts</a>
                             <div class="dropdown-content" id="pizza-dropdown">
-                                <a href="#" class="dropdown-link">Gluten Free</a>
-                                <a href="#" class="dropdown-link">Keto</a>
-                                <a href="#" class="dropdown-link">Low Calorie</a>
-                                <a href="#" class="dropdown-link">Classic</a>
-                                <a href="#" class="dropdown-link">Vegan Classic</a>
-                                <a href="#" class="dropdown-link">Gluten Free Classic</a>
-                                <a href="#" class="dropdown-link">Season Deal</a>
+                                <a href="#" class="dropdown-link" id="pizza-1">Gluten Free</a>
+                                <a href="#" class="dropdown-link" id="pizza-2">Keto</a>
+                                <a href="#" class="dropdown-link" id="pizza-3">Low Calorie</a>
+                                <a href="#" class="dropdown-link" id="pizza-4">Classic</a>
+                                <a href="#" class="dropdown-link" id="pizza-5">Vegan Classic</a>
+                                <a href="#" class="dropdown-link" id="pizza-6">Gluten Free Classic</a>
+                                <a href="#" class="dropdown-link" id="pizza-7">Season Deal</a>
                             </div>
                         </div>
                         <a href="/make-your-pizza" id="make-a-pizza">Make a Pizza</a>
@@ -69,37 +71,27 @@
                 <div id="ratings-header">
                     <h1>Our Ratings</h1>
                     <p>Your feedback is very important for us. Here you can see the ratings of our restaurant and service.</p>
+                    <p id="average-rating"></p>
                 </div>
-                <div id="ratings">
-                    <div class="rating">
-                        <div class="rating-header">Customer Service</div>
-                        <div class="rating-body">
-                            <div class="rating-text">Excellent service! The staff was friendly and attentive.</div>
-                            <div id="username">username</div>
-                        </div>
+                <div id="ratings"></div>
+                <div class="review">
+                    <h2>Leave a review</h2>
+                    <textarea name="header" id="header" cols="10" rows="1" placeholder="Review header, e.g. Nice pizzeria!"></textarea>
+                    <textarea name="review" id="review" cols="10" rows="5" placeholder="Your text, e.g. I loved kero pizza here"></textarea>
+                    <div id="rating-stars">
+                        <input type="radio" name="rating" id="rating-1" value="1">
+                        <label for="rating-1">1</label>
+                        <input type="radio" name="rating" id="rating-2" value="2">
+                        <label for="rating-2">2</label>
+                        <input type="radio" name="rating" id="rating-3" value="3">
+                        <label for="rating-3">3</label>
+                        <input type="radio" name="rating" id="rating-4" value="4">
+                        <label for="rating-4">4</label>
+                        <input type="radio" name="rating" id="rating-5" value="5">
+                        <label for="rating-5">5</label>
                     </div>
-                    <div class="rating">
-                        <div class="rating-header">Ambiance</div>
-                        <div class="rating-body">
-                            <div class="rating-text">The restaurant has a cozy atmosphere and great decor.</div>
-                            <div id="username">username</div>
-                        </div>
-                    </div>
-                    <div class="rating">
-                        <div class="rating-header">Food Quality</div>
-                        <div class="rating-body">
-                            <div class="rating-text">Delicious and fresh ingredients used in the dishes.</div>
-                            <div id="username">username</div>
-                        </div>
-                    </div>
-                    <div class="rating">
-                        <div class="rating-header">Cleanliness</div>
-                        <div class="rating-body">
-                            <div class="rating-text">The restaurant is well-maintained and clean.</div>
-                            <div id="username">username</div>
-                        </div>
+                    <button id="submit-review">Submit</button>
                 </div>
-            </div>
          </div>
     </div>
     </div>

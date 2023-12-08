@@ -11,5 +11,4 @@ pizzaRouter.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../../public/pizza/pizza.html'));
 });
 
-
 export default pizzaRouter;

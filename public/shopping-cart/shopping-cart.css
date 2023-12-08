@@ -351,6 +351,18 @@ td {
     margin: 0.5rem;
 }
 
+#mainpage-button {
+    margin: 1rem;
+    padding: 0.5rem;
+    background-color: var(--grayish-brown);
+    color: var(--light);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-family: Rosario;
+    font-size: large;
+    cursor: pointer;
+}
+
 #receipt {
     display: flex;
     flex-direction: row;
