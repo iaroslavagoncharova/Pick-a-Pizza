@@ -232,18 +232,18 @@ header {
     100% {
       transform: scale(1);
     }
-  }
+}
   
-  #phone-button {
+#phone-button {
     animation: pulse 2s infinite;
-  }
+}
 
 a {
     text-decoration: none;
 }
 
 .hero-image {
-    min-height: 60%;
+    min-height: 100%;
     background-image: url(../images/bckgrndlight.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -307,6 +307,162 @@ a {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
     transition: ease-out 0.3s;
     cursor: pointer;
+}
+
+.open-dialog {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+#dialog-top {
+    background-color: var(--grayish-brown);
+    margin: 0;
+    position: fixed;
+    top: 8vh;
+    left: 30vw;
+    width: 40vw;
+    margin: auto;
+    height: 10vh;
+    padding: 1vh 2vw;
+    display: flex;
+    border-radius: 5px 5px 0 0;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 300;
+}
+
+#dialog-header {
+    position: absolute;
+    top: -0.5rem;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    color: var(--light);
+}
+
+#close-dialog {
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    padding: 0 1.5rem;
+    font-weight: bolder;
+    color: var(--light);
+}
+
+#close-dialog:hover {
+    cursor: pointer;
+    text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#dialog-content {
+    position: fixed;
+    top: 13vh;
+    left: 30vw;
+    border: none !important;
+    border-radius: calc(5px * var(--ratio));
+    padding: 2vw;
+    width: 40vw;
+    height: 65vh;
+    background-color: var(--light);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    overflow: scroll;
+    border-radius: 0 0 5px 5px;
+    text-align: center;
+}
+
+form {
+    padding: 1rem;
+}
+
+#dialog-content h4 {
+    color: var(--grayish-brown);
+    padding: 1rem;
+}
+
+label {
+    color: var(--grayish-brown);
+}
+
+.form-input {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.blur-background {
+    filter: blur(5px);
+    pointer-events: none; 
+}
+
+.form-btn {
+    border: none;
+    background-color: var(--grayish-brown);
+    color: var(--light);
+    cursor: pointer;
+    padding: 0.7rem;
+    margin: 1rem auto;
+    font-family: Rosario;
+    font-size: larger;
+}
+
+.form-btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #5c4b34;
+}
+
+.open-popup {
+    display: block;
+    position: fixed;
+    top: 30vh;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background-color: var(--tomato);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 200;
+}
+
+.open-popup p {
+    color: var(--light);
+    margin-top: 5rem;
+    text-align: center;
+}
+
+#warning-icon {
+    margin: auto;
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+.confirm-options {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#edit-orders {
+    width: 90%;
+    margin: auto;
+    list-style-type: none;
+    position: absolute;
+    left: -1rem;
+}
+
+#completed-btn {
+    font-size: large;
+    padding: 0.3rem;
+    height: 70%;
+    margin: auto 1rem auto;
 }
 
 footer {

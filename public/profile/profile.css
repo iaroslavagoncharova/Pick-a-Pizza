@@ -327,20 +327,6 @@ a {
 
 .open-dialog {
     display: block;
-    position: fixed;
-    top: 15vh;
-    left: 0;
-    border: none !important;
-    border-radius: calc(5px * var(--ratio));
-    box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    padding: 1.6rem;
-    width: 40vw;
-    height: 60vh;
-    background-color: var(--light);
-    backdrop-filter: blur(10px);
-    z-index: 100;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    overflow: scroll;
 }
 
 .hidden {
@@ -350,15 +336,18 @@ a {
 #dialog-top {
     background-color: var(--grayish-brown);
     margin: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2rem;
-    padding: 1rem 0;
+    position: fixed;
+    top: 8vh;
+    left: 30vw;
+    width: 40vw;
+    margin: auto;
+    height: 10vh;
+    padding: 1vh 2vw;
     display: flex;
+    border-radius: 5px 5px 0 0;
     flex-direction: row;
     justify-content: space-between;
+    z-index: 300;
 }
 
 #dialog-header {
@@ -384,11 +373,20 @@ a {
 }
 
 #dialog-content {
-    position: absolute;
-    top: 3rem;
-    left: 15%;
-    width: 60%;
-    margin: auto;
+    position: fixed;
+    top: 13vh;
+    left: 30vw;
+    border: none !important;
+    border-radius: calc(5px * var(--ratio));
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 2vw;
+    width: 40vw;
+    height: 65vh;
+    background-color: var(--light);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    overflow: scroll;
     text-align: center;
 }
 

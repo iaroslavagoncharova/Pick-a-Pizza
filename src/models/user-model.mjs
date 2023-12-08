@@ -122,23 +122,4 @@ const removeUser = async (id) => {
     
 };
 
-const userOrders = async (id) => {
-    console.log('userOrders');
-    try {
-        const sql = `SELECT O.order_id, O.created_at AS order_timestamp, SC.price AS cart_price, 
-        (SELECT DISTINCT COUNT(*) FROM CartPizza WHERE cart_id = O.cart_id) AS cart_pizza_amount
-        FROM Orders O
-        JOIN ShoppingCart SC ON O.cart_id = SC.cart_id
-        WHERE O.user_id = ${id}
-        ORDER BY O.created_at DESC;`;
-        const result = await promisePool.query(sql);
-        const [rows] = result;
-        console.log(rows);
-        return rows;
-    } catch (e) {
-        console.error('error', e.message);
-        return {error: e.message};
-    }
-}
-
-export {loginUser, registerUser, updateUser, updatePassword, getUser, removeUser, userOrders};
+export {loginUser, registerUser, updateUser, updatePassword, getUser, removeUser};
