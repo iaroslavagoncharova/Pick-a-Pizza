@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "apidoc": "apidoc -i src/ -o docs/"
   },
   "repository": {
     "type": "git",
@@ -28,8 +29,17 @@
     "nodemon": "^3.0.1"
   },
   "dependencies": {
+    "apidoc": "^1.2.0",
     "axios": "^1.6.2",
     "node-fetch": "^3.3.2",
     "url": "^0.11.3"
-  }
+  },
+  "apidoc": {
+    "title": "Pick-a-Pizza Docs",
+    "url": "https://example.com/api",
+    "order": [
+      "Authentication",
+      "User"
+    ]
+}
 }

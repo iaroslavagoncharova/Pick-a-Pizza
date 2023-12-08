@@ -59,6 +59,8 @@ app.use('/sets', setRouter);
 app.use('/ratings', ratingRouter)
 app.use('/order-data', orderRouter);
 
+app.use('/docs', express.static(path.join(__dirname, '../docs')));
+
 app.use(notFoundHandler);
 app.use(errorHandler);
 

@@ -126,7 +126,7 @@ header {
     background-color: var(--light);
     width: 180px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 3;
 }
 
 .dropdown-content a {
@@ -266,20 +266,6 @@ a {
     background-color: #faf4f1d4;
     border-radius: 32px;
 }
- #map-container {
-        position: relative;
-        width: 100%;
-        height: 300px; 
-    }
-
-    #map-placeholder {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 16px;
-        color: #555;
-    }
 
 #map {
     height: 600px;
