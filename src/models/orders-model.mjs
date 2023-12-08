@@ -50,6 +50,34 @@ const ordersInProgress = async (id) => {
         console.error('error', e.message);
         return {error: e.message};
     }
-}
+};
 
-export {userOrders, ordersInProgress};
+const putOrder = async (orderData) => {
+    console.log('putOrder');
+    try {
+        const sql = `UPDATE Orders SET order_status = ? WHERE order_id = ?`;
+        const params = [orderData.order_status, orderData.order_id];
+        const result = await promisePool.query(sql, params);
+        let [rows] = result;
+        console.log(rows[0]);
+        return {message: 'PUT request successful'};
+    } catch (e) {
+        console.error('error', e.message);
+        return {error: e.message};
+    }
+};
+
+const deleteOrder = async (id) => {
+    console.log('deleteOrder');
+    try {
+        const sql = `DELETE FROM Orders WHERE order_id = ${id}`;
+        const result = await promisePool.query(sql);
+        const [rows] = result;
+        return {message: 'Deleted successfully'};
+    } catch (e) {
+        console.error('error', e.message);
+        return {error: e.message};
+    }
+};
+
+export {userOrders, ordersInProgress, putOrder, deleteOrder};
