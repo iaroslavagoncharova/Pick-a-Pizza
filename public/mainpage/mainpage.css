@@ -351,6 +351,7 @@ a {
     position: relative;
     cursor: pointer;
     transition: width 0.5s ease, order 0.5s ease;
+    border-radius: 20px;
 }
 .content-tab p{
     font-size: 20px;
