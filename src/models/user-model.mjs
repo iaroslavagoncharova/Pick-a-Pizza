@@ -126,7 +126,7 @@ const userOrders = async (id) => {
     console.log('userOrders');
     try {
         const sql = `SELECT O.order_id, O.created_at AS order_timestamp, SC.price AS cart_price, 
-        (SELECT COUNT(*) FROM CartPizza WHERE cart_id = O.cart_id) AS cart_pizza_amount
+        (SELECT DISTINCT COUNT(*) FROM CartPizza WHERE cart_id = O.cart_id) AS cart_pizza_amount
         FROM Orders O
         JOIN ShoppingCart SC ON O.cart_id = SC.cart_id
         WHERE O.user_id = ${id}
