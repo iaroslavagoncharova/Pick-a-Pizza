@@ -15,28 +15,30 @@ const fetchOrders = async (userId) => {
     console.log('fetchOrders', orderHistory);
 
     for (let order of orderHistory.order_history) {
+    const thisOrder = document.createElement('li');
     const orderDiv = document.createElement('div');
     orderDiv.style.backgroundColor = '#e5ddda';
     orderDiv.style.width = '90%';
     orderDiv.style.margin = 'auto';
-    const thisOrder = document.createElement('li');
 
+    const timestamp = document.createElement('span');
+    const date = new Date(order.order_timestamp).toLocaleDateString('fi');
+    const hours = new Date(order.order_timestamp).toLocaleTimeString('fi');
+    timestamp.innerHTML = '<b>' + date + ' ' + hours + '</b><br>';
     const orderId = document.createElement('span');
     orderId.innerHTML = 'Order ID: ' + order.order_id + '<br>';
     const amount = document.createElement('span');
     amount.innerHTML = 'Pizza Amount: ' + order.cart_pizza_amount + '<br>';
     const price = document.createElement('span');
-    price.innerHTML = 'Price: ' + order.cart_price + ' €<br>';
-    const timestamp = document.createElement('span');
-    timestamp.innerHTML = 'Timestamp: ' + order.order_timestamp;
+    price.innerHTML = 'Price: ' + order.cart_price + ' €';
 
-    thisOrder.appendChild(orderId);
-    thisOrder.appendChild(amount);
-    thisOrder.appendChild(price);
-    thisOrder.appendChild(timestamp);
+    orderDiv.appendChild(timestamp);
+    orderDiv.appendChild(orderId);
+    orderDiv.appendChild(amount);
+    orderDiv.appendChild(price);
 
-    orderDiv.appendChild(thisOrder);
-    orderCont.appendChild(orderDiv);
+    thisOrder.appendChild(orderDiv);
+    orderCont.appendChild(thisOrder);
     }    
 };
 
