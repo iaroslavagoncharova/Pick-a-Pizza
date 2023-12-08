@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { updateUser, getUser, updatePassword, removeUser } from '../models/user-model.mjs';
+import { updateUser, getUser, updatePassword, removeUser, userOrders } from '../models/user-model.mjs';
 
 const putUser = async (req, res, next) => {
     console.log('putUser', req.body);
@@ -64,4 +64,21 @@ const deleteUser = async (req, res) => {
     }
 };
 
-export {putUser, putPassword, deleteUser};
+const getOrderHistoryOfUser = async (req, res) => {
+    console.log('getOrderHistoryOfUser');
+    try {
+        const orderHistory = await userOrders(req.params.id);
+        console.log('getorderhistoryofuser, orderhistory:', orderHistory);
+
+        if(!orderHistory) {
+            return res.status(404).json({message: 'no orders found!'});
+        }
+        
+        console.log('returning...');
+        return res.json({order_history: orderHistory})
+    } catch (e) {
+        res.status(404).json({message: 'an error occurred'});
+    }
+}
+
+export {putUser, putPassword, deleteUser, getOrderHistoryOfUser};

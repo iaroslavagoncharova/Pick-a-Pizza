@@ -180,8 +180,8 @@ VALUES
 -- Add data to Pizza 
 INSERT INTO Pizza (user_id, dough, size, message, calories, carbs, protein, fats, price, prompt_id, quantity) 
 VALUES
-(1, 'usual', 'L', 'Extra cheese, please!', 700, 70, 70, 70, 14.00, 11, 2), -- Classic pizza for Anna
-('usual', 'M', 'No onions, extra mushrooms.', 400, 40, 40, 40, 12.00, 10), -- Low Calorie pizza for Slava
+(1, 'usual', 'L', 'Extra cheese, please!', 700, 70, 70, 70, 14.00, 4, 2), -- Classic pizza for Anna
+(2, 'usual', 'M', 'No onions, extra mushrooms.', 400, 40, 40, 40, 12.00, 3, 1), -- Low Calorie pizza for Slava
 (3, 'keto', 'L', 'Keto supreme pizza!', 800, 80, 80, 80, 18.00, 1, 1); -- Keto pizza for Juan
 
 
@@ -195,9 +195,9 @@ VALUES
 -- Add data to CartPizza 
 INSERT INTO CartPizza (cart_id, pizza_id) 
 VALUES
-(1, 7), -- Anna's order, completed 
-(2, 8), -- Slava's order, in progress
-(3, 9); -- Juan's order, completed 
+(1, 1), -- Anna's order, completed 
+(2, 2), -- Slava's order, in progress
+(3, 3); -- Juan's order,
 
 -- Add data to Orders
 INSERT INTO Orders (cart_id, order_status, user_id) 
@@ -225,17 +225,6 @@ UPDATE Ingredients SET in_stock = 900 WHERE name = 'tomato';
 
 UPDATE Prompts SET price = 12.00 WHERE prompt_name = 'Gluten-free';
 
--- Delete a pizza form the cart if a user decides not to buy it:
-
-DELETE FROM CartPizza WHERE pizza_id = 4;
-
--- Delete an order if it was created by mistake:
-
-DELETE FROM Orders WHERE order_id = 10;
-
--- Delete a review if it violates company's policy:
-
-DELETE FROM Reviews WHERE review_id = 3;
 
 -- Query to get 5 last orders for a specific user to display on user's profile page:
 
