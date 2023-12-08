@@ -24,53 +24,63 @@ let selectedPizzaIngredients = [];
 
 document.addEventListener('DOMContentLoaded', function () {
   if (localStorage.getItem('selectedPizzaIngredients') === null) {
-    return;
+    console.error('No selected pizza ingredients found in local storage');
   }
 
   selectedPizzaIngredients = JSON.parse(localStorage.getItem('selectedPizzaIngredients'));
 
-  const storedDough = selectedPizzaIngredients[0].dough;
+  const storedDough = selectedPizzaIngredients.rows[0].dough;
   console.log(storedDough);
   const dough = document.getElementById(storedDough);
   dough.checked = true;
 
-  const storedSize = selectedPizzaIngredients[0].size.toLowerCase();
+  const storedSize = selectedPizzaIngredients.rows[0].size.toLowerCase();
   console.log(storedSize);
   const size = document.getElementById(storedSize);
   size.checked = true;
 
-  const storedName = selectedPizzaIngredients[0].prompt_name;
+  const storedName = selectedPizzaIngredients.rows[0].prompt_name;
   console.log(storedName);
   const name = document.getElementById('name');
   name.innerText = storedName;
 
-  const storedCalories = selectedPizzaIngredients[0].calories;
+  const storedCalories = selectedPizzaIngredients.rows[0].calories;
   console.log(storedCalories);
   const calories = document.getElementById('totalCalories');
   calories.innerText = storedCalories;
 
-  const storedCarbs = selectedPizzaIngredients[0].carbs;
+  const storedCarbs = selectedPizzaIngredients.rows[0].carbs;
   console.log(storedCarbs);
   const carbs = document.getElementById('totalCarbs');
   carbs.innerText = storedCarbs;
 
-  const storedProtein = selectedPizzaIngredients[0].protein;
+  const storedProtein = selectedPizzaIngredients.rows[0].protein;
   console.log(storedProtein);
   const protein = document.getElementById('totalProteins');
   protein.innerText = storedProtein;
 
-  const storedFats = selectedPizzaIngredients[0].fats;
+  const storedFats = selectedPizzaIngredients.rows[0].fats;
   console.log(storedFats);
   const fats = document.getElementById('totalFats');
   fats.innerText = storedFats;
 
-  const storedPrice = selectedPizzaIngredients[0].price;
+  const storedPrice = selectedPizzaIngredients.rows[0].price;
   console.log(storedPrice);
   const price = document.getElementById('totalPrice');
   price.innerText = storedPrice + '€';
 
-  const storedPromptId = selectedPizzaIngredients[0].prompt_id;
-  console.log(storedPromptId);
+  const storedPromptId = selectedPizzaIngredients.rows[0].prompt_id;
+  console.log('prompt id', storedPromptId);
+
+  const storedIngredients = selectedPizzaIngredients.rows3;
+  console.log(storedIngredients);
+  storedIngredients.forEach(ingredient => {
+    const ingredientName= ingredient.name;
+    console.log(ingredientName);
+    const ingredientCheckbox = document.getElementById(ingredientName);
+    console.log(ingredientCheckbox);
+    ingredientCheckbox.checked = true;
+  });
 });
 
 let totalCalories = 0;
@@ -85,9 +95,44 @@ const proteinDisplay = document.getElementById('totalProteins');
 const fatsDisplay = document.getElementById('totalFats');
 const priceDisplay = document.getElementById('totalPrice');
 
+const dough = document.querySelectorAll('input[name="dough"]');
+const size = document.querySelectorAll('input[name="size"]');
+const quantityInput = document.getElementById('quantity');
+
+if (dough && size) {
+  const updatePizzaInfo = async () => {
+    try {
+      const clickedDough = document.querySelector('input[name="dough"]:checked');
+      const clickedSize = document.querySelector('input[name="size"]:checked');
+      const response = await fetch(`/sets/dough/${clickedDough.value}/${clickedSize.value.toUpperCase()}`);
+      const result = await response.json();
+      console.log(result);
+
+      caloriesDisplay.textContent = result[0].dough_calories;
+      carbsDisplay.textContent = result[0].dough_carbs;
+      proteinDisplay.textContent = result[0].dough;
+      fatsDisplay.textContent = result[0].dough_fats;
+      priceDisplay.textContent = (result[0].dough_price * +quantityInput.value).toFixed(2) + '€';
+    } catch (error) {
+      console.error('Error getting data to the server:', error);
+    }
+  };
+
+  dough.forEach(dough => {
+    dough.addEventListener('click', updatePizzaInfo);
+  });
+
+  size.forEach(size => {
+    size.addEventListener('change', updatePizzaInfo);
+  });
+
+  quantityInput.addEventListener('input', updatePizzaInfo);
+}
+
+
 const ingredients = document.querySelectorAll('.category-content input');
 
-ingredients.forEach(async ingredient => {
+ingredients.forEach(ingredient => {
     ingredient.addEventListener('click', async function () {
         console.log(ingredient.id);
         try {

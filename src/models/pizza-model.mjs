@@ -55,11 +55,39 @@ const getSet = async (id) => {
         const result = await promisePool.query(sql, params);
         const [rows] = result;
         console.log(result);
-        return rows;
+
+        const sql2 = `SELECT ingredient_id FROM PromptIngredient WHERE prompt_id = ?`;
+        const result2 = await promisePool.query(sql2, params);
+        const rows2 = result2[0];
+        console.log(result2);
+
+        const ingredientIds = rows2.map(row => row.ingredient_id);
+
+        const sql3 = `SELECT name FROM Ingredients WHERE ingredient_id IN (?)`;
+        const params3 = [ingredientIds];
+
+        const result3 = await promisePool.query(sql3, params3);
+        const [rows3] = result3;
+        console.log('rows3', rows3);
+        return { rows, rows3 };
+    } catch (e) {
+        console.error('error', e.message);
+        return { error: e.message };
+    }
+};
+
+const getDoughInfo = async (name, size) => {
+    try {
+    const sql = `SELECT * FROM Dough WHERE dough_name = ? AND dough_size = ?`;
+    const params = [name, size];
+    const result = await promisePool.query(sql, params);
+    const [rows] = result;
+    console.log('dough', result);
+    return rows;
     } catch (e) {
         console.error('error', e.message);
         return {error: e.message};
     }
-}
+};
 
-export {sendInfo, getCalories, getSet};
+export {sendInfo, getCalories, getSet, getDoughInfo};

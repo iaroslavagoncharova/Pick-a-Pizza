@@ -102,6 +102,17 @@ CREATE TABLE PizzaIngredient (
     FOREIGN KEY (pizza_id) REFERENCES Pizza(pizza_id),
     FOREIGN KEY (ingredient_id) REFERENCES Ingredients(ingredient_id)
 );
+
+CREATE TABLE Dough (
+    dough_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    dough_name VARCHAR(255) NOT NULL,
+    dough_size CHAR(1) NOT NULL,
+    dough_price DECIMAL(4,2) NOT NULL,
+    dough_calories INT NOT NULL,
+    dough_carbs INT NOT NULL,
+    dough_protein INT NOT NULL,
+    dough_fats INT NOT NULL
+);
  
 
 -- User data
@@ -145,10 +156,11 @@ VALUES
 ('mussels', 50, 2.50, 100, 2, 15, 3, 500),
 ('tomato-sauce', 50, 1.00, 30, 7, 1, 0, 1000),
 ('pesto-sauce', 50, 2.00, 80, 2, 2, 7, 1000),
-('bbq-sauce', 50, 1.50, 50, 10, 0, 0, 1000);
-
-
-
+('bbq-sauce', 50, 1.50, 50, 10, 0, 0, 1000),
+('pepperoni', 100, 2.00, 100, 0, 25, 8, 1000),
+('vege-pepperoni', 100, 1.50, 70, 2, 15, 5, 1000),
+('vege-mozzarella', 50, 1.00, 150, 1, 8, 10, 500),
+('vege-parmezan', 50, 1.50, 150, 0, 10, 8, 500);
 
 -- Example: 'Gluten Free' prompt
 INSERT INTO PromptIngredient (prompt_id, ingredient_id) 

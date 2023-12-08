@@ -1,8 +1,10 @@
 import express from 'express';
-import { getSets } from '../controllers/pizza-controller.mjs';
+import { getSets, getDough } from '../controllers/pizza-controller.mjs';
 
 const setRouter = express.Router();
 
 setRouter.route('/:id').get(getSets);
+
+setRouter.route('/dough/:name/:size').get(getDough);
 
 export default setRouter;

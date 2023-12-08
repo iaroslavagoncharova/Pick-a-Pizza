@@ -111,8 +111,6 @@ document.addEventListener('DOMContentLoaded', async function () {
       menuButton.style.display = 'none';
     }
 
-    let index = 1;
-
     result.rows.forEach(pizza => {
       const pizzaName = generatePizzaName(pizza);
       console.log(pizza);
@@ -136,9 +134,9 @@ document.addEventListener('DOMContentLoaded', async function () {
       const quantitySelection = document.createElement('div');
       quantitySelection.classList.add('quantity-selection');
       quantitySelection.innerHTML = `
-        <button class="minus" id="minus${index}">-</button>
+        <button class="minus">-</button>
         <p>${pizza.quantity}</p>
-        <button class="plus" id="plus${index}">+</button>`;
+        <button class="plus">+</button>`;
       quantityCell.appendChild(quantitySelection);
 
       const totalCell = document.createElement('td');
@@ -169,8 +167,6 @@ document.addEventListener('DOMContentLoaded', async function () {
       newRow.appendChild(removeCell);
 
       tableBody.appendChild(newRow);
-
-      index++;
     });
 
     const receiptTable = document.getElementById('receipt-table');
@@ -242,54 +238,61 @@ document.addEventListener('DOMContentLoaded', async function () {
     
 
 
-    const minusButtons = document.querySelectorAll('.minus');
-    const plusButtons = document.querySelectorAll('.plus');
-
-    minusButtons.forEach(button => {
-      button.addEventListener('click', async function () {
-        try {
-          const quantity = button.nextSibling.textContent;
-          if (parseInt(quantity) === 1) {
-            const response = await fetch(`/shopping-cart/${result.rows[0].pizza_id}`, {
-              method: 'DELETE',
+      const minusButtons = document.querySelectorAll('.minus');
+      const plusButtons = document.querySelectorAll('.plus');
+      
+      minusButtons.forEach((button, index) => {
+        button.addEventListener('click', async function () {
+          try {
+            const quantityElement = button.nextElementSibling;
+            const currentQuantity = parseInt(quantityElement.textContent).toFixed(2);
+      
+            if (currentQuantity === 1) {
+              const response = await fetch(`/shopping-cart/${result.rows[index].pizza_id}`, {
+                method: 'DELETE',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
+            } else {
+              const newQuantity = currentQuantity - 1;
+              const response = await fetch(`/shopping-cart/${result.rows[index].pizza_id}`, {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ quantity: newQuantity }),
+              });
+            }
+      
+            window.location.reload();
+          } catch (error) {
+            console.error('Error changing quantity:', error.message);
+          }
+        });
+      });
+      
+      plusButtons.forEach((button, index) => {
+        button.addEventListener('click', async function () {
+          try {
+            const quantityElement = button.previousElementSibling;
+            const currentQuantity = parseInt(quantityElement.textContent);
+      
+            const newQuantity = currentQuantity + 1;
+            const response = await fetch(`/shopping-cart/${result.rows[index].pizza_id}`, {
+              method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
               },
+              body: JSON.stringify({ quantity: newQuantity }),
             });
+      
             window.location.reload();
+          } catch (error) {
+            console.error('Error changing quantity:', error.message);
           }
-          const newQuantity = parseInt(quantity) - 1;
-          const response = await fetch(`/shopping-cart/${result.rows[0].pizza_id}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({quantity: newQuantity}),
-          });
-          window.location.reload();
-        } catch {
-          console.error('Error changing quantity:', error.message);
-        }
-      })
-    });
-    plusButtons.forEach(button => {
-      button.addEventListener('click', async function () {
-        try {
-          const quantity = button.previousElementSibling.textContent;
-          const newQuantity = parseInt(quantity) + 1;
-          const response = await fetch(`/shopping-cart/${result.rows[0].pizza_id}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({quantity: newQuantity}),
-          });
-          window.location.reload();
-        } catch {
-          console.error('Error changing quantity:', error.message);
-        }
-      })
-    });
+        });
+      });
     } catch (error) {
     console.error('Error fetching pizzas:', error.message);
   }
