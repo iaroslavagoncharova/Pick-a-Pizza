@@ -7,16 +7,11 @@
     <script type="module" src="shopping-cart.js"></script>
     <script src="../language.js" defer></script>
     <link rel="stylesheet" type="text/css" href="shopping-cart.css">
+    <link rel="stylesheet" href="modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/438aeadf51.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <script
-    async
-    data-environment="playground"
-    src="https://js.klarna.com/web-sdk/v1/klarna.js"
-    data-client-id="4c0f601c-0ee9-58e3-9ccc-83cd942c4fae"
-    ></script>
     <header>
         <div class="header-part logo-container" id="header-logo">
             <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" class="pizza-logo"></a>
@@ -120,8 +115,37 @@
                             </div>
                             <p class="small-text">By joining, you agree to our <a href="#">Club terms</a> and <a href="#">Privacy Policy</a></p>
                         </div>
-                        <button class="cart-btn" id="checkout-btn">Proceed to Payment</button>
-                        <klarna-placement data-key="top-strip-promotion-badge" data-locale="en-FI"></klarna-placement>
+                        <button class="cart-btn" id="checkout-btn" >Proceed to Payment</button>
+                        <div id="paymentModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close" id="closeModal">&times;</span>
+                                <h2>Payment Details</h2>
+                                <div id="payment-section">
+                                  <label for="Cardholder">Cardholders Name:</label>
+                                  <input type="name" id="card-number" placeholder="Enter name" required>
+                                  <label for="card-number">Card Number:</label>
+                                  
+                                  <input type="text" id="card-number" placeholder="Enter card number" required>
+                                  
+                                  <label for="expiration-date">Expiration Date:</label>
+                                  <div id="date">
+                                      <input type="number" id="expiration-date" placeholder="MM" required>
+                                      <span>/</span>
+                                      <input type="number" id="expiration-date" placeholder="YY" required>
+                                    </div>
+                                    
+                                    <label for="cvv">CVV:</label>
+                                    <input type="number" id="cvv" placeholder="CVV" required>
+                                </div>
+                                <div id="confirmation">
+                                    <label for="phone-number">Phone Number:</label>
+                                    <input type="tel" id="phone-number" placeholder="Enter phone number" required>
+                                <div id="total-amount"></div>
+                                <button id="pay-button">Pay Now</button>
+                                </div>
+                            <div id="payment-status"></div>
+                            </div>
+                          </div>
                     </div>
                 </div>
             </div>

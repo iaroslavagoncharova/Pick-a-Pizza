@@ -14,6 +14,7 @@ import registRouter from './routers/register-router.mjs';
 import ingredientsRouter from './routers/ingredients-router.mjs';
 import pizzasRouter from './routers/pizzas-router.mjs';
 import promptRouter from './routers/prompts-router.mjs';
+import checkoutRouter from './routers/checkout-router.mjs';
 import setRouter from './routers/set-router.mjs';
 import updateRouter from './routers/update-profile-router.mjs';
 import deleteRouter from './routers/delete-account-router.mjs';
@@ -42,6 +43,7 @@ app.use('/pick-a-pizza-club', joinPageRouter);
 app.use('/make-your-pizza', pizzaRouter);
 app.use('/shopping-cart', cartRouter);
 app.use('/join-us', jobApplicationRouter);
+app.use('/checkout',checkoutRouter);
 
 // routers for database interaction
 app.use('/login', loginRouter);

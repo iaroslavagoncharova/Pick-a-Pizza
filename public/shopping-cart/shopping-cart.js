@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       } else if (pizza.dough === 'keto') {
         return ketoNames[Math.floor(Math.random() * ketoNames.length)];
       }
-    }
+    } 
   };
 
     const tableBody = document.querySelector('#selected-products tbody');
@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     result.rows.forEach(pizza => {
       const pizzaName = generatePizzaName(pizza);
       console.log(pizza);
+      localStorage.setItem('pizzaData', JSON.stringify(pizza));
       const newRow = document.createElement('tr');
       const productCell = document.createElement('td');
       productCell.classList.add('product');
@@ -185,6 +186,58 @@ document.addEventListener('DOMContentLoaded', async function () {
     shippingFeeCell.textContent = `${shippingFee}€`;
     paymentFeeCell.textContent = `${paymentFee}€`;
     totalCell.textContent = `${totalPrice}€`;
+    
+    
+    
+    const openModalBtn = document.getElementById('checkout-btn');
+    openModalBtn.addEventListener('click', () => {
+      const modal = document.getElementById('paymentModal');
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    });
+    const closeModalBtn = document.getElementById('closeModal');
+    closeModalBtn.addEventListener('click', () => {
+      const modal = document.getElementById('paymentModal');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+    
+    const payButton = document.getElementById("pay-button");
+    const paymentStatusElement = document.getElementById("payment-status");
+    payButton.addEventListener("click", async function () {
+      try {
+        const paymentResponse = await simulatePayment();
+        
+        if (paymentResponse.success) {
+          window.location.href = "/checkout";
+        } else {
+          paymentStatusElement.textContent = "Payment failed. Please try again.";
+        }
+      } catch (error) {
+        console.error("Error processing payment:", error.message);
+        paymentStatusElement.textContent = "Please check given info"
+      }
+    });
+    const totalAmountElement = document.getElementById('total-amount');
+    totalAmountElement.textContent = `${totalPrice}€`;
+    
+    async function simulatePayment() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const success = Math.random() > 0.95;
+      
+            if (success) {
+              resolve({ success: true });
+            } else {
+
+              reject(new Error('Payment failed'));
+
+            }
+          }, 500); 
+        });
+      }
+    
+
 
     const minusButtons = document.querySelectorAll('.minus');
     const plusButtons = document.querySelectorAll('.plus');
@@ -238,6 +291,3 @@ document.addEventListener('DOMContentLoaded', async function () {
     console.error('Error fetching pizzas:', error.message);
   }
 });
-
-
-

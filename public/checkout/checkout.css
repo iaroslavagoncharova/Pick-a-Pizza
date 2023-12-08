@@ -10,6 +10,7 @@
 
 :root {
     --light: #faf4f1;
+    --translucentlight: #faf4f1ad;
     --grayish-brown: #68563d;
     --light-peach: #fdd8a9;
     --dandelion: #ffe200;
@@ -34,6 +35,8 @@ header {
     display: flex;
     flex-direction: row;
     height: 150px;
+    margin: 0;
+    padding: 0;
 }
 
 .logo-container {
@@ -42,11 +45,11 @@ header {
 }
 
 #header-logo {
-    width: 25%;
+    width: 30%;
     height: 100%;
 }
 
-#pizza-logo {
+.pizza-logo {
     height: 100px;
     padding: 0.8rem 0;
 }
@@ -62,16 +65,15 @@ header {
     width: 80%;
     display: flex;
     flex-direction: column;
+    margin: 0 2rem 0 0;
 }
 
 .wrapper .top_nav{
     margin-top: 0;
-    width: 100%;
     height: 60px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    align-items: center;
 }
 
 .top-nav-icon {
@@ -104,27 +106,23 @@ header {
 .inactive-lang {
     transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
 }
-
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
+
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 2rem;
+    top: 3rem;
     background-color: var(--light);
-    width: 160px;
+    width: 180px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
-#pizza-dropdown {
-    left: 2rem;
-}
-
-.dropdown-link {
+.dropdown-content a {
     text-align: center;
     text-decoration: none;
     color: var(--grayish-brown);
@@ -141,24 +139,45 @@ header {
 .dropdown:hover .dropdown-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-ul {
+#bottom-nav-items {
     display: flex;
+    justify-content: space-evenly;
+}
+
+.right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 80%;
+    gap: 1.5rem;
+}
+
+#user-options {
     list-style-type: none;
 }
 
-.wrapper .top_nav .right ul li {
+#user-options li {
+    padding: 0 1rem;
     margin: 0 1rem;
 }
 
-.wrapper .top_nav .right ul li a {
-    display: block;
-    padding: 8px 10px;
+#bottom-nav-items a{
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    color: var(--grayish-brown);
+    margin: auto 2rem;
+}
+#pizza-dropdown {
+    left: 2rem;
 }
 
-.wrapper .bottom_nav {
-    width: 100%;
+.wrapper .bottom_nav{
     height: 90px;
     display: flex;
     flex-direction: row;
@@ -166,21 +185,8 @@ ul {
     align-items: center;
 }
 
-.wrapper .bottom_nav ul li {
-    margin: auto 2rem;
-    white-space: nowrap;
-    display: flex;
-    justify-content: space-between;
-}
-
-.wrapper .bottom_nav ul .dropdown {
-    margin: auto 2rem;
-}
-
-.wrapper .bottom_nav ul li a{
-    font-family: Rosario;
-    color: var(--grayish-brown);
-    padding: 1rem;
+#bottom-nav-items .dropdown {
+    margin: auto 0 auto 2rem;
 }
 
 #user-options {
@@ -189,8 +195,6 @@ ul {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-content: center;
-
 }
 
 #user-dropdown {
@@ -246,185 +250,30 @@ a {
     background-attachment: fixed;
 }
 
-#cart-container {
-    display: flex;
-    width: 100%;
-    padding: 3rem 0;
-}
-
-#cart-screen {
-    width: 60%;
-    text-align: center;
-    background-color: var(--light);
-    border-radius: 10px;
-    padding: 0;
-    margin: auto;
-    display: block;
-    padding: 2rem;
-}
-
-#cart-screen h2 {
-    font-size: 2rem;
-}
-
-.cart-btn {
-    background-color: var(--grayish-brown);
-    color: var(--light);
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    font-family: Rosario;
-    padding: 0.5rem;
-    margin-bottom: 2rem;
-    font-size: large;
-    cursor: pointer;
-}
-
-.cart-btn:hover {
-    background-color: #5a4a34;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 3px 8px;
-    transition: ease-in-out 0.1s;
-}
-
-#selected-products {
+#homepage-content {
     width: 90%;
     margin: auto;
+    padding: 5rem 0;
+    color: var(--grayish-brown);
 }
-
-#selected-products thead {
+#message {
+    font-size: 1.5rem;
+    font-weight: bold;
     text-align: center;
+    margin-top: 50px;
+    background-color: var(--translucentlight);
+    padding: 20px;
+    border-radius: 20px;
 }
 
-#selected-products th {
-    padding: 3px;
-}
-
-#selected-products tbody {
-    justify-content: left;
-}
-
-#selected-products, #selected-products th, #selected-products td {
-    border: 1px solid var(--light);
-    border-collapse: collapse;
-}
-
-#selected-products th, #selected-products td {
-    background-color: var(--light-peach);
-}
-
-.product {
-    width: 60%;
-}
-
-.quantity {
-    width: 30%;
-}
-
-td {
-    padding: 10px;
-}
-
-#product-details {
-    display: flex;
-    flex-direction: row;
-}
-
-.pizza-img {
-    width: 200px;
-    height: auto;
-}
-
-#quantity-selection {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-#quantity-selection > * {
-    margin: 0.5rem;
-}
-
-#receipt {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: left;
-    margin: auto;
-}
-
-#receipt-right {
-    width: 60%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.align-left {
-    text-align: left;
-}
-
-.align-right {
-    text-align: right;
-}
-
-#checkout-btn {
-    margin-top: 1rem;
-    margin-left: 1rem;
-}
-
-#membership-ad-cont {
-    display: block;
-    width: 100%;
-    padding: 6rem 0;
-}
-
-#membership-screen {
+#countdown {
+    font-size: 5rem;
+    font-weight: bold;
     text-align: center;
-    border: 2px solid var(--grayish-brown);
-    border-radius: 10px;
-    width: 80%;
-    margin: 1rem auto;
-    display: block;
-    padding: 2rem;
-}
+    margin-top: 50px;
+  }
 
 
-.check-icon {
-    height: 30px;
-}
-
-#join-box {
-    font-family: Rosario;
-    font-size: large;
-    padding: 0.5rem;
-    background-color: var(--light-peach);
-    border-radius: 10px;
-    width: 40%;
-    margin: auto;
-}
-
-.small-text {
-    font-size: small;
-    margin-top: 0;
-}
-
-.form-container {
-    padding: 1rem;
-}
-
-.content-tab {
-    height: 15rem;
-    width: auto;
-    background-color: var(--light);
-    text-align: center;
-    padding: 3rem;
-    display: block;
-}
-
-#phone-icon {
-    width: 5rem;
-    margin-top: 3rem;
-}
 
 footer {
     padding: 1rem;
@@ -461,5 +310,4 @@ footer {
     margin: auto;
     height: 30px;
     width: 30px;
-    cursor: pointer;
 }
