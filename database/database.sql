@@ -130,64 +130,75 @@ VALUES
 ('Keto', 'usual', 'L', 15.00, 600, 60, 60, 60),
 ('Low Calorie', 'usual', 'M', 12.00, 400, 40, 40, 40),
 ('Classic', 'usual', 'L', 14.00, 700, 70, 70, 70),
-('Vegan Classic', 'vegan', 'M', 13.00, 550, 55, 55, 55),
+('Vegan Classic', 'usual', 'M', 13.00, 550, 55, 55, 55),
 ('Gluten Free Classic', 'gluten-free', 'L', 16.00, 600, 60, 60, 60),
 ('Season Deal', 'usual', 'L', 18.00, 800, 80, 80, 80);
 
 -- Add Ingredient data
 INSERT INTO Ingredients (name, portion_size, price, calories, carbs, protein, fats, in_stock) 
 VALUES
-('chicken', 100, 2.50, 200, 0, 30, 10, 1000),
-('beef', 100, 3.00, 250, 0, 26, 15, 1000),
-('bacon', 50, 1.50, 120, 0, 10, 8, 500),
-('ham', 50, 2.00, 150, 2, 15, 10, 500),
-('tomatoes', 50, 0.75, 20, 5, 1, 0, 1000),
-('onions', 50, 0.50, 30, 7, 1, 0, 1000),
-('eggplants', 50, 1.00, 40, 10, 2, 0, 1000),
-('mushrooms', 50, 1.20, 15, 3, 2, 0, 1000),
-('mozzarella', 50, 1.50, 200, 1, 10, 15, 1000),
-('parmezan', 50, 2.00, 180, 0, 15, 13, 1000),
-('gouda', 50, 1.75, 160, 1, 12, 10, 1000),
-('goat-cheese', 50, 2.50, 120, 0, 8, 10, 1000),
-('tofu', 50, 2.00, 150, 3, 10, 8, 1000),
-('vege-gouda', 50, 2.00, 160, 2, 10, 8, 1000),
-('anchovies', 50, 2.50, 100, 0, 15, 5, 500),
-('shrimps', 50, 3.00, 120, 1, 18, 5, 500),
-('mussels', 50, 2.50, 100, 2, 15, 3, 500),
-('tomato-sauce', 50, 1.00, 30, 7, 1, 0, 1000),
-('pesto-sauce', 50, 2.00, 80, 2, 2, 7, 1000),
-('bbq-sauce', 50, 1.50, 50, 10, 0, 0, 1000),
-('pepperoni', 100, 2.00, 100, 0, 25, 8, 1000),
-('vege-pepperoni', 100, 1.50, 70, 2, 15, 5, 1000),
-('vege-mozzarella', 50, 1.00, 150, 1, 8, 10, 500),
-('vege-parmezan', 50, 1.50, 150, 0, 10, 8, 500);
+('chicken', 100, 2.50, 165, 0, 31, 3.6, 1000),
+('beef', 100, 3.00, 250, 0, 26, 17, 1000),
+('bacon', 50, 1.50, 42, 0, 3, 3.3, 500),
+('ham', 50, 2.00, 72.5, 0, 9, 4, 500),
+('tomatoes', 50, 0.75, 9, 2, 0.5, 0.1, 1000),
+('onions', 50, 0.50, 20, 4.5, 0.5, 0.1, 1000),
+('eggplants', 50, 1.00, 12.5, 3, 0.5, 0.1, 1000),
+('mushrooms', 50, 1.20, 11, 1.5, 1.5, 0.2, 1000),
+('mozzarella', 50, 1.50, 150, 1, 11, 11.5, 1000),
+('parmezan', 50, 2.00, 210, 2, 19, 14, 1000),
+('gouda', 50, 1.75, 178, 1, 12, 14, 1000),
+('goat-cheese', 50, 2.50, 182, 1, 10.5, 15, 1000),
+('tofu', 50, 2.00, 72, 1.5, 7.5, 4, 1000),
+('vege-gouda', 50, 2.00, 178, 1, 12, 14, 1000),
+('anchovies', 50, 2.50, 105, 0, 14.5, 5, 500),
+('shrimps', 50, 3.00, 35.5, 0, 7.5, 0.75, 500),
+('mussels', 50, 2.50, 86, 3.5, 12, 2, 500),
+('tomato-sauce', 50, 1.00, 41, 8.5, 1.5, 0.25, 1000),
+('pesto-sauce', 50, 2.00, 227, 6, 4.5, 21.5, 1000),
+('bbq-sauce', 50, 1.50, 65, 16, 0.25, 0.25, 1000),
+('pepperoni', 100, 2.00, 494, 2, 24, 42, 1000),
+('vege-pepperoni', 100, 1.50, 311, 4, 20, 24, 1000),
+('vege-mozzarella', 50, 1.00, 160, 3, 1, 16, 500),
+('vege-parmezan', 50, 1.50, 165, 3, 3, 15, 500);
 
--- Example: 'Gluten Free' prompt
+-- Add data to PromptIngredient
+
 INSERT INTO PromptIngredient (prompt_id, ingredient_id) 
-VALUES
-(1, 5), -- tomatoes
-(1, 6), -- onions
-(1, 7); -- eggplants
-
--- Example: 'Keto' prompt
-INSERT INTO PromptIngredient (prompt_id, ingredient_id) 
-VALUES
-(2, 1), -- chicken
-(2, 2), -- beef
-(2, 3); -- bacon
-
-
-
--- Example: 'Vegan Classic' prompt
-INSERT INTO PromptIngredient (prompt_id, ingredient_id) 
-VALUES
-(5, 5), -- tomatoes
-(5, 6), -- onions
-(5, 7), -- eggplants
-(5, 10), -- mozzarella
-(5, 12); -- gouda
-
-
+VALUES 
+(1, 1),
+(1, 5),
+(1, 6),
+(1, 8),
+(1, 12),
+(2, 2),
+(2, 3),
+(2, 8),
+(2, 9),
+(2, 10),
+(3, 1), 
+(3, 5), 
+(3, 6),
+(3, 7),
+(3, 8),
+(3, 14),
+(4, 6),
+(4, 8),
+(4, 9),
+(4, 10),
+(4, 18),
+(4, 21),
+(5, 6),
+(5, 8),
+(5, 18),
+(5, 22),
+(5, 23),
+(5, 24),
+(6, 1),
+(6, 6),
+(6, 8),
+(6, 9),
+(6, 18);
 
 -- Add data to Pizza 
 INSERT INTO Pizza (user_id, dough, size, message, calories, carbs, protein, fats, price, prompt_id, quantity) 
