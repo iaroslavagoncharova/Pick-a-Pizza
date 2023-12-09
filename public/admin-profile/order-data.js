@@ -82,6 +82,51 @@ const fetchOrders = async (userId) => {
         modalOrderCont.style.flexDirection = 'column';
 
         modalOrderCont.appendChild(modalOrder);
+
+        // buttons
+        const removeBtn = document.getElementById('remove-icon');
+
+        doneIcon.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const response = await fetch (`/order-data/wip/auth/${userId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({order_id: order.order_id, order_status: 'completed'})
+            });
+
+            console.log(response, typeof response);
+
+            if (response.status === 200) {
+                alert('Order marked as completed');
+                thisOrder.remove();
+                modalOrder.remove();
+                window.location.reload();
+            } else {
+                alert("Something went wrong! Couldn't update order data");
+            };
+        })
+
+        removeBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const response = await fetch (`/order-data/wip/auth/${order.order_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+
+            if (response.status === 204) {
+                alert('Order deleted successfully');
+                thisOrder.remove();
+                modalOrder.remove();
+                window.location.reload();
+            } else {
+                alert("Something went wrong! Couldn't delete order data");
+            };
+        })
     }  
 };
 
