@@ -80,6 +80,12 @@ document.addEventListener('DOMContentLoaded', async function () {
             selectPizza(pizzaId);
           };
         })(i));
+
+        dropdown.addEventListener('click', (function (pizzaId) {
+          return function () {
+            selectPizza(pizzaId);
+          };
+        })(i));
       }
 
       const pizzaSelector = document.querySelector('.pizza-selector');
@@ -108,12 +114,10 @@ document.addEventListener('DOMContentLoaded', async function () {
             console.log('Selected Pizza Ingredients:', result);
             selectedPizzaIngredients = result;
 
-            // Clear previous selection
             if (localStorage.getItem('selectedPizzaIngredients')) {
               localStorage.removeItem('selectedPizzaIngredients');
             }
 
-            // Store new selection
             localStorage.setItem('selectedPizzaIngredients', JSON.stringify(selectedPizzaIngredients));
 
             window.location.href = '/make-your-pizza';

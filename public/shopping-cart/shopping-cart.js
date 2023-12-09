@@ -37,6 +37,7 @@ window.onload = () => {
   }
 };
 
+// funny names for pizzas 
 const usualNames = [
   'Tasty Tornado',
   'Sizzling Symphony',
@@ -60,8 +61,15 @@ const ketoNames = [
   'High-Fat Hero'
 ];
 
+// if any set of ingredients already exists, remove it and open a blank make a pizza page
+const craftPizza = document.getElementById('make-a-pizza');
+craftPizza.addEventListener('click', () => {
+  localStorage.removeItem('selectedPizzaIngredients');
+  window.location.href = '/make-your-pizza';
+});
 
 document.addEventListener('DOMContentLoaded', async function () {
+  // get all pizzas for a user
   try {
     const user = JSON.parse(localStorage.getItem('user'));
     const response = await fetch(`/pizzas/${user.user_id}`, {
@@ -75,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     if (!result) {
       console.log('No pizzas in cart');
     }
-
+    // generate a pizza name if a prompt wasn't used
   const generatePizzaName = (pizza) => {
     if (pizza.name && pizza.prompt_id !== null) {
       return pizza.name;
@@ -89,11 +97,12 @@ document.addEventListener('DOMContentLoaded', async function () {
       }
     } 
   };
-
+    // create a table with pizzas
     const tableBody = document.querySelector('#selected-products tbody');
 
     console.log(result);
     if (result.error) {
+      // if there's no pizzas in cart, display a message and invite to explore the menu
       console.log('no pizzas in cart');
       const emptyCart = document.createElement('p');
       emptyCart.textContent = "You haven't added any pizzas to your cart yet. Explore our menu!";
@@ -112,6 +121,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     result.rows.forEach(pizza => {
+      // for each fetched pizza, generate a name, create a row and append it to the table
       const pizzaName = generatePizzaName(pizza);
       console.log(pizza);
       localStorage.setItem('pizzaData', JSON.stringify(pizza));
@@ -129,6 +139,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         </div>`;
       productCell.appendChild(productDetails);
 
+      // generate a quantity selection and append it to the table
       const quantityCell = document.createElement('td');
       quantityCell.classList.add('quantity');
       const quantitySelection = document.createElement('div');
@@ -139,15 +150,18 @@ document.addEventListener('DOMContentLoaded', async function () {
         <button class="plus">+</button>`;
       quantityCell.appendChild(quantitySelection);
 
+      // generate a total price and append it to the table
       const totalCell = document.createElement('td');
       totalCell.classList.add('total');
       const totalPrice = parseFloat(pizza.price).toFixed(2) * parseInt(pizza.quantity); 
       totalCell.innerHTML = `<p>${totalPrice}€</p>`;
 
+      // generate a remove button and append it to the table
       const removeCell = document.createElement('td');
       removeCell.classList.add('remove');
       removeCell.innerHTML = `<i class="fa-solid fa-trash remove"></i>`;
       removeCell.addEventListener('click', async function () {
+        // if a remove button is clicked, delete the pizza from the database and reload the page
         try {
           const response = await fetch(`/shopping-cart/${pizza.pizza_id}`, {
             method: 'DELETE',
@@ -174,6 +188,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const paymentFeeCell = receiptTable.querySelector('.payment-fee.align-right');
     const totalCell = receiptTable.querySelector('.total.align-right');
 
+    // calculate total price
     let totalPizzasPrice = 0;
     result.rows.forEach(pizza => {
       totalPizzasPrice += parseFloat(pizza.price) * parseInt(pizza.quantity);
@@ -181,13 +196,14 @@ document.addEventListener('DOMContentLoaded', async function () {
     const shippingFee = 0;
     const paymentFee = 0.5;
 
+    // display all prices
     const totalPrice = totalPizzasPrice + shippingFee + paymentFee;
     shippingFeeCell.textContent = `${shippingFee}€`;
     paymentFeeCell.textContent = `${paymentFee}€`;
     totalCell.textContent = `${totalPrice}€`;
     
     
-    
+    // open and close payment modal on click
     const openModalBtn = document.getElementById('checkout-btn');
     openModalBtn.addEventListener('click', () => {
       const modal = document.getElementById('paymentModal');
@@ -200,7 +216,8 @@ document.addEventListener('DOMContentLoaded', async function () {
       modal.style.display = 'none';
       document.body.style.overflow = 'auto';
     });
-    
+
+    // simulate payment
     const payButton = document.getElementById("pay-button");
     const paymentStatusElement = document.getElementById("payment-status");
     payButton.addEventListener("click", async function () {
@@ -237,7 +254,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       }
     
 
-
+      // generate plus and minus buttons and add functionality to them
       const minusButtons = document.querySelectorAll('.minus');
       const plusButtons = document.querySelectorAll('.plus');
       
@@ -246,7 +263,8 @@ document.addEventListener('DOMContentLoaded', async function () {
           try {
             const quantityElement = button.nextElementSibling;
             const currentQuantity = parseInt(quantityElement.textContent).toFixed(2);
-      
+            
+            // delete a pizza if quantity is 1 and minus button is clicked, so quantity becomes 0
             if (currentQuantity === 1) {
               const response = await fetch(`/shopping-cart/${result.rows[index].pizza_id}`, {
                 method: 'DELETE',
@@ -255,6 +273,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 },
               });
             } else {
+              // update quantity in database and reload the page
               const newQuantity = currentQuantity - 1;
               const response = await fetch(`/shopping-cart/${result.rows[index].pizza_id}`, {
                 method: 'PUT',
@@ -272,6 +291,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
       });
       
+      // update quantity in database and reload the page
       plusButtons.forEach((button, index) => {
         button.addEventListener('click', async function () {
           try {
@@ -293,6 +313,70 @@ document.addEventListener('DOMContentLoaded', async function () {
           }
         });
       });
+
+      // get prompts to display in dropdowns
+      try {
+        const response = await fetch('/prompts', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+    
+        if (response.ok) {
+          const result = await response.json();
+          console.log('Response:', result);
+
+          // create a link for each prompt dropdown
+    
+          for (let i = 1; i <= 6; i++) {
+            const dropdown = document.getElementById(`pizza-${i}`);
+            dropdown.innerHTML = result[i - 1].prompt_name;
+    
+            dropdown.addEventListener('click', (function (pizzaId) {
+              return function () {
+                selectPizza(pizzaId);
+              };
+            })(i));
+          }
+
+           // fetching an ingredient set for a chosen prompt, saving it to local storage and redirecting to make a pizza page
+          let selectedPizzaIngredients = [];
+    
+          async function selectPizza(pizzaId) {
+            try {
+              const response = await fetch(`/sets/${pizzaId}`, {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
+    
+              if (response.ok) {
+                const result = await response.json();
+                console.log('Selected Pizza Ingredients:', result);
+                selectedPizzaIngredients = result;
+    
+                if (localStorage.getItem('selectedPizzaIngredients')) {
+                  localStorage.removeItem('selectedPizzaIngredients');
+                }
+    
+                localStorage.setItem('selectedPizzaIngredients', JSON.stringify(selectedPizzaIngredients));
+    
+                window.location.href = '/make-your-pizza';
+              } else {
+                console.error('Error getting data from the server:', response.status, response.statusText);
+              }
+            } catch (error) {
+              console.error('Error getting data from the server:', error.message);
+            }
+          }
+        } else {
+          console.error('Error getting data from the server:', response.status, response.statusText);
+        }
+      } catch (error) {
+        console.error('Error getting data from the server:', error.message);
+      }
     } catch (error) {
     console.error('Error fetching pizzas:', error.message);
   }

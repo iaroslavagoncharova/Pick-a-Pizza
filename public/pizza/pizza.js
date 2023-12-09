@@ -20,9 +20,84 @@ window.onload = () => {
   }
 };
 
+// if any set of ingredients already exists, remove it and open a blank make a pizza page
+const craftPizza = document.getElementById('make-a-pizza');
+craftPizza.addEventListener('click', () => {
+  localStorage.removeItem('selectedPizzaIngredients');
+  window.location.href = '/make-your-pizza';
+});
+
+// get stored pizza details from local storage
 let selectedPizzaIngredients = [];
 
 document.addEventListener('DOMContentLoaded', function () {
+  const getPromptNames = async () => {
+  // get prompts to display in dropdowns
+  try {
+    const response = await fetch('/prompts', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log('Response:', result);
+
+      // create a link for each prompt dropdown
+
+      for (let i = 1; i <= 6; i++) {
+        const dropdown = document.getElementById(`pizza-${i}`);
+        dropdown.innerHTML = result[i - 1].prompt_name;
+
+        dropdown.addEventListener('click', (function (pizzaId) {
+          return function () {
+            selectPizza(pizzaId);
+          };
+        })(i));
+      }
+
+       // fetching an ingredient set for a chosen prompt, saving it to local storage and redirecting to make a pizza page
+      let selectedPizzaIngredients = [];
+
+      async function selectPizza(pizzaId) {
+        try {
+          const response = await fetch(`/sets/${pizzaId}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+
+          if (response.ok) {
+            const result = await response.json();
+            console.log('Selected Pizza Ingredients:', result);
+            selectedPizzaIngredients = result;
+
+            if (localStorage.getItem('selectedPizzaIngredients')) {
+              localStorage.removeItem('selectedPizzaIngredients');
+            }
+
+            localStorage.setItem('selectedPizzaIngredients', JSON.stringify(selectedPizzaIngredients));
+
+            window.location.href = '/make-your-pizza';
+          } else {
+            console.error('Error getting data from the server:', response.status, response.statusText);
+          }
+        } catch (error) {
+          console.error('Error getting data from the server:', error.message);
+        }
+      }
+    } else {
+      console.error('Error getting data from the server:', response.status, response.statusText);
+    }
+  } catch (error) {
+    console.error('Error getting data from the server:', error.message);
+  }
+};
+  getPromptNames();
+
   if (localStorage.getItem('selectedPizzaIngredients') === null) {
     console.error('No selected pizza ingredients found in local storage');
   }
@@ -74,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const storedIngredients = selectedPizzaIngredients.rows3;
   console.log(storedIngredients);
+  // check the checkboxes for the ingredients that were selected
   storedIngredients.forEach(ingredient => {
     const ingredientName= ingredient.name;
     console.log(ingredientName);
@@ -99,6 +175,7 @@ const dough = document.querySelectorAll('input[name="dough"]');
 const size = document.querySelectorAll('input[name="size"]');
 const quantityInput = document.getElementById('quantity');
 
+// when dough and size are selected, update the price, calories, carbs, protein and fats
 if (dough && size) {
   const updatePizzaInfo = async () => {
     try {
@@ -129,7 +206,7 @@ if (dough && size) {
   quantityInput.addEventListener('input', updatePizzaInfo);
 }
 
-
+// get ingredient information when it's checked
 const ingredients = document.querySelectorAll('.category-content input');
 
 ingredients.forEach(ingredient => {
@@ -195,6 +272,7 @@ ingredients.forEach(ingredient => {
 const doughButtons = document.querySelectorAll('.dough-image button');
 const sizeButtons = document.querySelectorAll('.size button');
 
+// add styling to dough and size buttons when clicked
     doughButtons.forEach(button => {
         button.addEventListener('click', function() {
             this.style.border = 'solid 3px green';
@@ -213,6 +291,8 @@ sizeButtons.forEach(button => {
 
 
 const categoryTitles = document.querySelectorAll('.category-title');
+
+// add opening and closing functionality to category titles
 
 categoryTitles.forEach(function (title) {
     title.addEventListener('click', function () {
@@ -243,6 +323,8 @@ categoryTitles.forEach(function (title) {
 const searchInput = document.getElementById('search');
 const searchButton = document.getElementById('searchButton');
 
+// add searching functionality to search bar
+
 searchButton.addEventListener('click', function () {
     const searchValue = document.getElementById('search').value.toLowerCase();
     console.log(searchValue);
@@ -252,6 +334,7 @@ searchButton.addEventListener('click', function () {
       const label = ingredient.closest('li');
       const ingredientName = label.textContent.toLowerCase();
       if (searchValue !== '') {
+        // if the ingredient name contains the search value, highlight it and open the category
             if (ingredientName.includes(searchValue)) {
               console.log('found', ingredient);
               label.style.border = '2px solid #e9451c';
@@ -280,6 +363,7 @@ searchButton.addEventListener('click', function () {
         } else {
           label.style.border = '';
       }
+      // remove the highlighting when a category is closed
       categoryTitles.forEach(categoryTitle => {
       categoryTitle.addEventListener('click', function () {
         label.style.border = '';
@@ -290,7 +374,7 @@ searchButton.addEventListener('click', function () {
   });
 });
 
-
+// add pizza details to cart
 function addToCart() {
   const selectedDough = document.querySelector('input[name="dough"]:checked').value;
   const selectedSize = document.querySelector('input[name="size"]:checked').value;
@@ -320,6 +404,7 @@ function addToCart() {
 const addToCartButton = document.getElementById('confirm-order');
     addToCartButton.addEventListener('click', async function () {
       const pizzaData = addToCart();
+      // add pizza to the database
       try {
           const response = await fetch('/ingredients', {
             method: 'POST',

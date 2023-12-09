@@ -20,8 +20,15 @@ window.onload = () => {
   }
 };
 
+// if any set of ingredients already exists, remove it and open a blank make a pizza page
+const craftPizza = document.getElementById('make-a-pizza');
+craftPizza.addEventListener('click', () => {
+  localStorage.removeItem('selectedPizzaIngredients');
+  window.location.href = '/make-your-pizza';
+});
 
 document.addEventListener('DOMContentLoaded', async function () {
+    // get all users' ratings
     try {
         const response = await fetch(`/ratings/ratings`, {
             method: 'GET',
@@ -35,6 +42,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
         console.log(result);
 
+        // create a rating container for each rating
+
         result.forEach((row) => {
             const ratingContainer = document.createElement('div');
             ratingContainer.classList.add('rating');
@@ -45,6 +54,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             const ratingStars = document.createElement('div');
             ratingStars.classList.add('rating-stars');
             const stars = row.stars;
+
+            // create stars for each rating
             for (let i = 0; i < stars; i++) {
                 const star = document.createElement('i');
                 star.classList.add('fas');
@@ -56,11 +67,13 @@ document.addEventListener('DOMContentLoaded', async function () {
             result.forEach((row) => {
                 totalStars += row.stars;
             })
+
+            // calculate average rating
             const averageStars = totalStars / result.length;
             const averageStarsContainer = document.getElementById('average-rating');
             averageStarsContainer.innerText = `Average Rating: ${averageStars.toFixed(1)}★`
 
-
+            // if there's no review header, display a line
             if (!row.review_header) {
                 row.review_header = '-----';
                 ratingHeader.innerText = row.review_header;
@@ -70,6 +83,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             ratingContainer.appendChild(ratingHeader);
             ratingContainer.appendChild(ratingText);
 
+            // get username for each rating
             const ratingName = document.createElement('div');
             ratingName.classList.add('username');
             const getNames = async () => {
@@ -88,11 +102,77 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             document.getElementById('ratings').appendChild(ratingContainer);
         })
+        
+    // get prompts to display in dropdowns
+      try {
+        const response = await fetch('/prompts', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+    
+        if (response.ok) {
+          const result = await response.json();
+          console.log('Response:', result);
+
+          // create a link for each prompt dropdown
+    
+          for (let i = 1; i <= 6; i++) {
+            const dropdown = document.getElementById(`pizza-${i}`);
+            dropdown.innerHTML = result[i - 1].prompt_name;
+    
+            dropdown.addEventListener('click', (function (pizzaId) {
+              return function () {
+                selectPizza(pizzaId);
+              };
+            })(i));
+          }
+
+           // fetching an ingredient set for a chosen prompt, saving it to local storage and redirecting to make a pizza page
+          let selectedPizzaIngredients = [];
+    
+          async function selectPizza(pizzaId) {
+            try {
+              const response = await fetch(`/sets/${pizzaId}`, {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
+    
+              if (response.ok) {
+                const result = await response.json();
+                console.log('Selected Pizza Ingredients:', result);
+                selectedPizzaIngredients = result;
+    
+                if (localStorage.getItem('selectedPizzaIngredients')) {
+                  localStorage.removeItem('selectedPizzaIngredients');
+                }
+    
+                localStorage.setItem('selectedPizzaIngredients', JSON.stringify(selectedPizzaIngredients));
+    
+                window.location.href = '/make-your-pizza';
+              } else {
+                console.error('Error getting data from the server:', response.status, response.statusText);
+              }
+            } catch (error) {
+              console.error('Error getting data from the server:', error.message);
+            }
+          }
+        } else {
+          console.error('Error getting data from the server:', response.status, response.statusText);
+        }
+      } catch (error) {
+        console.error('Error getting data from the server:', error.message);
+      }
     } catch (e) {
         console.log(e.message);
     }
 }
 )
+
+// submit a review
 
 const submitReview = document.getElementById('submit-review');
 submitReview.addEventListener('click', async () => {
@@ -109,6 +189,7 @@ submitReview.addEventListener('click', async () => {
         user_id: user.user_id,
     }
     console.log(rating);
+    // post a review
     try {
         const response = await fetch(`/ratings/ratings`, {
             method: 'POST',
