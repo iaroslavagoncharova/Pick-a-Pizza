@@ -29,6 +29,7 @@ craftPizza.addEventListener('click', () => {
 
 // get stored pizza details from local storage
 let selectedPizzaIngredients = [];
+let storedPromptId = 0;
 
 document.addEventListener('DOMContentLoaded', function () {
   const getPromptNames = async () => {
@@ -96,7 +97,8 @@ document.addEventListener('DOMContentLoaded', function () {
     console.error('Error getting data from the server:', error.message);
   }
 };
-  getPromptNames();
+
+getPromptNames();
 
   if (localStorage.getItem('selectedPizzaIngredients') === null) {
     console.error('No selected pizza ingredients found in local storage');
@@ -119,36 +121,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const name = document.getElementById('name');
   name.innerText = storedName;
 
-  const storedCalories = selectedPizzaIngredients.rows[0].calories;
-  console.log(storedCalories);
-  const calories = document.getElementById('totalCalories');
-  calories.innerText = storedCalories;
-
-  const storedCarbs = selectedPizzaIngredients.rows[0].carbs;
-  console.log(storedCarbs);
-  const carbs = document.getElementById('totalCarbs');
-  carbs.innerText = storedCarbs;
-
-  const storedProtein = selectedPizzaIngredients.rows[0].protein;
-  console.log(storedProtein);
-  const protein = document.getElementById('totalProteins');
-  protein.innerText = storedProtein;
-
-  const storedFats = selectedPizzaIngredients.rows[0].fats;
-  console.log(storedFats);
-  const fats = document.getElementById('totalFats');
-  fats.innerText = storedFats;
-
-  const storedPrice = selectedPizzaIngredients.rows[0].price;
-  console.log(storedPrice);
-  const price = document.getElementById('totalPrice');
-  price.innerText = storedPrice + '€';
-
-  const storedPromptId = selectedPizzaIngredients.rows[0].prompt_id;
+  storedPromptId = selectedPizzaIngredients.rows[0].prompt_id;
   console.log('prompt id', storedPromptId);
 
   const storedIngredients = selectedPizzaIngredients.rows3;
   console.log(storedIngredients);
+
   // check the checkboxes for the ingredients that were selected
   storedIngredients.forEach(ingredient => {
     const ingredientName= ingredient.name;
@@ -157,6 +135,9 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(ingredientCheckbox);
     ingredientCheckbox.checked = true;
   });
+
+  // update the calories, carbs, protein, fats and price based on the selected ingredients, dough and size
+  updatePizzaInfo();
 });
 
 let totalCalories = 0;
@@ -175,99 +156,118 @@ const dough = document.querySelectorAll('input[name="dough"]');
 const size = document.querySelectorAll('input[name="size"]');
 const quantityInput = document.getElementById('quantity');
 
-// when dough and size are selected, update the price, calories, carbs, protein and fats
-if (dough && size) {
-  const updatePizzaInfo = async () => {
-    try {
-      const clickedDough = document.querySelector('input[name="dough"]:checked');
-      const clickedSize = document.querySelector('input[name="size"]:checked');
-      const response = await fetch(`/sets/dough/${clickedDough.value}/${clickedSize.value.toUpperCase()}`);
-      const result = await response.json();
-      console.log(result);
+const updatePizzaInfo = async () => {
+  try {
+    const clickedDough = document.querySelector('input[name="dough"]:checked');
+    const clickedSize = document.querySelector('input[name="size"]:checked');
+    const quantity = +quantityInput.value;
 
-      caloriesDisplay.textContent = result[0].dough_calories;
-      carbsDisplay.textContent = result[0].dough_carbs;
-      proteinDisplay.textContent = result[0].dough;
-      fatsDisplay.textContent = result[0].dough_fats;
-      priceDisplay.textContent = (result[0].dough_price * +quantityInput.value).toFixed(2) + '€';
-    } catch (error) {
-      console.error('Error getting data to the server:', error);
+    if (!clickedDough || !clickedSize || isNaN(quantity)) {
+      return;
     }
-  };
 
-  dough.forEach(dough => {
-    dough.addEventListener('click', updatePizzaInfo);
-  });
+    const doughResponse = await fetch(`/sets/dough/${clickedDough.value}/${clickedSize.value.toUpperCase()}`);
+    const doughResult = await doughResponse.json();
 
-  size.forEach(size => {
-    size.addEventListener('change', updatePizzaInfo);
-  });
+    caloriesDisplay.textContent = doughResult[0].dough_calories;
+    carbsDisplay.textContent = doughResult[0].dough_carbs;
+    proteinDisplay.textContent = doughResult[0].dough_protein;
+    fatsDisplay.textContent = doughResult[0].dough_fats;
 
-  quantityInput.addEventListener('input', updatePizzaInfo);
-}
+    const basePrice = doughResult[0].dough_price;
 
-// get ingredient information when it's checked
-const ingredients = document.querySelectorAll('.category-content input');
+    totalPrice = basePrice * quantity;
+    totalCalories = doughResult[0].dough_calories;
+    totalCarbs = doughResult[0].dough_carbs;
+    totalProtein = doughResult[0].dough_protein;
+    totalFats = doughResult[0].dough_fats;
 
-ingredients.forEach(ingredient => {
-    ingredient.addEventListener('click', async function () {
-        console.log(ingredient.id);
-        try {
-            const response = await fetch(`/ingredients?id=${ingredient.id}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
 
-            const result = await response.json();
-            const calories = result[0].calories;
-            const carbs = result[0].carbs;
-            const protein = result[0].protein;
-            const fats = result[0].fats;
-            const price = +result[0].price;
-            console.log(calories, carbs, protein, fats);
+    // Fetch ingredient details
+    const ingredients = document.querySelectorAll('.category-content input:checked');
 
-            const adjustedPrice = price * +document.getElementById('quantity').value;
-            console.log('adjusted price', adjustedPrice);
+    for (const ingredient of ingredients) {
+      const response = await fetch(`/ingredients?id=${ingredient.id}`);
+      const result = await response.json();
 
-            if (ingredient.checked) {
-                totalCalories += calories;
-                totalCarbs += carbs;
-                totalProtein += protein;
-                totalFats += fats;
-                totalPrice += adjustedPrice;
-                console.log('price', totalPrice, 'quantity', +quantity.value);
-            } else {
-                totalCalories -= calories;
-                totalCarbs -= carbs;
-                totalProtein -= protein;
-                totalFats -= fats;
-                totalPrice -= adjustedPrice;
-                console.log('price', totalPrice, 'quantity', +quantity.value);
-            }
+      const adjustedPrice = result[0].price * quantity;
+      totalCalories += result[0].calories;
+      totalCarbs += result[0].carbs;
+      totalProtein += result[0].protein;
+      totalFats += result[0].fats;
+      totalPrice += adjustedPrice;
+    }
 
-            console.log('Total Calories:', totalCalories, 'Total Carbs:', totalCarbs, 'Total Protein:', totalProtein, 'Total Fats:', totalFats, 'Total Price:', totalPrice);
+    // Update display
+    caloriesDisplay.textContent = totalCalories;
+    carbsDisplay.textContent = totalCarbs;
+    proteinDisplay.textContent = totalProtein;
+    fatsDisplay.textContent = totalFats;
+    priceDisplay.textContent = totalPrice.toFixed(2) + '€';
+  } catch (error) {
+    console.error('Error getting data from the server:', error);
+  }
+};
 
-            caloriesDisplay.textContent = totalCalories;
-            carbsDisplay.textContent = totalCarbs;
-            proteinDisplay.textContent = totalProtein;
-            fatsDisplay.textContent = totalFats;
-            priceDisplay.textContent = totalPrice.toFixed(2) + '€';
-
-            const quantityInput = document.getElementById('quantity');
-            quantityInput.addEventListener('input', function () {
-                const newQuantity = +quantityInput.value;
-                const newPrice = totalPrice * newQuantity;
-                const parsedPrice = newPrice.toFixed(2);
-                priceDisplay.textContent = parsedPrice + '€';
-            });
-        } catch (error) {
-            console.error('Error getting data to the server:', error);
-        }
-    });
+dough.forEach(dough => {
+  dough.addEventListener('change', updatePizzaInfo);
 });
 
+size.forEach(size => {
+  size.addEventListener('change', updatePizzaInfo);
+});
+
+quantityInput.addEventListener('input', updatePizzaInfo);
+
+const ingredients = document.querySelectorAll('.category-content input');
+ingredients.forEach(ingredient => {
+  ingredient.addEventListener('change', async function () {
+    console.log(ingredient.id);
+    try {
+      const response = await fetch(`/ingredients?id=${ingredient.id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const result = await response.json();
+      const calories = result[0].calories;
+      const carbs = result[0].carbs;
+      const protein = result[0].protein;
+      const fats = result[0].fats;
+      const price = +result[0].price;
+
+      const quantity = +quantityInput.value;
+      const adjustedPrice = price * quantity;
+
+      if (ingredient.checked) {
+        totalCalories += calories;
+        totalCarbs += carbs;
+        totalProtein += protein;
+        totalFats += fats;
+        totalPrice += adjustedPrice;
+      } else {
+        totalCalories -= calories;
+        totalCarbs -= carbs;
+        totalProtein -= protein;
+        totalFats -= fats;
+        totalPrice -= adjustedPrice;
+      }
+
+      console.log('Total Calories:', totalCalories, 'Total Carbs:', totalCarbs, 'Total Protein:', totalProtein, 'Total Fats:', totalFats, 'Total Price:', totalPrice);
+
+      // Update display
+      caloriesDisplay.textContent = totalCalories;
+      carbsDisplay.textContent = totalCarbs;
+      proteinDisplay.textContent = totalProtein;
+      fatsDisplay.textContent = totalFats;
+      priceDisplay.textContent = totalPrice.toFixed(2) + '€';
+    } catch (error) {
+      console.error('Error getting data from the server:', error);
+    }
+  });
+});
 
 const doughButtons = document.querySelectorAll('.dough-image button');
 const sizeButtons = document.querySelectorAll('.size button');
@@ -383,9 +383,26 @@ function addToCart() {
   const user = JSON.parse(localStorage.getItem('user'));
   const userId = user.user_id;
   const selectedIngredients = [];
+  const originalPrice = totalPrice / quantity;
   document.querySelectorAll('.category-content input:checked').forEach((checkbox) => {
     selectedIngredients.push(checkbox.id);
   });
+  if (storedPromptId) {
+    return {
+      user_id: userId,
+      dough: selectedDough,
+      size: selectedSize,
+      message: message,
+      ingredients: selectedIngredients,
+      calories: totalCalories,
+      carbs: totalCarbs,
+      fats: totalFats,
+      protein: totalProtein,
+      price: originalPrice,
+      quantity: quantity,
+      prompt_id: storedPromptId
+    }
+  } 
     return {
     user_id: userId,
     dough: selectedDough,
@@ -396,7 +413,7 @@ function addToCart() {
     carbs: totalCarbs,
     fats: totalFats,
     protein: totalProtein,
-    price: totalPrice, 
+    price: originalPrice, 
     quantity: quantity
   };
 } 

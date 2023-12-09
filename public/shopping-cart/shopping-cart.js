@@ -153,9 +153,11 @@ document.addEventListener('DOMContentLoaded', async function () {
       // generate a total price and append it to the table
       const totalCell = document.createElement('td');
       totalCell.classList.add('total');
-      const totalPrice = parseFloat(pizza.price).toFixed(2) * parseInt(pizza.quantity); 
+      
+      // Use the price from the database
+      const totalPrice = (parseFloat(pizza.price) * pizza.quantity).toFixed(2);
       totalCell.innerHTML = `<p>${totalPrice}€</p>`;
-  
+
       // generate a remove button and append it to the table
       const removeCell = document.createElement('td');
       removeCell.classList.add('remove');
@@ -191,7 +193,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // calculate total price
     let totalPizzasPrice = 0;
     result.pizzaDetails.forEach(pizza => {
-      totalPizzasPrice += parseFloat(pizza.price) * parseInt(pizza.quantity);
+      totalPizzasPrice += parseFloat(pizza.price) * pizza.quantity;
     });
     const shippingFee = 0;
     const paymentFee = 0.5;
@@ -262,7 +264,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         button.addEventListener('click', async function () {
           try {
             const quantityElement = button.nextElementSibling;
-            const currentQuantity = parseInt(quantityElement.textContent).toFixed(2);
+            const currentQuantity = parseInt(quantityElement.textContent);
             
             // delete a pizza if quantity is 1 and minus button is clicked, so quantity becomes 0
             if (currentQuantity === 1) {
@@ -306,7 +308,7 @@ document.addEventListener('DOMContentLoaded', async function () {
               },
               body: JSON.stringify({ quantity: newQuantity }),
             });
-      
+            
             window.location.reload();
           } catch (error) {
             console.error('Error changing quantity:', error.message);

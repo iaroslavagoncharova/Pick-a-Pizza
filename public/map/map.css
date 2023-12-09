@@ -322,3 +322,92 @@ footer {
     width: 30px;
 }
 
+@media only screen and (max-width: 768px) {
+    #homepage-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    #map {
+        width: 100%;
+        height: 400px;
+        order: 1;
+    }
+    #contacts {
+        width: 100%;
+        order: 2;
+    }
+    #contacts ul {
+        list-style-type: none;
+    }
+    #contacts li {
+        padding: 0.5rem;
+    }
+    #contacts h2 {
+        font-size: 1.5rem;
+    }
+    #contacts p {
+        font-size: 1rem;
+    }
+    #contacts a {
+        font-size: 1rem;
+    }
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    #contact-info {
+        margin: 0;
+    }
+    #social-media-icons {
+        width: 100%;
+        justify-content: center;
+    }
+    .fa {
+        font-size: large;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #homepage-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    #map {
+        width: 100%;
+        height: 400px;
+        order: 1;
+    }
+    #contacts {
+        width: 100%;
+        order: 2;
+    }
+    #contacts ul {
+        list-style-type: none;
+    }
+    #contacts li {
+        padding: 0.5rem;
+    }
+    #contacts h2 {
+        font-size: 1.5rem;
+    }
+    #contacts p {
+        font-size: 1rem;
+    }
+    #contacts a {
+        font-size: 1rem;
+    }
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    #contact-info {
+        margin: 0;
+    }
+    #social-media-icons {
+        width: 100%;
+        justify-content: center;
+    }
+    .fa {
+        font-size: large;
+    }
+}
