@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const tableBody = document.querySelector('#selected-products tbody');
 
     console.log(result);
-    if (result.error) {
+    if (result.pizzaDetails.length === 0) {
       // if there's no pizzas in cart, display a message and invite to explore the menu
       console.log('no pizzas in cart');
       const emptyCart = document.createElement('p');
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       menuButton.style.display = 'none';
     }
 
-    result.rows.forEach(pizza => {
+    result.pizzaDetails.forEach(pizza => {
       // for each fetched pizza, generate a name, create a row and append it to the table
       const pizzaName = generatePizzaName(pizza);
       console.log(pizza);
@@ -135,10 +135,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         <div>
           <h4>${pizzaName}</h4>
           <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
-          <p>${result.result4.map(ingredient => ingredient.name).join(', ')}</p>
+          <p>${pizza.result4.map(ingredient => ingredient.name).join(', ')}</p>
         </div>`;
       productCell.appendChild(productDetails);
-
+  
       // generate a quantity selection and append it to the table
       const quantityCell = document.createElement('td');
       quantityCell.classList.add('quantity');
@@ -149,13 +149,13 @@ document.addEventListener('DOMContentLoaded', async function () {
         <p>${pizza.quantity}</p>
         <button class="plus">+</button>`;
       quantityCell.appendChild(quantitySelection);
-
+  
       // generate a total price and append it to the table
       const totalCell = document.createElement('td');
       totalCell.classList.add('total');
       const totalPrice = parseFloat(pizza.price).toFixed(2) * parseInt(pizza.quantity); 
       totalCell.innerHTML = `<p>${totalPrice}€</p>`;
-
+  
       // generate a remove button and append it to the table
       const removeCell = document.createElement('td');
       removeCell.classList.add('remove');
@@ -179,9 +179,9 @@ document.addEventListener('DOMContentLoaded', async function () {
       newRow.appendChild(quantityCell);
       newRow.appendChild(totalCell);
       newRow.appendChild(removeCell);
-
+  
       tableBody.appendChild(newRow);
-    });
+  });  
 
     const receiptTable = document.getElementById('receipt-table');
     const shippingFeeCell = receiptTable.querySelector('.shipping-fee.align-right');
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // calculate total price
     let totalPizzasPrice = 0;
-    result.rows.forEach(pizza => {
+    result.pizzaDetails.forEach(pizza => {
       totalPizzasPrice += parseFloat(pizza.price) * parseInt(pizza.quantity);
     });
     const shippingFee = 0;
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             
             // delete a pizza if quantity is 1 and minus button is clicked, so quantity becomes 0
             if (currentQuantity === 1) {
-              const response = await fetch(`/shopping-cart/${result.rows[index].pizza_id}`, {
+              const response = await fetch(`/shopping-cart/${result.pizzaDetails[index].pizza_id}`, {
                 method: 'DELETE',
                 headers: {
                   'Content-Type': 'application/json',
@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             } else {
               // update quantity in database and reload the page
               const newQuantity = currentQuantity - 1;
-              const response = await fetch(`/shopping-cart/${result.rows[index].pizza_id}`, {
+              const response = await fetch(`/shopping-cart/${result.pizzaDetails[index].pizza_id}`, {
                 method: 'PUT',
                 headers: {
                   'Content-Type': 'application/json',
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             const currentQuantity = parseInt(quantityElement.textContent);
       
             const newQuantity = currentQuantity + 1;
-            const response = await fetch(`/shopping-cart/${result.rows[index].pizza_id}`, {
+            const response = await fetch(`/shopping-cart/${result.pizzaDetails[index].pizza_id}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
