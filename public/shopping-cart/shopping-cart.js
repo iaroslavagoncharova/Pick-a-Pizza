@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     async function simulatePayment() {
         return new Promise((resolve, reject) => {
           setTimeout(() => {
-            const success = Math.random() > 0.95;
+            const success = true
       
             if (success) {
               resolve({ success: true });
