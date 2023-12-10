@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Töihin Meille</title>
-    <script type="module" src="work/work.js" defer></script>
+    <script type="module" src="work/work.js"></script>
     <script src="../language.js" defer></script>
     <link rel="stylesheet" href="work/work.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -12,31 +12,26 @@
 <body>
     <header>
         <div class="header-part logo-container" id="header-logo">
-            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" id="pizza-logo"></a>
+            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" class="pizza-logo"></a>
             <h1 class="page-title">Pick-a-Pizza</h1>
         </div>  	
         <div class="wrapper">
             <div class="top_nav">
                 <div class="right">
-                    <ul>
-                        <li><a href="https://wa.me/358000000000?text=Hello%20from%20Pick-a-Pizza!" target="_blank"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon" id="phone-button"></a>
-                        </li>
-                        <li><a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a></li>
-                        <li>
-                            <div id="lang-container">
-                                <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                                <span class="lang-option" id="english" onclick="changeLanguage('english')">EN</span>
-                                <span class="lang-option active-lang" id="finnish" onclick="changeLanguage('finnish')">FI</span>
-                            </div>
-                        </li>
-                    </ul>
+                    <a href="https://wa.me/358000000000?text=Hello%20from%20Pick-a-Pizza!" target="_blank"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon" id="phone-button"></a>
+                        <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
+                        <div id="lang-container">
+                            <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
+                            <span class="lang-option" id="english" onclick="changeLanguage('english')">EN</span>
+                            <span class="lang-option active-lang" id="finnish" onclick="changeLanguage('finnish')">FI</span>
+                        </div>
                 </div>
             </div>
             <div class="bottom_nav">
                 <div class="right">
-                    <ul id="bottom-nav-items">
+                    <div id="bottom-nav-items">
                         <div class="dropdown">
-                            <li><a href="#">Valikko</a></li>
+                            <a href="#" id="menu">Valikko</a>
                             <div class="dropdown-content" id="menu-dropdown">
                                 <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
                                 <a href="/join-us" class="dropdown-link">Avoimet työpaikat</a>
@@ -45,7 +40,7 @@
                             </div>
                         </div>
                         <div class="dropdown">
-                            <li><a href="#">Valmiit pizzapohjat</a></li>
+                            <a href="#" id="prompts">Valmiit pizzapohjat</a>
                             <div class="dropdown-content" id="pizza-dropdown">
                                 <a href="#" class="dropdown-link" id="pizza-1">Gluteeniton</a>
                                 <a href="#" class="dropdown-link" id="pizza-2">Keto</a>
@@ -56,16 +51,17 @@
                                 <a href="#" class="dropdown-link" id="pizza-7">Kausitarjous</a>
                             </div>
                         </div>
-                        <li><a href="/make-your-pizza" id="make-a-pizza">Kokoa oma pizza!</a></li>
-                        <li><a href="/shopping-cart">
+                        <a href="/make-your-pizza" id="make-a-pizza">Kokoa oma pizza</a>
+                        <a href="/shopping-cart">
                             <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
-                        </a></li>
-                        <li id="login-icon"><a href="/sign-in">
+                        </a>
+                        <div id="login-icon"><a href="/sign-in">
                             <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
-                        </a></li>
-                    </ul>
+                        </a> 
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     </header>
     <div class="hero-image" id="homepage-background">
@@ -75,14 +71,13 @@
             <h2>Etsimme jatkuvasti intohimoisia ihmisiä pizzaa rakastavaan työyhteisöömme. Jos olet innostunut, omistautunut ja intohimosi on herkullinen pizza, kuulisimme mielellämme sinusta!</h2>
             
             <h3>Saatavilla olevat työpaikat:</h3>
-            <ul>
-                <li><strong>Kokki:</strong> Onko sinusta täydellisen pizzan tekemiseen? Liity keittiötiimiimme ja ota kulinaariset taitosi käyttöön.</li>
+            <div id="open-positions">
+                <p><strong>Kokki:</strong> Onko sinusta täydellisen pizzan tekemiseen? Liity keittiötiimiimme ja ota kulinaariset taitosi käyttöön.</p>
                 <img src="../images/chef.png" alt="chef" id="chef">
-                <li><strong>Toimittaja:</strong>Lähde tien päälle ja toimita kuumia pizzoja asiakkaillemme. Voimassa oleva ajokortti ja luotettava ajoneuvo ovat pakollisia.</li>
+                <p><strong>Toimittaja:</strong> Lähde tien päälle ja toimita kuumia pizzoja asiakkaillemme. Voimassa oleva ajokortti ja luotettava ajoneuvo ovat pakollisia.</p>
                 <img src="../images/driver.png" alt="deliver" id="deliver">
-            </ul>
-            <p>
-                Jos olet kiinnostunut jostain näistä tehtävistä tai haluat tiedustella mahdollisista avoimista paikoista, täytä alla oleva lomake:</p>
+            </div>
+            <p>Jos olet kiinnostunut jostain näistä tehtävistä tai haluat tiedustella mahdollisista avoimista paikoista, täytä alla oleva lomake:</p>
     
             <form id="job-application-form">
                 <label for="name">Nimi:</label>

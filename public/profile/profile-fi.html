@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profiili</title>
     <script type="module" src="profile/profile.js"></script>
-    <script type="module" src="profile/forms.js" defer></script>
-    <script type="module" src="profile/order-data.js" defer></script>
+    <script type="module" src="profile/forms.js"></script>
+    <script type="module" src="profile/order-data.js"></script>
     <script src="../language.js" defer></script>
     <link rel="stylesheet" href="profile/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -72,18 +72,19 @@
                 <div id="personal-info">
                     <h3>Käyttäjätietosi:</h3>
                     <ul>
-                        <li>Nimi: <p id="user-name"></p></li>
-                        <li>Sähköpostiosoite: <p id="user-email"></p></li>
-                        <li>Puhelinnumero: <p id="user-number"></p></li>
-                        <li>Osoite: <p id="user-address"></p></li>
+                        <li>Nimi: <span id="user-name"></span></li>
+                        <li>Sähköpostiosoite: <span id="user-email"></span></li>
+                        <li>Puhelinnumero: <span id="user-number"></span></li>
+                        <li>Osoite: <span id="user-address"></span></li>
                     </ul>
                     <button class="profile-button" id="change-profile">Muokkaa</button>
                 </div>
                 <div id="recent-orders"><h3>Hiljattain tehdyt tilauksesi</h3>
                 <ul id="order-list">
                 </ul>
+            </div>
                 <div id="favorite-pizza"><h3>Lempipizzasi on:</h3>
-                <p>Gluteeniton + tonnikala</p></div>
+                <p id="fave-pizza">Ei ole lempipizzaa vielä!</p></div>
                 <button class="profile-button" id="newsletter">Tilaa meidän uutiskirjeemme!</button>
             </div>
     </div>
@@ -108,29 +109,29 @@
     <dialog id="edit-profile-dialog" class="hidden">
         <div id="dialog-top">
             <h3 id="dialog-header">Tilin muokkaus</h3>
-            <span id="close-dialog">&#x2715</span>
+            <span id="close-dialog">&#x2715;</span>
         </div>
         <div id="dialog-content">
             <h4>Päivitä henkilötietojasi:</h4>
             <form action="/update" id="update-user-data">
                 <div class="form-input">
-                    <label for="username">Nimi:</label>
+                    <label for="change-username">Nimi:</label>
                     <input type="text" name="username" id="change-username" class="input-space">
                 </div>
                 <div class="form-input">
-                    <label for="email">Sähköpostiosoite:</label>
+                    <label for="change-email">Sähköpostiosoite:</label>
                     <input type="email" name="email" id="change-email" class="input-space">
                 </div>
                 <div class="form-input">
-                    <label for="address">Osoite:</label>
+                    <label for="change-address">Osoite:</label>
                     <input type="text" name="address" id="change-address" class="input-space">
                 </div>
                 <div class="form-input">
-                    <label for="phone-number">Puhelinnumero:</label>
+                    <label for="change-number">Puhelinnumero:</label>
                     <input type="tel" pattern="\+?[0-9]{7,13}" name="phone-number" id="change-number" class="input-space">
                 </div>
                 <div class="form-submit">
-                    <input type="submit" value="Päivitä"update-btn" class="form-btn">
+                    <input type="submit" value="Päivitä" id="update-btn" class="form-btn">
                 </div>
             </form>
             <h4>Vaihda salasanasi:</h4>
@@ -165,6 +166,5 @@
             <button class="form-btn" id="confirm">OK</button>
         </div>
     </div>
-    
 </body>
 </html>

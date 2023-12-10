@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Account</title>
-    <script type="module" src="profile/profile.js" defer></script>
-    <script type="module" src="profile/forms.js" defer></script>
-    <script type="module" src="profile/order-data.js" defer></script>
+    <script type="module" src="profile/profile.js"></script>
+    <script type="module" src="profile/forms.js"></script>
+    <script type="module" src="profile/order-data.js"></script>
     <script src="../language.js" defer></script>
     <link rel="stylesheet" href="profile/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -109,25 +109,25 @@
     <dialog id="edit-profile-dialog" class="hidden">
         <div id="dialog-top">
             <h3 id="dialog-header">Edit your profile</h3>
-            <span id="close-dialog">&#x2715</span>
+            <span id="close-dialog">&#x2715;</span>
         </div>
         <div id="dialog-content">
             <h4>Update personal information:</h4>
             <form action="/update" id="update-user-data">
                 <div class="form-input">
-                    <label for="username">Name:</label>
+                    <label for="change-username">Name:</label>
                     <input type="text" name="username" id="change-username" class="input-space">
                 </div>
                 <div class="form-input">
-                    <label for="email">E-mail:</label>
+                    <label for="change-email">E-mail:</label>
                     <input type="email" name="email" id="change-email" class="input-space">
                 </div>
                 <div class="form-input">
-                    <label for="address">Address:</label>
+                    <label for="change-address">Address:</label>
                     <input type="text" name="address" id="change-address" class="input-space">
                 </div>
                 <div class="form-input">
-                    <label for="phone-number">Phone number:</label>
+                    <label for="change-number">Phone number:</label>
                     <input type="tel" pattern="\+?[0-9]{7,13}" name="phone-number" id="change-number" class="input-space">
                 </div>
                 <div class="form-submit">

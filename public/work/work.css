@@ -301,7 +301,7 @@ a {
 }
 
 
-#job-search ul {
+#open-positions {
     grid-column: 1/3;
     grid-row: 4;
     grid-template-columns: 0.5fr 1fr;
@@ -312,12 +312,10 @@ a {
     align-items: center;
 }
 
-#job-search li {
+#open-positions p {
     margin: auto;
     grid-column: 2;
     width: auto;
-    list-style-type: disc;
-
 }
 
 #job-search form {
@@ -344,7 +342,7 @@ a {
 
 
 #job-search button[type="submit"] {
-    background-color: var(--butterscotch);
+    background-color: var(--grayish-brown);
     color: var(--light);
     font-size: large;
     padding: 10px 20px;
@@ -434,7 +432,6 @@ footer {
     }
     #job-search li{
        margin-top: 20px;
-    
     }
 
 

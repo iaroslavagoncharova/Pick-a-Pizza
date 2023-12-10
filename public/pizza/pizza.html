@@ -67,131 +67,128 @@
     </header>
     <div class="hero-image" id="homepage-background">
         <div id="homepage-content">
-            <span class="left-side-content">
-            <div class="pizza-name">
-                <h1 id="name">Make a Pizza</h1>
+                <div class="left-side-content">
+                <div class="pizza-name">
+                    <h1 id="name">Make a Pizza</h1>
+                </div>
+                <div class="dough-image">
+                    <img src="../images/pizza2.png" alt="pizza" id="pizza-photo">
+                </div>
+                <div class="dough-buttons">
+                    <input type="radio" id="gluten-free" name="dough" value="gluten-free">
+                    <label for="gluten-free">G</label>
+                    <input type="radio" id="keto" name="dough" value="keto">
+                    <label for="keto">Keto</label>
+                    <input type="radio" id="usual" name="dough" value="usual">
+                    <label for="usual">Usual</label>
             </div>
-            <div class="dough-image">
-                <img src="../images/pizza-img.png" alt="pizza" id="pizza-photo">
+                <div class="comments">
+                    <p>Do you have any questions?</p>
+                    <p>Send us a message!</p>
+                    <div class="message">
+                        <textarea name="message" id="message" cols="30" rows="5" placeholder="Hi, I'm allergic to..."></textarea>
+                    </div>
+                </div>
+                <div class="price-add">
+                    <h2>Price</h2>
+                    <p id="totalPrice">0€</p>
+                    <div class="quantity-field"><label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1">
+                </div>
+                <button id="confirm-order">Add to cart</button>
+                </div>
             </div>
-            <div class="dough-buttons">
-                <input type="radio" id="gluten-free" name="dough" value="gluten-free">
-                <label for="gluten-free">G</label>
-                <input type="radio" id="keto" name="dough" value="keto">
-                <label for="keto">Keto</label>
-                <input type="radio" id="usual" name="dough" value="usual">
-                <label for="usual">Usual</label>
+            <div class="right-side-content">
+                <div class="size-buttons">
+                <h2>Size</h2>
+                <div class="size">
+                    <input type="radio" id="s" name="size" value="s">
+                    <label for="s">S</label>
+                    <input type="radio" id="m" name="size" value="m">
+                    <label for="m">M</label>
+                    <input type="radio" id="l" name="size" value="l">
+                    <label for="l">L</label>
+                </div>
+                </div>
+                <div class="fillings">
+                    <h2>Fillings</h2>
+                    <div class="search-container">
+                        <form id="searchForm">
+                            <input type="search" placeholder="Search..." id="search" name="search">
+                            <i class="fa fa-magnifying-glass" id="searchButton"></i>
+                        </form>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Meat <span class="arrow">▼</span></div>
+                        <div class="category-content" id="meat">
+                            <ul>
+                            <li><input type="checkbox" id="chicken"><label for="chicken">Chicken</label></li>
+                            <li><input type="checkbox" id="beef"><label for="beef">Beef</label></li>
+                            <li><input type="checkbox" id="bacon"><label for="bacon">Bacon</label></li>
+                            <li><input type="checkbox" id="ham"><label for="ham">Ham</label></li> 
+                            <li><input type="checkbox" id="pepperoni"><label for="pepperoni">Pepperoni</label></li>
+                            <li><input type="checkbox" id="vege-pepperoni"><label for="vege-pepperoni">Vege-pepperoni</label></li>  
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Vegetables <span class="arrow">▼</span></div>
+                        <div class="category-content" id="vegetables">
+                            <ul>
+                            <li><input type="checkbox" id="tomatoes" data-original-quantity="1"><label for="tomatoes">Tomatoes</label></li>
+                            <li><input type="checkbox" id="onions" data-original-quantity="1"><label for="onions">Onions</label></li>
+                            <li><input type="checkbox" id="eggplants" data-original-quantity="1"><label for="eggplants">Eggplants</label></li>
+                            <li><input type="checkbox" id="mushrooms" data-original-quantity="1"><label for="mushrooms">Mushrooms</label></li>
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Cheese <span class="arrow">▼</span></div>
+                        <div class="category-content" id="cheese">
+                            <ul>
+                            <li><input type="checkbox" id="mozzarella" data-original-quantity="1"><label for="mozzarella">Mozzarella</label></li>
+                            <li><input type="checkbox" id="parmezan" data-original-quantity="1"><label for="parmezan">Parmezan</label></li>
+                            <li><input type="checkbox" id="gouda" data-original-quantity="1"><label for="gouda">Gouda</label></li>
+                            <li><input type="checkbox" id="goat-cheese" data-original-quantity="1"><label for="goat-cheese">Goat cheese</label></li>
+                            <li><input type="checkbox" id="tofu" data-original-quantity="1"><label for="tofu">Tofu</label></li>
+                        <li><input type="checkbox" id="vege-gouda" data-original-quantity="1"><label for="vege-gouda">Vegan gouda</label></li>
+                        <li><input type="checkbox" id="vege-mozzarella" data-original-quantity="1"><label for="vege-mozzarella">Vegan mozzarella</label></li>
+                        <li><input type="checkbox" id="vege-parmezan" data-original-quantity="1"><label for="vege-parmezan">Vegan parmezan</label></li>
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Seafood <span class="arrow">▼</span></div>
+                        <div class="category-content" id="seafood">
+                            <ul>
+                            <li><input type="checkbox" id="anchovies" data-original-quantity="1"><label for="anchovies">Anchovies</label></li>
+                            <li><input type="checkbox" id="shrimps" data-original-quantity="1"><label for="shrimps">Shrimps</label></li>
+                            <li><input type="checkbox" id="mussels" data-original-quantity="1"><label for="mussels">Mussels</label></li>
+                        </ul>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Sauces <span class="arrow">▼</span></div>
+                        <div class="category-content" id="sauces">
+                            <ul>
+                            <li><input type="checkbox" id="tomato-sauce" data-original-quantity="1"><label for="tomato-sauce">Tomato sauce</label></li>
+                            <li><input type="checkbox" id="pesto-sauce" data-original-quantity="1"><label for="pesto-sauce">Pesto sauce</label></li>
+                            <li><input type="checkbox" id="bbq-sauce" data-original-quantity="1"><label for="bbq-sauce">BBQ sauce</label></li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="nutritions">
+                    <h2>Nutritional value</h2>
+                    <div class="calories">
+                        <p>Total Calories: <span id="totalCalories">0</span></p>
+                        <p>Total Carbs: <span id="totalCarbs">0</span></p>
+                        <p>Total Proteins: <span id="totalProteins">0</span></p>
+                        <p>Total Fats: <span id="totalFats">0</span></p>
+                    </div>
+                </div>
         </div>
-            <div class="comments">
-                <p>Do you have any questions?</p>
-                <p>Send us a message!</p>
-                <div class="message">
-                    <textarea name="message" id="message" cols="30" rows="5" placeholder="Hi, I'm allergic to..."></textarea>
-                </div>
-            </div>
-            <div class="price-add">
-                <h2>Price</h2>
-                <p id="totalPrice">0€</p>
-                <div class="quantity-field"><label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" value="1" min="1">
-            </div>
-            <button id="confirm-order">Add to cart</button>
-            </div>
-        </span>
-        <span>
-            <div class="size-buttons">
-            <h2>Size</h2>
-            <div class="size">
-                <input type="radio" id="s" name="size" value="s">
-                <label for="s">S</label>
-                <input type="radio" id="m" name="size" value="m">
-                <label for="m">M</label>
-                <input type="radio" id="l" name="size" value="l">
-                <label for="l">L</label>
-            </div>
-            </div>
-            <div class="fillings">
-                <h2>Fillings</h2>
-                <div class="search-container">
-                    <form id="searchForm">
-                        <input type="search" placeholder="Search..." id="search" name="search">
-                        <i class="fa fa-magnifying-glass" id="searchButton"></i>
-                    </form>
-                  </div>
-                <div class="category">
-                    <div class="category-title">Meat <span class="arrow">▼</span></div>
-                    <div class="category-content" id="meat">
-                        <ul>
-                        <li><input type="checkbox" id="chicken"><label for="chicken">Chicken</label></li>
-                        <li><input type="checkbox" id="beef"><label for="beef">Beef</label></li>
-                        <li><input type="checkbox" id="bacon"><label for="bacon">Bacon</label></li>
-                        <li><input type="checkbox" id="ham"><label for="ham">Ham</label></li> 
-                        <li><input type="checkbox" id="pepperoni"><label for="pepperoni">Pepperoni</label></li>
-                        <li><input type="checkbox" id="vege-pepperoni"><label for="vege-pepperoni">Vege-pepperoni</label></li>  
-                    </ul>
-                    </div>
-                </div>
-                <div class="category">
-                    <div class="category-title">Vegetables <span class="arrow">▼</span></div>
-                    <div class="category-content" id="vegetables">
-                        <ul>
-                        <li><input type="checkbox" id="tomatoes" data-original-quantity="1"><label for="tomatoes">Tomatoes</label></li>
-                        <li><input type="checkbox" id="onions" data-original-quantity="1"><label for="onions">Onions</label></li>
-                        <li><input type="checkbox" id="eggplants" data-original-quantity="1"><label for="eggplants">Eggplants</label></li>
-                        <li><input type="checkbox" id="mushrooms" data-original-quantity="1"><label for="mushrooms">Mushrooms</label></li>
-                    </ul>
-                    </div>
-                </div>
-                <div class="category">
-                    <div class="category-title">Cheese <span class="arrow">▼</span></div>
-                    <div class="category-content" id="cheese">
-                        <ul>
-                        <li><input type="checkbox" id="mozzarella" data-original-quantity="1"><label for="mozzarella">Mozzarella</label></li>
-                        <li><input type="checkbox" id="parmezan" data-original-quantity="1"><label for="parmezan">Parmezan</label></li>
-                        <li><input type="checkbox" id="gouda" data-original-quantity="1"><label for="gouda">Gouda</label></li>
-                        <li><input type="checkbox" id="goat-cheese" data-original-quantity="1"><label for="goat-cheese">Goat cheese</label></li>
-                        <li><input type="checkbox" id="tofu" data-original-quantity="1"><label for="tofu">Tofu</label></li>
-                       <li><input type="checkbox" id="vege-gouda" data-original-quantity="1"><label for="vege-gouda">Vegan gouda</label></li>
-                       <li><input type="checkbox" id="vege-mozzarella" data-original-quantity="1"><label for="vege-mozzarella">Vegan mozzarella</label></li>
-                       <li><input type="checkbox" id="vege-parmezan" data-original-quantity="1"><label for="vege-parmezan">Vegan parmezan</label></li>
-                    </ul>
-                    </div>
-                </div>
-                <div class="category">
-                    <div class="category-title">Seafood <span class="arrow">▼</span></div>
-                    <div class="category-content" id="seafood">
-                        <ul>
-                        <li><input type="checkbox" id="anchovies" data-original-quantity="1"><label for="anchovies">Anchovies</label></li>
-                        <li><input type="checkbox" id="shrimps" data-original-quantity="1"><label for="shrimps">Shrimps</label></li>
-                        <li><input type="checkbox" id="mussels" data-original-quantity="1"><label for="mussels">Mussels</label></li>
-                    </ul>
-                    </div>
-                </div>
-                <div class="category">
-                    <div class="category-title">Sauces <span class="arrow">▼</span></div>
-                    <div class="category-content" id="sauces">
-                        <ul>
-                        <li><input type="checkbox" id="tomato-sauce" data-original-quantity="1"><label for="tomato-sauce">Tomato sauce</label></li>
-                        <li><input type="checkbox" id="pesto-sauce" data-original-quantity="1"><label for="pesto-sauce">Pesto sauce</label></li>
-                        <li><input type="checkbox" id="bbq-sauce" data-original-quantity="1"><label for="bbq-sauce">BBQ sauce</label></li>
-                    </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="nutritions">
-                <h2>Nutritional value</h2>
-                <div class="calories">
-                    <p>Total Calories: <span id="totalCalories">0</span></p>
-                    <p>Total Carbs: <span id="totalCarbs">0</span></p>
-                    <p>Total Proteins: <span id="totalProteins">0</span></p>
-                    <p>Total Fats: <span id="totalFats">0</span></p>
-                </div>
-            </div>
-        </span>
-        
     </div>
-    </div>
-   
     </div>
     <footer>
         <div id="contact-info">

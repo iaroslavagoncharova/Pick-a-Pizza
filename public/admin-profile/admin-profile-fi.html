@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin-profiili</title>
-    <script type="module" src="admin-profile/admin-profile.js" defer></script>
-    <script type="module" src="admin-profile/order-data.js" defer></script>
+    <script type="module" src="admin-profile/admin-profile.js"></script>
+    <script type="module" src="admin-profile/order-data.js"></script>
     <script src="../language.js" defer></script>
     <link rel="stylesheet" href="admin-profile/admin-profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -70,13 +70,7 @@
             <div id="admin-info">
                 <div id="orders-progress">
                     <h3>Käynnissä olevat tilaukset</h3>
-                    <ul>
-                        <li><a href="#">15.11.2023 20.16 Order #890421652</a></li>
-                        <li><a href="#">15.11.2023 20.10 Order #325432789</a></li>
-                        <li><a href="#">15.11.2023 20.09 Order #948792685</a></li>
-                        <li><a href="#">15.11.2023 20.06 Order #120387189</a></li>
-                        <li><a href="#">15.11.2023 20.02 Order #527658364</a></li>
-                    </ul>
+                    <ul id="wip-orders"></ul>
                     <button class="admin-button" id="all-orders">Kaikki tilaukset</button>
                 </div>
                 <div id="users"><h3>Käyttäjät</h3>
@@ -117,8 +111,17 @@
             <i class="fa fa-instagram fa-2x"></i>
             <i class="fa fa-whatsapp fa-2x"></i>
         </div>
-
     </footer>
-    
+    <dialog id="edit-profile-dialog" class="hidden">
+        <div id="dialog-top">
+            <h3 id="dialog-header">Käynnissä olevat tilaukset</h3>
+            <span id="close-dialog">&#x2715;</span>
+        </div>
+        <div id="dialog-content">
+            <h4>Päivittää tilaukset:</h4>
+            <ul id="edit-orders">
+            </ul>
+        </div>
+    </dialog>   
 </body>
 </html>

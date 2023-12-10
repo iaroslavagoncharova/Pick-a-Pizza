@@ -290,6 +290,7 @@ a {
     align-items: center;
     margin: 10px;
     font-size: 0;
+    padding: 10px;
 }
 
 #rating-stars input {
@@ -355,7 +356,7 @@ a {
     text-align:start; 
     font-size: large;
     font-weight: bold;
-    padding: auto;
+    padding: 10px;
     margin-top: 10px;
     filter: brightness(130%);
 }
