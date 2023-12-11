@@ -187,7 +187,7 @@ const updatePizzaInfo = async () => {
     const ingredients = document.querySelectorAll('.category-content input:checked');
 
     for (const ingredient of ingredients) {
-      const response = await fetch(`/ingredients?id=${ingredient.id}`);
+      const response = await fetch(`/ingredients/cals?id=${ingredient.id}`);
       const result = await response.json();
 
       const adjustedPrice = result[0].price * quantity;
@@ -224,7 +224,7 @@ ingredients.forEach(ingredient => {
   ingredient.addEventListener('change', async function () {
     console.log(ingredient.id);
     try {
-      const response = await fetch(`/ingredients?id=${ingredient.id}`, {
+      const response = await fetch(`/ingredients/cals?id=${ingredient.id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

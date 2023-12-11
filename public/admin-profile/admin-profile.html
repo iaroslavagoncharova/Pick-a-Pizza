@@ -7,6 +7,7 @@
     <script type="module" src="/admin-profile/admin-profile.js" defer></script>
     <script type="module" src="/admin-profile/order-data.js" defer></script>
     <script type="module" src="/admin-profile/user-data.js" defer></script>
+    <script type="module" src="/admin-profile/ingredients.js" defer></script>
     <script src="../language.js" defer></script>
     <link rel="stylesheet" href="/admin-profile/admin-profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -79,13 +80,7 @@
                 <button class="admin-button" id="all-users">Show all users</button>
                 </div>
                 <div id="ingredients"><h3>Ingredients</h3>
-                    <ul>
-                        <li><a href="#">tomato</a></li>
-                        <li><a href="#">mushrooms</a></li>
-                        <li><a href="#">chicken</a></li>
-                        <li><a href="#">tuna</a></li>
-                        <li><a href="#">tofu</a></li>
-                    </ul>
+                    <ul id="ingredient-data"></ul>
                     <button class="admin-button" id="all-ingredients">Show all ingredients</button>
             </div>
     </div>
@@ -130,6 +125,16 @@
             </ul>
         </div>
     </dialog>   
+    <dialog id="edit-ingredients-dialog" class="hidden">
+        <div class="dialog-top">
+            <h3 class="dialog-header">Ingredients</h3>
+            <span class="close-dialog" id="close-ingredients">&#x2715</span>
+        </div>
+        <div class="dialog-content" id="ing-dialog-cont">
+            <h4>Manage ingredients:</h4>
+            <div id="edit-ingredients"></div>
+        </div>
+    </dialog>  
     <div class="alert-popup hidden" id="message-user">
         <h4>Message <span id="msg-username"></span></h4>
         <textarea name="message" id="message" cols="30" rows="5" placeholder="Please stop ordering pizza with just cheese..."></textarea>

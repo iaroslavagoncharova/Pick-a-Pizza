@@ -1,5 +1,6 @@
 import { addUserDataToDom, removeUserDataFromDom } from "../dom.js";
 import { logUserOut } from "../logout.js";
+import fetchIngredients from "./ingredients.js";
 import fetchOrders from "./order-data.js";
 import fetchUsers from "./user-data.js";
 
@@ -13,6 +14,7 @@ window.onload = () => {
         logUserOut();
         fetchOrders(user.user_id);
         fetchUsers(user.user_id);
+        fetchIngredients();
         const userButton = document.getElementById('user-account');
         // me ollaan tällä sivulla, joten account-näppäimen ei tarvii toimia
         userButton.href = '#';
@@ -62,6 +64,28 @@ usersBtn.addEventListener('click', () => {
 closeUsersDialog.addEventListener('click', () => {
   usersDialog.classList.remove('open-dialog');
   usersDialog.classList.add('hidden');
+  header.classList.remove('blur-background');
+  pageContent.classList.remove('blur-background');
+  footer.classList.remove('blur-background');
+});
+
+
+// ingredients dialog
+const igtsBtn = document.getElementById('all-ingredients');
+const igtsDialog = document.getElementById('edit-ingredients-dialog');
+const closeIgtsDialog = document.getElementById('close-ingredients');
+
+igtsBtn.addEventListener('click', () => {
+  igtsDialog.classList.remove('hidden');
+  igtsDialog.classList.add('open-dialog');
+  header.classList.add('blur-background');
+  pageContent.classList.add('blur-background');
+  footer.classList.add('blur-background');
+});
+
+closeIgtsDialog.addEventListener('click', () => {
+  igtsDialog.classList.remove('open-dialog');
+  igtsDialog.classList.add('hidden');
   header.classList.remove('blur-background');
   pageContent.classList.remove('blur-background');
   footer.classList.remove('blur-background');

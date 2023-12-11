@@ -122,6 +122,12 @@ const updatePassword = async (userCreds) => {
     }
 };
 
+/**
+ * Update user_level_id for selected user and thus grant administrator privileges
+ * @param {string} id 
+ * @param {integer} userLevelID 
+ * @returns success or error message in JSON form
+ */
 const adminUser = async (id, userLevelID) => {
     console.log('adminUser');
     try {
