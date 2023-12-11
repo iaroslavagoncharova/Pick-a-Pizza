@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       productDetails.innerHTML = `
         <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
         <div>
-          <h4>${pizzaName}</h4>
+          <h3>${pizzaName}</h3>
           <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
           <p>${pizza.result4.map(ingredient => ingredient.name).join(', ')}</p>
         </div>`;
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     async function simulatePayment() {
         return new Promise((resolve, reject) => {
           setTimeout(() => {
-            const success = Math.random() > 0.95;
+            const success = true
       
             if (success) {
               resolve({ success: true });
