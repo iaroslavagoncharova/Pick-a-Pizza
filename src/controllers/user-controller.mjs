@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { updateUser, getUser, updatePassword, removeUser, getAllUsers } from '../models/user-model.mjs';
+import { updateUser, getUser, updatePassword, removeUser, getAllUsers, adminUser } from '../models/user-model.mjs';
 
 const putUser = async (req, res, next) => {
     console.log('putUser', req.body);
@@ -49,6 +49,32 @@ const putPassword = async (req, res, next) => {
 
 };
 
+const grantAdminPrivileges = async (req, res) => {
+    console.log('grantAdminPrivileges');
+    console.log(typeof req.body.user_level_id);
+    const admin = await adminUser(req.params.id, req.body.user_level_id);
+
+    if (!admin) {
+        const error = new Error('no such user exists');
+        error.status = 400;
+        return next(error);
+    }
+
+    if (admin.error) {
+        const error = new Error(admin.error);
+        error.status = 400;
+        return next(error);
+    }
+
+    try {
+        const user = await getUser(req.params.id);
+        console.log('grantAdminPrivileges', user);
+        res.json({message: 'updated successfully', user: user})
+    } catch (e) {
+        res.status(400).json({message: 'an error occurred'});
+    }
+};
+
 
 const deleteUser = async (req, res) => {
     console.log('deleteUser');
@@ -78,4 +104,4 @@ const listUsers = async (req, res) => {
 }
 
 
-export {putUser, putPassword, deleteUser, listUsers};
+export {putUser, putPassword, grantAdminPrivileges, deleteUser, listUsers};

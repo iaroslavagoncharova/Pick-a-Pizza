@@ -24,8 +24,6 @@ const fetchUsers = async (userId) => {
         // you can't see yourself here
         if (user.user_id === userId) continue;
 
-        const thisId = user.user_id;
-
         const thisUser = document.createElement('li');
         thisUser.classList.add('this-user');
 
@@ -90,6 +88,27 @@ const fetchUsers = async (userId) => {
             adminBtn.classList.add('edit-user-icon');
             adminBtn.title = 'Grant administrator privileges';
             iconsDiv.appendChild(adminBtn);
+
+            adminBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+
+                const response = await fetch (`/users/grant-admin/${user.user_id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({user_level_id: 1})
+                });
+
+                const data = await response.json();
+
+                if (data.message === 'updated successfully') {
+                    alert('user updated');
+                    window.location.reload();
+                } else {
+                    alert('something went wrong!')
+                }
+            })
         };
 
         iconsDiv.appendChild(removeIcon);
@@ -182,7 +201,10 @@ const fetchUsers = async (userId) => {
 
     const firstUser = usersHTML[0].cloneNode(true);
     firstUser.querySelector('.icons-div').remove();
-    firstUser.querySelector('.admin-div').remove();
+
+    if (firstUser.querySelector('.admin-div') !== null) {
+        firstUser.querySelector('.admin-div').remove();
+    }
     usersCont.appendChild(firstUser);
 };
 

@@ -120,6 +120,20 @@ const updatePassword = async (userCreds) => {
         console.log('error', e.message);
         return {error: e.message};
     }
+};
+
+const adminUser = async (id, userLevelID) => {
+    console.log('adminUser');
+    try {
+        const sql = `UPDATE Users SET user_level_id = ${userLevelID} WHERE user_id = ${id}`;
+        const result = await promisePool.query(sql);
+        const [rows] = result;
+        console.log(rows);
+        return {message: 'PUT request successful'};
+    } catch (e) {
+        console.error('error', e.message);
+        return {error: e.message};
+    }
 }
 
 const removeUser = async (id) => {
@@ -139,4 +153,4 @@ const removeUser = async (id) => {
     
 };
 
-export {loginUser, registerUser, updateUser, updatePassword, getUser, getAllUsers, removeUser};
+export {loginUser, registerUser, updateUser, updatePassword, getUser, getAllUsers, adminUser, removeUser};
