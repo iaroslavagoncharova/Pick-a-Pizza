@@ -44,14 +44,6 @@ contentTabs.addEventListener('click', (evt) => {
   }
 });
 
-const craftPizza = document.querySelectorAll('.make-a-pizza');
-craftPizza.forEach(pizza => {
-  pizza.addEventListener('click', () => {
-  localStorage.removeItem('selectedPizzaIngredients');
-  window.location.href = '/make-your-pizza';
-});
-});
-
 const offers = document.getElementById('offers');
 offers.addEventListener('click', () => {
   window.location.href = '/pick-a-pizza-club';
@@ -72,17 +64,9 @@ document.addEventListener('DOMContentLoaded', async function () {
 
       for (let i = 1; i <= 6; i++) {
         const button = document.getElementById(`button-${i}`);
-        const dropdown = document.getElementById(`pizza-${i}`);
         button.innerHTML = result[i - 1].prompt_name;
-        dropdown.innerHTML = result[i - 1].prompt_name;
 
         button.addEventListener('click', (function (pizzaId) {
-          return function () {
-            selectPizza(pizzaId);
-          };
-        })(i));
-
-        dropdown.addEventListener('click', (function (pizzaId) {
           return function () {
             selectPizza(pizzaId);
           };
@@ -100,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       });
 
       let selectedPizzaIngredients = [];
-
+      
       async function selectPizza(pizzaId) {
         try {
           const response = await fetch(`/sets/${pizzaId}`, {

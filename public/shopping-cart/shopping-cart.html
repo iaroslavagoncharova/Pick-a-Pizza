@@ -6,6 +6,7 @@
     <title>Checkout</title>
     <script type="module" src="shopping-cart.js"></script>
     <script src="../language.js" defer></script>
+    <script type="module" src="../prompts.js"></script>
     <link rel="stylesheet" type="text/css" href="shopping-cart.css">
     <link rel="stylesheet" href="modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -122,16 +123,16 @@
                                 <h2>Payment Details</h2>
                                 <div id="payment-section">
                                   <label for="card-name">Cardholders Name:</label>
-                                  <input type="text" id="card-name" placeholder="Enter name" required>
+                                  <input type="text" id="card-name" placeholder="Enter name" required autocomplete="name">
                                   <label for="card-number">Card Number:</label>
                                   
                                   <input type="text" id="card-number" placeholder="Enter card number" required>
                                   
                                   <label for="expiration-date-month">Expiration Date:</label>
                                   <div id="date">
-                                      <input type="number" id="expiration-date-month" placeholder="MM" value="01" required>
+                                      <input type="number" id="expiration-date-month" placeholder="MM" value="01" required autocomplete="cc-exp-month">
                                       <span>/</span>
-                                      <input type="number" id="expiration-date-year" placeholder="YY" value="2023" required>
+                                      <input type="number" id="expiration-date-year" placeholder="YY" value="2023" required autocomplete="cc-exp-year">
                                     </div>
                                     
                                     <label for="cvv">CVV:</label>
@@ -139,7 +140,7 @@
                                 </div>
                                 <div id="confirmation">
                                     <label for="phone">Phone Number:</label>
-                                    <input type="tel" id="phone" placeholder="Enter phone number" required>
+                                    <input type="tel" id="phone" placeholder="Enter phone number" required autocomplete="mobile">
                                 <div id="total-amount"></div>
                                 <button id="pay-button">Pay Now</button>
                                 </div>
