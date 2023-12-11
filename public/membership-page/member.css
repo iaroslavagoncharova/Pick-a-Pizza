@@ -379,6 +379,18 @@ footer {
 }
 /* Tablet view */
 @media only screen and (max-width: 768px) {
+    #header-logo {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    #bottom-nav-items a {
+        display: none;
+    }
     #club-page h1{
         font-size: 2.5rem;
         padding-bottom: 5%;
@@ -392,11 +404,33 @@ footer {
         font-size: 1rem;
         margin: 0%;
     }
+    #contact-info {
+        margin: auto;
+    }
+    #social-media-icons {
+        width: 100%;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
 
 }
 
 /* Mobile view */
 @media only screen and (max-width: 480px) {
+    #header-logo {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    #bottom-nav-items a {
+        display: none;
+    }
     #club-page h1{
         font-size: 1.5rem;
     }
@@ -413,6 +447,16 @@ footer {
     #club-page a{
         margin-top: 20px;
         width: 100%;
+    }
+    #contact-info {
+        margin: auto;
+    }
+    #social-media-icons {
+        width: 100%;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center;
     }
 
 }
