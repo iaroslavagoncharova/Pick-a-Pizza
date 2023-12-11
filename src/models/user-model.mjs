@@ -120,12 +120,26 @@ const updatePassword = async (userCreds) => {
         console.log('error', e.message);
         return {error: e.message};
     }
+};
+
+const adminUser = async (id, userLevelID) => {
+    console.log('adminUser');
+    try {
+        const sql = `UPDATE Users SET user_level_id = ${userLevelID} WHERE user_id = ${id}`;
+        const result = await promisePool.query(sql);
+        const [rows] = result;
+        console.log(rows);
+        return {message: 'PUT request successful'};
+    } catch (e) {
+        console.error('error', e.message);
+        return {error: e.message};
+    }
 }
 
 const removeUser = async (id) => {
     console.log('removeUser');
     try {
-        const sql = [`DELETE FROM Orders WHERE user_id = ${id};`, `DELETE FROM ShoppingCart WHERE user_id = ${id};`, `DELETE FROM Reviews WHERE user_id = ${id};`, `DELETE FROM Users WHERE user_id = ${id};`];
+        const sql = [`DELETE FROM Orders WHERE user_id = ${id};`, `DELETE FROM CartPizza WHERE cart_id IN (SELECT cart_id FROM ShoppingCart WHERE user_id = ${id});`, `DELETE FROM ShoppingCart WHERE user_id = ${id};`, `DELETE FROM Reviews WHERE user_id = ${id};`, `DELETE FROM Pizza WHERE user_id = ${id};`, `DELETE FROM Users WHERE user_id = ${id};`];
         const [rows] = [];
         for (let line of sql) {
             await promisePool.query(line);
@@ -139,4 +153,4 @@ const removeUser = async (id) => {
     
 };
 
-export {loginUser, registerUser, updateUser, updatePassword, getUser, getAllUsers, removeUser};
+export {loginUser, registerUser, updateUser, updatePassword, getUser, getAllUsers, adminUser, removeUser};

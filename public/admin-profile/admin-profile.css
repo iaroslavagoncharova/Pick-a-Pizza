@@ -512,6 +512,40 @@ label {
     cursor: pointer;
 }
 
+
+.open-popup {
+    display: block;
+    position: fixed;
+    top: 1vh;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 200;
+}
+
+#message-user {
+    background-color: var(--light);
+}
+
+#confirm-deletion {
+    background-color: var(--tomato);
+}
+
+.open-popup h4 {
+    color: var(--grayish-brown);
+    text-align: center;
+}
+
+.confirm-options {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 footer {
     padding: 1rem;
     display: flex;
