@@ -546,6 +546,23 @@ label {
     justify-content: space-between;
 }
 
+.this-igt {
+    background-color: #e5ddda;
+    width: 50%;
+    margin: 0.2rem auto 1rem auto;
+}
+
+table {
+    width: 90%;
+    margin: 0 auto 0.5rem auto;
+    border: 2px solid #473b2a;
+}
+
+.ingredient-name {
+    background-color: var(--grayish-brown);
+    color: var(--light);
+}
+
 footer {
     padding: 1rem;
     display: flex;
