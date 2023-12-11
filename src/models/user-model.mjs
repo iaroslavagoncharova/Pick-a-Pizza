@@ -125,7 +125,7 @@ const updatePassword = async (userCreds) => {
 const removeUser = async (id) => {
     console.log('removeUser');
     try {
-        const sql = [`DELETE FROM Orders WHERE user_id = ${id};`, `DELETE FROM ShoppingCart WHERE user_id = ${id};`, `DELETE FROM Reviews WHERE user_id = ${id};`, `DELETE FROM Users WHERE user_id = ${id};`];
+        const sql = [`DELETE FROM Orders WHERE user_id = ${id};`, `DELETE FROM CartPizza WHERE cart_id IN (SELECT cart_id FROM ShoppingCart WHERE user_id = ${id});`, `DELETE FROM ShoppingCart WHERE user_id = ${id};`, `DELETE FROM Reviews WHERE user_id = ${id};`, `DELETE FROM Pizza WHERE user_id = ${id};`, `DELETE FROM Users WHERE user_id = ${id};`];
         const [rows] = [];
         for (let line of sql) {
             await promisePool.query(line);

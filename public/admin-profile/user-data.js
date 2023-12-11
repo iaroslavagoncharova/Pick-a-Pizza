@@ -3,6 +3,7 @@
 const fetchUsers = async (userId) => {
     const usersCont = document.getElementById('users-data');
     const userModal = document.getElementById('edit-users');
+    const dialog = document.getElementById('edit-users-dialog');
     const usersHTML = [];
 
     const response = await fetch (`/users`, {
@@ -16,10 +17,14 @@ const fetchUsers = async (userId) => {
     const users = await response.json();
     console.log('fetchUsers', typeof users);
 
+    let userToDeleteId = null;
+
     for (let user of users.users) {
 
         // you can't see yourself here
         if (user.user_id === userId) continue;
+
+        const thisId = user.user_id;
 
         const thisUser = document.createElement('li');
         thisUser.classList.add('this-user');
@@ -97,13 +102,88 @@ const fetchUsers = async (userId) => {
         thisUser.appendChild(userDiv);
         usersHTML.push(thisUser);
         userModal.appendChild(thisUser);
-    }
+
+        // event listeners
+
+        const msgPopup = document.getElementById('message-user');
+        const cancelMsgBtn = document.querySelector('#cancel-msg');
+        const confirmMsgBtn = document.querySelector('#confirm-msg');
+
+        msgIcon.addEventListener('click', () => {
+            const msgUsrname = document.getElementById('msg-username');
+            msgUsrname.innerText = user.username;
+
+            msgPopup.classList.remove('hidden');
+            msgPopup.classList.add('open-popup');
+            dialog.classList.add('blur-background');
+
+        });
+
+        cancelMsgBtn.addEventListener('click', () => {
+            msgPopup.classList.remove('open-popup');
+            msgPopup.classList.add('hidden');
+            dialog.classList.remove('blur-background');
+        })
+
+        confirmMsgBtn.addEventListener('click', () => {
+            msgPopup.classList.remove('open-popup');
+            msgPopup.classList.add('hidden');
+            dialog.classList.remove('blur-background');
+        });
+
+        const deletePopup = document.getElementById('confirm-deletion');
+        const cancelDeleteBtn = deletePopup.querySelector('#cancel-delete');
+        const confirmDeleteBtn = deletePopup.querySelector('#confirm-delete');
+
+        removeIcon.addEventListener('click', () => {
+            userToDeleteId = user.user_id;
+            deletePopup.classList.remove('hidden');
+            deletePopup.classList.add('open-popup');
+            dialog.classList.add('blur-background');
+        });
+
+        cancelDeleteBtn.addEventListener('click', () => {
+            userToDeleteId = null;
+            deletePopup.classList.remove('open-popup');
+            deletePopup.classList.add('hidden');
+            dialog.classList.remove('blur-background');
+        });
+        
+        confirmDeleteBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            if (userToDeleteId != null) {
+                const response = await fetch (`/users/delete/${userToDeleteId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+            
+            
+                if (response.status === 204) {
+                    alert('Account deletion successful.')
+                    window.location.reload();
+                } else {
+                    alert("couldn't delete account!");
+                };
+
+                userToDeleteId = null;
+                deletePopup.classList.remove('open-popup');
+                deletePopup.classList.add('hidden');
+                dialog.classList.remove('blur-background');
+            } else {
+                alert('No user selected for deletion!');
+            }
+            
+        });
+
+    };
 
     const firstUser = usersHTML[0].cloneNode(true);
     firstUser.querySelector('.icons-div').remove();
     firstUser.querySelector('.admin-div').remove();
     usersCont.appendChild(firstUser);
-
 };
 
 export default fetchUsers;

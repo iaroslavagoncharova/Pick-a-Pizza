@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin account</title>
-    <script type="module" src="/admin-profile/admin-profile.js"></script>
-    <script type="module" src="/admin-profile/order-data.js"></script>
-    <script type="module" src="/admin-profile/user-data.js"></script>
+    <script type="module" src="/admin-profile/admin-profile.js" defer></script>
+    <script type="module" src="/admin-profile/order-data.js" defer></script>
+    <script type="module" src="/admin-profile/user-data.js" defer></script>
     <script src="../language.js" defer></script>
     <link rel="stylesheet" href="/admin-profile/admin-profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -111,7 +111,7 @@
     <dialog id="edit-orders-dialog" class="hidden">
         <div class="dialog-top">
             <h3 class="dialog-header">Orders in progress</h3>
-            <span class="close-dialog" id="close-orders">&#x2715;</span>
+            <span class="close-dialog" id="close-orders">&#x2715</span>
         </div>
         <div class="dialog-content">
             <h4>Update orders:</h4>
@@ -129,6 +129,24 @@
             <ul class="data-list" id="edit-users">
             </ul>
         </div>
-    </dialog>      
+    </dialog>   
+    <div class="alert-popup hidden" id="message-user">
+        <h4>Message <span id="msg-username"></span></h4>
+        <textarea name="message" id="message" cols="30" rows="5" placeholder="Please stop ordering pizza with just cheese..."></textarea>
+        <div class="confirm-options">
+            <button class="form-btn" id="cancel-msg">Cancel</button>
+            <button class="form-btn" id="confirm-msg">OK</button>
+        </div>
+    </div>   
+    <div class="alert-popup hidden" id="confirm-deletion">
+        <img src="../images/icons/warning-icon.png" alt="Warning Icon" id="warning-icon" class="bottom-nav-icon">
+        <p>This is a permanent action.<br>
+        Upon deletion, an email will be sent to the email attached<br>
+        to this account to inform the user of their account deletion.</p>
+        <div class="confirm-options">
+            <button class="form-btn" id="cancel-delete">Cancel</button>
+            <button class="form-btn" id="confirm-delete">OK</button>
+        </div>
+    </div>
 </body>
 </html>
