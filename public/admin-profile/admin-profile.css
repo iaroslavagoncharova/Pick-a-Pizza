@@ -315,6 +315,9 @@ a {
 
 .open-dialog {
     display: block;
+    position: absolute;
+    top: 15vh;
+    left: 50vw;
 }
 
 .hidden {
@@ -527,6 +530,14 @@ label {
 
 #message-user {
     background-color: var(--light);
+}
+
+#delete-order {
+    background-color: var(--light);
+}
+
+#delete-order p {
+    color: var(--grayish-brown);
 }
 
 #confirm-deletion {
