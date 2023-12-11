@@ -114,7 +114,7 @@ const fetchOrders = async (userId) => {
             };
         });
 
-        removeBtn.addEventListener('click', (currentOrderId) => {
+        removeBtn.addEventListener('click', () => {
             orderToDeleteId = order.order_id;
 
             document.getElementById('order-id').innerText = orderToDeleteId;
