@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const tableBody = document.querySelector('#selected-products tbody');
 
     console.log(result);
-    if (result.pizzaDetails.length === 0) {
+    if (result.pizzaDetails.length === 0 || !result.pizzaDetails) {
       // if there's no pizzas in cart, display a message and invite to explore the menu
       console.log('no pizzas in cart');
       const emptyCart = document.createElement('p');
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const paymentFee = 0.5;
 
     // display all prices
-    const totalPrice = totalPizzasPrice + shippingFee + paymentFee;
+    const totalPrice = (totalPizzasPrice + shippingFee + paymentFee).toFixed(2);
     shippingFeeCell.textContent = `${shippingFee}€`;
     paymentFeeCell.textContent = `${paymentFee}€`;
     totalCell.textContent = `${totalPrice}€`;
@@ -222,12 +222,27 @@ document.addEventListener('DOMContentLoaded', async function () {
     // simulate payment
     const payButton = document.getElementById("pay-button");
     const paymentStatusElement = document.getElementById("payment-status");
+    const pizzaIds = result.pizzaDetails.map(pizza => pizza.pizza_id);
+
     payButton.addEventListener("click", async function () {
       try {
         const paymentResponse = await simulatePayment();
         
         if (paymentResponse.success) {
+          const response = await fetch(`/shopping-cart`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({price: totalPizzasPrice, user_id: user.user_id, pizzaIds: pizzaIds}),
+        });
+        const resultCart = await response.json();
+        console.log(resultCart);
+        if (resultCart) {
           window.location.href = "/checkout";
+        } else {
+          console.error('Error creating cart:', response.status, response.statusText);
+        }
         } else {
           paymentStatusElement.textContent = "Payment failed. Please try again.";
         }
@@ -236,6 +251,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         paymentStatusElement.textContent = "Please check given info"
       }
     });
+
     const totalAmountElement = document.getElementById('total-amount');
     totalAmountElement.textContent = `${totalPrice}€`;
     
@@ -254,6 +270,8 @@ document.addEventListener('DOMContentLoaded', async function () {
           }, 500); 
         });
       }
+
+
     
 
       // generate plus and minus buttons and add functionality to them
