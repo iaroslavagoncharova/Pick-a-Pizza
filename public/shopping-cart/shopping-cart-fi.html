@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ostoskori</title>
-    <script type="module" src="../shopping-cart/shopping-cart.js"></script>
+    <title>Checkout</title>
+    <script type="module" src="shopping-cart.js"></script>
     <script src="../language.js" defer></script>
-    <script type="module" src="../prompts.js"></script>
+    <script src="fetchCheckoutData.js" defer></script>
     <link rel="stylesheet" type="text/css" href="../shopping-cart/shopping-cart.css">
-    <link rel="stylesheet" href="modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/438aeadf51.js" crossorigin="anonymous"></script>
 </head>
@@ -70,13 +69,14 @@
     <div class="hero-image" id="homepage-background">
         <div id="cart-container">
             <div id="cart-screen">
-                <h2>Ostoskärry</h2>
+                <h2>Ostoskori</h2>
                 <div id="products-screen">
                     <button class="cart-btn" id="gift-card-btn">Lisää etukoodi tai lahjakortti</button>
                     <table id="selected-products">
                         <thead>
                             <tr>
-                                <th class="product">Tuotteet</th>
+                                <th class="product">Tuote</th>
+                                <button id="mainpage-button"></button>
                                 <th class="quantity">Määrä</th>
                                 <th class="total">Yhteensä</th>
                                 <th class="remove"></th>
@@ -91,11 +91,11 @@
                             <table id="receipt-table">
                                 <tr>
                                     <td class="align-left">Toimitusmaksu</td>
-                                    <td class="shipping-fee align-right" id="shipping-fee"></td>
+                                    <td class="align-right">0€</td>
                                 </tr>
                                 <tr>
                                     <td class="align-left">Käsittelykulut</td>
-                                    <td class="align-right">0€</td>
+                                    <td class="align-right">0.50€</td>
                                 </tr>
                                 <tr>
                                     <td class="align-left">Yhteensä (sis. ALV)</td>
@@ -117,36 +117,7 @@
                             <p class="small-text">Liittymällä hyväksyt meidän <a href="#">käyttöehtomme</a> ja <a href="#">Tietosuojakäytäntömme</a></p>
                         </div>
                         <button class="cart-btn" id="checkout-btn" >Maksamaan</button>
-                        <div id="paymentModal" class="modal">
-                            <div class="modal-content">
-                                <span class="close" id="closeModal">&times;</span>
-                                <h2>Maksu</h2>
-                                <div id="payment-section">
-                                    <label for="card-name">Kortinhaltijan nimi:</label>
-                                    <input type="text" id="card-name" name="card-name" placeholder="Kortinhaltijan nimi">
-                                    <label for="card-number">Kortin numero:</label>
-
-                                    <input type="text" id="card-number" name="card-number" placeholder="Kortin numero">
-
-                                    <label for="expiration-date-month">Vanhentumispäivämäärä:</label>
-                                    <div id="date">
-                                        <input type="number" id="expiration-date-month" placeholder="KK" required>
-                                        <span>/</span>
-                                        <input type="number" id="expiration-date-year" placeholder="VV" required>
-                                    </div>
-
-                                    <label for="cvv">CVV:</label>
-                                    <input type="number" id="cvv" name="cvv" placeholder="CVV" required>
-                                </div>
-                                <div id="confirmation">
-                                    <label for="phone">Puhelinnumero:</label>
-                                    <input type="tel" id="phone" name="phone" placeholder="Puhelinnumero" required>
-                                    <div id="total-amount"></div>
-                                    <button id="pay-button">Maksa</button>
-                                </div>
-                                <div id="payment-status"></div>
-                            </div>
-                        </div>
+                        <klarna-placement data-key="top-strip-promotion-badge" data-locale="en-FI"></klarna-placement>
                     </div>
                 </div>
             </div>

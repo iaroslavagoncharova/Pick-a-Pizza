@@ -73,7 +73,7 @@ input {
   align-items: center;
   justify-content: center;
 }
-#expiration-date-month, #expiration-date-year {
+#expiration-date {
   width: 4rem;
 }
 #cvv {
