@@ -227,6 +227,8 @@ INSERT INTO Orders (cart_id, order_status, user_id)
 VALUES
 (1, 'completed', 1), -- Order for Anna
 (2, 'in_progress', 2), -- Order in progress for Slava
+(2, 'in_progress', 2),
+(2, 'in_progress', 2),
 (3, 'completed', 3); -- Order for Juan
 
 -- Add data to Reviews 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Positions</title>
     <script type="module" src="work/work.js"></script>
+    <script type="module" src="../prompts.js"></script>
     <script src="../language.js" defer></script>
     <link rel="stylesheet" href="work/work.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -79,14 +80,14 @@
             <p>If you're interested in any of these positions or want to inquire about potential openings, please fill out the form below:</p>
     
             <form id="job-application-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br>
+                <label for="nameInput">Name:</label>
+                <input type="text" id="nameInput" name="name" required autocomplete="name"><br>
     
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br>
+                <label for="emailInput">Email:</label>
+                <input type="email" id="emailInput" name="email" required autocomplete="email"><br>
     
-                <label for="position">Desired Position:</label>
-                <select id="position" name="position">
+                <label for="positionInput">Desired Position:</label>
+                <select id="positionInput" name="position">
                     <option value="Pizza Chef">Pizza Chef</option>
                     <option value="Delivery Driver">Delivery Driver</option>
                 </select><br>
