@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="ratings.css">
+    <script src="../language.js" defer></script>
+    <script type="module" src="ratings.js"></script>
+    <script src="https://kit.fontawesome.com/438aeadf51.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="header-part logo-container" id="header-logo">
+            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" class="pizza-logo"></a>
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>  	
+        <div class="wrapper">
+            <div class="top_nav">
+                <div class="right">
+                    <a href="https://wa.me/358000000000?text=Hello%20from%20Pick-a-Pizza!" target="_blank"><img class="top-nav-icon" src="../images/icons/phone-icon.png" alt="Phone Icon" id="phone-button"></a>
+                        <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
+                        <div id="lang-container">
+                            <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
+                            <span class="lang-option" id="english" onclick="changeLanguage('english')">EN</span>
+                            <span class="lang-option active-lang" id="finnish" onclick="changeLanguage('finnish')">FI</span>
+                        </div>
+                </div>
+            </div>
+            <div class="bottom_nav">
+                <div class="right">
+                    <div id="bottom-nav-items">
+                        <div class="dropdown">
+                            <a href="#" id="menu">Valikko</a>
+                            <div class="dropdown-content" id="menu-dropdown">
+                                <a href="/pick-a-pizza-club" class="dropdown-link">Pick-a-Pizza Club</a>
+                                <a href="/join-us" class="dropdown-link">Avoimet työpaikat</a>
+                                <a href="/directions" class="dropdown-link">Reittiohjeet</a>
+                                <a href="/ratings" class="dropdown-link">Arvostelut</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a href="#" id="prompts">Valmiit pizzapohjat</a>
+                            <div class="dropdown-content" id="pizza-dropdown">
+                                <a href="#" class="dropdown-link" id="pizza-1">Gluteeniton</a>
+                                <a href="#" class="dropdown-link" id="pizza-2">Keto</a>
+                                <a href="#" class="dropdown-link" id="pizza-3">Vähäkalorinen</a>
+                                <a href="#" class="dropdown-link" id="pizza-4">Classic</a>
+                                <a href="#" class="dropdown-link" id="pizza-5">Vegaani Classic</a>
+                                <a href="#" class="dropdown-link" id="pizza-6">Gluteeniton Classic</a>
+                                <a href="#" class="dropdown-link" id="pizza-7">Kausitarjous</a>
+                            </div>
+                        </div>
+                        <a href="/make-your-pizza" id="make-a-pizza">Kokoa oma pizza</a>
+                        <a href="/shopping-cart">
+                            <img class="bottom-nav-icon" src="../images/icons/shopping-cart-icon.png" alt="Shopping Cart Icon">
+                        </a>
+                        <div id="login-icon"><a href="/sign-in">
+                            <img class="bottom-nav-icon" id="user-icon" src="../images/icons/user-icon.png" alt="User Icon">
+                        </a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+    <div class="hero-image" id="homepage-background">
+        <div id="homepage-content">
+            <div id="ratings-container">
+                <div id="ratings-header">
+                    <h1>Arvostelumme</h1>
+                    <p>Palautteesi on melle tosi tärkeää. Tässä voit nähdä mitä muut ovat mieltä meidän ravintolastamme ja palvelusta.</p>
+                    <p id="average-rating"></p>
+                </div>
+                <div id="ratings"></div>
+                <div class="review">
+                    <h2>Jätä arevostelu</h2>
+                    <textarea name="header" id="header" cols="10" rows="1" placeholder="Otsikko, esim. Hyvä palvelu!"></textarea>
+                    <textarea name="review" id="review" cols="10" rows="5" placeholder="Teksti, esim. Tilaaminen oli helppoa ja sujuvaa!"></textarea>
+                    <div id="rating-stars">
+                        <input type="radio" name="rating" id="rating-1" value="1">
+                        <label for="rating-1">1</label>
+                        <input type="radio" name="rating" id="rating-2" value="2">
+                        <label for="rating-2">2</label>
+                        <input type="radio" name="rating" id="rating-3" value="3">
+                        <label for="rating-3">3</label>
+                        <input type="radio" name="rating" id="rating-4" value="4">
+                        <label for="rating-4">4</label>
+                        <input type="radio" name="rating" id="rating-5" value="5">
+                        <label for="rating-5">5</label>
+                    </div>
+                    <button id="submit-review">Arvostele</button>
+                </div>
+         </div>
+    </div>
+    </div>
+    <footer>
+        <div id="contact-info">
+            <p>Yhteystiedot:<br>
+                <span id="phone-number">+35800000000</span><br>
+                <span id="address">Karaportti 2, 02610 Espoo</span></p>
+        </div>
+        <div class="logo-container" id="footer-logo">
+            <img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" class="pizza-logo">
+            <h1 class="page-title">Pick-a-Pizza</h1>
+        </div>
+        <div id="social-media-icons">
+            <i class="fa fa-facebook fa-2x"></i>
+            <i class="fa fa-instagram fa-2x"></i>
+            <i class="fa fa-whatsapp fa-2x"></i>
+        </div>
+
+    </footer>
+</body>
+</html>
