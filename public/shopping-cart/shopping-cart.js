@@ -224,7 +224,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     const paymentStatusElement = document.getElementById("payment-status");
     payButton.addEventListener("click", async function () {
       try {
-        const paymentResponse = await simulatePayment();
+        const cardNumberInput = document.getElementById('card-number');
+        const cvcInput = document.getElementById('cvc');
+        const paymentResponse = await simulatePayment(cardNumberInput.value, cvcInput.value);
         
         if (paymentResponse.success) {
           window.location.href = "/checkout";
@@ -236,24 +238,26 @@ document.addEventListener('DOMContentLoaded', async function () {
         paymentStatusElement.textContent = "Please check given info"
       }
     });
+
+    
     const totalAmountElement = document.getElementById('total-amount');
     totalAmountElement.textContent = `${totalPrice}€`;
     
-    async function simulatePayment() {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            const success = true
-      
-            if (success) {
-              resolve({ success: true });
-            } else {
-
-              reject(new Error('Payment failed'));
-
-            }
-          }, 500); 
-        });
-      }
+    async function simulatePayment(cardNumber, cvc) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // Simulate a successful payment if the card number is 16 digits and CVC is 3 digits
+          const isValidCardNumber = /^\d{16}$/.test(cardNumber);
+          const isValidCVC = /^\d{3}$/.test(cvc);
+    
+          if (isValidCardNumber && isValidCVC) {
+            resolve({ success: true });
+          } else {
+            reject(new Error('Invalid card number or CVC'));
+          }
+        }, 1000); 
+      });
+    }
     
 
       // generate plus and minus buttons and add functionality to them
