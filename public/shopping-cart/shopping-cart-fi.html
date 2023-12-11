@@ -6,8 +6,8 @@
     <title>Checkout</title>
     <script type="module" src="shopping-cart.js"></script>
     <script src="../language.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="shopping-cart.css">
-    <link rel="stylesheet" href="modal.css">
+    <script src="fetchCheckoutData.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="../shopping-cart/shopping-cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/438aeadf51.js" crossorigin="anonymous"></script>
 </head>
@@ -85,16 +85,17 @@
                         <tbody>
                         </tbody>
                     </table>
+                    <button id="mainpage-button"></button>
                     <div id="receipt">
                         <div class="receipt-right">
                             <table id="receipt-table">
                                 <tr>
-                                    <td class="align-left">Kuljetusmaksu</td>
-                                    <td class="shipping-fee align-right" id="shipping-fee"></td>
+                                    <td class="align-left">Toimitusmaksu</td>
+                                    <td class="align-right">0€</td>
                                 </tr>
                                 <tr>
                                     <td class="align-left">Käsittelykulut</td>
-                                    <td class="payment-fee align-right">0€</td>
+                                    <td class="align-right">0.50€</td>
                                 </tr>
                                 <tr>
                                     <td class="align-left">Yhteensä (sis. ALV)</td>
@@ -104,48 +105,19 @@
                         </div>
                     </div>
                     <div id="proceed">
-                        <h2 id="join-header"><i>Liity Pick-a-Pizza -klubiin!</i></h2>
-                        <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">-10% alennus ensimmäisestä tilauksestasi</p>
-                        <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">Kerrytä pisteitäsi joka kerta kun tilaat</p>
-                        <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">Pääsy arvostelemaan ja muuhun!</p>
-                        <div id="join-box">
-                            <input type="checkbox" id="join-club" name="join-club" value="Join">
-                            <label for="join-club"> Liity jäseneksi</label><br>
-                        </div>
-                        <p class="small-text">Liittymällä hyväksyt meidän <a href="#">käyttöehtomme</a> ja <a href="#">Tietosuojakäytäntömme</a></p>
-                    </div>
-                    <button class="cart-btn" id="checkout-btn">Maksamaan</button>
-                       
-                        <div id="paymentModal" class="modal">
-                            <div class="modal-content">
-                                <span class="close" id="closeModal">&times;</span>
-                                <h2>Yhteenveto</h2>
-                                <div id="payment-section">
-                                  <label for="Cardholder">Kortinhaltijan nimi:</label>
-                                  <input type="name" id="card-holder" placeholder="Syötä Nimi" required>
-                                  <label for="card-number">Kortin numero:</label>
-                                  
-                                  <input type="text" id="card-number" placeholder="Syötä numero ilman välilyöntejä" required>
-                                  
-                                  <label for="expiration-date">Voimassaolo:</label>
-                                  <div id="date">
-                                      <input type="number" id="expiration-date" placeholder="KK" required>
-                                      <span>/</span>
-                                      <input type="number" id="expiration-date" placeholder="VV" required>
-                                    </div>
-                                    
-                                    <label for="cvv">Tarkistusluku:</label>
-                                    <input type="number" id="cvc" placeholder="CVC" required>
-                                </div>
-                                <div id="confirmation">
-                                    <label for="phone-number">Puhelinnumero:</label>
-                                    <input type="tel" id="phone-number" placeholder="Syötä puhelinnumero" required>
-                                <div id="total-amount"></div>
-                                <button id="pay-button">Maksa</button>
-                                </div>
-                            <div id="payment-status"></div>
+                        <div id="membership-screen">
+                            <h2 id="join-header"><i>Liity Pick-a-Pizza -klubiin!</i></h2>
+                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">-10% alennus ensimmäisestä tilauksestasi</p>
+                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">Kerrytä pisteitäsi joka kerta kun tilaat</p>
+                            <p><img class="check-icon" src="../images/icons/check-icon.png" alt="Check mark icon">Pääsy arvostelemaan ja muuhun!</p>
+                            <div id="join-box">
+                                <input type="checkbox" id="join-club" name="join-club" value="Join">
+                                <label for="join-club"> Liity jäseneksi</label><br>
                             </div>
-                          </div>
+                            <p class="small-text">Liittymällä hyväksyt meidän <a href="#">käyttöehtomme</a> ja <a href="#">Tietosuojakäytäntömme</a></p>
+                        </div>
+                        <button class="cart-btn" id="checkout-btn" >Maksamaan</button>
+                        <klarna-placement data-key="top-strip-promotion-badge" data-locale="en-FI"></klarna-placement>
                     </div>
                 </div>
             </div>

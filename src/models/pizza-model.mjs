@@ -90,4 +90,17 @@ const getDoughInfo = async (name, size) => {
     }
 };
 
-export {sendInfo, getCalories, getSet, getDoughInfo};
+const getAllIngredients = async () => {
+    try {
+        const sql = 'SELECT * FROM Ingredients';
+        const result = await promisePool.query(sql);
+        const [rows] = result;
+        console.log(rows);
+        return rows;
+    } catch (e) {
+        console.error('error', e.message);
+        return {error: e.message};
+    }
+};
+
+export {sendInfo, getCalories, getSet, getDoughInfo, getAllIngredients};

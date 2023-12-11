@@ -76,7 +76,6 @@
                         <thead>
                             <tr>
                                 <th class="product">Product</th>
-                                <button id="mainpage-button"></button>
                                 <th class="quantity">Quantity</th>
                                 <th class="total">Total</th>
                                 <th class="remove"></th>
@@ -85,6 +84,7 @@
                         <tbody>
                         </tbody>
                     </table>
+                    <button id="mainpage-button"></button>
                     <div id="receipt">
                         <div class="receipt-right">
                             <table id="receipt-table">
@@ -122,24 +122,24 @@
                                 <h2>Payment Details</h2>
                                 <div id="payment-section">
                                   <label for="Cardholder">Cardholders Name:</label>
-                                  <input type="name" id="card-holder" placeholder="Enter name" required>
+                                  <input type="name" id="card-number" placeholder="Enter name" required>
                                   <label for="card-number">Card Number:</label>
                                   
                                   <input type="text" id="card-number" placeholder="Enter card number" required>
                                   
-                                  <label for="expiration-date">Expiration Date:</label>
+                                  <label for="expiration-date-month">Expiration Date:</label>
                                   <div id="date">
-                                      <input type="number" id="expiration-date" placeholder="MM" required>
+                                      <input type="number" id="expiration-date-month" placeholder="MM" value="01" required>
                                       <span>/</span>
-                                      <input type="number" id="expiration-date" placeholder="YY" required>
+                                      <input type="number" id="expiration-date-year" placeholder="YY" value="2023" required>
                                     </div>
                                     
                                     <label for="cvv">CVV:</label>
                                     <input type="number" id="cvc" placeholder="CVC" required>
                                 </div>
                                 <div id="confirmation">
-                                    <label for="phone-number">Phone Number:</label>
-                                    <input type="tel" id="phone-number" placeholder="Enter phone number" required>
+                                    <label for="phone">Phone Number:</label>
+                                    <input type="tel" id="phone" placeholder="Enter phone number" required>
                                 <div id="total-amount"></div>
                                 <button id="pay-button">Pay Now</button>
                                 </div>

@@ -1,4 +1,4 @@
-import {sendInfo, getCalories, getSet, getDoughInfo} from "../models/pizza-model.mjs";
+import {sendInfo, getCalories, getSet, getDoughInfo, getAllIngredients} from "../models/pizza-model.mjs";
 
 
 const sendData = async (req, res) => {
@@ -44,5 +44,15 @@ const getDough = async (req, res) => {
     }
 };
 
+const fetchIngredients = async (req, res) => {
+    console.log('fetchIngredients');
+    const result = await getAllIngredients();
+    if (result) {
+        return res.status(200).json({ingredients: result});
+    } else {
+        return res.status(404).json({error: 'not found'});
+    }
+}
 
-export {sendData, fetchCalories, getSets, getDough};
+
+export {sendData, fetchCalories, getSets, getDough, fetchIngredients};

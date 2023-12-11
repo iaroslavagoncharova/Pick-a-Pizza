@@ -301,7 +301,7 @@ a {
 }
 
 
-#job-search ul {
+#open-positions {
     grid-column: 1/3;
     grid-row: 4;
     grid-template-columns: 0.5fr 1fr;
@@ -312,12 +312,10 @@ a {
     align-items: center;
 }
 
-#job-search li {
+#open-positions p {
     margin: auto;
     grid-column: 2;
     width: auto;
-    list-style-type: disc;
-
 }
 
 #job-search form {
@@ -344,7 +342,7 @@ a {
 
 
 #job-search button[type="submit"] {
-    background-color: var(--butterscotch);
+    background-color: var(--grayish-brown);
     color: var(--light);
     font-size: large;
     padding: 10px 20px;
@@ -414,6 +412,18 @@ footer {
 
 /* Tablet view */
 @media only screen and (max-width: 768px) {
+    #header-logo {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    #bottom-nav-items a {
+        display: none;
+    }
     #job-search {
         grid-template-columns: 1fr; 
     }
@@ -429,22 +439,39 @@ footer {
         grid-column: 1/6;
     }
 
-    #job-search img {
+    #open-positions img {
         max-width: 50%;
     }
-    #job-search li{
+    #open-positions p{
        margin-top: 20px;
-    
     }
-
-
-
+    #contact-info {
+        margin: auto;
+    }
+    #social-media-icons {
+        width: 100%;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 /* Mobile view */
 @media only screen and (max-width: 480px) {
-    #job-search {
+    #header-logo {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
+    .wrapper {
         width: 100%;
+    }
+    #bottom-nav-items a {
+        display: none;
+    }
+    #job-search {
         padding: 1rem;
     }
 
@@ -459,10 +486,20 @@ footer {
         grid-column: 1/6;
     }
 
-    #job-search img {
+    #open-positions img {
         display: none;
     }
-    #job-search li{
+    #open-positions p{
         grid-column: 1/3;
+    }
+    #contact-info {
+        margin: auto;
+    }
+    #social-media-icons {
+        width: 100%;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center;
     }
 }

@@ -20,6 +20,7 @@ window.onload = () => {
   }
 };
 
+
 const contentTabs = document.getElementById('content-tabs');
 contentTabs.addEventListener('click', (evt) => {
   const clickedTab = evt.target.closest('.content-tab');

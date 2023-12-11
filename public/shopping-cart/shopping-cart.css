@@ -485,3 +485,114 @@ footer {
     width: 30px;
     cursor: pointer;
 }
+
+/* Tablet view */
+@media only screen and (max-width: 768px) {
+    #header-logo {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    #bottom-nav-items a {
+        display: none;
+    }
+    #cart-screen {
+        width: 80%;
+    }
+    .product-details {
+        flex-direction: column;
+    }
+    
+      #selected-products thead,
+      #selected-products tbody,
+      #selected-products th,
+      #selected-products td,
+      .product-details {
+        width: 100%;
+      }
+    
+      .product {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    
+      .quantity {
+        width: 100%;
+      }
+    
+      .pizza-img {
+        width: 100%;
+        height: auto;
+      }
+    #contact-info {
+        margin: auto;
+    }
+    #social-media-icons {
+        width: 100%;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Mobile view */
+@media only screen and (max-width: 480px) {
+    #header-logo {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    #bottom-nav-items a {
+        display: none;
+    }
+    #product-screen {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #contact-info {
+        margin: auto;
+    }
+    #social-media-icons {
+        width: 100%;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
+    #selected-products {
+        width: 100%;
+      }
+    
+      #selected-products thead,
+      #selected-products tbody,
+      #selected-products th,
+      #selected-products td,
+      .product-details {
+        width: 100%;
+      }
+    
+      .product {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    
+      .quantity {
+        width: 100%;
+      }
+    
+      .pizza-img {
+        width: 100%;
+        height: auto;
+      }
+}

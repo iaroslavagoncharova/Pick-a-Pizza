@@ -408,18 +408,45 @@ footer {
 
 /* Tablet view */
 @media only screen and (max-width: 768px) {
+    #header-logo {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
+    .wrapper {
+        width: 100%;
+    }
 
+    #login-icon {
+        display: block;
+    }
     #login-register-screen{
         width: 80%;
     }
     .form-container{
         padding: 0.5rem;
     }
+    #contact-info {
+        margin: auto;
+    }
+    #social-media-icons {
+        width: 100%;
+    }
 
 }
 
 /* Mobile view */
 @media only screen and (max-width: 480px) {
+    #header-logo {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
+    .wrapper {
+        width: 100%;
+    }
 
     #login-register-screen{
         width: 90%;
@@ -428,4 +455,15 @@ footer {
     .form-container{
         padding: 0;
     }
+    #contact-info {
+        margin: auto;
+    }
+    #social-media-icons {
+        width: 100%;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
+
 }

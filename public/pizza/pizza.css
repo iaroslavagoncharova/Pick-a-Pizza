@@ -245,10 +245,11 @@ a {
 
 .hero-image {
     min-height: 100%;
-    background-image: url(../images/background.png);
+    background-image: url(../images/bckgrndlight.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    padding: 1rem;
 }
 
 #homepage-content {
@@ -259,10 +260,19 @@ a {
     margin: auto;
     padding: 2rem 0;
     color: var(--grayish-brown);
+    background-color: #faf4f1d4;
+    border-radius: 12px;
 }
 
 .left-side-content {
     grid-row: 1/2;
+    grid-column: 1/2;
+}
+
+.right-side-content {
+    grid-row: 1/4;
+    grid-column: 2/3;
+
 }
 
 .pizza-name {
@@ -278,11 +288,11 @@ a {
     color: var(--grayish-brown);
 }
 
-.dough-image{
+.dough-image {
     grid-row: 2 / 3;
     grid-column: 1 / 2;
     text-align: center;
-    margin: 1rem;
+    margin: auto;
 }
 
 .dough-buttons {
@@ -474,10 +484,12 @@ a {
     justify-self: center;
     margin-top: 2rem;
     text-align: center;
+    font-weight: bold;
 }
 
 .calories {
-    background-color: var(--grass);
+    background-color: var(--light-peach);
+    color: var(--grayish-brown);
     height: 9rem;
     width: 20rem;
     border-radius: 36px;
@@ -489,7 +501,7 @@ a {
     text-align: center;
     margin: 1rem;
     position: relative;
-    left: 20rem;
+    left: 18rem;
 }
 
 #confirm-order {
@@ -500,6 +512,7 @@ a {
     background-color: var(--tomato);
     color: var(--light);
     font-size: 20px;
+    font-weight: bold;
 }
 
 #quantity {
@@ -554,4 +567,95 @@ footer {
     width: 30px;
 }
 
+/*Tablet view*/
+@media only screen and (max-width: 768px) {
+    #header-logo {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    #bottom-nav-items a {
+        display: none;
+    }
+    #homepage-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, auto);
+        width: unset;
+    }
+    .left-side-content {
+        grid-row: 2/3;
+        grid-column: 1/2;
+    }
+    .right-side-content {
+        grid-row: 1/2;
+        grid-column: 1/2;
+    }
+    #pizza-photo {
+        width: 500px;
+    }
+    .price-add {
+        left: unset;
+    }
+    #contact-info {
+        margin: auto;
+    }
+    #social-media-icons {
+        width: 100%;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
+}
 
+/*Mobile view*/
+
+@media only screen and (max-width: 480px) {
+    #header-logo {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    #bottom-nav-items a {
+        display: none;
+    }
+    #homepage-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, auto);
+        width: 100%;
+    }
+    .left-side-content {
+        grid-row: 2/3;
+        grid-column: 1/2;
+        width: 90%;
+    }
+    .right-side-content {
+        grid-row: 1/2;
+        grid-column: 1/2;
+        width: 90%;
+    }
+    #pizza-photo {
+        width: 400px;
+    }
+    .price-add {
+        left: unset;
+    }
+    #contact-info {
+        margin: auto;
+    }
+    #social-media-icons {
+        width: 100%;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -502,3 +502,91 @@ footer {
     height: 30px;
     width: 30px;
 }
+
+/*Tablet view*/
+@media only screen and (max-width: 768px) {
+    #header-logo {
+        width: 90%;
+        height: fit-content;
+    }
+    .page-title {
+        font-size: x-large;
+    }
+    .dropdown {
+        display: none;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    #bottom-nav-items a {
+        display: none;
+    }
+
+    #user-info {
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: unset;
+    }
+    #personal-info {
+        grid-row: 1 / 2;
+    }
+    #recent-orders {
+        grid-row: 2 / 3;
+    }
+    #favorite-pizza {
+        grid-row: 3 / 4;
+    }
+    form {
+        padding: 0;
+    }
+    #contact-info {
+        margin: auto;
+    }
+    #social-media-icons {
+        width: 100%;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
+}
+/*Mobile view*/
+@media only screen and (max-width: 480px) {
+    #header-logo {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    #bottom-nav-items a {
+        display: none;
+    }
+    #user-info {
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: 0.5fr;
+    }
+    #personal-info {
+        grid-row: 1 / 2;
+    }
+    #recent-orders {
+        grid-row: 2 / 3;
+    }
+    #favorite-pizza {
+        grid-row: 3 / 4;
+    }
+    form {
+        padding: 0;
+    }
+    #contact-info {
+        margin: auto;
+    }
+    #social-media-icons {
+        width: 100%;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
+}

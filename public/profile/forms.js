@@ -13,7 +13,7 @@ updateOther.addEventListener('submit', async (e) => {
     let address = document.getElementById('change-address').value || user.address;
     let number = document.getElementById('change-number').value || user.phone_number;
 
-    const response = await fetch ('/update', {
+    const response = await fetch ('/users/update', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ updatePassword.addEventListener('submit', async (e) => {
         alert('New password values do not match.');
         window.location.reload();
     } else {
-        const response = await fetch ('/update/password', {
+        const response = await fetch ('/users/update/password', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
