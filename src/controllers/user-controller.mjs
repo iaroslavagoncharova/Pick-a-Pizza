@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { updateUser, getUser, updatePassword, removeUser } from '../models/user-model.mjs';
+import { updateUser, getUser, updatePassword, removeUser, getAllUsers } from '../models/user-model.mjs';
 
 const putUser = async (req, res, next) => {
     console.log('putUser', req.body);
@@ -32,7 +32,9 @@ const putPassword = async (req, res, next) => {
     const updatedPswd = await updatePassword(req.body);
 
     if (!updatedPswd) {
-        return res.status(404).json({error: 'no such user exists'});
+        const error = new Error('no such user exists');
+        error.status = 400;
+        return next(error);
     }
 
     if (updatedPswd.error) {
@@ -64,5 +66,16 @@ const deleteUser = async (req, res) => {
     }
 };
 
+const listUsers = async (req, res) => {
+    console.log('listUsers');
+    const users = await getAllUsers();
+    if (!users.error) {
+        console.log(users);
+        return res.status(200).json({users: users});
+    } else {
+        return res.status(404).json({message: 'an error occurred'});
+    }
+}
 
-export {putUser, putPassword, deleteUser};
+
+export {putUser, putPassword, deleteUser, listUsers};

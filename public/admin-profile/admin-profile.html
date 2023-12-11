@@ -6,6 +6,7 @@
     <title>Admin account</title>
     <script type="module" src="/admin-profile/admin-profile.js"></script>
     <script type="module" src="/admin-profile/order-data.js"></script>
+    <script type="module" src="/admin-profile/user-data.js"></script>
     <script src="../language.js" defer></script>
     <link rel="stylesheet" href="/admin-profile/admin-profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -74,13 +75,7 @@
                     <button class="admin-button" id="all-orders">Show all orders</button>
                 </div>
                 <div id="users"><h3>Users</h3>
-                <ul>
-                    <li><a href="#">Slava slava@example.com 0100000000</a></li>
-                    <li><a href="#">Juan juan@example.com 0200000000</a></li>
-                    <li><a href="#">Anna anna@example.com 0300000000</a></li>
-                    <li><a href="#">User1 user1@example.com 0400000000</a></li>
-                    <li><a href="#">User2 user2@example.com 0500000000</a></li>
-                </ul>
+                <ul id="users-data"></ul>
                 <button class="admin-button" id="all-users">Show all users</button>
                 </div>
                 <div id="ingredients"><h3>Ingredients</h3>
@@ -113,16 +108,27 @@
         </div>
 
     </footer>
-    <dialog id="edit-profile-dialog" class="hidden">
-        <div id="dialog-top">
-            <h3 id="dialog-header">Orders in progress</h3>
-            <span id="close-dialog">&#x2715;</span>
+    <dialog id="edit-orders-dialog" class="hidden">
+        <div class="dialog-top">
+            <h3 class="dialog-header">Orders in progress</h3>
+            <span class="close-dialog" id="close-orders">&#x2715;</span>
         </div>
-        <div id="dialog-content">
+        <div class="dialog-content">
             <h4>Update orders:</h4>
-            <ul id="edit-orders">
+            <ul class="data-list" id="edit-orders">
             </ul>
         </div>
-    </dialog>   
+    </dialog>
+    <dialog id="edit-users-dialog" class="hidden">
+        <div class="dialog-top">
+            <h3 class="dialog-header">Users</h3>
+            <span class="close-dialog" id="close-users">&#x2715</span>
+        </div>
+        <div class="dialog-content">
+            <h4>Manage users:</h4>
+            <ul class="data-list" id="edit-users">
+            </ul>
+        </div>
+    </dialog>      
 </body>
 </html>

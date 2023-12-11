@@ -1,6 +1,7 @@
 import { addUserDataToDom, removeUserDataFromDom } from "../dom.js";
 import { logUserOut } from "../logout.js";
 import fetchOrders from "./order-data.js";
+import fetchUsers from "./user-data.js";
 
 window.onload = () => {
     const token = localStorage.getItem('token');
@@ -11,6 +12,7 @@ window.onload = () => {
         addUserDataToDom(user);
         logUserOut();
         fetchOrders(user.user_id);
+        fetchUsers(user.user_id);
         const userButton = document.getElementById('user-account');
         // me ollaan tällä sivulla, joten account-näppäimen ei tarvii toimia
         userButton.href = '#';
@@ -19,30 +21,52 @@ window.onload = () => {
     }
 };
 
-
-const ordersBtn = document.getElementById('all-orders');
-const dialog = document.getElementById('edit-profile-dialog');
-const closeDialog = document.getElementById('close-dialog');
-
 const header = document.querySelector('header');
 const pageContent = document.querySelector('.hero-image');
 const footer = document.querySelector('footer');
 
+// orders dialog
+const ordersBtn = document.getElementById('all-orders');
+const ordersDialog = document.getElementById('edit-orders-dialog');
+const closeOrdersDialog = document.getElementById('close-orders');
+
 ordersBtn.addEventListener('click', () => {
-    dialog.classList.remove('hidden');
-    dialog.classList.add('open-dialog');
-    header.classList.add('blur-background');
-    pageContent.classList.add('blur-background');
-    footer.classList.add('blur-background');
+  ordersDialog.classList.remove('hidden');
+  ordersDialog.classList.add('open-dialog');
+  header.classList.add('blur-background');
+  pageContent.classList.add('blur-background');
+  footer.classList.add('blur-background');
 });
 
-closeDialog.addEventListener('click', () => {
-    dialog.classList.remove('open-dialog');
-    dialog.classList.add('hidden');
-    header.classList.remove('blur-background');
-    pageContent.classList.remove('blur-background');
-    footer.classList.remove('blur-background');
-})
+closeOrdersDialog.addEventListener('click', () => {
+  ordersDialog.classList.remove('open-dialog');
+  ordersDialog.classList.add('hidden');
+  header.classList.remove('blur-background');
+  pageContent.classList.remove('blur-background');
+  footer.classList.remove('blur-background');
+});
+
+// users dialog
+const usersBtn = document.getElementById('all-users');
+const usersDialog = document.getElementById('edit-users-dialog');
+const closeUsersDialog = document.getElementById('close-users');
+
+usersBtn.addEventListener('click', () => {
+  usersDialog.classList.remove('hidden');
+  usersDialog.classList.add('open-dialog');
+  header.classList.add('blur-background');
+  pageContent.classList.add('blur-background');
+  footer.classList.add('blur-background');
+});
+
+closeUsersDialog.addEventListener('click', () => {
+  usersDialog.classList.remove('open-dialog');
+  usersDialog.classList.add('hidden');
+  header.classList.remove('blur-background');
+  pageContent.classList.remove('blur-background');
+  footer.classList.remove('blur-background');
+});
+
 
 // if any set of ingredients already exists, remove it and open a blank make a pizza page
 const craftPizza = document.getElementById('make-a-pizza');
