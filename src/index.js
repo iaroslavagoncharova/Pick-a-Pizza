@@ -16,12 +16,11 @@ import pizzasRouter from './routers/pizzas-router.mjs';
 import promptRouter from './routers/prompts-router.mjs';
 import checkoutRouter from './routers/checkout-router.mjs';
 import setRouter from './routers/set-router.mjs';
-import updateRouter from './routers/update-profile-router.mjs';
-import deleteRouter from './routers/delete-account-router.mjs';
 import { errorHandler, notFoundHandler } from './middlewares/handlers.mjs';
 import reviewRouter from './routers/reviews-router.mjs';
 import ratingRouter from './routers/reviews-router.mjs';
 import orderRouter from './routers/order-router.mjs';
+import userRouter from './routers/user-router.mjs';
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -49,8 +48,7 @@ app.use('/checkout',checkoutRouter);
 // routers for database interaction
 app.use('/login', loginRouter);
 app.use('/register', registRouter);
-app.use('/update', updateRouter);
-app.use('/delete', deleteRouter);
+app.use('/users', userRouter);
 
 app.use('/ingredients', ingredientsRouter);
 app.use('/pizzas', pizzasRouter);

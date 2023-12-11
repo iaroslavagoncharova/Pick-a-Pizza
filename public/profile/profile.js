@@ -89,7 +89,7 @@ confirmBtn.addEventListener('click', async (e) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
     
-    const response = await fetch (`/delete/${user.user_id}`, {
+    const response = await fetch (`/users/delete/${user.user_id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

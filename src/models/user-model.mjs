@@ -38,6 +38,23 @@ const getUser = async (userId) => {
 }
 
 /**
+ * Get all users from database
+ * @returns list of user objects
+ */
+const getAllUsers = async () => {
+    try {
+        const sql = 'SELECT * FROM Users';
+        const result = await promisePool.query(sql);
+        const [rows] = result;
+        console.log('getAllUsers', rows);
+        return rows;
+    } catch (e) {
+        console.error('error', e.message);
+        return {error: e.message};
+    }
+}
+
+/**
  * Insert new user object into database 
  * @param {object} userCreds 
  * @returns success or error message in JSON form
@@ -122,4 +139,4 @@ const removeUser = async (id) => {
     
 };
 
-export {loginUser, registerUser, updateUser, updatePassword, getUser, removeUser};
+export {loginUser, registerUser, updateUser, updatePassword, getUser, getAllUsers, removeUser};
