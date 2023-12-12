@@ -55,7 +55,7 @@ const fetchIngredients = async () => {
             </tr>
             <tr>
                 <th>Qty in stock</th>
-                <td><button class="qty-btn" id="less-igts" data-igt-id="${igt.ingredient_id}">-</button><span id=""igt-amt">${igt.in_stock}</span> g<button class="qty-btn" id="add-igts" data-igt-id="${igt.ingredient_id}">+</button></td>
+                <td><button class="qty-btn" id="less-igts" data-igt-id="${igt.ingredient_id}"> - </button><span id=""igt-amt">${igt.in_stock}</span> g<button class="qty-btn" id="add-igts" data-igt-id="${igt.ingredient_id}"> + </button></td>
             </tr>
             </tbody>
         </table>`;

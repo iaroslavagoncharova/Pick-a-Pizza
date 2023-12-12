@@ -316,8 +316,8 @@ a {
 .open-dialog {
     display: block;
     position: fixed;
-    top: 15vh;
-    left: 30vw;
+    top: 50%;
+    left: 5%;
 }
 
 .hidden {
@@ -592,10 +592,24 @@ label {
     margin: 0.2rem auto 1rem auto;
 }
 
+.qty-btn {
+    border: none;
+    border-radius: 50px;
+    background-color: var(--grayish-brown);
+    color: var(--light);
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    margin: 1rem;
+    font-family: Rosario;
+    font-size: larger;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 table {
     width: 90%;
     margin: 0 auto 0.5rem auto;
-    border: 2px solid #473b2a;
+    border: 2px solid #65553d;
+    border-radius: 5px;
 }
 
 .ingredient-name {
