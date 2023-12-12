@@ -1,4 +1,4 @@
-import {sendInfo, getCalories, getSet, getDoughInfo, getAllIngredients} from "../models/pizza-model.mjs";
+import {sendInfo, getCalories, getSet, getDoughInfo, getAllIngredients, putIngredients} from "../models/pizza-model.mjs";
 
 
 const sendData = async (req, res) => {
@@ -52,7 +52,24 @@ const fetchIngredients = async (req, res) => {
     } else {
         return res.status(404).json({error: 'not found'});
     }
-}
+};
+
+const updateIngredientAmounts = async (req, res, next) => {
+    console.log('updateIngredientAmounts', req.params);
+    const updated = await putIngredients(req.params.id, req.body.method);
+
+    if (!updated) {
+        const error = new Error('no such ingredient exists');
+        error.status = 400;
+        return next(error);
+    } else if (updated.error) {
+        const error = new Error(updated.error);
+        error.status = 400;
+        return next(error);
+    } else {
+        return res.status(200).json({message: 'updated successfully'});
+    };
+};
 
 
-export {sendData, fetchCalories, getSets, getDough, fetchIngredients};
+export {sendData, fetchCalories, getSets, getDough, fetchIngredients, updateIngredientAmounts};

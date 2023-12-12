@@ -333,9 +333,9 @@ a {
 
 .open-dialog {
     display: block;
-    position: absolute;
-    top: 15vh;
-    left: 50vw;
+    position: fixed;
+    top: 50%;
+    left: 5%;
 }
 
 .hidden {
@@ -480,6 +480,35 @@ label {
     justify-content: space-between;
 }
 
+.order {
+    background-color: #e5ddda;
+    width: 90%;
+    margin: auto;
+}
+
+.order-icons-div {
+    width: 20%;
+    margin: auto 1rem auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#edit-orders {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-order {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: #e5ddda;
+    width: 100%;
+    margin: auto auto 1rem auto;
+}
+
 .data-list {
     width: 90%;
     margin: auto;
@@ -488,7 +517,7 @@ label {
     left: -1rem;
 }
 
-#completed-icon:hover, #remove-icon:hover {
+.completed-icon:hover, .remove-icon:hover {
     cursor: pointer;
 }
 
@@ -520,7 +549,7 @@ label {
     place-items: center;
 }
 
-.icons-div {
+.user-icons-div {
     padding: 1rem;
     width: 30%;
     margin: auto;
@@ -581,10 +610,24 @@ label {
     margin: 0.2rem auto 1rem auto;
 }
 
+.qty-btn {
+    border: none;
+    border-radius: 50px;
+    background-color: var(--grayish-brown);
+    color: var(--light);
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    margin: 1rem;
+    font-family: Rosario;
+    font-size: larger;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 table {
     width: 90%;
     margin: 0 auto 0.5rem auto;
-    border: 2px solid #473b2a;
+    border: 2px solid #65553d;
+    border-radius: 5px;
 }
 
 .ingredient-name {

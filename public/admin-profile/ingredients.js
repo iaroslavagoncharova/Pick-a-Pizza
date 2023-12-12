@@ -31,7 +31,7 @@ const fetchIngredients = async () => {
             <tbody id="ing-table-body">
             <tr>
                 <th>Portion size</th>
-                <td>${igt.portion_size}</td>
+                <td>${igt.portion_size} g</td>
             </tr>
             <tr>
                 <th>Price</th>
@@ -55,12 +55,55 @@ const fetchIngredients = async () => {
             </tr>
             <tr>
                 <th>Qty in stock</th>
-                <td>${igt.in_stock}</td>
+                <td><button class="qty-btn" id="less-igts" data-igt-id="${igt.ingredient_id}"> - </button><span id=""igt-amt">${igt.in_stock}</span> g<button class="qty-btn" id="add-igts" data-igt-id="${igt.ingredient_id}"> + </button></td>
             </tr>
             </tbody>
         </table>`;
         ingrModalCont.insertAdjacentHTML('beforeend', html);
 
+    }
+
+    const subtractBtns = document.querySelectorAll('#less-igts');
+    const addBtns = document.querySelectorAll('#add-igts');
+
+    for (let btn of subtractBtns) {
+        btn.addEventListener('click', async () => {
+            const igtId = btn.dataset.igtId;
+            const response = await fetch (`/ingredients/${igtId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ method: 'subtract' }),
+            });
+            
+            if (response.ok) {
+                alert('Ingredient amount updated!');
+                location.reload();
+            } else {
+                alert('Something went wrong!');
+            };
+        });
+    }
+
+    for (let btn of addBtns) {
+        btn.addEventListener('click', async () => {
+            const igtId = btn.dataset.igtId;
+            const response = await fetch (`/ingredients/${igtId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ method: 'add' }),
+            });
+            
+            if (response.status === 200) {
+                alert('Ingredient amount updated!');
+                location.reload();
+            } else {
+                alert('Something went wrong!');
+            };
+        });
     }
 };
 

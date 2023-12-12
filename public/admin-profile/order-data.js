@@ -13,19 +13,14 @@ const fetchOrders = async (userId) => {
         }
     });
 
-    console.log('fetchOrders reached');
     const orderHistory = await response.json();
-    console.log('fetchOrders', orderHistory); 
-    
-    let orderToDeleteId = null;
 
     for (let order of orderHistory.orders) {
         // content box on the left
         const thisOrder = document.createElement('li');
+        thisOrder.classList.add('order');
+        thisOrder.dataset.orderId = order.order_id;
         const orderDiv = document.createElement('div');
-        thisOrder.style.backgroundColor = '#e5ddda';
-        thisOrder.style.width = '90%';
-        thisOrder.style.margin = 'auto';
     
         const timestamp = document.createElement('span');
         const date = new Date(order.order_timestamp).toLocaleDateString('fi');
@@ -48,6 +43,7 @@ const fetchOrders = async (userId) => {
     
         thisOrder.appendChild(orderDiv);
         ordersHTML.push(thisOrder);
+        console.log(ordersHTML);
 
         // orders modal
         var duplicateOrder = orderDiv.cloneNode(true);
@@ -55,115 +51,99 @@ const fetchOrders = async (userId) => {
         const doneIcon = document.createElement('img');
         doneIcon.src = '../images/icons/check-icon.png';
         doneIcon.classList.add('top-nav-icon');
-        doneIcon.id ='completed-icon';
+        doneIcon.classList.add('completed-icon');
+        doneIcon.dataset.orderId = order.order_id;
+
         const removeIcon = document.createElement('img');
         removeIcon.src = '../images/icons/trash-icon.png';
         removeIcon.classList.add('top-nav-icon');
-        removeIcon.id = 'remove-icon';
+        removeIcon.classList.add('remove-icon');
+        removeIcon.dataset.orderId = order.order_id;
 
         const iconsDiv = document.createElement('div');
-        iconsDiv.style.margin = 'auto 1rem auto';
-        iconsDiv.style.width = '20%';
-        iconsDiv.style.display = 'flex';
-        iconsDiv.style.flexDirection = 'row';
-        iconsDiv.style.justifyContent = 'space-between';
+        iconsDiv.classList.add('order-icons-div');
         iconsDiv.appendChild(doneIcon);
         iconsDiv.appendChild(removeIcon);
 
         const modalOrder = document.createElement('li');
-        modalOrder.style.display = 'flex';
-        modalOrder.style.flexDirection = 'row';
-        modalOrder.style.justifyContent = 'space-between';
-        modalOrder.style.backgroundColor = '#e5ddda';
-        modalOrder.style.width = '100%';
-        modalOrder.style.margin = 'auto';
-        modalOrder.style.padding = '0.5rem';
+        modalOrder.classList.add('modal-order');
+        modalOrder.dataset.orderId = order.order_id;
 
         modalOrder.appendChild(duplicateOrder);
         modalOrder.appendChild(iconsDiv);
 
-        modalOrderCont.style.display = 'flex';
-        modalOrderCont.style.flexDirection = 'column';
-
         modalOrderCont.appendChild(modalOrder);
-
-        // buttons
-        const removeBtn = document.getElementById('remove-icon');
-        const deletePopup = document.getElementById('delete-order');
-        const cancelBtn = deletePopup.querySelector('#cancel-order-delete');
-        const confirmBtn = deletePopup.querySelector('#confirm-order-delete');
-        
-
-        doneIcon.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const response = await fetch (`/order-data/wip/auth/${userId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({order_id: order.order_id, order_status: 'completed'})
-            });
-
-            if (response.status === 200) {
-                alert('Order marked as completed');
-                thisOrder.remove();
-                modalOrder.remove();
-                window.location.reload();
-            } else {
-                alert("Something went wrong! Couldn't update order data");
-            };
-        });
-
-        removeBtn.addEventListener('click', () => {
-            orderToDeleteId = order.order_id;
-
-            document.getElementById('order-id').innerText = orderToDeleteId;
-
-            deletePopup.classList.remove('hidden');
-            deletePopup.classList.add('open-popup');
-            dialog.classList.add('blur-background');
-        });
-
-        cancelBtn.addEventListener('click', () => {
-            orderToDeleteId = null;
-            deletePopup.classList.remove('open-popup');
-            deletePopup.classList.add('hidden');
-            dialog.classList.remove('blur-background');
-        });
-
-        confirmBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-
-            if (orderToDeleteId != null) {
-                const response = await fetch (`/order-data/wip/auth/${orderToDeleteId}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-    
-    
-                if (response.status === 204) {
-                    alert('Order deleted successfully');
-                    thisOrder.remove();
-                    modalOrder.remove();
-                    window.location.reload();
-                } else {
-                    alert("Something went wrong! Couldn't delete order data");
-                };
-
-                orderToDeleteId = null;
-                deletePopup.classList.remove('open-popup');
-                deletePopup.classList.add('hidden');
-                dialog.classList.remove('blur-background');
-            } else {
-                alert('No order selected for deletion!');
-            }
-        })
     };
     
     const firstOrder = ordersHTML[0].cloneNode(true);
     orderCont.appendChild(firstOrder);
+
+    const doneIcons = document.querySelectorAll('.completed-icon');
+    const removeIcons = document.querySelectorAll('.remove-icon');
+
+    for (let icon of doneIcons) {
+        icon.addEventListener('click', async () => {
+            const orderId = icon.dataset.orderId;
+            const response = await fetch(`/order-data/wip/auth/${userId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ order_id: orderId, order_status: 'completed'}),
+            });
+
+            if (response.ok) {
+                alert('Order marked as completed!');
+                const orders = document.querySelectorAll('.order');
+                const modalOrders = document.querySelectorAll('.modal-order');
+                for (let order of orders) {
+                    if (order.dataset.orderId === orderId) {
+                        order.remove();
+                    }
+                }
+                for (let order of modalOrders) {
+                    if (order.dataset.orderId === orderId) {
+                        order.remove();
+                    }
+                }
+                window.location.reload();
+            } else {
+                alert('Something went wrong!');
+            }
+        });
+    }
+
+    for (let icon of removeIcons) {
+        icon.addEventListener('click', async () => {
+            const orderId = icon.dataset.orderId;
+            const response = await fetch(`/order-data/wip/auth/${orderId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                alert('Order deleted!');
+                const orders = document.querySelectorAll('.order');
+                const modalOrders = document.querySelectorAll('.modal-order');
+                for (let order of orders) {
+                    if (order.dataset.orderId === orderId) {
+                        order.remove();
+                    }
+                }
+                for (let order of modalOrders) {
+                    if (order.dataset.orderId === orderId) {
+                        order.remove();
+                    }
+                }
+                window.location.reload();
+            } else {
+                alert('Something went wrong!');
+            }
+        });
+    }
+
 
 };
 
