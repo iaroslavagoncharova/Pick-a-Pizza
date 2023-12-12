@@ -60,7 +60,7 @@ const fetchUsers = async (userId) => {
         adminText.innerText = ' Administrator';
 
         const iconsDiv = document.createElement('div');
-        iconsDiv.classList.add('icons-div');
+        iconsDiv.classList.add('user-icons-div');
 
         const msgIcon = document.createElement('img');
         msgIcon.src = '../images/icons/message-icon.png';
@@ -200,7 +200,7 @@ const fetchUsers = async (userId) => {
     };
 
     const firstUser = usersHTML[0].cloneNode(true);
-    firstUser.querySelector('.icons-div').remove();
+    firstUser.querySelector('.user-icons-div').remove();
 
     if (firstUser.querySelector('.admin-div') !== null) {
         firstUser.querySelector('.admin-div').remove();

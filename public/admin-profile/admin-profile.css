@@ -315,9 +315,9 @@ a {
 
 .open-dialog {
     display: block;
-    position: absolute;
+    position: fixed;
     top: 15vh;
-    left: 50vw;
+    left: 30vw;
 }
 
 .hidden {
@@ -462,6 +462,35 @@ label {
     justify-content: space-between;
 }
 
+.order {
+    background-color: #e5ddda;
+    width: 90%;
+    margin: auto;
+}
+
+.order-icons-div {
+    width: 20%;
+    margin: auto 1rem auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#edit-orders {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-order {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: #e5ddda;
+    width: 100%;
+    margin: auto auto 1rem auto;
+}
+
 .data-list {
     width: 90%;
     margin: auto;
@@ -470,7 +499,7 @@ label {
     left: -1rem;
 }
 
-#completed-icon:hover, #remove-icon:hover {
+.completed-icon:hover, .remove-icon:hover {
     cursor: pointer;
 }
 
@@ -502,7 +531,7 @@ label {
     place-items: center;
 }
 
-.icons-div {
+.user-icons-div {
     padding: 1rem;
     width: 30%;
     margin: auto;
