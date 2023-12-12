@@ -103,4 +103,30 @@ const getAllIngredients = async () => {
     }
 };
 
-export {sendInfo, getCalories, getSet, getDoughInfo, getAllIngredients};
+const putIngredients = async (ingredientId, method) => {
+    if (method === 'subtract') {
+        try {
+            const sql = `UPDATE Ingredients SET in_stock = in_stock - portion_size WHERE ingredient_id = ?`;
+            const params = [ingredientId];
+            const result = await promisePool.query(sql, params);
+            console.log(result);
+            return result;
+        } catch (e) {
+            console.error('error', e.message);
+            return {error: e.message};
+        }
+    } else if (method === 'add') {
+        try {
+            const sql = `UPDATE Ingredients SET in_stock = in_stock + portion_size WHERE ingredient_id = ?`;
+            const params = [ingredientId];
+            const result = await promisePool.query(sql, params);
+            console.log(result);
+            return result;
+        } catch (e) {
+            console.error('error', e.message);
+            return {error: e.message};
+        }
+    };
+};
+
+export {sendInfo, getCalories, getSet, getDoughInfo, getAllIngredients, putIngredients};
