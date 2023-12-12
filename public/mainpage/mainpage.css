@@ -44,14 +44,7 @@ header {
     cursor: pointer;
     padding: 10px;
   }
-  
-  .bar {
-    width: 30px;
-    height: 3px;
-    background-color: var(--grayish-brown);
-    margin: 6px 0;
-  }
-  
+
   .bottom_nav {
     display: none;
   }
