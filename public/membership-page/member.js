@@ -1,41 +1,21 @@
-import { addUserDataToDom, removeUserDataFromDom } from "../dom";
-import { logUserOut } from "../logout";
-
-interface User {
-  username: string;
-  email: string;
-  address: string;
-  favorite_pizza: string;
-  phone_number: string;
-  user_level_id: number;
-  user_id: number;
-  created_at: string;
-}
+import onCommonReload from "../common.js";
 
 window.onload = () => {
-  const token: string | null = localStorage.getItem('token');
-  const user: User | null = JSON.parse(localStorage.getItem('user') || 'null');
-  const joinBtn: HTMLElement | null = document.getElementById('join-btn')!;
-  console.log(user, token);
+  onCommonReload();
+  
+  const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user'));
+  const joinBtn = document.getElementById('join-btn');
 
-  if (token) {
-    addUserDataToDom(user!);
-    logUserOut();
+  if (token && user) {
     joinBtn.style.display = 'none';
-    const userButton: HTMLAnchorElement | null = document.getElementById('user-account') as HTMLAnchorElement;
-    if (user!.user_level_id === 1) {
-      userButton.href = '/my-account/admin';
-    } else if (user!.user_level_id === 2) {
-      userButton.href = '/my-account';
-    }
   } else {
-    removeUserDataFromDom();
     joinBtn.style.display = 'flex';
   }
 };
 
 // if any set of ingredients already exists, remove it and open a blank make a pizza page
-const craftPizza: HTMLElement | null = document.getElementById('make-a-pizza');
+const craftPizza = document.getElementById('make-a-pizza');
 craftPizza?.addEventListener('click', () => {
   localStorage.removeItem('selectedPizzaIngredients');
   window.location.href = '/make-your-pizza';
@@ -57,11 +37,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // create a link for each prompt dropdown
       for (let i = 1; i <= 6; i++) {
-        const dropdown: HTMLElement | null = document.getElementById(`pizza-${i}`);
+        const dropdown = document.getElementById(`pizza-${i}`);
         if (dropdown) {
           dropdown.innerHTML = result[i - 1].prompt_name;
 
-          dropdown.addEventListener('click', ((pizzaId: number) => {
+          dropdown.addEventListener('click', ((pizzaId) => {
             return () => {
               selectPizza(pizzaId);
             };
@@ -69,9 +49,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       }
 
-      let selectedPizzaIngredients: any[] = [];
+      let selectedPizzaIngredients = [];
 
-      async function selectPizza(pizzaId: number) {
+      async function selectPizza(pizzaId) {
         try {
           const response = await fetch(`/sets/${pizzaId}`, {
             method: 'GET',

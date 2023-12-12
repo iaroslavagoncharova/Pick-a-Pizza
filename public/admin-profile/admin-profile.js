@@ -1,26 +1,22 @@
-import { addUserDataToDom, removeUserDataFromDom } from "../dom.js";
-import { logUserOut } from "../logout.js";
+import onCommonReload from "../common.js";
 import fetchIngredients from "./ingredients.js";
 import fetchOrders from "./order-data.js";
 import fetchUsers from "./user-data.js";
 
 window.onload = () => {
+    onCommonReload();
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
     console.log(user, token);
     
-    if (token) {
-        addUserDataToDom(user);
-        logUserOut();
+    if (token && user) {
         fetchOrders(user.user_id);
         fetchUsers(user.user_id);
         fetchIngredients();
         const userButton = document.getElementById('user-account');
         // me ollaan tällä sivulla, joten account-näppäimen ei tarvii toimia
         userButton.href = '#';
-    } else {
-        removeUserDataFromDom();
-    }
+    };
 };
 
 const header = document.querySelector('header');

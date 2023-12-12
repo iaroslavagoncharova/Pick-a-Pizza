@@ -1,27 +1,18 @@
-import {addUserDataToDom, removeUserDataFromDom} from "../dom.js";
-import { logUserOut } from "../logout.js";
+import onCommonReload from "../common.js";
+import { usualNames, glutenfreeNames, ketoNames } from "./pizza-names.js";
 
 window.onload = () => {
+  onCommonReload();
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
   const joinUs = document.getElementById('membership-screen');
   const shippingFee = document.getElementById('shipping-fee');
   const mainpageButton = document.getElementById('mainpage-button');
-  console.log(user, token);
 
-  if (token) {
-    addUserDataToDom(user);
-    logUserOut();
+  if (token && user) {
     joinUs.style.display = 'none';
     shippingFee.innerText = '0€';
-    const userButton = document.getElementById('user-account');
-    if (user.user_level_id === 1) {
-      userButton.href = '/my-account/admin';
-    } else if (user.user_level_id === 2) {
-      userButton.href = '/my-account';
-    }
   } else {
-    removeUserDataFromDom();
     joinUs.style.display = 'block';
     shippingFee.innerText = '1.50€';
     const emptyCart = document.createElement('p');
@@ -36,30 +27,6 @@ window.onload = () => {
     tableBody.appendChild(emptyCart);
   }
 };
-
-// funny names for pizzas 
-const usualNames = [
-  'Tasty Tornado',
-  'Sizzling Symphony',
-  'Funky Fusion',
-  'Blissful Bites',
-  'Gourmet Galaxy'
-];
-
-const glutenfreeNames = [
-  'Gluten Guardian',
-  'Wheatless Wonder',
-  'Purely Parchment',
-  'Grainless Gourmet'
-];
-
-const ketoNames = [ 
-  'Carb Conqueror',
-  'Ketogenic Knight',
-  'Low-Carb Legend',
-  'Keto Crunch',
-  'High-Fat Hero'
-];
 
 document.addEventListener('DOMContentLoaded', async function () {
   // get all pizzas for a user

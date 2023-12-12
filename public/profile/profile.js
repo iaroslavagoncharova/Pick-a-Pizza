@@ -1,5 +1,4 @@
-import {addUserDataToDom, removeUserDataFromDom} from "../dom.js";
-import { logUserOut } from "../logout.js";
+import onCommonReload from "../common.js";
 import fetchOrders from "./order-data.js";
 
 const userName = document.getElementById('user-name');
@@ -13,14 +12,11 @@ const changeAddress = document.getElementById('change-address');
 const changeNumber = document.getElementById('change-number');
 
 window.onload = () => {
+    onCommonReload();
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(typeof user);
-    console.log(user, token);
     
-    if (token) {
-        addUserDataToDom(user);
-        logUserOut();
+    if (token && user) {
         fetchOrders(user.user_id);
         const userButton = document.getElementById('user-account');
         // me ollaan tällä sivulla, linkin ei tarvii viedä tänne
@@ -36,9 +32,7 @@ window.onload = () => {
         changeEmail.placeholder = user.email;
         changeNumber.placeholder = user.phone_number;
         changeAddress.placeholder = user.address;
-    } else {
-        removeUserDataFromDom();
-    }
+    };
 };
 
 const changeProfile = document.getElementById('change-profile');
