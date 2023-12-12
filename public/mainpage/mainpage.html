@@ -6,14 +6,23 @@
     <title>Main Page</title>
     <script type="module" src="/mainpage/main.js"></script>
     <script type="module" src="../prompts.js"></script>
+    <link rel="manifest" href="../manifest.json">
+    <link rel="apple-touch-icon" href="../pwa-images/icon-192x192.png">   
+    <meta name="theme-color" content="#68563d"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">  
+    <meta name="apple-mobile-web-app-status-bar-style" content="#68563d"> 
+    <meta name="apple-mobile-web-app-title" content="Pick-a-Pizza"> 
+    <meta name="msapplication-TileImage" content="../pwa-images/icon-192x192.png">  
+    <meta name="msapplication-TileColor" content="#faf4f1">
     <script src="../language.js" defer></script>
     <link rel="stylesheet" type="text/css" href="/mainpage/mainpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/438aeadf51.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <div class="header-part logo-container" id="header-logo">
-            <a href="/"><img src="../images/pizza_logo.png" alt="Pick-a-Pizza icon" class="pizza-logo"></a>
+            <a href="/"><img src="../images/pizza_logo2.png" alt="Pick-a-Pizza icon" class="pizza-logo"></a>
             <h1 class="page-title">Pick-a-Pizza</h1>
         </div>  	
         <div class="wrapper">
@@ -62,6 +71,7 @@
                     </div>
                 </div>
             </div>
+            <i class="fa-solid fa-bars" id="mobile-menu-icon"></i>
         </div>
         </div>
     </header>

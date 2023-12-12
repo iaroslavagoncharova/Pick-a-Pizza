@@ -1,9 +1,40 @@
 import onCommonReload from "../common.js";
 
 window.onload = () => {
+  'use strict';
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+             .register('../sw.js'); 
+  }
   onCommonReload();
 };
 
+function toggleMobileMenu() {
+  const dropdown = document.getElementById('bottom-nav-items');
+  dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+}
+
+const isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints);
+
+if (isTouchDevice) {
+    const mobileMenuButton = document.getElementById('mobile-menu-icon');
+    mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+    const openMenu = document.getElementById('menu');
+    const dropdownContent = document.getElementById('menu-dropdown');
+    openMenu.addEventListener('click', (event) => {
+        event.preventDefault();
+        dropdownContent.style.display = dropdownContent.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    const openPrompts = document.getElementById('prompts');
+    const dropdownPrompts = document.getElementById('pizza-dropdown');
+    openPrompts.addEventListener('click', (event) => {
+        event.preventDefault();
+        dropdownPrompts.style.display = dropdownPrompts.style.display === 'flex' ? 'none' : 'flex';
+    });
+}
 const contentTabs = document.getElementById('content-tabs');
 contentTabs.addEventListener('click', (evt) => {
   const clickedTab = evt.target.closest('.content-tab');

@@ -8,10 +8,20 @@
     <script type="module" src="/admin-profile/order-data.js"></script>
     <script type="module" src="/admin-profile/user-data.js"></script>
     <script type="module" src="/admin-profile/ingredients.js"></script>
-    <script type="module" src="../prompts.js"></script>
-    <script src="../language.js" defer></script>
     <link rel="stylesheet" href="/admin-profile/admin-profile.css">
+    <script type="module" src="../prompts.js"></script>
+    <link rel="manifest" href="../manifest.json">
+    <link rel="apple-touch-icon" href="../pwa-images/icon-192x192.png">   
+    <meta name="theme-color" content="#68563d"/>
+    <script src="../language.js" defer></script>
+    <meta name="apple-mobile-web-app-capable" content="yes">  
+    <meta name="apple-mobile-web-app-status-bar-style" content="#68563d"> 
+    <meta name="apple-mobile-web-app-title" content="Pick-a-Pizza"> 
+    <meta name="msapplication-TileImage" content="../pwa-images/icon-192x192.png">  
+    <meta name="msapplication-TileColor" content="#faf4f1">
+ 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/438aeadf51.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -65,6 +75,7 @@
                     </div>
                 </div>
             </div>
+            <i class="fa-solid fa-bars" id="mobile-menu-icon"></i>
         </div>
         </div>
     </header>
