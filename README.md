@@ -58,6 +58,7 @@ git clone https://github.com/iaroslavagoncharova/pick-a-pizza.git
 ```bash
 cd <project_name>
 npm install
+npm i jsonwebtoken
 ```
 ### 3. Clone database script using mariadb
 
