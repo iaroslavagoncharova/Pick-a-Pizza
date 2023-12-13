@@ -21,7 +21,7 @@ Pizza ordering app built to make pizza from scratch, check nutritional values, a
     - Price of combined ingriedents
 - Shopping cart
     - Displays data from pizza
-    - Change ammount with + and - buttons
+    - Change amount with + and - buttons
 - Generating random names depending on pizza type
 - "Mock" checkout 
 - User sign-in and profile creation
