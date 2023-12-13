@@ -8,7 +8,7 @@ Web-developing project by Iaroslava Goncharova, Anna Malassu, Juan Rosales.
 
 - [Introduction](#introduction)
 - [Features](#features)
-- [Installation] (#installation)
+- [Installation](#installation)
 
 ## Introduction 
 Pizza ordering app built to make pizza from scratch, check nutritional values, and mock purchasing. 
