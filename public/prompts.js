@@ -1,11 +1,10 @@
-// if any set of ingredients already exists, remove it and open a blank make a pizza page
-const craftPizza = document.getElementById('make-a-pizza');
-craftPizza.addEventListener('click', () => {
-  localStorage.removeItem('selectedPizzaIngredients');
-  window.location.href = '/make-your-pizza';
-});
-
-document.addEventListener('DOMContentLoaded', async function () {
+const getPrompts = async () => {
+    // if any set of ingredients already exists, remove it and open a blank make a pizza page
+    const craftPizza = document.getElementById('make-a-pizza');
+    craftPizza.addEventListener('click', () => {
+      localStorage.removeItem('selectedPizzaIngredients');
+      window.location.href = '/make-your-pizza';
+    });
     // get prompts to display in dropdowns
     try {
      const response = await fetch('/prompts', {
@@ -69,6 +68,6 @@ document.addEventListener('DOMContentLoaded', async function () {
    } catch (error) {
      console.error('Error getting data from the server:', error.message);
    }
- });
+ };
 
- 
+export default getPrompts;

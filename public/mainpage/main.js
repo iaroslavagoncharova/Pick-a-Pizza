@@ -1,15 +1,15 @@
 import onCommonReload from "../common.js";
-import {checkDevice } from "../menu-button.js";
+import {checkDevice} from "../menu-button.js";
+import getPrompts from "../prompts.js";
 
 window.onload = () => {
-  'use strict';
-
+  getPrompts();
+  checkDevice();
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
              .register('../sw.js'); 
   }
   onCommonReload();
-  checkDevice();
 };
 
 

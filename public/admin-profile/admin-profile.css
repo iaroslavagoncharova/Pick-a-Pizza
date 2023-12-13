@@ -715,10 +715,10 @@ footer {
   #bottom-nav-items .dropdown {
     margin: auto 0 0 2rem;
   }
-    .dropdown:hover .dropdown-content {
-        left: -205%;
-        top: 20%;
-    }
+  .dropdown:hover .dropdown-content {
+    left: -205%;
+    top: 20%;
+   }
     #pizza-dropdown {
         top: 40%;
         left: -130%;

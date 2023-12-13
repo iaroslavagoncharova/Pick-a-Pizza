@@ -1,12 +1,22 @@
 import promisePool from "../utils/database.mjs";
 
 const fetchPizza = async (id) => {
+    let orderedPizzas = [];
     try {
         const sql = `SELECT pizza_id, dough, size, price, prompt_id, quantity FROM Pizza WHERE user_id = ?`;
         const params = [id];
         const result = await promisePool.query(sql, params);
         const [rows] = result;
         console.log('all user pizzas', result);
+
+        const sqlOrder = `SELECT pizza_id FROM CartPizza WHERE pizza_id IN (?)`;
+        const paramsOrder = [rows.map(row => row.pizza_id)];
+        const resultOrder = await promisePool.query(sqlOrder, paramsOrder);
+        const [rowsOrder] = resultOrder;
+        console.log('ordered pizzas', rowsOrder);
+        if (rowsOrder.length !== 0) {
+            orderedPizzas = rowsOrder.map(row => row.pizza_id);
+        }
 
         const pizzaDetails = await Promise.all(rows.map(async (row) => {
         const sql3 = `SELECT ingredient_id FROM PizzaIngredient WHERE pizza_id = ?`;
@@ -37,7 +47,7 @@ const fetchPizza = async (id) => {
                 return { ...row, result4 };
             }
         }));
-        return { pizzaDetails };
+        return { pizzaDetails, orderedPizzas };
     } catch (e) {
         console.error('error', e.message);
         return { error: e.message };

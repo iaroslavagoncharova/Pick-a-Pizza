@@ -1,3 +1,11 @@
+import {checkDevice} from "../menu-button.js";
+import getPrompts from "../prompts.js";
+
+window.onload = () => {
+  getPrompts();
+  checkDevice();
+}
+
 // Login and Register Forms
 const loginForm = document.querySelector("#login-form");
 const registerForm = document.querySelector("#register-form");

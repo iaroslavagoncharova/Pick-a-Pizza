@@ -1,6 +1,10 @@
 import onCommonReload from "../common.js";
+import {checkDevice} from "../menu-button.js";
+import getPrompts from "../prompts.js";
 
-window.onload = () => {
+window.onload = () => { 
+  getPrompts();
+  checkDevice();
   onCommonReload();
   
   const token = localStorage.getItem('token');
@@ -12,6 +16,7 @@ window.onload = () => {
   } else {
     joinBtn.style.display = 'flex';
   }
+
 };
 
 // if any set of ingredients already exists, remove it and open a blank make a pizza page

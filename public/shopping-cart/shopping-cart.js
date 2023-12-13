@@ -1,8 +1,12 @@
 import onCommonReload from "../common.js";
+import { checkDevice } from "../menu-button.js";
+import getPrompts from "../prompts.js";
 import { usualNames, glutenfreeNames, ketoNames } from "./pizza-names.js";
 
 window.onload = () => {
+  getPrompts();
   onCommonReload();
+  checkDevice();
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
   const joinUs = document.getElementById('membership-screen');
@@ -143,6 +147,50 @@ document.addEventListener('DOMContentLoaded', async function () {
       newRow.appendChild(removeCell);
   
       tableBody.appendChild(newRow);
+
+      // // create a table for ordered pizzas
+      // const orderedPizzaTable = document.querySelector('#ordered-products tbody');
+      // result.orderedPizzas.forEach(pizza => {
+      //   const pizzaName = generatePizzaName(pizza);
+      //   const newRow = document.createElement('tr');
+      //   const productCell = document.createElement('td');
+      //   productCell.classList.add('product');
+      //   const productDetails = document.createElement('div');
+      //   productDetails.classList.add('product-details');
+      //   productDetails.innerHTML = `
+      //     <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
+      //     <div>
+      //       <h3>${pizzaName}</h3>
+      //       <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
+      //       <p>${pizza.result4.map(ingredient => ingredient.name).join(', ')}</p>
+      //     </div>`;
+      //   productCell.appendChild(productDetails);
+    
+      //   // generate a quantity selection and append it to the table
+      //   const quantityCell = document.createElement('td');
+      //   quantityCell.classList.add('quantity');
+      //   const quantitySelection = document.createElement('div');
+      //   quantitySelection.classList.add('quantity-selection');
+      //   quantitySelection.innerHTML = `
+      //     <button class="minus">-</button>
+      //     <p>${pizza.quantity}</p>
+      //     <button class="plus">+</button>`;
+      //   quantityCell.appendChild(quantitySelection);
+    
+      //   // generate a total price and append it to the table
+      //   const totalCell = document.createElement('td');
+      //   totalCell.classList.add('total');
+        
+      //   // Use the price from the database
+      //   const totalPrice = (parseFloat(pizza.price) * pizza.quantity).toFixed(2);
+      //   totalCell.innerHTML = `<p>${totalPrice}€</p>`;
+  
+      //   newRow.appendChild(productCell);
+      //   newRow.appendChild(quantityCell);
+      //   newRow.appendChild(totalCell);
+    
+      //   orderedPizzaTable.appendChild(newRow);
+      // });
   });  
 
     const receiptTable = document.getElementById('receipt-table');
