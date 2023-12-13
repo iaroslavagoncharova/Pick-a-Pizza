@@ -8,7 +8,8 @@ Web-developing project by Iaroslava Goncharova, Anna Malassu, Juan Rosales.
 
 - [Introduction](#introduction)
 - [Features](#features)
-- [Installation] (#installation)
+- [Pre-requirements](#Pre-requirements)
+- [Installation](#installation)
 
 ## Introduction 
 Pizza ordering app built to make pizza from scratch, check nutritional values, and mock purchasing. 
@@ -38,7 +39,7 @@ Pizza ordering app built to make pizza from scratch, check nutritional values, a
 - Writing and displaying reviews 
 - Progressive web app
 
-## Pre requirements
+## Pre-requirements
 
 - Install VsCode
 - Install node.js
