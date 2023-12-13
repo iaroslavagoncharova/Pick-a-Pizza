@@ -1,0 +1,16 @@
+{
+    "name": "Pick-a-pizza",
+    "version": "1.0.0",
+    "description": "A pizza ordering app",
+    "url": "https://ucad-server-anna.northeurope.cloudapp.azure.com/mainpage/mainpage.html",
+    "header" {
+        "title": "Pick-a-pizza",
+        "filename": ""
+    },
+
+    "footer" {
+        "title": "Pick-a-pizza",
+        "filename": ""
+    },
+    "authors": "Iaroslava Goncharova, Anna Malassu, Juan Rosales"
+}
