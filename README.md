@@ -61,12 +61,13 @@ git clone https://github.com/iaroslavagoncharova/pick-a-pizza.git
 ```bash
 cd <project_name>
 npm install
+npm i jsonwebtoken
 ```
 ### 3. Clone database script using mariadb
 
 You can find the script in our database folder
 
-### 4. Create env. file containing theese variables:
+### 4. Create env. file containing these variables:
 
 - DB_HOST= localhost
 - DB_USER= Your user
