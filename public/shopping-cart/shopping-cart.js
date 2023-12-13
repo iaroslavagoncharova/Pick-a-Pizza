@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
     console.log(user.user_id);
     const result = await response.json();
+    console.log(result);
     if (!result) {
       console.log('No pizzas in cart');
     }
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const tableBody = document.querySelector('#selected-products tbody');
 
     console.log(result);
-    if (result.pizzaDetails.length === 0 || !result.pizzaDetails) {
+    if (result.pizzaDetails.length === 0) {
       // if there's no pizzas in cart, display a message and invite to explore the menu
       console.log('no pizzas in cart');
       const emptyCart = document.createElement('p');
@@ -102,6 +103,7 @@ document.addEventListener('DOMContentLoaded', async function () {
           <p>${pizza.result4.map(ingredient => ingredient.name).join(', ')}</p>
         </div>`;
       productCell.appendChild(productDetails);
+  
   
       // generate a quantity selection and append it to the table
       const quantityCell = document.createElement('td');
@@ -145,12 +147,17 @@ document.addEventListener('DOMContentLoaded', async function () {
       newRow.appendChild(quantityCell);
       newRow.appendChild(totalCell);
       newRow.appendChild(removeCell);
-  
       tableBody.appendChild(newRow);
+      // const isOrderedPizza = result.orderDetails.some(orderedPizza => orderedPizza.pizza_id === pizza.pizza_id);
+      // console.log(isOrderedPizza);
 
+      // if (!isOrderedPizza) {
+      //   tableBody.appendChild(newRow);
+      // }
       // // create a table for ordered pizzas
       // const orderedPizzaTable = document.querySelector('#ordered-products tbody');
-      // result.orderedPizzas.forEach(pizza => {
+      // console.log(result[0].orderDetails.rows);
+      //   result.orderDetails.rows.forEach(pizza => {
       //   const pizzaName = generatePizzaName(pizza);
       //   const newRow = document.createElement('tr');
       //   const productCell = document.createElement('td');
@@ -162,20 +169,14 @@ document.addEventListener('DOMContentLoaded', async function () {
       //     <div>
       //       <h3>${pizzaName}</h3>
       //       <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
-      //       <p>${pizza.result4.map(ingredient => ingredient.name).join(', ')}</p>
+      //       <p>${pizza.ingredients.map(ingredient => ingredient.name).join(', ')}</p>
       //     </div>`;
       //   productCell.appendChild(productDetails);
     
       //   // generate a quantity selection and append it to the table
       //   const quantityCell = document.createElement('td');
       //   quantityCell.classList.add('quantity');
-      //   const quantitySelection = document.createElement('div');
-      //   quantitySelection.classList.add('quantity-selection');
-      //   quantitySelection.innerHTML = `
-      //     <button class="minus">-</button>
-      //     <p>${pizza.quantity}</p>
-      //     <button class="plus">+</button>`;
-      //   quantityCell.appendChild(quantitySelection);
+      //   quantityCell.innerHTML = `<p>${pizza.quantity}</p>`;
     
       //   // generate a total price and append it to the table
       //   const totalCell = document.createElement('td');
@@ -188,8 +189,10 @@ document.addEventListener('DOMContentLoaded', async function () {
       //   newRow.appendChild(productCell);
       //   newRow.appendChild(quantityCell);
       //   newRow.appendChild(totalCell);
-    
+        
+      //   if (isOrderedPizza) { 
       //   orderedPizzaTable.appendChild(newRow);
+      //   }
       // });
   });  
 
@@ -231,6 +234,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const payButton = document.getElementById("pay-button");
     const paymentStatusElement = document.getElementById("payment-status");
     const pizzaIds = result.pizzaDetails.map(pizza => pizza.pizza_id);
+    console.log(pizzaIds);
 
     payButton.addEventListener("click", async function () {
       try {
@@ -249,7 +253,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const resultCart = await response.json();
         console.log(resultCart);
         if (resultCart) {
-          window.location.href = "/checkout";
+          window.location.href = '/checkout';
         } else {
           console.error('Error creating cart:', response.status, response.statusText);
         }
