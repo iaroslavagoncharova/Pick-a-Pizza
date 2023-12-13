@@ -74,4 +74,3 @@ JWT_SECRET= Your token
 
 ``````
 npm start
-```
