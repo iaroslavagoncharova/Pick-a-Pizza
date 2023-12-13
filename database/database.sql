@@ -124,6 +124,20 @@ VALUES
 ('Juan', 'pass123', 'juan@example.com', 'Karaportti 2, Espoo' , 'Keto', '555666777', 2, '2023-11-14 14:15:00');
 
 
+-- Add data for dough
+INSERT INTO Dough (dough_name, dough_size, dough_price, dough_calories, dough_carbs, dough_protein, dough_fats) 
+VALUES 
+('gluten-free', 'S', 2.50, 500, 90, 4, 10), 
+('gluten-free', 'M', 3.50, 750, 135, 6, 15), 
+('gluten-free', 'L', 4.50, 1000, 180, 8, 20), 
+('keto', 'S', 4.00, 400, 10, 20, 30), 
+('keto', 'M', 5.50, 600, 15, 30, 45), 
+('keto', 'L', 7.00, 800, 20, 40, 60), 
+('usual', 'S', 1.50, 600, 110, 16, 10), 
+('usual', 'M', 2.50, 900, 165, 24, 15), 
+('usual', 'L', 3.50, 1200, 220, 32, 20);
+
+
 -- Add data for prompts
 INSERT INTO Prompts (prompt_name, dough, size, price, calories, carbs, protein, fats) 
 VALUES
