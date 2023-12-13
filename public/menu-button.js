@@ -1,11 +1,10 @@
-function toggleMobileMenu() {
-    const dropdown = document.getElementById('bottom-nav-items');
-    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
-  }
-  
-  function checkDevice () {
+export const checkDevice = () => {
     const isTouchDevice = ('ontouchstart' in window || navigator.maxTouchPoints);
     if (isTouchDevice) {
+    function toggleMobileMenu() {
+        const dropdown = document.getElementById('bottom-nav-items');
+        dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+        }
       const mobileMenuButton = document.getElementById('mobile-menu-icon');
       mobileMenuButton.addEventListener('click', toggleMobileMenu);
       const openMenu = document.getElementById('menu');
@@ -22,6 +21,4 @@ function toggleMobileMenu() {
           dropdownPrompts.style.display = dropdownPrompts.style.display === 'flex' ? 'none' : 'flex';
       });
   }
-    }
-
-  export {checkDevice };
+};

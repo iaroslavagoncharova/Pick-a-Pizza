@@ -6,9 +6,9 @@
     <title>Open Positions</title>
     <script type="module" src="work/work.js"></script>
     <script type="module" src="../prompts.js"></script>
-    <script src="../language.js" defer></script>
     <link rel="manifest" href="../manifest.json">
-    <link rel="apple-touch-icon" href="../pwa-images/icon-192x192.png">   
+    <link rel="apple-touch-icon" href="../pwa-images/icon-192x192.png">
+    <link rel="icon" href="../pwa-images/favicon.ico" type="image/x-icon">  
     <meta name="theme-color" content="#68563d"/>
     <meta name="apple-mobile-web-app-capable" content="yes">  
     <meta name="apple-mobile-web-app-status-bar-style" content="#68563d"> 
@@ -16,6 +16,7 @@
     <meta name="msapplication-TileImage" content="../pwa-images/icon-192x192.png">  
     <meta name="msapplication-TileColor" content="#faf4f1">
     <link rel="stylesheet" href="work/work.css">
+    <script src="https://kit.fontawesome.com/438aeadf51.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -31,8 +32,8 @@
                         <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
                         <div id="lang-container">
                             <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                            <span class="lang-option active-lang" id="english" onclick="changeLanguage('english')">EN</span>
-                            <span class="lang-option" id="finnish" onclick="changeLanguage('finnish')">FI</span>
+                            <span class="lang-option active-lang" id="english">EN</span>
+                            <span class="lang-option" id="finnish">FI</span>
                         </div>
                 </div>
             </div>
@@ -70,6 +71,7 @@
                     </div>
                 </div>
             </div>
+            <i class="fa-solid fa-bars" id="mobile-menu-icon"></i>
         </div>
         </div>
     </header>

@@ -1,10 +1,11 @@
 import onCommonReload from "../common.js";
-import {checkDevice } from "../menu-button.js";
+import {checkDevice} from "../menu-button.js";
+import getPrompts from "../prompts.js";
 
 window.onload = () => {
-  'use strict';
-  onCommonReload();
+  getPrompts();
   checkDevice();
+  onCommonReload();
 };
 
 // getting itinraries from graphql and displaying them on the map

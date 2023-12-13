@@ -2,11 +2,13 @@ import onCommonReload from "../common.js";
 import fetchIngredients from "./ingredients.js";
 import fetchOrders from "./order-data.js";
 import fetchUsers from "./user-data.js";
-import {checkDevice } from "../menu-button.js";
+import getPrompts from "../prompts.js";
+import { checkDevice } from "../menu-button.js";
 
 window.onload = () => {
-    onCommonReload();
+    getPrompts();
     checkDevice();
+    onCommonReload();
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
     console.log(user, token);

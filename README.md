@@ -1,8 +1,10 @@
-<img src="./public/images/pizza_logo2.png" align="right" />
+
+  <img src="./public/images/pizza_logo2.png" width="200" alt="Pizza Logo" align="right">
+
 
 # Pick-a-pizza
 
-Web-developing project by Iaroslava Goncharova, Anna Malassu, Juan Rosales. 
+Web development project by Iaroslava Goncharova, Anna Malassu, Juan Rosales.
 
 ## Table of Contents
 
@@ -10,39 +12,37 @@ Web-developing project by Iaroslava Goncharova, Anna Malassu, Juan Rosales.
 - [Features](#features)
 - [Pre-requirements](#Pre-requirements)
 - [Installation](#installation)
-
-## Introduction 
-Pizza ordering app built to make pizza from scratch, check nutritional values, and mock purchasing. 
+Pick-a-pizza is a pizza ordering app designed to create pizzas from scratch, check nutritional values, and simulate the purchasing process.
 
 ## Features
 
-- Generating Pizzas out of prompts
-- Displaying ingriedent data to user
-    - Nutritional value (Calories, carbs etc.)
-    - Price of combined ingriedents
+- Generating pizzas based on prompts
+- Displaying ingredient data to the user
+    - Nutritional values (calories, carbs, etc.)
+    - Price of combined ingredients
 - Shopping cart
-    - Displays data from pizza
-    - Change ammount with + and - buttons
+    - Displays data from the pizza
+    - Change amount with + and - buttons
 - Generating random names depending on pizza type
-- "Mock" checkout 
+- "Mock" checkout
 - User sign-in and profile creation
-- Admin profile 
-    - Manage orders, users and ingriedents
-- HSL and OpenStreetMap APIs 
-    - Uses users location to navigate to restaurant
+- Admin profile
+    - Manage orders, users, and ingredients
+- HSL and OpenStreetMap APIs
+    - Uses the user's location to navigate to the restaurant
     - By public transportation or walking
-    - Displays map with needed data
-        - Users and destinations location
-        - Each stops name and number
+    - Displays a map with necessary data
+        - Users' and destinations' locations
+        - Each stop's name and number
         - Transportation method and data
-        - Approximate tarvelling time
-- Writing and displaying reviews 
+        - Approximate travel time
+- Writing and displaying reviews
 - Progressive web app
 
 ## Pre-requirements
 
-- Install VsCode
-- Install node.js
+- Install VSCode
+- Install Node.js
 
 ## Installation
 
@@ -64,13 +64,13 @@ npm i jsonwebtoken
 
 You can find the script in our database folder
 
-### 4. Create env. file containing theese variables:
+### 4. Create env. file containing these variables:
 
-DB_HOST= localhost
-DB_USER= Your user
-DB_PASSWORD= Your password
-DB_NAME= pickapizza
-JWT_SECRET= Your token
+- DB_HOST= localhost
+- DB_USER= Your user
+- DB_PASSWORD= Your password
+- DB_NAME= pickapizza
+- JWT_SECRET= Your token
 
 ### 5. Run the application
 

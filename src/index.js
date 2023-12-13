@@ -17,7 +17,6 @@ import promptRouter from './routers/prompts-router.mjs';
 import checkoutRouter from './routers/checkout-router.mjs';
 import setRouter from './routers/set-router.mjs';
 import { errorHandler, notFoundHandler } from './middlewares/handlers.mjs';
-import reviewRouter from './routers/reviews-router.mjs';
 import ratingRouter from './routers/reviews-router.mjs';
 import orderRouter from './routers/order-router.mjs';
 import userRouter from './routers/user-router.mjs';

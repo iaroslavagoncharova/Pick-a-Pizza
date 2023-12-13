@@ -1,4 +1,6 @@
 import onCommonReload from "../common.js";
+import { checkDevice } from "../menu-button.js";
+import getPrompts from "../prompts.js";
 import fetchOrders from "./order-data.js";
 
 const userName = document.getElementById('user-name');
@@ -12,7 +14,9 @@ const changeAddress = document.getElementById('change-address');
 const changeNumber = document.getElementById('change-number');
 
 window.onload = () => {
+    getPrompts();
     onCommonReload();
+    checkDevice();
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
     

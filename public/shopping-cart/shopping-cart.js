@@ -1,8 +1,12 @@
 import onCommonReload from "../common.js";
+import { checkDevice } from "../menu-button.js";
+import getPrompts from "../prompts.js";
 import { usualNames, glutenfreeNames, ketoNames } from "./pizza-names.js";
 
 window.onload = () => {
+  getPrompts();
   onCommonReload();
+  checkDevice();
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
   const joinUs = document.getElementById('membership-screen');
@@ -40,6 +44,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
     console.log(user.user_id);
     const result = await response.json();
+    console.log(result);
     if (!result) {
       console.log('No pizzas in cart');
     }
@@ -61,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const tableBody = document.querySelector('#selected-products tbody');
 
     console.log(result);
-    if (result.pizzaDetails.length === 0 || !result.pizzaDetails) {
+    if (result.pizzaDetails.length === 0) {
       // if there's no pizzas in cart, display a message and invite to explore the menu
       console.log('no pizzas in cart');
       const emptyCart = document.createElement('p');
@@ -98,6 +103,7 @@ document.addEventListener('DOMContentLoaded', async function () {
           <p>${pizza.result4.map(ingredient => ingredient.name).join(', ')}</p>
         </div>`;
       productCell.appendChild(productDetails);
+  
   
       // generate a quantity selection and append it to the table
       const quantityCell = document.createElement('td');
@@ -141,8 +147,53 @@ document.addEventListener('DOMContentLoaded', async function () {
       newRow.appendChild(quantityCell);
       newRow.appendChild(totalCell);
       newRow.appendChild(removeCell);
-  
       tableBody.appendChild(newRow);
+      // const isOrderedPizza = result.orderDetails.some(orderedPizza => orderedPizza.pizza_id === pizza.pizza_id);
+      // console.log(isOrderedPizza);
+
+      // if (!isOrderedPizza) {
+      //   tableBody.appendChild(newRow);
+      // }
+      // // create a table for ordered pizzas
+      // const orderedPizzaTable = document.querySelector('#ordered-products tbody');
+      // console.log(result[0].orderDetails.rows);
+      //   result.orderDetails.rows.forEach(pizza => {
+      //   const pizzaName = generatePizzaName(pizza);
+      //   const newRow = document.createElement('tr');
+      //   const productCell = document.createElement('td');
+      //   productCell.classList.add('product');
+      //   const productDetails = document.createElement('div');
+      //   productDetails.classList.add('product-details');
+      //   productDetails.innerHTML = `
+      //     <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
+      //     <div>
+      //       <h3>${pizzaName}</h3>
+      //       <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
+      //       <p>${pizza.ingredients.map(ingredient => ingredient.name).join(', ')}</p>
+      //     </div>`;
+      //   productCell.appendChild(productDetails);
+    
+      //   // generate a quantity selection and append it to the table
+      //   const quantityCell = document.createElement('td');
+      //   quantityCell.classList.add('quantity');
+      //   quantityCell.innerHTML = `<p>${pizza.quantity}</p>`;
+    
+      //   // generate a total price and append it to the table
+      //   const totalCell = document.createElement('td');
+      //   totalCell.classList.add('total');
+        
+      //   // Use the price from the database
+      //   const totalPrice = (parseFloat(pizza.price) * pizza.quantity).toFixed(2);
+      //   totalCell.innerHTML = `<p>${totalPrice}€</p>`;
+  
+      //   newRow.appendChild(productCell);
+      //   newRow.appendChild(quantityCell);
+      //   newRow.appendChild(totalCell);
+        
+      //   if (isOrderedPizza) { 
+      //   orderedPizzaTable.appendChild(newRow);
+      //   }
+      // });
   });  
 
     const receiptTable = document.getElementById('receipt-table');
@@ -183,6 +234,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const payButton = document.getElementById("pay-button");
     const paymentStatusElement = document.getElementById("payment-status");
     const pizzaIds = result.pizzaDetails.map(pizza => pizza.pizza_id);
+    console.log(pizzaIds);
 
     payButton.addEventListener("click", async function () {
       try {
@@ -201,7 +253,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const resultCart = await response.json();
         console.log(resultCart);
         if (resultCart) {
-          window.location.href = "/checkout";
+          window.location.href = '/checkout';
         } else {
           console.error('Error creating cart:', response.status, response.statusText);
         }

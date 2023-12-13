@@ -46,14 +46,5 @@ const createCart = async (req, res) => {
     }
 };
 
-const getOrders = async (req, res) => {
-    const pizzaIds = req.params.pizzaIds;
-    const result = await getOrderedPizza(pizzaIds);
-    if (result) {
-        res.status(201).json(result);
-    } else {
-        res.status(404).json({error: 'not found'});
-    }
-}
 
-export {getPizzas, removePizza, changeQuantity, createCart, getOrders};
+export {getPizzas, removePizza, changeQuantity, createCart};

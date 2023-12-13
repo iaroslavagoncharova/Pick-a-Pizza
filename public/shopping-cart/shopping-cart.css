@@ -38,30 +38,41 @@ header {
     padding: 0;
 }
 
+.mobile-menu-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .bottom_nav {
+    display: none;
+  }
+
 .logo-container {
     display: flex;
     flex-direction: row;
 }
 
 #header-logo {
-    width: 30%;
+    width: 40%;
     height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .pizza-logo {
     height: 100px;
-    padding: 0.8rem 0;
+    padding: 1rem;
 }
 
 .page-title {
     font-family: 'Blanka', sans-serif;
-    margin: auto;
-    padding-bottom: 10px;
-    font-size: xx-large;
+    font-size: x-large;
 }
 
 .wrapper {
-    width: 80%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     margin: 0 2rem 0 0;
@@ -82,6 +93,7 @@ header {
 .bottom-nav-icon {
     height: 50px;
 }
+
 #lang-container {
     border: 2px var(--grayish-brown) solid;
     border-radius: 5px;
@@ -185,7 +197,7 @@ header {
 }
 
 #bottom-nav-items .dropdown {
-    margin: auto 0 auto 2rem;
+    margin: auto;
 }
 
 #user-options {
@@ -240,8 +252,6 @@ header {
 a {
     text-decoration: none;
 }
-
-
 .hero-image {
     min-height: 100%;
     background-image: url(../images/bckgrndlight.png);
@@ -290,29 +300,29 @@ a {
     transition: ease-in-out 0.1s;
 }
 
-#selected-products {
+#selected-products, #ordered-products {
     width: 90%;
     margin: auto;
 }
 
-#selected-products thead {
+#selected-products thead, #ordered-products thead {
     text-align: center;
 }
 
-#selected-products th {
+#selected-products th, #ordered-products th {
     padding: 3px;
 }
 
-#selected-products tbody {
+#selected-products tbody, #ordered-products tbody {
     justify-content: left;
 }
 
-#selected-products, #selected-products th, #selected-products td {
+#selected-products, #selected-products th, #selected-products td, #ordered-products, #ordered-products th, #ordered-products td {
     border: 1px solid var(--light);
     border-collapse: collapse;
 }
 
-#selected-products th, #selected-products td {
+#selected-products th, #selected-products td, #ordered-products th, #ordered-products td {
     background-color: var(--light-peach);
 }
 
@@ -485,20 +495,68 @@ footer {
     width: 30px;
     cursor: pointer;
 }
+#mobile-menu-icon {
+    display: none;
+}
+
+#footer-logo {
+    align-items: center;
+}
 
 /* Tablet view */
 @media only screen and (max-width: 768px) {
     #header-logo {
-        display: none;
-    }
-    .dropdown {
-        display: none;
+        display: flex;
+        align-items: center;
+        width: 70%;
     }
     .wrapper {
         width: 100%;
     }
-    #bottom-nav-items a {
+    .bottom_nav {
+        display: flex;
+        justify-content: space-between;
+    }
+    #bottom-nav-items {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 7rem;
+        background-color: var(--light);
+        align-items: self-end;
+        margin: 1rem 0;
+        padding: 1rem;
+        border: 2px solid var(--grayish-brown);
+        height: 20rem;
+        left: 25rem;
+    }
+  
+  .bottom_nav {
+    display: none;
+  }
+  #bottom-nav-items .dropdown {
+    margin: auto 0 0 2rem;
+  }
+    .dropdown:hover .dropdown-content {
+        left: -205%;
+        top: 20%;
+    }
+    #pizza-dropdown {
+        top: 40%;
+        left: -130%;
+        width: 12rem;
+    }
+    #user-dropdown {
+        left: 0;
+    }
+    #header-logo h1 {
+        font-size: 1rem;
+    }
+    #header-logo img {
+        height: 80px;
+    }
+    #mobile-menu-icon {
+        display: flex;
     }
     #cart-screen {
         width: 80%;
@@ -542,17 +600,20 @@ footer {
 
 /* Mobile view */
 @media only screen and (max-width: 480px) {
-    #header-logo {
-        display: none;
-    }
-    .dropdown {
-        display: none;
-    }
     .wrapper {
         width: 100%;
     }
-    #bottom-nav-items a {
-        display: none;
+    #bottom-nav-items {
+        left: 8rem;
+    }
+    .dropdown:hover .dropdown-content {
+        left: -140%;
+    }
+    #pizza-dropdown {
+        left: -85%;
+    }
+    #user-dropdown {
+        left: 0;
     }
     #product-screen {
         display: flex;
@@ -595,4 +656,44 @@ footer {
         width: 100%;
         height: auto;
       }
+}
+
+@media only screen and (min-width: 769px) {
+    .dropdown:hover .dropdown-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1120px) {
+    #header-logo {
+        display: flex;
+        align-items: center;
+        width: 70%;
+    }
+    .wrapper {
+        width: 100%;
+    }
+    .dropdown:hover .dropdown-content {
+        left: -205%;
+        top: 20%;
+    }
+    #pizza-dropdown {
+        top: 40%;
+        left: -130%;
+        width: 12rem;
+    }
+    #user-dropdown {
+        left: 0;
+    }
+    #header-logo h1 {
+        font-size: 1rem;
+    }
+    #header-logo img {
+        height: 80px;
+    }
+    #mobile-menu-icon {
+        display: flex;
+    }
 }

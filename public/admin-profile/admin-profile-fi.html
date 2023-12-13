@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin-profiili</title>
-    <script type="module" src="admin-profile/admin-profile.js"></script>
-    <script type="module" src="admin-profile/order-data.js"></script>
+    <script type="module" src="/admin-profile/admin-profile.js"></script>
+    <script type="module" src="/admin-profile/order-data.js"></script>
     <script type="module" src="/admin-profile/user-data.js"></script>
+    <script type="module" src="/admin-profile/ingredients.js"></script>
+    <link rel="stylesheet" href="/admin-profile/admin-profile.css">
     <script type="module" src="../prompts.js"></script>
-    <script src="../language.js" defer></script>
-    <link rel="stylesheet" href="admin-profile/admin-profile.css">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="apple-touch-icon" href="../pwa-images/icon-192x192.png">
+    <link rel="icon" href="../pwa-images/favicon.ico" type="image/x-icon">  
+    <meta name="theme-color" content="#68563d"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">  
+    <meta name="apple-mobile-web-app-status-bar-style" content="#68563d"> 
+    <meta name="apple-mobile-web-app-title" content="Pick-a-Pizza"> 
+    <meta name="msapplication-TileImage" content="../pwa-images/icon-192x192.png">  
+    <meta name="msapplication-TileColor" content="#faf4f1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/438aeadf51.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -25,8 +35,8 @@
                     <a href="/directions"><img class="top-nav-icon" src="../images/icons/location-icon.png" alt="Location Icon"></a>
                     <div id="lang-container">
                         <img class="top-nav-icon" src="../images/icons/globe-icon.png" alt="Globe Icon">
-                        <span class="lang-option" id="english" onclick="changeLanguage('english')">EN</span>
-                        <span class="lang-option active-lang" id="finnish" onclick="changeLanguage('finnish')">FI</span>
+                        <span class="lang-option" id="english">EN</span>
+                        <span class="lang-option active-lang" id="finnish">FI</span>
                     </div>
                 </div>
             </div>
@@ -76,23 +86,11 @@
                     <button class="admin-button" id="all-orders">Kaikki tilaukset</button>
                 </div>
                 <div id="users"><h3>Käyttäjät</h3>
-                <ul>
-                    <li><a href="#">Slava slava@example.com 0100000000</a></li>
-                    <li><a href="#">Juan juan@example.com 0200000000</a></li>
-                    <li><a href="#">Anna anna@example.com 0300000000</a></li>
-                    <li><a href="#">User1 user1@example.com 0400000000</a></li>
-                    <li><a href="#">User2 user2@example.com 0500000000</a></li>
-                </ul>
+                <ul id="users-data"></ul>
                 <button class="admin-button" id="all-users">Kaikki käyttäjät</button>
                 </div>
                 <div id="ingredients"><h3>Ainekset</h3>
-                    <ul>
-                        <li><a href="#">Tomaatti</a></li>
-                        <li><a href="#">Herkkusieni</a></li>
-                        <li><a href="#">Kana</a></li>
-                        <li><a href="#">Tonnikala</a></li>
-                        <li><a href="#">Tofu</a></li>
-                    </ul>
+                    <ul id="ingredient-data"></ul>
                     <button class="admin-button" id="all-ingredients">Näytä varastosaldo</button>
             </div>
     </div>
@@ -114,16 +112,55 @@
             <i class="fa fa-whatsapp fa-2x"></i>
         </div>
     </footer>
-    <dialog id="edit-profile-dialog" class="hidden">
-        <div id="dialog-top">
-            <h3 id="dialog-header">Käynnissä olevat tilaukset</h3>
-            <span id="close-dialog">&#x2715;</span>
+    <dialog id="edit-orders-dialog" class="hidden">
+        <div class="dialog-top">
+            <h3 class="dialog-header">Käynnissä olevat tilaukset</h3>
+            <span class="close-dialog" id="close-orders">&#x2715</span>
         </div>
-        <div id="dialog-content">
-            <h4>Päivittää tilaukset:</h4>
-            <ul id="edit-orders">
+        <div class="dialog-content">
+            <h4>Päivitä tilauksia:</h4>
+            <ul class="data-list" id="edit-orders">
+            </ul>
+        </div>
+    </dialog>
+    <dialog id="edit-users-dialog" class="hidden">
+        <div class="dialog-top">
+            <h3 class="dialog-header">Käyttäjät</h3>
+            <span class="close-dialog" id="close-users">&#x2715</span>
+        </div>
+        <div class="dialog-content">
+            <h4>Hallitse käyttäjiä:</h4>
+            <ul class="data-list" id="edit-users">
             </ul>
         </div>
     </dialog>   
+    <dialog id="edit-ingredients-dialog" class="hidden">
+        <div class="dialog-top">
+            <h3 class="dialog-header">Ainesosat</h3>
+            <span class="close-dialog" id="close-ingredients">&#x2715</span>
+        </div>
+        <div class="dialog-content" id="ing-dialog-cont">
+            <h4>Hallitse ainesosia:</h4>
+            <div id="edit-ingredients"></div>
+        </div>
+    </dialog>  
+    <div class="alert-popup hidden" id="message-user">
+        <h4>Lähetä viesti <span id="msg-username"></span>lle</h4>
+        <textarea name="message" id="message" cols="30" rows="5" placeholder="Onneksi olkoon, olet voittanut..."></textarea>
+        <div class="confirm-options">
+            <button class="form-btn" id="cancel-msg">Peruuta</button>
+            <button class="form-btn" id="confirm-msg">OK</button>
+        </div>
+    </div>  
+    <div class="alert-popup hidden" id="confirm-deletion">
+        <img src="../images/icons/warning-icon.png" alt="Warning Icon" id="warning-icon" class="bottom-nav-icon">
+        <p>This is a permanent action.<br>
+        Upon deletion, an email will be sent to the email attached<br>
+        to this account to inform the user of their account deletion.</p>
+        <div class="confirm-options">
+            <button class="form-btn" id="cancel-delete">Cancel</button>
+            <button class="form-btn" id="confirm-delete">OK</button>
+        </div>
+    </div> 
 </body>
 </html>
