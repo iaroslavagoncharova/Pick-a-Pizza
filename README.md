@@ -68,11 +68,11 @@ You can find the script in our database folder
 
 ### 4. Create env. file containing theese variables:
 
-DB_HOST= localhost
-DB_USER= Your user
-DB_PASSWORD= Your password
-DB_NAME= pickapizza
-JWT_SECRET= Your token
+- DB_HOST= localhost
+- DB_USER= Your user
+- DB_PASSWORD= Your password
+- DB_NAME= pickapizza
+- JWT_SECRET= Your token
 
 ### 5. Run the application
 
