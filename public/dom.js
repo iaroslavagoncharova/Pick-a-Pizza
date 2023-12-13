@@ -1,6 +1,5 @@
 
 const addUserDataToDom = (user) => {
-    console.log('addUserDataToDom', user);
     const container = document.getElementById('bottom-nav-items');
     const loginIcon = document.getElementById('login-icon');
     loginIcon.remove();

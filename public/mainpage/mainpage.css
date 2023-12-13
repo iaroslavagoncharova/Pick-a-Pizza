@@ -243,11 +243,11 @@ header {
     100% {
       transform: scale(1);
     }
-  }
+}
   
-  #phone-button {
+#phone-button {
     animation: pulse 2s infinite;
-  }
+}
 
 a {
     text-decoration: none;

@@ -11,43 +11,43 @@ let storedPromptId = 0;
 document.addEventListener('DOMContentLoaded', function () {
 
   if (localStorage.getItem('selectedPizzaIngredients') === null) {
-    console.error('No selected pizza ingredients found in local storage');
+    console.log('No selected pizza ingredients found in local storage');
+  } else {
+    selectedPizzaIngredients = JSON.parse(localStorage.getItem('selectedPizzaIngredients'));
+
+    const storedDough = selectedPizzaIngredients.rows[0].dough;
+    console.log(storedDough);
+    const dough = document.getElementById(storedDough);
+    dough.checked = true;
+
+    const storedSize = selectedPizzaIngredients.rows[0].size.toLowerCase();
+    console.log(storedSize);
+    const size = document.getElementById(storedSize);
+    size.checked = true;
+
+    const storedName = selectedPizzaIngredients.rows[0].prompt_name;
+    console.log(storedName);
+    const name = document.getElementById('name');
+    name.innerText = storedName;
+
+    storedPromptId = selectedPizzaIngredients.rows[0].prompt_id;
+    console.log('prompt id', storedPromptId);
+
+    const storedIngredients = selectedPizzaIngredients.rows3;
+    console.log(storedIngredients);
+
+    // check the checkboxes for the ingredients that were selected
+    storedIngredients.forEach(ingredient => {
+      const ingredientName= ingredient.name;
+      console.log(ingredientName);
+      const ingredientCheckbox = document.getElementById(ingredientName);
+      console.log(ingredientCheckbox);
+      ingredientCheckbox.checked = true;
+    });
+
+    // update the calories, carbs, protein, fats and price based on the selected ingredients, dough and size
+    updatePizzaInfo();
   }
-
-  selectedPizzaIngredients = JSON.parse(localStorage.getItem('selectedPizzaIngredients'));
-
-  const storedDough = selectedPizzaIngredients.rows[0].dough;
-  console.log(storedDough);
-  const dough = document.getElementById(storedDough);
-  dough.checked = true;
-
-  const storedSize = selectedPizzaIngredients.rows[0].size.toLowerCase();
-  console.log(storedSize);
-  const size = document.getElementById(storedSize);
-  size.checked = true;
-
-  const storedName = selectedPizzaIngredients.rows[0].prompt_name;
-  console.log(storedName);
-  const name = document.getElementById('name');
-  name.innerText = storedName;
-
-  storedPromptId = selectedPizzaIngredients.rows[0].prompt_id;
-  console.log('prompt id', storedPromptId);
-
-  const storedIngredients = selectedPizzaIngredients.rows3;
-  console.log(storedIngredients);
-
-  // check the checkboxes for the ingredients that were selected
-  storedIngredients.forEach(ingredient => {
-    const ingredientName= ingredient.name;
-    console.log(ingredientName);
-    const ingredientCheckbox = document.getElementById(ingredientName);
-    console.log(ingredientCheckbox);
-    ingredientCheckbox.checked = true;
-  });
-
-  // update the calories, carbs, protein, fats and price based on the selected ingredients, dough and size
-  updatePizzaInfo();
 });
 
 let totalCalories = 0;
@@ -68,6 +68,7 @@ const quantityInput = document.getElementById('quantity');
 
 const updatePizzaInfo = async () => {
   try {
+    console.log(localStorage);
     const clickedDough = document.querySelector('input[name="dough"]:checked');
     const clickedSize = document.querySelector('input[name="size"]:checked');
     const quantity = +quantityInput.value;

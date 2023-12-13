@@ -76,6 +76,7 @@ const fetchOrders = async (userId) => {
     };
     
     const firstOrder = ordersHTML[0].cloneNode(true);
+    console.log('ordersHTML: ', ordersHTML);
     orderCont.appendChild(firstOrder);
 
     const doneIcons = document.querySelectorAll('.completed-icon');
