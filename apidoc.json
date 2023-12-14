@@ -2,7 +2,7 @@
     "name": "Pick-a-pizza",
     "version": "1.0.0",
     "description": "A pizza ordering app",
-    "url": "https://ucad-server-anna.northeurope.cloudapp.azure.com/mainpage/mainpage.html",
+    "url": "https://pick-a-pizza.northeurope.cloudapp.azure.com",
     "header": {
         "title": "Pick-a-pizza",
         "filename": ""
