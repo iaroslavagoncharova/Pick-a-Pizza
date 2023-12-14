@@ -1,5 +1,5 @@
 
-  <img src="./public/images/pizza_logo2.png" width="200" alt="Pizza Logo" align="right">
+  <img src="./public/images/pizza_logo.png" width="200" alt="Pizza Logo" align="right">
 
 
 # Pick-a-pizza
