@@ -20,7 +20,7 @@
           "type": "image/png"
         }],
     "lang": "en-US",
-    "start_url": "./mainpage.html",
+    "start_url": "./mainpage/mainpage.html",
     "display": "standalone",
     "background_color": "#faf4f1",
     "theme_color": "#68563d"

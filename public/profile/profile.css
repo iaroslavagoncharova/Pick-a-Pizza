@@ -618,6 +618,7 @@ footer {
     #user-info {
         grid-template-rows: repeat(3, 1fr);
         grid-template-columns: 0.5fr;
+        margin: auto;
     }
     #personal-info {
         grid-row: 1 / 2;
@@ -640,6 +641,13 @@ footer {
     .logo-container {
         width: 100%;
         justify-content: center;
+    }
+    #dialog-top {
+        top: 4vh;
+        width: 65vw;
+    }
+    #dialog-content {
+        width: unset;
     }
 }
 

@@ -7,7 +7,18 @@ const __dirname = path.dirname(__filename);
 
 const mainRouter = express.Router();
 
-mainRouter.get('/', (req, res) => {
+mainRouter
+/**
+ * @api {get} /api Get main page
+ * @apiVersion 1.0.0
+ * @apiName getMainPage
+ * @apiGroup Main
+ * @apiPermission all
+ * 
+ * @apiSuccess {Page} main Main page.
+ * 
+ */
+.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../../public/mainpage/mainpage.html'))
 });
 export default mainRouter;

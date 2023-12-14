@@ -8,10 +8,22 @@ const __dirname = path.dirname(__filename);
 
 const checkoutRouter = express.Router();
 
-checkoutRouter.get('/', (req, res) => {
+checkoutRouter
+/**
+ * @api {get} /api/checkout Get checkout page
+ * @apiVersion 1.0.0
+ * @apiName getCheckoutPage
+ * @apiGroup Checkout
+ * @apiPermission all
+ * 
+ * @apiSuccess {Page} checkout Checkout page.
+ * 
+ */
+.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../../public/checkout/checkout.html'));
 });
 
-checkoutRouter.get('/:id', getShoppingCart);
+checkoutRouter
+.get('/:id', getShoppingCart);
 
 export default checkoutRouter;

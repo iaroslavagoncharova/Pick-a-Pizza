@@ -378,6 +378,7 @@ a {
 
 #offers {
     cursor: pointer;
+    overflow: hidden;
 }
 
 #promo-code {

@@ -7,49 +7,32 @@ const __dirname = path.dirname(__filename);
 
 const accRouter = express.Router();
 
-// /**
-//  * @api {get} /api/my-account Get account page
-//  * @apiVersion 1.0.0
-//  * @apiName GetAccount
-//  * @apiGroup Account
-//  * @apiPermission token
-//  * 
-//  * @apiSuccess {Object[]} comments List of comments.
-//  * @apiSuccess {Number} comments.comment_id Comment ID.
-//  * @apiSuccess {Number} comments.user_id User ID.
-//  * @apiSuccess {Number} comments.media_id Media ID.
-//  * @apiSuccess {String} comments.comment_text Comment text.
-//  * @apiSuccess {String} comments.created_at Comment creation date.
-//  * 
-//  * @apiSuccessExample Success-Response:
-//  * HTTP/1.1 200 OK
-//  * {
-//  *    "comment_id": 1,
-//  *    "user_id": 1,
-//  *    "media_id": 1,
-//  *    "comment_text": "This is a comment",
-//  *    "created_at": "2023-11-28T15:10:43.000Z"
-//  * }, {
-//  *    "comment_id": 2,
-//  *    "user_id": 2,
-//  *    "media_id": 1,
-//  *    "comment_text": "This is another comment",
-//  *    "created_at": "2023-11-28T15:10:43.000Z"
-//  * }
-//  * 
-//  * @apiErrorExample Error-Response:
-//  *   HTTP/1.1 404 Not Found
-//  *  {
-//  *    "error": "Not found",
-//  *    "media_id": 999
-//  * }
-//  * 
-//  */
-accRouter.get('/', (req, res) => {
+accRouter
+/**
+ * @api {get} /api/my-account Get account page
+ * @apiVersion 1.0.0
+ * @apiName getAccount
+ * @apiGroup Account
+ * @apiPermission user (self)
+ * 
+ * @apiSuccess {Page} my-account Account page.
+ * 
+ */
+.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../../public/profile/profile.html'));
 })
 
-accRouter.get('/admin', (req, res) => {
+accRouter
+/**
+ * @api {get} /api/my-account/admin Get admin account page
+ * @apiVersion 1.0.0
+ * @apiName getAdminAccount
+ * @apiGroup Account
+ * @apiPermission admin
+ * 
+ * @apiSuccess {Page} my-account Account page.
+ */
+.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, '../../public/admin-profile/admin-profile.html'));
 });
 

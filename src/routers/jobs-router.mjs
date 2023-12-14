@@ -7,7 +7,18 @@ const __dirname = path.dirname(__filename);
 
 const jobApplicationRouter = express.Router();
 
-jobApplicationRouter.get('/', (req, res) => {
+jobApplicationRouter
+/**
+ * @api {get} /api/join-us Get work page
+ * @apiVersion 1.0.0
+ * @apiName getWorkPage
+ * @apiGroup Work
+ * @apiPermission all
+ * 
+ * @apiSuccess {Page} work Work page.
+ * 
+ */
+.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../../public/work/work.html'));
 });
 

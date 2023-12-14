@@ -28,7 +28,7 @@ const changeQuantity = async (req, res) => {
     const quantity = req.body.quantity;
     const result = await putQuantity(quantity, id);
     if (result) {
-        res.status(201).json(result);
+        res.status(200).json(result);
     } else {
         res.status(404).json({error: 'not found'});
     }

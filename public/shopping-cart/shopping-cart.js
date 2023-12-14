@@ -19,16 +19,20 @@ window.onload = () => {
   } else {
     joinUs.style.display = 'block';
     shippingFee.innerText = '1.50€';
+    console.log('no pizzas in cart');
+    const noPizzaDiv = document.getElementById('no-pizzas');
+    noPizzaDiv.style.display = 'block';
     const emptyCart = document.createElement('p');
     emptyCart.textContent = "You haven't added any pizzas to your cart yet. Explore our menu!";
     const menuButton = document.getElementById('mainpage-button');
     menuButton.textContent = 'To the mainpage';
     menuButton.addEventListener('click', function () {
-      window.location.href = '/';
+    window.location.href = '/';
     });
     emptyCart.appendChild(menuButton);
-    const tableBody = document.querySelector('#selected-products tbody');
-    tableBody.appendChild(emptyCart);
+    noPizzaDiv.appendChild(emptyCart);
+    const payButton = document.getElementById('checkout-btn');
+    payButton.style.display = 'none';
   }
 };
 

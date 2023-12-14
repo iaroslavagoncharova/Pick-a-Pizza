@@ -797,6 +797,13 @@ footer {
     form {
         padding: 0;
     }
+    .dialog-top {
+        top: 4vh;
+        width: 65vw;
+    }
+    .dialog-content {
+        width: unset;
+    }
     #contact-info {
         margin: auto;
     }

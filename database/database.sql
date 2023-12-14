@@ -56,12 +56,7 @@ CREATE TABLE Prompts (
     prompt_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     prompt_name VARCHAR(255) NOT NULL,
     dough VARCHAR(255) NOT NULL,
-    size CHAR(1) NOT NULL,
-    price DECIMAL(4,2) NOT NULL,
-    calories INT NOT NULL,
-    carbs INT NOT NULL,
-    protein INT NOT NULL,
-    fats INT NOT NULL
+    size CHAR(1) NOT NULL
 );
 
 CREATE TABLE Ingredients (
@@ -149,15 +144,15 @@ VALUES
 
 
 -- Add data for prompts
-INSERT INTO Prompts (prompt_name, dough, size, price, calories, carbs, protein, fats) 
+INSERT INTO Prompts (prompt_name, dough, size) 
 VALUES
-('Gluten Free', 'gluten-free', 'M', 10.00, 500, 50, 50, 50),
-('Keto', 'usual', 'L', 15.00, 600, 60, 60, 60),
-('Low Calorie', 'usual', 'M', 12.00, 400, 40, 40, 40),
-('Classic', 'usual', 'L', 14.00, 700, 70, 70, 70),
-('Vegan Classic', 'usual', 'M', 13.00, 550, 55, 55, 55),
-('Gluten Free Classic', 'gluten-free', 'L', 16.00, 600, 60, 60, 60),
-('Season Deal', 'usual', 'L', 18.00, 800, 80, 80, 80);
+('Gluten Free', 'gluten-free', 'M'),
+('Keto', 'usual', 'L'),
+('Low Calorie', 'usual', 'M'),
+('Classic', 'usual', 'L'),
+('Vegan Classic', 'usual', 'M'),
+('Gluten Free Classic', 'gluten-free', 'L'),
+('Season Deal', 'usual', 'L');
 
 -- Add Ingredient data
 INSERT INTO Ingredients (name, portion_size, price, calories, carbs, protein, fats, in_stock) 

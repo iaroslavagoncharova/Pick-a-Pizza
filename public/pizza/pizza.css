@@ -694,6 +694,7 @@ footer {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(5, auto);
         width: 100%;
+        justify-items: center;
     }
     .left-side-content {
         grid-row: 2/3;
@@ -706,7 +707,17 @@ footer {
         width: 90%;
     }
     #pizza-photo {
-        width: 400px;
+        width: 355px;
+    }
+    .dough-buttons label {
+        width: 3rem;
+    }
+    #message {
+        width: 70%;
+        padding: 1rem;
+    }
+    .calories {
+        width: 15rem;
     }
     .price-add {
         left: unset;
