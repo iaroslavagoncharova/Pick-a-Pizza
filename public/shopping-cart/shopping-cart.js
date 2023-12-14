@@ -113,6 +113,8 @@ if (nonOrdered.length === 0) {
   });
   emptyCart.appendChild(menuButton);
   noPizzaDiv.appendChild(emptyCart);
+  const payButton = document.getElementById('checkout-btn');
+  payButton.style.display = 'none';
 }
 
 // if there're pizzas, hide the mainpage button
@@ -141,7 +143,7 @@ function createPizzaRow(pizza, pizzaName, allowQuantityChange) {
       <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
       <div>
           <h3>${pizzaName}</h3>
-          <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough}</p>
+          <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
           <p>${pizza.ingredients.join(', ')}</p>
       </div>`;
   productCell.appendChild(productDetails);
@@ -168,10 +170,9 @@ function createPizzaRow(pizza, pizzaName, allowQuantityChange) {
   const totalPrice = (parseFloat(pizza.price) * pizza.quantity).toFixed(2);
   totalCell.innerHTML = `<p>${totalPrice}€</p>`;
 
-    
   newRow.appendChild(productCell);
-  newRow.appendChild(totalCell);
   newRow.appendChild(quantityCell);
+  newRow.appendChild(totalCell);
 
   if (allowQuantityChange) {
     const removeCell = document.createElement('td');

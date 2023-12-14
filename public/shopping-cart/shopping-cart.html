@@ -17,6 +17,7 @@
     <meta name="msapplication-TileColor" content="#faf4f1">
     <link rel="stylesheet" type="text/css" href="shopping-cart.css">
     <link rel="stylesheet" href="modal.css">
+    <script type="module" src="modal.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/438aeadf51.js" crossorigin="anonymous"></script>
 </head>
@@ -141,17 +142,18 @@
                                   
                                   <label for="expiration-date-month">Expiration Date:</label>
                                   <div id="date">
-                                      <input type="number" id="expiration-date-month" placeholder="MM" value="01" required autocomplete="cc-exp-month">
+                                      <input type="number" id="expiration-date-month" placeholder="MM" required autocomplete="cc-exp-month">
                                       <span>/</span>
-                                      <input type="number" id="expiration-date-year" placeholder="YY" value="2023" required autocomplete="cc-exp-year">
+                                      <input type="number" id="expiration-date-year" placeholder="YY" required autocomplete="cc-exp-year">
                                     </div>
                                     
                                     <label for="cvv">CVV:</label>
                                     <input type="number" id="cvc" placeholder="CVC" required>
-                                </div>
-                                <div id="confirmation">
+
                                     <label for="phone">Phone Number:</label>
                                     <input type="tel" id="phone" placeholder="Enter phone number" required autocomplete="mobile">
+                                </div>
+                                <div id="confirmation">
                                 <div id="total-amount"></div>
                                 <button id="pay-button">Pay Now</button>
                                 </div>

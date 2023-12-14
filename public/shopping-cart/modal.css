@@ -38,16 +38,17 @@
   padding: 20px;
   border: 1px solid #888;
   border-radius: 20px;
-  width: 80%;
+  width: 70%;
   color: var(--grayish-brown);
 }
 
 #payment-section {
   display: grid;
-  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
-  grid-template-rows: 1fr 3fr;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1rem;
   margin-top: 4rem;
-  padding: 0;
+  padding: 20px;
   justify-items: stretch;
   align-items: center;
 }
@@ -81,10 +82,9 @@ input {
 }
 #confirmation {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr 1fr;
+  grid-template-columns: repeat(2, 1.5fr);
   margin-top: 3rem;
-  padding: 0;
-  justify-items: end;
+  padding: 20px;
   align-items: center;
 }
 #total-amount {
@@ -120,22 +120,31 @@ input {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 768px) {
+  .modal-content {
+    width: 70%;
+    align-items: center;
+  }
+  #payment-section {
+    justify-items: center;
+    row-gap: 1.5rem;
+    grid-template-columns: 1fr;
+}
+  #date {
+    grid-template-columns: 1fr;
+  }
+  #confirmation {
+    grid-template-columns: 2fr;
+    font-size: 1.5rem;
+    row-gap: 2rem;
+    margin-top: unset;
+  }
+}
 
-@media only screen and (max-width: 950px) {
-    .modal-content {
-        width: 70%;
-        align-items: center;
-      }
-    #payment-section {
-        justify-items: center;
-        row-gap: 1.5rem;
-        grid-template-columns: 1fr;
-    }
-    #confirmation {
-        font-size: 1.5rem;
-        grid-template-columns: 1fr 2fr;
-        row-gap: 2rem;
-    }
-    }
+@media only screen and (max-width: 480px) {
+  .modal-content {
+    width: 80%;
+  }
+}
 
 
