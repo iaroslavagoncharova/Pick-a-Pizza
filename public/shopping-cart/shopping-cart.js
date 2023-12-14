@@ -65,113 +65,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     let nonOrdered = [];
-  //   if (result.pizzaDetails[0] !== null && result.pizzaDetails[0].length !== 0) {
-  //     const pizzaDetails = result.pizzaDetails;
-  
-  //     for (const pizza of pizzaDetails) {
-  //         const pizzaName = generatePizzaName(pizza);
-  //         localStorage.setItem('pizzaData', JSON.stringify(pizza));
-  //         const newRow = document.createElement('tr');
-  //         const productCell = document.createElement('td');
-  //         productCell.classList.add('product');
-  //         const productDetails = document.createElement('div');
-  //         productDetails.classList.add('product-details');
-  //         productDetails.innerHTML = `
-  //             <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
-  //             <div>
-  //                 <h3>${pizzaName}</h3>
-  //                 <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
-  //                 <p>${pizza.ingredients.join(', ')}</p>
-  //             </div>`;
-  //         productCell.appendChild(productDetails);
-  
-  //         // generate a quantity selection and append it to the table
-  //         const quantityCell = document.createElement('td');
-  //         quantityCell.classList.add('quantity');
-  //         const quantitySelection = document.createElement('div');
-  //         quantitySelection.classList.add('quantity-selection');
-  //         quantitySelection.innerHTML = `
-  //             <button class="minus">-</button>
-  //             <p>${pizza.quantity}</p>
-  //             <button class="plus">+</button>`;
-  //         quantityCell.appendChild(quantitySelection);
-  
-  //         // generate a total price and append it to the table
-  //         const totalCell = document.createElement('td');
-  //         totalCell.classList.add('total');
-  
-  //         // Use the price from the database
-  //         const totalPrice = (parseFloat(pizza.price) * pizza.quantity).toFixed(2);
-  //         totalCell.innerHTML = `<p>${totalPrice}€</p>`;
-  
-  //         // generate a remove button and append it to the table
-  //         const removeCell = document.createElement('td');
-  //         removeCell.classList.add('remove');
-  //         removeCell.innerHTML = `<i class="fa-solid fa-trash remove"></i>`;
-  //         console.log(pizza.pizza_id);
-  //         removeCell.addEventListener('click', async function () {
-  //             // if a remove button is clicked, delete the pizza from the database and reload the page
-  //             try {
-  //                 const response = await fetch(`/shopping-cart/${pizza.pizza_id}`, {
-  //                     method: 'DELETE',
-  //                     headers: {
-  //                         'Content-Type': 'application/json',
-  //                     },
-  //                 });
-  //                 window.location.reload();
-  //             } catch (error) {
-  //                 console.error('Error deleting pizza:', error.message);
-  //             }
-  //         });
-  
-  //         newRow.appendChild(productCell);
-  //         newRow.appendChild(quantityCell);
-  //         newRow.appendChild(totalCell);
-  //         newRow.appendChild(removeCell);
-  //         tableBody.appendChild(newRow);
-  
-  //         tableBody.appendChild(newRow);
-  //   }} 
-  //   if (result.orderDetails[0] !== null && result.orderDetails[0].length !== 0) {
-  //   const orderedPizzaTable = document.querySelector('#ordered-products tbody');
-  //   console.log(result.orderDetails);
-  //   const orderDetails = result.orderDetails;
-  //   orderDetails.forEach(pizza => {
-  //       const pizzaName = generatePizzaName(pizza);
-  //       const newRow = document.createElement('tr');
-  //       const productCell = document.createElement('td');
-  //       productCell.classList.add('product');
-  //       const productDetails = document.createElement('div');
-  //       productDetails.classList.add('product-details');
-  //       productDetails.innerHTML = `
-  //           <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
-  //           <div>
-  //           <h3>${pizzaName}</h3>
-  //           <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
-  //           <p>${pizza.ingredients.join(', ')}</p>
-  //           </div>`;
-  //       productCell.appendChild(productDetails);
-
-  //       // generate a quantity selection and append it to the table
-  //       const quantityCell = document.createElement('td');
-  //       quantityCell.classList.add('quantity');
-  //       quantityCell.innerHTML = `<p>${pizza.quantity}</p>`;
-
-  //       // generate a total price and append it to the table
-  //       const totalCell = document.createElement('td');
-  //       totalCell.classList.add('total');
-
-  //       // Use the price from the database
-  //       const totalPrice = (parseFloat(pizza.price) * pizza.quantity).toFixed(2);
-  //       totalCell.innerHTML = `<p>${totalPrice}€</p>`;
-
-  //       newRow.appendChild(productCell);
-  //       newRow.appendChild(quantityCell);
-  //       newRow.appendChild(totalCell);
-  //       orderedPizzaTable.appendChild(newRow);
-  // }
-  //   );
-  //   }
 
 const orderedPizzas = result.orderDetails || [];
 const nonOrderedPizzas = result.pizzaDetails || [];
@@ -222,7 +115,7 @@ if (nonOrdered.length === 0) {
   noPizzaDiv.appendChild(emptyCart);
 }
 
-// if there're pizzzas, hide the mainpage button
+// if there're pizzas, hide the mainpage button
 
 if (nonOrdered.length !== 0) {
   const menuButton = document.getElementById('mainpage-button');
@@ -233,6 +126,8 @@ if (nonOrdered.length !== 0) {
 if (filteredOrderedPizzas.length === 0) {
   const orderedPizzaTable = document.querySelector('#ordered-products');
   orderedPizzaTable.style.display = 'none';
+  const orderedPizzaTableHeader = document.querySelector('#ordered-pizzas h2');
+  orderedPizzaTableHeader.style.display = 'none';
 }
 
 // Function to create a row for a pizza
