@@ -41,7 +41,7 @@ const postRegister = async (req, res, next) => {
     try {
         res.json({message: 'registration successful', user: user})
     } catch (e) {
-        res.status(401).json({message: 'an error occurred'});
+        res.status(404).json({message: 'an error occurred'});
     }
 };
 

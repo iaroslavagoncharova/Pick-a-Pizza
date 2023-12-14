@@ -7,7 +7,7 @@ const sendData = async (req, res) => {
     if (result) {
         res.status(201).json(result);
     } else {
-        res.status(404).json({error: 'not found'});
+        res.status(400).json({error: 'bad request'});
     }
 };
 

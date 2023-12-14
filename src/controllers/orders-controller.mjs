@@ -54,7 +54,7 @@ const removeOrder = async (req, res) => {
         const deleted = await deleteOrder(req.params.id);
 
         if (!deleted.error) {
-            return res.status(204).json({message: "user deleted successfully"});
+            return res.status(204).json({message: "order deleted successfully"});
         } else {
             return res.status(404).json({message: 'an error occurred'});
         }
