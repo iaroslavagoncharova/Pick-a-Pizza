@@ -61,22 +61,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     };
 
     if (!result) {
-      // if there's no pizzas in cart, display a message and invite to explore the menu
-      console.log('no pizzas in cart');
-      const emptyCart = document.createElement('p');
-      emptyCart.textContent = "You haven't added any pizzas to your cart yet. Explore our menu!";
-      const menuButton = document.getElementById('mainpage-button');
-      menuButton.textContent = 'To the mainpage';
-      menuButton.addEventListener('click', function () {
-        window.location.href = '/';
-      });
-      emptyCart.appendChild(menuButton);
-      tableBody.appendChild(emptyCart);
-      return;
-    }
-    if (result) {
-      const menuButton = document.getElementById('mainpage-button');
-      menuButton.style.display = 'none';
+      console.error('Error fetching pizzas:', response.status, response.statusText)
     }
 
     let nonOrdered = [];
@@ -219,6 +204,35 @@ for (const pizza of filteredNonOrderedPizzas) {
     tableBody.appendChild(newRow);
     nonOrdered.push(pizza);
   }
+}
+
+// if there's no pizzas in the cart, display a message
+if (nonOrdered.length === 0) {
+  console.log('no pizzas in cart');
+  const noPizzaDiv = document.getElementById('no-pizzas');
+  noPizzaDiv.style.display = 'block';
+  const emptyCart = document.createElement('p');
+  emptyCart.textContent = "You haven't added any pizzas to your cart yet. Explore our menu!";
+  const menuButton = document.getElementById('mainpage-button');
+  menuButton.textContent = 'To the mainpage';
+  menuButton.addEventListener('click', function () {
+    window.location.href = '/';
+  });
+  emptyCart.appendChild(menuButton);
+  noPizzaDiv.appendChild(emptyCart);
+}
+
+// if there're pizzzas, hide the mainpage button
+
+if (nonOrdered.length !== 0) {
+  const menuButton = document.getElementById('mainpage-button');
+  menuButton.style.display = 'none';
+}
+
+// if there's no orders, hide the ordered pizzas table
+if (filteredOrderedPizzas.length === 0) {
+  const orderedPizzaTable = document.querySelector('#ordered-products');
+  orderedPizzaTable.style.display = 'none';
 }
 
 // Function to create a row for a pizza

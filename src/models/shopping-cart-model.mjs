@@ -11,12 +11,18 @@ const fetchPizza = async (id) => {
             const sql3 = `SELECT ingredient_id FROM PizzaIngredient WHERE pizza_id = ?`;
             const params3 = [row.pizza_id];
             const result3 = await promisePool.query(sql3, params3);
+            console.log('result3', result3);
             const [rows3] = result3;
             console.log('ingredients for this pizza', params3, 'ingredient ids', rows3);
 
-            const sql4 = `SELECT name FROM Ingredients WHERE ingredient_id IN (?)`;
-            const params4 = [rows3.map(row => row.ingredient_id)];
-            const [result4] = await promisePool.query(sql4, params4);
+            const ingredientIds = rows3.map(row => row.ingredient_id);
+            console.log('ingredientIds', ingredientIds);
+            let result4 = [];
+            if (ingredientIds.length > 0) {
+                const sql4 = `SELECT name FROM Ingredients WHERE ingredient_id IN (?)`;
+                const params4 = [ingredientIds];
+                [result4] = await promisePool.query(sql4, params4);
+            };
             console.log('ingredient names', result4);
 
             const pizzaResult = {
