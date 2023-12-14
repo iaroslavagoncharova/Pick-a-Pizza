@@ -45,14 +45,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     console.log(user.user_id);
     const result = await response.json();
     console.log(result);
+    console.log(result.orderDetails);
     if (!result) {
       console.log('No pizzas in cart');
     }
     // generate a pizza name if a prompt wasn't used
   const generatePizzaName = (pizza) => {
-    if (pizza.name && pizza.prompt_id !== null) {
-      return pizza.name;
-    } else {
       if (pizza.dough === 'usual') {
         return usualNames[Math.floor(Math.random() * usualNames.length)];
       } else if (pizza.dough === 'gluten-free') {
@@ -60,13 +58,9 @@ document.addEventListener('DOMContentLoaded', async function () {
       } else if (pizza.dough === 'keto') {
         return ketoNames[Math.floor(Math.random() * ketoNames.length)];
       }
-    } 
-  };
-    // create a table with pizzas
-    const tableBody = document.querySelector('#selected-products tbody');
+    };
 
-    console.log(result);
-    if (result.pizzaDetails.length === 0) {
+    if (!result) {
       // if there's no pizzas in cart, display a message and invite to explore the menu
       console.log('no pizzas in cart');
       const emptyCart = document.createElement('p');
@@ -85,136 +79,236 @@ document.addEventListener('DOMContentLoaded', async function () {
       menuButton.style.display = 'none';
     }
 
-    result.pizzaDetails.forEach(pizza => {
-      // for each fetched pizza, generate a name, create a row and append it to the table
-      const pizzaName = generatePizzaName(pizza);
-      console.log(pizza);
-      localStorage.setItem('pizzaData', JSON.stringify(pizza));
-      const newRow = document.createElement('tr');
-      const productCell = document.createElement('td');
-      productCell.classList.add('product');
-      const productDetails = document.createElement('div');
-      productDetails.classList.add('product-details');
-      productDetails.innerHTML = `
-        <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
-        <div>
+    let nonOrdered = [];
+  //   if (result.pizzaDetails[0] !== null && result.pizzaDetails[0].length !== 0) {
+  //     const pizzaDetails = result.pizzaDetails;
+  
+  //     for (const pizza of pizzaDetails) {
+  //         const pizzaName = generatePizzaName(pizza);
+  //         localStorage.setItem('pizzaData', JSON.stringify(pizza));
+  //         const newRow = document.createElement('tr');
+  //         const productCell = document.createElement('td');
+  //         productCell.classList.add('product');
+  //         const productDetails = document.createElement('div');
+  //         productDetails.classList.add('product-details');
+  //         productDetails.innerHTML = `
+  //             <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
+  //             <div>
+  //                 <h3>${pizzaName}</h3>
+  //                 <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
+  //                 <p>${pizza.ingredients.join(', ')}</p>
+  //             </div>`;
+  //         productCell.appendChild(productDetails);
+  
+  //         // generate a quantity selection and append it to the table
+  //         const quantityCell = document.createElement('td');
+  //         quantityCell.classList.add('quantity');
+  //         const quantitySelection = document.createElement('div');
+  //         quantitySelection.classList.add('quantity-selection');
+  //         quantitySelection.innerHTML = `
+  //             <button class="minus">-</button>
+  //             <p>${pizza.quantity}</p>
+  //             <button class="plus">+</button>`;
+  //         quantityCell.appendChild(quantitySelection);
+  
+  //         // generate a total price and append it to the table
+  //         const totalCell = document.createElement('td');
+  //         totalCell.classList.add('total');
+  
+  //         // Use the price from the database
+  //         const totalPrice = (parseFloat(pizza.price) * pizza.quantity).toFixed(2);
+  //         totalCell.innerHTML = `<p>${totalPrice}€</p>`;
+  
+  //         // generate a remove button and append it to the table
+  //         const removeCell = document.createElement('td');
+  //         removeCell.classList.add('remove');
+  //         removeCell.innerHTML = `<i class="fa-solid fa-trash remove"></i>`;
+  //         console.log(pizza.pizza_id);
+  //         removeCell.addEventListener('click', async function () {
+  //             // if a remove button is clicked, delete the pizza from the database and reload the page
+  //             try {
+  //                 const response = await fetch(`/shopping-cart/${pizza.pizza_id}`, {
+  //                     method: 'DELETE',
+  //                     headers: {
+  //                         'Content-Type': 'application/json',
+  //                     },
+  //                 });
+  //                 window.location.reload();
+  //             } catch (error) {
+  //                 console.error('Error deleting pizza:', error.message);
+  //             }
+  //         });
+  
+  //         newRow.appendChild(productCell);
+  //         newRow.appendChild(quantityCell);
+  //         newRow.appendChild(totalCell);
+  //         newRow.appendChild(removeCell);
+  //         tableBody.appendChild(newRow);
+  
+  //         tableBody.appendChild(newRow);
+  //   }} 
+  //   if (result.orderDetails[0] !== null && result.orderDetails[0].length !== 0) {
+  //   const orderedPizzaTable = document.querySelector('#ordered-products tbody');
+  //   console.log(result.orderDetails);
+  //   const orderDetails = result.orderDetails;
+  //   orderDetails.forEach(pizza => {
+  //       const pizzaName = generatePizzaName(pizza);
+  //       const newRow = document.createElement('tr');
+  //       const productCell = document.createElement('td');
+  //       productCell.classList.add('product');
+  //       const productDetails = document.createElement('div');
+  //       productDetails.classList.add('product-details');
+  //       productDetails.innerHTML = `
+  //           <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
+  //           <div>
+  //           <h3>${pizzaName}</h3>
+  //           <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
+  //           <p>${pizza.ingredients.join(', ')}</p>
+  //           </div>`;
+  //       productCell.appendChild(productDetails);
+
+  //       // generate a quantity selection and append it to the table
+  //       const quantityCell = document.createElement('td');
+  //       quantityCell.classList.add('quantity');
+  //       quantityCell.innerHTML = `<p>${pizza.quantity}</p>`;
+
+  //       // generate a total price and append it to the table
+  //       const totalCell = document.createElement('td');
+  //       totalCell.classList.add('total');
+
+  //       // Use the price from the database
+  //       const totalPrice = (parseFloat(pizza.price) * pizza.quantity).toFixed(2);
+  //       totalCell.innerHTML = `<p>${totalPrice}€</p>`;
+
+  //       newRow.appendChild(productCell);
+  //       newRow.appendChild(quantityCell);
+  //       newRow.appendChild(totalCell);
+  //       orderedPizzaTable.appendChild(newRow);
+  // }
+  //   );
+  //   }
+
+const orderedPizzas = result.orderDetails || [];
+const nonOrderedPizzas = result.pizzaDetails || [];
+  
+// Filter out null entries
+const filteredOrderedPizzas = orderedPizzas.filter(pizza => pizza);
+const filteredNonOrderedPizzas = nonOrderedPizzas.filter(pizza => pizza);
+
+const orderedPizzaTable = document.querySelector('#ordered-products tbody');
+const tableBody = document.querySelector('#selected-products tbody');
+
+// Display ordered pizzas in the cart
+for (const pizza of filteredOrderedPizzas) {
+  const isOrderedPizza = filteredOrderedPizzas.some(orderedPizza => orderedPizza.pizza_id === pizza.pizza_id);
+  const isNonOrderedPizza = filteredNonOrderedPizzas.some(nonOrderedPizza => nonOrderedPizza.pizza_id === pizza.pizza_id);
+  if (isOrderedPizza && isNonOrderedPizza) {
+    const pizzaName = generatePizzaName(pizza);
+    const newRow = createPizzaRow(pizza, pizzaName, false);
+    orderedPizzaTable.appendChild(newRow);
+  }
+}
+
+// Display non-ordered pizzas in the cart
+for (const pizza of filteredNonOrderedPizzas) {
+  const isOrderedPizza = filteredOrderedPizzas.some(orderedPizza => orderedPizza.pizza_id === pizza.pizza_id);
+  const isNonOrderedPizza = filteredNonOrderedPizzas.some(nonOrderedPizza => nonOrderedPizza.pizza_id === pizza.pizza_id);
+  if (!isOrderedPizza && isNonOrderedPizza) {
+    const pizzaName = generatePizzaName(pizza);
+    const newRow = createPizzaRow(pizza, pizzaName, true);
+    tableBody.appendChild(newRow);
+    nonOrdered.push(pizza);
+  }
+}
+
+// Function to create a row for a pizza
+function createPizzaRow(pizza, pizzaName, allowQuantityChange) {
+  const newRow = document.createElement('tr');
+  const productCell = document.createElement('td');
+  productCell.classList.add('product');
+  const productDetails = document.createElement('div');
+  productDetails.classList.add('product-details');
+  productDetails.innerHTML = `
+      <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
+      <div>
           <h3>${pizzaName}</h3>
-          <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
-          <p>${pizza.result4.map(ingredient => ingredient.name).join(', ')}</p>
-        </div>`;
-      productCell.appendChild(productDetails);
-  
-  
-      // generate a quantity selection and append it to the table
-      const quantityCell = document.createElement('td');
-      quantityCell.classList.add('quantity');
-      const quantitySelection = document.createElement('div');
-      quantitySelection.classList.add('quantity-selection');
-      quantitySelection.innerHTML = `
-        <button class="minus">-</button>
-        <p>${pizza.quantity}</p>
-        <button class="plus">+</button>`;
-      quantityCell.appendChild(quantitySelection);
-  
-      // generate a total price and append it to the table
-      const totalCell = document.createElement('td');
-      totalCell.classList.add('total');
-      
-      // Use the price from the database
-      const totalPrice = (parseFloat(pizza.price) * pizza.quantity).toFixed(2);
-      totalCell.innerHTML = `<p>${totalPrice}€</p>`;
+          <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough}</p>
+          <p>${pizza.ingredients.join(', ')}</p>
+      </div>`;
+  productCell.appendChild(productDetails);
 
-      // generate a remove button and append it to the table
-      const removeCell = document.createElement('td');
-      removeCell.classList.add('remove');
-      removeCell.innerHTML = `<i class="fa-solid fa-trash remove"></i>`;
-      removeCell.addEventListener('click', async function () {
-        // if a remove button is clicked, delete the pizza from the database and reload the page
-        try {
-          const response = await fetch(`/shopping-cart/${pizza.pizza_id}`, {
-            method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
-          window.location.reload();
-        } catch (error) {
-          console.error('Error deleting pizza:', error.message);
-        }
-      });
-      
-      newRow.appendChild(productCell);
-      newRow.appendChild(quantityCell);
-      newRow.appendChild(totalCell);
-      newRow.appendChild(removeCell);
-      tableBody.appendChild(newRow);
-      // const isOrderedPizza = result.orderDetails.some(orderedPizza => orderedPizza.pizza_id === pizza.pizza_id);
-      // console.log(isOrderedPizza);
+  const quantityCell = document.createElement('td');
+  quantityCell.classList.add('quantity');
+  
+  if (allowQuantityChange) {
+  const quantitySelection = document.createElement('div');
+  quantitySelection.classList.add('quantity-selection');
+  quantitySelection.innerHTML = `
+  <button class="minus">-</button>
+  <p>${pizza.quantity}</p>
+  <button class="plus">+</button>`;
+  quantityCell.appendChild(quantitySelection);
+  } else {
+    quantityCell.innerHTML = `<p>${pizza.quantity}</p>`;
+  }
 
-      // if (!isOrderedPizza) {
-      //   tableBody.appendChild(newRow);
-      // }
-      // // create a table for ordered pizzas
-      // const orderedPizzaTable = document.querySelector('#ordered-products tbody');
-      // console.log(result[0].orderDetails.rows);
-      //   result.orderDetails.rows.forEach(pizza => {
-      //   const pizzaName = generatePizzaName(pizza);
-      //   const newRow = document.createElement('tr');
-      //   const productCell = document.createElement('td');
-      //   productCell.classList.add('product');
-      //   const productDetails = document.createElement('div');
-      //   productDetails.classList.add('product-details');
-      //   productDetails.innerHTML = `
-      //     <img class="pizza-img" src="../images/pizza-img.png" alt="Pizza Image">
-      //     <div>
-      //       <h3>${pizzaName}</h3>
-      //       <p>${pizza.size.toUpperCase()}-sized pizza with ${pizza.dough} dough</p>
-      //       <p>${pizza.ingredients.map(ingredient => ingredient.name).join(', ')}</p>
-      //     </div>`;
-      //   productCell.appendChild(productDetails);
+ 
+
+  const totalCell = document.createElement('td');
+  totalCell.classList.add('total');
+  const totalPrice = (parseFloat(pizza.price) * pizza.quantity).toFixed(2);
+  totalCell.innerHTML = `<p>${totalPrice}€</p>`;
+
     
-      //   // generate a quantity selection and append it to the table
-      //   const quantityCell = document.createElement('td');
-      //   quantityCell.classList.add('quantity');
-      //   quantityCell.innerHTML = `<p>${pizza.quantity}</p>`;
-    
-      //   // generate a total price and append it to the table
-      //   const totalCell = document.createElement('td');
-      //   totalCell.classList.add('total');
-        
-      //   // Use the price from the database
-      //   const totalPrice = (parseFloat(pizza.price) * pizza.quantity).toFixed(2);
-      //   totalCell.innerHTML = `<p>${totalPrice}€</p>`;
-  
-      //   newRow.appendChild(productCell);
-      //   newRow.appendChild(quantityCell);
-      //   newRow.appendChild(totalCell);
-        
-      //   if (isOrderedPizza) { 
-      //   orderedPizzaTable.appendChild(newRow);
-      //   }
-      // });
-  });  
+  newRow.appendChild(productCell);
+  newRow.appendChild(totalCell);
+  newRow.appendChild(quantityCell);
 
-    const receiptTable = document.getElementById('receipt-table');
-    const shippingFeeCell = receiptTable.querySelector('.shipping-fee.align-right');
-    const paymentFeeCell = receiptTable.querySelector('.payment-fee.align-right');
-    const totalCell = receiptTable.querySelector('.total.align-right');
-
-    // calculate total price
-    let totalPizzasPrice = 0;
-    result.pizzaDetails.forEach(pizza => {
-      totalPizzasPrice += parseFloat(pizza.price) * pizza.quantity;
+  if (allowQuantityChange) {
+    const removeCell = document.createElement('td');
+    removeCell.classList.add('remove');
+    removeCell.innerHTML = `<i class="fa-solid fa-trash remove"></i>`;
+    removeCell.addEventListener('click', async function () {
+      try {
+        const response = await fetch(`/shopping-cart/${pizza.pizza_id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        window.location.reload();
+      } catch (error) {
+        console.error('Error deleting pizza:', error.message);
+      }
     });
-    const shippingFee = 0;
-    const paymentFee = 0.5;
 
-    // display all prices
-    const totalPrice = (totalPizzasPrice + shippingFee + paymentFee).toFixed(2);
-    shippingFeeCell.textContent = `${shippingFee}€`;
-    paymentFeeCell.textContent = `${paymentFee}€`;
-    totalCell.textContent = `${totalPrice}€`;
-    
+    newRow.appendChild(removeCell);
+  }	
+  return newRow;
+}
+const receiptTable = document.getElementById('receipt-table');
+const shippingFeeCell = receiptTable.querySelector('.shipping-fee.align-right');
+const paymentFeeCell = receiptTable.querySelector('.payment-fee.align-right');
+const totalCell = receiptTable.querySelector('.total.align-right');
+
+// Calculate total price for non-ordered pizzas
+let totalPizzasPrice = 0;
+nonOrdered.forEach(pizza => {
+  const isOrderedPizza = filteredOrderedPizzas.some(orderedPizza => orderedPizza.pizza_id === pizza.pizza_id);
+  if (!isOrderedPizza) {
+    totalPizzasPrice += parseFloat(pizza.price) * pizza.quantity;
+  }
+});
+
+const shippingFee = 0;
+const paymentFee = 0.5;
+
+// Display all prices
+const totalPrice = (totalPizzasPrice + shippingFee + paymentFee).toFixed(2);
+shippingFeeCell.textContent = `${shippingFee}€`;
+paymentFeeCell.textContent = `${paymentFee}€`;
+totalCell.textContent = `${totalPrice}€`;
+
     
     // open and close payment modal on click
     const openModalBtn = document.getElementById('checkout-btn');
@@ -233,8 +327,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     // simulate payment
     const payButton = document.getElementById("pay-button");
     const paymentStatusElement = document.getElementById("payment-status");
-    const pizzaIds = result.pizzaDetails.map(pizza => pizza.pizza_id);
-    console.log(pizzaIds);
+    const pizzaIds = nonOrdered.map(pizza => pizza.pizza_id);
+    const quantitySum = nonOrdered.reduce((sum, pizza) => sum + pizza.quantity, 0);
+    console.log(quantitySum);
 
     payButton.addEventListener("click", async function () {
       try {
@@ -248,7 +343,7 @@ document.addEventListener('DOMContentLoaded', async function () {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({price: totalPizzasPrice, user_id: user.user_id, pizzaIds: pizzaIds}),
+          body: JSON.stringify({price: totalPizzasPrice, user_id: user.user_id, pizzaIds: pizzaIds, quantity: quantitySum}),
         });
         const resultCart = await response.json();
         console.log(resultCart);
@@ -265,6 +360,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         paymentStatusElement.textContent = "Please check given info"
       }
     });
+
     const totalAmountElement = document.getElementById('total-amount');
     totalAmountElement.textContent = `${totalPrice}€`;
     
@@ -283,21 +379,21 @@ document.addEventListener('DOMContentLoaded', async function () {
         }, 1000); 
       });
     }
-    
-
       // generate plus and minus buttons and add functionality to them
       const minusButtons = document.querySelectorAll('.minus');
       const plusButtons = document.querySelectorAll('.plus');
+      console.log(nonOrdered);
       
       minusButtons.forEach((button, index) => {
         button.addEventListener('click', async function () {
           try {
             const quantityElement = button.nextElementSibling;
             const currentQuantity = parseInt(quantityElement.textContent);
+
             
             // delete a pizza if quantity is 1 and minus button is clicked, so quantity becomes 0
             if (currentQuantity === 1) {
-              const response = await fetch(`/shopping-cart/${result.pizzaDetails[index].pizza_id}`, {
+              const response = await fetch(`/shopping-cart/${nonOrdered[index].pizza_id}`, {
                 method: 'DELETE',
                 headers: {
                   'Content-Type': 'application/json',
@@ -306,7 +402,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             } else {
               // update quantity in database and reload the page
               const newQuantity = currentQuantity - 1;
-              const response = await fetch(`/shopping-cart/${result.pizzaDetails[index].pizza_id}`, {
+              const response = await fetch(`/shopping-cart/${nonOrdered[index].pizza_id}`, {
                 method: 'PUT',
                 headers: {
                   'Content-Type': 'application/json',
@@ -314,7 +410,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                 body: JSON.stringify({ quantity: newQuantity }),
               });
             }
-      
             window.location.reload();
           } catch (error) {
             console.error('Error changing quantity:', error.message);
@@ -330,7 +425,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             const currentQuantity = parseInt(quantityElement.textContent);
       
             const newQuantity = currentQuantity + 1;
-            const response = await fetch(`/shopping-cart/${result.pizzaDetails[index].pizza_id}`, {
+            const response = await fetch(`/shopping-cart/${nonOrdered[index].pizza_id}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',

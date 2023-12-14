@@ -36,6 +36,7 @@ CREATE TABLE Orders (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     order_status VARCHAR(255) NOT NULL,
     user_id INT NOT NULL,
+    quantity INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (cart_id) REFERENCES ShoppingCart(cart_id)
 );

@@ -38,7 +38,8 @@ const createCart = async (req, res) => {
     const price = req.body.price;
     const user_id = req.body.user_id;
     const pizzaIds = req.body.pizzaIds;
-    const result = await postCart(price, user_id, pizzaIds);
+    const quantity = req.body.quantity;
+    const result = await postCart(price, user_id, pizzaIds, quantity);
     if (result) {
         res.status(201).json(result);
     } else {

@@ -19,88 +19,49 @@ const fetchPizza = async (id) => {
             const [result4] = await promisePool.query(sql4, params4);
             console.log('ingredient names', result4);
 
-            console.log(row.prompt_id);
+            const pizzaResult = {
+                ...row,
+                ingredients: result4.map((item) => item.name),
+            };
 
-            if (row.prompt_id !== null) {
-                const sql2 = `SELECT prompt_name FROM Prompts WHERE prompt_id = ?`;
-                const params2 = [row.prompt_id];
-                const result2 = await promisePool.query(sql2, params2);
-                const [rows2] = result2;
-                const name = rows2[0].prompt_name;
-                console.log('prompt name', name);
-                return { ...row, name, result4 };
+            return pizzaResult;
+        }));
+
+        const orderDetails = await Promise.all(pizzaDetails.map(async (pizza) => {
+            const isInCart = await checkIfPizzaInCart(pizza.pizza_id);
+
+            if (isInCart) {
+                const orderResult = {
+                    pizza_id: pizza.pizza_id,
+                    dough: pizza.dough,
+                    size: pizza.size,
+                    price: pizza.price,
+                    prompt_id: pizza.prompt_id,
+                    quantity: pizza.quantity,
+                    ingredients: pizza.ingredients,
+                };
+                return orderResult;
             } else {
-                return { ...row, result4 };
+                return null;
             }
         }));
-        return { pizzaDetails };
+
+        return { pizzaDetails, orderDetails };
     } catch (e) {
         console.error('error', e.message);
         return { error: e.message };
     }
 };
+// Function to check if pizza is in the cart
+const checkIfPizzaInCart = async (pizzaId) => {
+    const sqlOrder = `SELECT pizza_id FROM CartPizza WHERE pizza_id = ?`;
+    const paramsOrder = [pizzaId];
+    const resultOrder = await promisePool.query(sqlOrder, paramsOrder);
+    const [rowsOrder] = resultOrder;
+    console.log('ordered pizzas', rowsOrder);
 
-
-// const fetchPizza = async (id) => {
-//     try {
-//         const sql = `SELECT pizza_id, dough, size, price, prompt_id, quantity FROM Pizza WHERE user_id = ?`;
-//         const params = [id];
-//         const result = await promisePool.query(sql, params);
-//         const [rows] = result;
-//         console.log('all user pizzas', result);
-
-//         const pizzaDetails = await Promise.all(rows.map(async (row) => {
-//             const sql3 = `SELECT ingredient_id FROM PizzaIngredient WHERE pizza_id = ?`;
-//             const params3 = [row.pizza_id];
-//             const result3 = await promisePool.query(sql3, params3);
-//             const [rows3] = result3;
-//             console.log('ingredients for this pizza', params3, 'ingredient ids', rows3);
-
-//             const sql4 = `SELECT name FROM Ingredients WHERE ingredient_id IN (?)`;
-//             const params4 = [rows3.map(row => row.ingredient_id)];
-//             const [result4] = await promisePool.query(sql4, params4);
-//             console.log('ingredient names', result4);
-
-
-
-            // const isInCart = await checkIfPizzaInCart(row.pizza_id);
-
-            // if (isInCart) {
-            //     return {
-            //         orderDetails: {
-            //             ...row,
-            //             ingredients: result4.map((item) => item.name),
-            //         },
-            //         pizzaDetails: null,
-            //     };
-            // } else {
-            //     return {
-            //         pizzaDetails: {
-            //             ...row,
-            //             ingredients: result4.map((item) => item.name),
-            //         },
-            //         orderDetails: null,
-            //     };
-            // }
-//         }));
-
-//         return pizzaDetails;
-//     } catch (error) {
-//         console.error('error', error.message);
-//         return { error: error.message };
-//     }
-// };
-
-// const checkIfPizzaInCart = async (pizzaId) => {
-//     const sqlOrder = `SELECT pizza_id FROM CartPizza WHERE pizza_id = ?`;
-//     const paramsOrder = [pizzaId];
-//     const resultOrder = await promisePool.query(sqlOrder, paramsOrder);
-//     const [rowsOrder] = resultOrder;
-//     console.log('ordered pizzas', rowsOrder);
-
-//     return rowsOrder.length !== 0;
-// };
-// // 
+    return rowsOrder.length !== 0;
+};
 
 const deletePizza = async (id) => {
     try {
@@ -133,7 +94,7 @@ const putQuantity = async (quantity, id) => {
     }
 };
 
-const postCart = async (price, user_id, pizzaIds) => {
+const postCart = async (price, user_id, pizzaIds, quantity) => {
     try {
         const sql = `INSERT INTO ShoppingCart (price, user_id) VALUES (?, ?)`;
         const params = [price, user_id];
@@ -141,7 +102,7 @@ const postCart = async (price, user_id, pizzaIds) => {
         const [rows] = result;
         console.log(rows);
 
-        const sql2 = `SELECT cart_id FROM ShoppingCart WHERE user_id = ?`;
+        const sql2 = `SELECT cart_id FROM ShoppingCart WHERE user_id = ? ORDER BY cart_id DESC LIMIT 1`;
         const params2 = [user_id];
         const result2 = await promisePool.query(sql2, params2);
         const [rows2] = result2;
@@ -155,8 +116,8 @@ const postCart = async (price, user_id, pizzaIds) => {
         console.log(rows3);
         });
 
-        const sqlOrder = `INSERT INTO Orders (cart_id, order_status, user_id) VALUES (?, ?, ?)`;
-        const paramsOrder = [rows2[0].cart_id, 'in_progress', user_id];
+        const sqlOrder = `INSERT INTO Orders (cart_id, order_status, user_id, quantity) VALUES (?, ?, ?, ?)`;
+        const paramsOrder = [rows2[0].cart_id, 'in_progress', user_id, quantity];
         const resultOrder = await promisePool.query(sqlOrder, paramsOrder);
         const [rowsOrder] = resultOrder;
         console.log('ordered pizza', rowsOrder);

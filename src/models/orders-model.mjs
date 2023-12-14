@@ -31,7 +31,7 @@ const ordersInProgress = async (id) => {
             Orders.order_id,
             Orders.created_at AS order_timestamp,
             ShoppingCart.price AS cart_price,
-            COUNT(CartPizza.pizza_id) AS cart_pizza_count,
+            Orders.quantity AS cart_pizza_count,
             Users.username AS user_name
             FROM Orders
             INNER JOIN ShoppingCart ON Orders.cart_id = ShoppingCart.cart_id
