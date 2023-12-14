@@ -10,11 +10,8 @@ Web development project by Iaroslava Goncharova, Anna Malassu, Juan Rosales.
 
 - [Introduction](#introduction)
 - [Features](#features)
-- [Pre-Requirements](#pre-requirements)
+- [Pre-requirements](#Pre-requirements)
 - [Installation](#installation)
-
-## Introduction
-
 Pick-a-pizza is a pizza ordering app designed to create pizzas from scratch, check nutritional values, and simulate the purchasing process.
 
 ## Features
@@ -42,7 +39,7 @@ Pick-a-pizza is a pizza ordering app designed to create pizzas from scratch, che
 - Writing and displaying reviews
 - Progressive web app
 
-## Pre-Requirements
+## Pre-requirements
 
 - Install VSCode
 - Install Node.js
