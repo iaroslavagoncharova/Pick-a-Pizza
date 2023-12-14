@@ -7,7 +7,7 @@ const onCommonReload = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     console.log(user, token);
 
-    if (token&&user) {
+    if (token && user) {
         addUserDataToDom(user);
         logUserOut();
         const userButton = document.getElementById('user-account');
