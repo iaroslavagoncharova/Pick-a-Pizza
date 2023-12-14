@@ -133,7 +133,6 @@ VALUES
 ('Slava', 'securepass', 'slava@example.com', 'Karaportti 2, Espoo', 'Low Calorie', '987654321', 1, '2023-11-14 13:30:00'),
 ('Juan', 'pass123', 'juan@example.com', 'Karaportti 2, Espoo' , 'Keto', '555666777', 2, '2023-11-14 14:15:00');
 
-
 -- Add data for dough
 INSERT INTO Dough (dough_name, dough_size, dough_price, dough_calories, dough_carbs, dough_protein, dough_fats) 
 VALUES 
@@ -143,7 +142,7 @@ VALUES
 ('keto', 'S', 4.00, 400, 10, 20, 30), 
 ('keto', 'M', 5.50, 600, 15, 30, 45), 
 ('keto', 'L', 7.00, 800, 20, 40, 60), 
-('usual', 'S', 1.50, 600, 110, 16, 10), 
+('usual', 'S', 1.50, 600, 110, 16, 10),
 ('usual', 'M', 2.50, 900, 165, 24, 15), 
 ('usual', 'L', 3.50, 1200, 220, 32, 20);
 
@@ -225,65 +224,9 @@ VALUES
 (6, 9),
 (6, 18);
 
--- Add data to Pizza 
-INSERT INTO Pizza (user_id, dough, size, message, calories, carbs, protein, fats, price, prompt_id, quantity) 
-VALUES
-(1, 'usual', 'L', 'Extra cheese, please!', 700, 70, 70, 70, 14.00, 4, 2), -- Classic pizza for Anna
-(2, 'usual', 'M', 'No onions, extra mushrooms.', 400, 40, 40, 40, 12.00, 3, 1), -- Low Calorie pizza for Slava
-(3, 'keto', 'L', 'Keto supreme pizza!', 800, 80, 80, 80, 18.00, 1, 1); -- Keto pizza for Juan
-
-
--- Add data to ShoppingCart 
-INSERT INTO ShoppingCart (price, user_id) 
-VALUES
-(20.00, 1), -- User Anna
-(15.00, 2), -- User Slava
-(18.00, 3); -- User Juan
-
--- Add data to CartPizza 
-INSERT INTO CartPizza (cart_id, pizza_id) 
-VALUES
-(1, 1), -- Anna's order, completed 
-(2, 2), -- Slava's order, in progress
-(3, 3); -- Juan's order,
-
--- Add data to Orders
-INSERT INTO Orders (cart_id, order_status, user_id) 
-VALUES
-(1, 'completed', 1), -- Order for Anna
-(2, 'in_progress', 2), -- Order in progress for Slava
-(2, 'in_progress', 2),
-(2, 'in_progress', 2),
-(3, 'completed', 3); -- Order for Juan
-
 -- Add data to Reviews 
 INSERT INTO Reviews (review_text, stars, user_id) 
 VALUES
-('Great pizza! Loved the gluten-free option.', 5, 1), -- Review by Anna
-('The low-calorie pizza was amazing.', 4, 2), -- Review by Slava
-('Keto pizza was awesome! Will order again.', 5, 3); -- Review by Juan
-
--- Update order status when it's ready:
-
-UPDATE Orders SET order_status = 'complete' WHERE order_id = 12;
-
--- Update ingredients in stock if there was 1 kg in the beginning and 100 g were used for a pizza:
-
-UPDATE Ingredients SET in_stock = 900 WHERE name = 'tomato';
-
--- Update prompt price if there's a sale:
-
-UPDATE Prompts SET price = 12.00 WHERE prompt_name = 'Gluten-free';
-
-
--- Query to get 5 last orders for a specific user to display on user's profile page:
-
-SELECT * FROM Orders WHERE user_id = 8 ORDER BY created_at DESC LIMIT 5;
-
--- Query to get all pizzas in the cart to display in the order details:
-
-SELECT * FROM CartPizza WHERE cart_id = 3;
-
--- Query to get all ingredients to display on admin's page:
-
-SELECT * FROM Ingredients;
+('Great pizza! Loved the gluten-free option.', 5, 1),
+('The low-calorie pizza was amazing.', 4, 2),
+('Keto pizza was awesome! Will order again.', 5, 3);
