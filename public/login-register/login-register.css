@@ -426,6 +426,19 @@ footer {
     align-items: center;
 }
 
+form input::placeholder{
+    color: var(--light);
+    opacity: 1;
+}
+input::-webkit-input-placeholder{
+    color: var(--light);
+    opacity: 1;
+}
+input::-moz-placeholder{
+    color: var(--light);
+    opacity: 1;
+}
+
 /* Tablet view */
 @media only screen and (max-width: 768px) {
     #header-logo {

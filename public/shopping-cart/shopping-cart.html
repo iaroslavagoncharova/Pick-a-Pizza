@@ -138,20 +138,20 @@
                                   <input type="text" id="card-name" placeholder="Enter name" required autocomplete="name">
                                   <label for="card-number">Card Number:</label>
                                   
-                                  <input type="text" id="card-number" placeholder="Enter card number" required>
+                                  <input type="text" id="card-number" placeholder="Enter card number" pattern="[0-9]{16}" required title="Please enter a valid card number (it should contain 16 digits)"
                                   
                                   <label for="expiration-date-month">Expiration Date:</label>
                                   <div id="date">
-                                      <input type="number" id="expiration-date-month" placeholder="MM" required autocomplete="cc-exp-month">
+                                      <input type="number" id="expiration-date-month" placeholder="MM" min="1" max="12" required autocomplete="cc-exp-month" title="Please enter a valid month"
                                       <span>/</span>
-                                      <input type="number" id="expiration-date-year" placeholder="YY" required autocomplete="cc-exp-year">
+                                      <input type="number" id="expiration-date-year" placeholder="YY" required autocomplete="cc-exp-year" title="Please enter a valid year">
                                     </div>
                                     
                                     <label for="cvc">CVV:</label>
-                                    <input type="number" id="cvc" placeholder="CVC" required>
+                                    <input type="number" id="cvc" placeholder="CVC" pattern="[0-9]{3}" required title="Please enter a valid CVC (it should contain 3 digits)">
 
                                     <label for="phone">Phone Number:</label>
-                                    <input type="tel" id="phone" placeholder="Enter phone number" required autocomplete="mobile">
+                                    <input type="tel" id="phone" placeholder="Enter phone number" autocomplete="mobile">
                                 </div>
                                 <div id="confirmation">
                                 <div id="total-amount"></div>

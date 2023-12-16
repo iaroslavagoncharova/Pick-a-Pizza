@@ -347,7 +347,7 @@ a {
     padding-top: 6rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 4rem;
+    gap: 2rem;
     overflow-x: scroll;
 }
 

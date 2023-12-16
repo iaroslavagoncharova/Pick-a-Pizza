@@ -291,17 +291,32 @@ searchButton.addEventListener('click', function () {
 
 // add pizza details to cart
 function addToCart() {
-  const selectedDough = document.querySelector('input[name="dough"]:checked').value;
-  const selectedSize = document.querySelector('input[name="size"]:checked').value;
+  const selectedDoughInput = document.querySelector('input[name="dough"]:checked');
+  const selectedSizeInput = document.querySelector('input[name="size"]:checked');
+
+  if (!selectedDoughInput || !selectedSizeInput) {
+    alert('Please select a dough and a size');
+  }
+
+  const selectedDough = selectedDoughInput.value;
+  const selectedSize = selectedSizeInput.value;
   const message = document.getElementById('message').value;
   const quantity = document.getElementById('quantity').value;
   const user = JSON.parse(localStorage.getItem('user'));
+  if (!user) {
+    alert('Please log in to add a pizza to your cart');
+    window.location.href = '/sign-in';
+  }
   const userId = user.user_id;
   const selectedIngredients = [];
   const originalPrice = totalPrice / quantity;
   document.querySelectorAll('.category-content input:checked').forEach((checkbox) => {
     selectedIngredients.push(checkbox.id);
   });
+  if (selectedIngredients.length === 0) {
+    alert('Please select at least one ingredient');
+    return;
+  }
   if (storedPromptId) {
     return {
       user_id: userId,
