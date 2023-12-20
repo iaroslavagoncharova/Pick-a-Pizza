@@ -10,6 +10,7 @@ Web development project by Iaroslava Goncharova, Anna Malassu, Juan Rosales.
 
 - [Introduction](#introduction)
 - [Features](#features)
+- [Improvements after the final seminar](#improvements-after-the-final-seminar)
 - [Pre-requirements](#Pre-requirements)
 - [Installation](#installation)
 Pick-a-pizza is a pizza ordering app designed to create pizzas from scratch, check nutritional values, and simulate the purchasing process.
@@ -38,6 +39,14 @@ Pick-a-pizza is a pizza ordering app designed to create pizzas from scratch, che
         - Approximate travel time
 - Writing and displaying reviews
 - Progressive web app
+
+## Improvements after the final seminar
+
+We have gathered valuable feedback during the final seminar and made some adjustments according to it, such as:
+
+- If a user attempts to add a pizza to a cart without being registered/signed in, they'll see a notification and will be redirected to the login-registration page
+- If a user attempts to add a pizza to a cart, but haven't chosen a dough, a size or a set of ingredients, they'll get a notification, and the pizza won't be added to the cart until all required options are chosen
+- If a user's registration data (such as password, email, and phone number are not in the required format, the user will see a notification
 
 ## Pre-requirements
 
